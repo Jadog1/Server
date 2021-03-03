@@ -1,7 +1,22 @@
 'use strict';
-var http = require('https');
+var http = require('http');
 var port = process.env.PORT || 1337;
 var fs = require('fs');
+var express = require('express');
+var app = express();
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+// make express look in the public directory for assets (css/js/img)
+app.use(express.static(__dirname + '/public'));
+
+// set the home page route
+app.get('/', function (req, res) {
+
+    // ejs render automatically looks in the views folder
+    res.render('index');
+});
 
 http.createServer(function (req, res) {
     switch (req.url) {

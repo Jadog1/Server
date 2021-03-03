@@ -38,12 +38,18 @@
     <Content Include="ImageDistort.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\index.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="SeniorGame.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="views\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
