@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <a href="/"><div>Go back</div></a><br />
+    <textarea placeholder="Insert addresses here" rows=20 cols=80 id="input">
+</textarea>
+    <br>
+    <button onclick="calculateDistance()">
+        Calculate
+    </button>
+    FTW: <span id="ftw">0</span>
+    OMA: <span id="oma">0</span>
+    GSO: <span id="gso">0</span>
+    <br>
+<textarea readonly rows=20 cols=80 id="output">
+</textarea>
+
+    <script>
+        function region(states) {
+            this.states = states;
+        }
+        function depot(name, location) {
+            this.name = name;
+            this.location = location;
+            this.active = true;
+            this.assigned = 0;
+        }
+        function address(state, location, distances, depot) {
+            this.state = state;
+            this.location = location;
+            this.distances = distances;
+            this.depot = depot;
+        }
+        function findLocation(name) {
+            for (var i = 0; i < usBitMap.length; i++) {
+                for (var j = 0; j < usBitMap[i].length; j++) {
+                    for (var z = 0; z < usBitMap[i][j].states.length; z++) {
+                        if (name === usBitMap[i][j].states[z]) return { i: i, j: j };
+                    }
+                }
+            }
+            return null;
+        }
+
+        var usBitMap = [
+            [
+                new region(["WA", "AK", "HI"]),
+                new region(["MT", "ND"]),
+                new region(["MN"]),
+                new region(["ME"])
+            ],
+            [
+                new region(["OR", "ID"]),
+                new region(["WY", "SD"]),
+                new region(["WI", "IA", "MI"]),
+                new region(["NY", "VT", "NH", "MA"])
+            ],
+            [
+                new region(["NV", "UT"]),
+                new region(["CO", "NE", "KS"]),
+                new region(["MO", "IL", "IN"]),
+                new region(["OH", "WV", "PA", "DE", "MD", "RI", "CT", "NJ"])
+            ],
+            [
+                new region(["CA"]),
+                new region(["NM", "OK"]),
+                new region(["AR", "TN", "KY"]),
+                new region(["NC", "VA"])
+            ],
+            [
+                new region(["AZ"]),
+                new region(["TX"]),
+                new region(["LA", "MS", "AL"]),
+                new region(["GA", "SC"])
+            ],
+            [new region([]), new region([]), new region([]), new region(["FL"])]
+        ];
+
+        var depots = [
+            new depot("FTW", findLocation("IN")),
+            new depot("OMA", findLocation("NE")),
+            new depot("GSO", findLocation("NC"))
+        ];
+
+        function findDistances(location) {
+            var compareDistances = [];
+            var min = { val: -1, loc: -1 };
+            for (k = 0; k < depots.length; k++) {
+                if (depots[k].active === false) continue;
+                var val =
+                    Math.abs(location.i - depots[k].location.i) +
+                    Math.abs(location.j - depots[k].location.j);
+                compareDistances.push(val);
+                if (min.val == -1 || min.loc == -1 || val < min.val) {
+                    min.val = val;
+                    min.loc = k;
+                }
+            }
+            compareDistances.push(min.loc);
+
+            return compareDistances;
+        }
+
+        function calculateDistance() {
+            document.getElementById("output").innerHTML = "";
+            //Split the list and set the arrays
+            var list = document.getElementById("input").value;
+            list = list.trim();
+            list = list.split("\n");
+            var depots2 = [];
+            var addresses = [];
+            var countActive = 0;
+            for (count = 0; count < depots.length; count++)
+                if (depots[count].active === true) countActive++;
+            for (k = 0; k < depots.length; k++) depots2.push(0);
+
+            //Find all the distances and locations according to the bitmap
+            for (i = 0; i < list.length; i++) {
+                var temp = list[i].split(" ");
+                if (temp.length > 1) var temp2 = temp[temp.length - 2];
+                else var temp2 = temp[temp.length - 1];
+                if (temp2.length > 2) temp2 = temp2.substring(0, 2);
+                if (temp2.trim() === "") {
+                    continue;
+                }
+
+                var loc = findLocation(temp2);
+                if (loc == null) {
+                    document.getElementById("output").innerHTML =
+                        "Error finding state: " + temp[temp.length - 1];
+                    return;
+                }
+                var distances = findDistances(loc);
+                var smallestMin = distances[distances.length - 1];
+                var selectedDepot;
+                //Make sure to distribute evenly among active depots
+                if (depots2[smallestMin] / list.length < 1 / countActive) {
+                    //console.log(depots2[smallestMin].length + " and " + list.length + " and " + depots[smallestMin].name + " and " + i);
+                    selectedDepot = depots[smallestMin];
+                    //depots2[smallestMin].push(new address(temp2, loc, distances, i));
+                    depots2[smallestMin]++;
+                } else {
+                    var tempArr = distances;
+                    var count = 0;
+                    var found = false;
+                    while (count < countActive && !found) {
+                        tempArr[smallestMin] = 999; //Set local max
+                        var min = { val: 999, loc: 0 };
+                        for (k = 0; k < tempArr.length - 1; k++)
+                            if (tempArr[k] < min.val) {
+                                min.val = tempArr[k];
+                                min.loc = k;
+                            }
+                        smallestMin = min.loc;
+                        if (depots2[smallestMin] / list.length < 1 / countActive) found = true;
+                        count++;
+                    }
+                    selectedDepot = depots[smallestMin];
+                    //depots2[smallestMin].push(new address(temp2, loc, distances, i));
+                    depots2[smallestMin]++;
+                }
+                //addresses.push(new address(temp2, loc, distances, selectedDepot));
+                document.getElementById("output").innerHTML += selectedDepot.name + "\n";
+            }
+            document.getElementById("ftw").innerHTML = depots2[0];
+            document.getElementById("oma").innerHTML = depots2[1];
+            document.getElementById("gso").innerHTML = depots2[2];
+        }
+
+    </script>
+</body>
+</html>

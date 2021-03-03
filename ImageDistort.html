@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <a href="/"><div>Go back</div></a><br />
+    1. Copy image data into clipboard or press Print Screen <br>
+    2. Press Ctrl+V (page/iframe must be focused):
+    <br /><br />
+    <canvas style="border:1px solid grey;" id="my_canvas"></canvas>
+    <br />
+    <button onclick="clearInterval(interval); imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); interval = setInterval(randomizePic, 50)">Randomize the picture</button>
+    <button onclick="clearInterval(interval); imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); interval = setInterval(transitionPic, 50)">Transition picture</button>
+    <button onclick="clearInterval(interval); imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); interval = setInterval(disintegratePic, 1)">Disintegrate picture</button>
+    <button onclick="clearInterval(interval)">Pause effects</button>
+    <br>
+    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); encodePic(); decodePic(); encodePic();" style="margin-top: 5px">Encode picture</button>
+    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); decodePic();" style="margin-top: 5px">Decode picture</button>
+    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); redEffect();" style="margin-top: 5px">Cause red effect</button>
+    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); highlightBlack();" style="margin-top: 5px">Highlight black and white</button>
+    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); highlightBlack();" style="margin-top: 5px">Highlight black and white</button>
+    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); modifyOpacity();" style="margin-top: 5px">Modify opacity in range</button>
+
+    <script>
+        var CLIPBOARD = new CLIPBOARD_CLASS("my_canvas", true);
+        var canvas = document.getElementById("my_canvas");
+        var ctx = canvas.getContext("2d");
+        canvas.width = 500;
+        canvas.height = 500;
+        var imgData;
+        var interval;
+
+        /**
+         * image pasting into canvas
+         *
+         * @param {string} canvas_id - canvas id
+         * @param {boolean} autoresize - if canvas will be resized
+         */
+        function CLIPBOARD_CLASS(canvas_id, autoresize) {
+            var _self = this;
+
+            //handlers
+            document.addEventListener(
+                "paste",
+                function (e) {
+                    _self.paste_auto(e);
+                },
+                false
+            );
+
+            //on paste
+            this.paste_auto = function (e) {
+                if (e.clipboardData) {
+                    var items = e.clipboardData.items;
+                    if (!items) return;
+
+                    //access data directly
+                    var is_image = false;
+                    for (var i = 0; i < items.length; i++) {
+                        if (items[i].type.indexOf("image") !== -1) {
+                            //image
+                            var blob = items[i].getAsFile();
+                            var URLObj = window.URL || window.webkitURL;
+                            var source = URLObj.createObjectURL(blob);
+                            this.paste_createImage(source);
+                            is_image = true;
+                        }
+                    }
+                    if (is_image == true) {
+                        e.preventDefault();
+                    }
+                }
+            };
+            //draw pasted image to canvas
+            this.paste_createImage = function (source) {
+                var pastedImage = new Image();
+                pastedImage.onload = function () {
+                    if (autoresize == true) {
+                        //resize
+                        canvas.width = pastedImage.width;
+                        canvas.height = pastedImage.height;
+                    } else {
+                        //clear canvas
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+                    ctx.drawImage(pastedImage, 0, 0);
+                };
+                pastedImage.src = source;
+            };
+        }
+
+        function randomizePic() {
+            var width = canvas.width;
+            var height = canvas.height;
+            //var imgData = ctx.getImageData(0, 0, width, height);
+
+            var i;
+            for (i = 0; i < imgData.data.length; i += 4) {
+                if (Math.random() < 0.01) continue;
+                imgData.data[i] = (imgData.data[i] + Math.round(Math.random() * 10)) % 255;
+                imgData.data[i + 1] =
+                    (imgData.data[i + 1] + Math.round(Math.random() * 10)) % 255;
+                imgData.data[i + 2] =
+                    (imgData.data[i + 2] + Math.round(Math.random() * 10)) % 255;
+                imgData.data[i + 3] = 255;
+            }
+
+            ctx.putImageData(imgData, 0, 0);
+        }
+        function transitionPic() {
+            var width = canvas.width;
+            var height = canvas.height;
+            //var imgData = ctx.getImageData(0, 0, width, height);
+
+            var i;
+            for (i = 0; i < imgData.data.length; i += 4) {
+                if (Math.random() < 0.01) continue;
+                imgData.data[i] = imgData.data[(i + 4) % imgData.data.length];
+                imgData.data[i + 1] = imgData.data[(i + 5) % imgData.data.length];
+                imgData.data[i + 2] = imgData.data[(i + 6) % imgData.data.length];
+                imgData.data[i + 3] = 255;
+            }
+
+            ctx.putImageData(imgData, 0, 0);
+        }
+        function disintegratePic() {
+            var width = canvas.width;
+            var height = canvas.height;
+            //var imgData = ctx.getImageData(0, 0, width, height);
+
+            imgData.data[Math.round(Math.random() * imgData.data.length)] = 0;
+            imgData.data[Math.round(Math.random() * imgData.data.length)] = 0;
+            imgData.data[Math.round(Math.random() * imgData.data.length)] = 0;
+
+            ctx.putImageData(imgData, 0, 0);
+        }
+        function encodePic() {
+            var width = canvas.width;
+            var height = canvas.height;
+            //var imgData = ctx.getImageData(0, 0, width, height);
+
+            var i;
+            for (i = 0; i < imgData.data.length; i += 4) {
+                imgData.data[i] = (imgData.data[i] + i) % 255;
+                imgData.data[i + 1] = (imgData.data[i + 1] + i) % 255;
+                imgData.data[i + 2] = (imgData.data[i + 2] + i) % 255;
+                imgData.data[i + 3] = (255 + i) % 255;
+            }
+
+            ctx.putImageData(imgData, 0, 0);
+        }
+
+        function decodePic() {
+            var width = canvas.width;
+            var height = canvas.height;
+            //var imgData = ctx.getImageData(0, 0, width, height);
+
+            var i;
+            for (i = 0; i < imgData.data.length; i += 4) {
+                imgData.data[i] = Math.abs(imgData.data[i] - i) % 255;
+                imgData.data[i + 1] = Math.abs(imgData.data[i + 1] - i) % 255;
+                imgData.data[i + 2] = Math.abs(imgData.data[i + 2] - i) % 255;
+                imgData.data[i + 3] = Math.abs(255 - i) % 255;
+            }
+
+            ctx.putImageData(imgData, 0, 0);
+        }
+
+        function redEffect() {
+            var width = canvas.width;
+            var height = canvas.height;
+            //var imgData = ctx.getImageData(0, 0, width, height);
+
+            var i;
+            for (i = 0; i < imgData.data.length; i += 4) {
+                if (imgData.data[i] < 100) imgData.data[i] = 255;
+                if (imgData.data[i + 1] < 25) imgData.data[i + 1] = 255;
+                if (imgData.data[i + 2] > 200) imgData.data[i + 2] = 0;
+            }
+
+            ctx.putImageData(imgData, 0, 0);
+        }
+
+        function modifyOpacity() {
+            var width = canvas.width;
+            var height = canvas.height;
+            //var imgData = ctx.getImageData(0, 0, width, height);
+
+            var i;
+            for (i = 0; i < imgData.data.length; i += 4) {
+                if (imgData.data[i] > 100 && imgData.data[i] < 150) {
+                    imgData.data[i + 3] = 150;
+                } else if (imgData.data[i + 1] > 0 && imgData.data[i + 1] < 50) {
+                    imgData.data[i + 3] = 50;
+                } else if (imgData.data[i + 2] > 200 && imgData.data[i + 2] < 250) {
+                    imgData.data[i] = 0;
+                    imgData.data[i + 1] = 0;
+                    imgData.data[i + 2] = 0;
+                }
+            }
+
+            ctx.putImageData(imgData, 0, 0);
+        }
+
+        function highlightBlack() {
+            var width = canvas.width;
+            var height = canvas.height;
+            //var imgData = ctx.getImageData(0, 0, width, height);
+
+            var i;
+            for (i = 0; i < imgData.data.length; i += 4) {
+                if (
+                    imgData.data[i] > 200 &&
+                    imgData.data[i + 1] > 200 &&
+                    imgData.data[i + 2] > 200
+                ) {
+                    imgData.data[i] = 255;
+                    imgData.data[i + 1] = 0;
+                    imgData.data[i + 2] = 0;
+                } else if (
+                    imgData.data[i] < 50 &&
+                    imgData.data[i + 1] < 50 &&
+                    imgData.data[i + 2] < 50
+                ) {
+                    imgData.data[i] = 0;
+                    imgData.data[i + 1] = 0;
+                    imgData.data[i + 2] = 255;
+                }
+            }
+
+            ctx.putImageData(imgData, 0, 0);
+        }
+
+    </script>
+</body>
+</html>

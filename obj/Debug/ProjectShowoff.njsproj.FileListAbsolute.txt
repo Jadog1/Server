@@ -1,0 +1,6 @@
+C:\Users\15743\source\repos\ProjectShowoff\ProjectShowoff\obj\Debug\ProjectShowoff.njsprojAssemblyReference.cache
+C:\Users\15743\source\repos\ProjectShowoff\ProjectShowoff\obj\Debug\ProjectShowoff.njsproj.CoreCompileInputs.cache
+C:\Users\15743\source\repos\ProjectShowoff\ProjectShowoff\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\15743\Desktop\Personal Projects\ProjectShowoff\ProjectShowoff\obj\Debug\ProjectShowoff.njsprojAssemblyReference.cache
+C:\Users\15743\Desktop\Personal Projects\ProjectShowoff\ProjectShowoff\obj\Debug\ProjectShowoff.njsproj.CoreCompileInputs.cache
+C:\Users\15743\Desktop\Personal Projects\ProjectShowoff\ProjectShowoff\bin\Microsoft.NodejsTools.WebRole.dll
