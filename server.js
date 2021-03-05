@@ -36,6 +36,9 @@ http.createServer(function (req, res) {
         case '/resume':
             fsExtend.readExtend('Files/Resume.pdf', 'text/pdf', res);
             break;
+        case '/engagement':
+            fsExtend.readExtend('Files/ProfilePic.jpg', 'image/jpeg', res);
+            break;
         default:
             res.writeHead(404, { 'Content-Type': 'text/html' });
             res.write("<h1>No page found!</h1>");

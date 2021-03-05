@@ -29,6 +29,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Files\ProfilePic.jpg" />
     <Content Include="Views\Distance.html">
       <SubType>Code</SubType>
     </Content>
@@ -38,7 +39,7 @@
     <Content Include="Views\ImageDistort.html">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="modules\extendFS.js">
+    <Content Include="Modules\extendFS.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\index.ejs">
@@ -54,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
-    <Folder Include="modules\" />
+    <Folder Include="Modules\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

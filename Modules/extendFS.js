@@ -3,7 +3,7 @@ var fs = require('fs');
 exports.readExtend = (filename, type, res) => {
     fs.readFile(filename, function (err, data) {
         if (err) {
-            console.log("Error!");
+            console.log("Error: " + err);
             return null;
         }
         res.writeHead(200, { 'Content-Type': type });
