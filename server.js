@@ -1,5 +1,4 @@
 'use strict';
-var http = require('https');
 var port = process.env.PORT || 1337;
 var fsExtend = require('./Modules/extendFS'); //Used to shorten opening of files
 var email = require('./Modules/email');
