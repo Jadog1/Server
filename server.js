@@ -2,6 +2,7 @@
 var http = require('http');
 var port = process.env.PORT || 1337;
 var fs = require('fs');
+var fsExtend = require('./extendFS'); //Used to shorten opening of files
 var express = require('express');
 var app = express();
 
@@ -21,37 +22,30 @@ app.get('/', function (req, res) {
 http.createServer(function (req, res) {
     switch (req.url) {
         case '/': 
-            fs.readFile('Home.html', function (err, data) {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.write(data);
-                return res.end();
-            });
+            fsExtend.readExtend('Home.html', 'text/html', res);
             break;
         case '/game':
-            fs.readFile('SeniorGame.html', function (err, data) {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.write(data);
-                return res.end();
-            });
+            fsExtend.readExtend('SeniorGame.html', 'text/html', res);
             break;
         case '/distort':
-            fs.readFile('ImageDistort.html', function (err, data) {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.write(data);
-                return res.end();
-            });
+            fsExtend.readExtend('ImageDistort.html', 'text/html', res);
             break;
         case '/distance':
-            fs.readFile('Distance.html', function (err, data) {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.write(data);
-                return res.end();
-            });
+            fsExtend.readExtend('Distance.html', 'text/html', res);
+            break;
+        case '/resume':
+            fsExtend.readExtend('Files/Resume.pdf', 'text/pdf', res);
             break;
         default:
-            res.writeHead(400, { 'Content-Type': 'text/html' });
+            res.writeHead(404, { 'Content-Type': 'text/html' });
             res.write("<h1>No page found!</h1>");
             res.end();
             break;
     }
 }).listen(port);
+
+process.on('SIGTERM', () => {
+    server.close(() => {
+        console.log('Process terminated')
+    })
+})
