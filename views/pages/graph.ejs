@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Graph</title>
+    <%- include('../partials/Header') %>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <style>
+        #graph {
+            background-color: #eee;
+            border: 1px solid black;
+        }
+    </style>
+
+    <div class="w3-row-padding w3-padding-64 w3-container">
+        <canvas id="graph"></canvas>
+        <br>
+        <input type="text" id="equation" value="x*x" />
+        <button onclick="resetGraph()">Graph!</button>
+        <span id="drawingLabel"></span>
+        <button onclick="showAcceleration()">Show Acceleration</button><br />
+        Compactness 0.1-1:
+        <input type="range" min="0.1" max="1" step="0.1" value="1" onchange="ball.compaction=parseFloat(this.value)">
+        Use lines:
+        <input type="checkbox" id="useLines" /><br />
+        Variables and numbers must be seperated with a mathmatical operator. Supports parentheses, sin, cos, tan.
+    </div>
+
+    <script>
+        var canvas = document.getElementById("graph");
+        canvas.width = 400;
+        canvas.height = 400;
+        var c = canvas.getContext("2d");
+
+        function Gid(id) {
+            return document.getElementById(id);
+        }
+
+        function escapeRegExp(str) {
+            return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+        }
+        function replaceAll(str, find, replace) {
+            return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+        }
+
+        function point(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        var ball = { x: 0, y: 200, ax: -5, compaction: 1, previous: undefined, graphData1: [] };
+        var drawing = false;
+        var equation = "ball.ax*ball.ax";
+        var drawLine;
+
+        function resetGraph() {
+            equation = replaceAll(Gid('equation').value, "sin", "Math.sin");
+            equation = replaceAll(equation, "cos", "Math.cos");
+            equation = replaceAll(equation, "tan", "Math.tan");
+            equation = replaceAll(equation, "sinx", "sin(x)");
+            equation = replaceAll(equation, "cosx", "cos(x)");
+            equation = replaceAll(equation, "tanx", "tan(x)");
+            equation = replaceAll(equation, "x", "ball.ax"); //Must be at the end
+
+            c.clearRect(0, 0, canvas.width, canvas.height);
+            drawCross();
+            ball.x = 0;
+            ball.y = 200;
+            ball.ax = -5;
+            ball.previous = undefined;
+            ball.graphData1 = [];
+        }
+
+        function drawCross() {
+            c.fillStyle = "black";
+            c.fillRect(199, 399, 1, -400);
+            c.fillRect(0, 200, 400, 1);
+        }
+
+        function showAcceleration() {
+            var x1 = 0, x2 = 1;
+            var distance = undefined, y2 = 0;
+            for (var i = 0; i < ball.graphData1.length; i++) {
+                x1++;
+                x2++;
+                c.beginPath();
+                c.moveTo(x1, y2);
+                if (i !== ball.graphData1.length - 1) distance = ball.graphData1[i + 1].y - ball.graphData1[i].y;
+                y2 += distance;
+                c.lineTo(x2, y2);
+                c.strokeStyle = "red";
+                c.stroke();
+            }
+        }
+
+        function drawLine() {
+            if (ball.x >= 400) {
+                drawing = false;
+                Gid("drawingLabel").innerHTML = "Finished";
+            } else {
+                drawing = true;
+                Gid("drawingLabel").innerHTML = "Graphing...";
+            }
+
+            if (drawing) {
+                ball.x += ball.compaction;
+                ball.ax += ball.compaction / 40;
+                ball.y = ((-eval(equation) * 40) + 200);
+                ball.graphData1.push(new point(ball.x, ball.y));
+            }
+
+            if (drawing && Gid("useLines").checked === false) {
+                c.beginPath();
+                c.arc(ball.x, ball.y, 1, 0, 2 * Math.PI);
+                c.strokeStyle = "black";
+                c.stroke();
+            } else if (drawing && Gid("useLines").checked) {
+                if (ball.previous !== undefined) {
+                    c.beginPath();
+                    c.moveTo(ball.previous.x, ball.previous.y);
+                    c.lineTo(ball.x, ball.y);
+                    c.strokeStyle = "black";
+                    c.stroke();
+                }
+                ball.previous = { x: ball.x, y: ball.y };
+            }
+        }
+
+        setInterval(drawLine, 1);
+        drawCross();
+    </script>
+</body>
+</html>

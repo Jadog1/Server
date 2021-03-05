@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Gambling</title>
+    <%- include('../partials/Header') %>
+</head>
+<body>
+    <style>
+        #chance {
+            width: 400px;
+            height: 450px;
+            overflow: auto;
+            border: 2px groove black;
+            border-radius: 2px;
+            background-color: #eee;
+        }
+    </style>
+    <%- include('../partials/navbar') %>
+    <div class="w3-row-padding w3-padding-64 w3-container">
+        Spend:
+        <input type="range" id="percent" step="10" min="0" max="100" onchange="updateGamblePercentage(this.value)" /><br>
+        Run simulation:
+        <button id="runSim" onclick="runSimulation()">Run</button>
+
+        <div id="winner"></div>
+        <div id="chance"></div>
+    </div>
+    <script>
+        var gambler = {
+            //Variables
+            money: 32,
+            attemptAt: 3,
+            losingStreak: 0,
+            winningStreak: 0,
+            largestWinning: 0,
+            largestLosing: 0,
+
+            //Constants
+            gamblePercentage: [0.75, 0.5, 0.25],
+            disaster: 0.01,
+            maxGamble: 100000,
+            winChance: 0.6,
+            winChanceDeviation: 0.05,
+            interval: null
+        }
+
+        function gambler_proto() {
+            this.money = 32;
+            this.attemptAt = 3;
+            this.losingStreak = 0;
+            this.winningStreak = 0;
+            this.largestWinning = 0;
+            this.largestLosing = 0;
+            this.largestMoney = 32;
+
+            //Constants
+            this.gamblePercentage = [0.75, 0.5, 0.25];
+            this.disaster = 0.01;
+            this.maxGamble = 100000;
+            this.winChance = 0.6;
+            this.winChanceDeviation = 0.05;
+            this.interval = null;
+            this.text = "";
+        }
+
+        var gamblers = [new gambler_proto()];
+        var gamblerAt = 0;
+        var foundWinner = false;
+        var myTest;
+
+        function updateGamePercentage(value) {
+            gambler.gamblePercentage = value;
+        }
+        function reset() {
+            gamblers = [new gambler_proto()];
+            gamblerAt = 0;
+            foundWinner = false;
+            if (myTest != null)
+                clearInterval(myTest);
+            document.getElementById("chance").innerHTML = "";
+            document.getElementById("winner").innerHTML = "";
+        }
+
+        function runSimulation() {
+            reset();
+            myTest = setInterval(intervalToRun, 1);
+        }
+
+        function intervalToRun() {
+            if (!foundWinner && gamblers.length < 500) {
+                running(gamblers[gamblerAt]);
+
+                if (gamblers[gamblerAt].money <= 1) {
+                    document.getElementById("chance").innerHTML +=
+                        "Loser--" +
+                        "<br>Most money accrued: " + gamblers[gamblerAt].largestMoney +
+                        "<br>Largest winning streak: " + gamblers[gamblerAt].largestWinning +
+                        "<br>Largest losing streak: " + gamblers[gamblerAt].largestLosing +
+                        "<br>Attempts: " + gamblers[gamblerAt].attemptAt +
+                        "<br>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>";
+                    gamblers.push(new gambler_proto());
+                    gamblerAt++;
+                } else if (gamblers[gamblerAt].money >= 52000) {
+                    foundWiner = true;
+                    clearInterval(myTest);
+                    document.getElementById("winner").innerHTML +=
+                        "Winner--" +
+                        "<br>Money accrued: " + gamblers[gamblerAt].money +
+                        "<br>Largest winning streak: " + gamblers[gamblerAt].largestWinning +
+                        "<br>Largest losing streak: " + gamblers[gamblerAt].largestLosing +
+                        "<br>Attempts: " + gamblers[gamblerAt].attemptAt +
+                        "<br>Total series of bets taken place: " + gamblers.length;
+                }
+            }
+
+            if (gamblers.length >= 500) {
+                document.getElementById("winner").innerHTML = "Hit 500 limit";
+                clearInterval(myTest);
+            }
+        }
+
+        function running(myGambler) {
+            var gambler = myGambler;
+            var disaster = false;
+            gambler.attemptAt++;
+
+            var percentageAt = 0;
+            if (gambler.money < 1000) {
+                percentageAt = gambler.gamblePercentage[0];
+            } else if (gambler.money < 20000) {
+                percentageAt = gambler.gamblePercentage[1];
+            } else
+                percentageAt = gambler.gamblePercentage[2];
+
+            var useableM = parseInt((gambler.money * percentageAt).toFixed(2));
+            if (useableM > gambler.maxGamble)
+                useableM = gambler.maxGamble;
+
+            var variance = Math.random();
+            var modifiedChance = gambler.winChance;
+
+            //50% chance of varying off of the winChance
+            if (variance < 0.5) {
+                var temp = Math.random();
+                if (temp < 0.5)
+                    modifiedChance += (-1) * (gambler.winChanceDeviation / 2) * (Math.random());
+                else
+                    modifiedChance += (1) * (gambler.winChanceDeviation / 2) * (Math.random());
+            }
+
+            if (Math.random() < gambler.disaster) {
+                disaster = true;
+                gambler.money -= useableM;
+            }
+
+            if (!disaster) {
+                var temp = Math.random();
+                if (temp < modifiedChance) {
+                    gambler.winningStreak++;
+                    if (gambler.winningStreak > gambler.largestWinning)
+                        gambler.largestWinning++;
+                    gambler.losingStreak = 0;
+                    gambler.money += parseInt((0.9 * useableM).toFixed(2));
+
+                    if (gambler.money > gambler.largestMoney)
+                        gambler.largestMoney = gambler.money;
+                } else {
+                    gambler.losingStreak++;
+                    if (gambler.losingStreak > gambler.largestLosing)
+                        gambler.largestLosing++;
+                    gambler.winningStreak = 0;
+                    gambler.money -= useableM;
+                }
+            }
+        }
+
+        function update(text) {
+            document.getElementById("chance").innerHTML += text + "<br>";
+        }
+    </script>
+</body>
+</html>

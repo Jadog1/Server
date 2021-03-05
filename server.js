@@ -3,6 +3,7 @@ var http = require('https');
 var port = process.env.PORT || 1337;
 var fsExtend = require('./Modules/extendFS'); //Used to shorten opening of files
 var email = require('./Modules/email');
+var database = require('./Modules/database');
 var express = require('express');
 var app = express();
 
@@ -27,6 +28,12 @@ app.get('/projects/distort', function (req, res) {
 app.get('/projects/distance', function (req, res) {
     res.render('pages/Distance');
 });
+app.get('/projects/gamble', function (req, res) {
+    res.render('pages/gambling');
+});
+app.get('/projects/graph', function (req, res) {
+    res.render('pages/graph');
+});
 app.get('/about', function (req, res) {
     res.render('pages/AboutMe');
 });
@@ -36,6 +43,7 @@ app.get('/projects', function (req, res) {
 app.get('/contact', function (req, res) {
     res.render('pages/Contact');
 });
+
 
 app.get('/resume', function (req, res) {
     fsExtend.readExtend('Files/Resume.pdf', 'text/pdf', res);

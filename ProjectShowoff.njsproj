@@ -30,6 +30,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Files\ProfilePic.jpg" />
+    <Content Include="Modules\database.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Modules\email.js">
       <SubType>Code</SubType>
     </Content>
@@ -43,6 +46,12 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\pages\Distance.ejs" />
+    <Content Include="views\pages\gambling.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\pages\graph.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\pages\Home.ejs" />
     <Content Include="views\pages\ImageDistort.ejs" />
     <Content Include="views\pages\Projects.ejs">
