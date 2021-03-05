@@ -29,7 +29,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Files\ProfilePic.jpg" />
     <Content Include="Views\Distance.html">
       <SubType>Code</SubType>
     </Content>
