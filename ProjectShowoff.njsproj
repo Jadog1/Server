@@ -36,9 +36,18 @@
     <Content Include="Modules\extendFS.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\pages\AboutMe.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\pages\Contact.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\pages\Distance.ejs" />
     <Content Include="views\pages\Home.ejs" />
     <Content Include="views\pages\ImageDistort.ejs" />
+    <Content Include="views\pages\Projects.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\pages\SeniorGame.ejs" />
     <Content Include="server.js" />
     <Content Include="package.json" />
