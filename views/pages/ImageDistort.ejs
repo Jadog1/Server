@@ -3,26 +3,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Image distorter</title>
+    <%- include('../partials/header') %>
 </head>
 <body>
-    <a href="/"><div>Go back</div></a><br />
-    1. Copy image data into clipboard or press Print Screen <br>
-    2. Press Ctrl+V (page/iframe must be focused):
-    <br /><br />
-    <canvas style="border:1px solid grey;" id="my_canvas"></canvas>
-    <br />
-    <button onclick="clearInterval(interval); imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); interval = setInterval(randomizePic, 50)">Randomize the picture</button>
-    <button onclick="clearInterval(interval); imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); interval = setInterval(transitionPic, 50)">Transition picture</button>
-    <button onclick="clearInterval(interval); imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); interval = setInterval(disintegratePic, 1)">Disintegrate picture</button>
-    <button onclick="clearInterval(interval)">Pause effects</button>
-    <br>
-    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); encodePic(); decodePic(); encodePic();" style="margin-top: 5px">Encode picture</button>
-    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); decodePic();" style="margin-top: 5px">Decode picture</button>
-    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); redEffect();" style="margin-top: 5px">Cause red effect</button>
-    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); highlightBlack();" style="margin-top: 5px">Highlight black and white</button>
-    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); highlightBlack();" style="margin-top: 5px">Highlight black and white</button>
-    <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); modifyOpacity();" style="margin-top: 5px">Modify opacity in range</button>
+    <%- include('../partials/navbar') %>
+
+    <div class="w3-row-padding w3-padding-64 w3-container">
+        <br />
+        1. Copy image data into clipboard or press Print Screen
+        <br />
+        2. Press Ctrl+V (page/iframe must be focused):
+        <br />
+        <br />
+        <canvas style="border: 1px solid grey;" id="my_canvas"></canvas>
+        <br />
+        <button onclick="clearInterval(interval); imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); interval = setInterval(randomizePic, 50)">Randomize the picture</button>
+        <button onclick="clearInterval(interval); imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); interval = setInterval(transitionPic, 50)">Transition picture</button>
+        <button onclick="clearInterval(interval); imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); interval = setInterval(disintegratePic, 1)">Disintegrate picture</button>
+        <button onclick="clearInterval(interval)">Pause effects</button>
+        <br />
+        <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); encodePic(); decodePic(); encodePic();" style="margin-top: 5px">Encode picture</button>
+        <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); decodePic();" style="margin-top: 5px">Decode picture</button>
+        <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); redEffect();" style="margin-top: 5px">Cause red effect</button>
+        <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); highlightBlack();" style="margin-top: 5px">Highlight black and white</button>
+        <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); highlightBlack();" style="margin-top: 5px">Highlight black and white</button>
+        <button onclick="imgData = ctx.getImageData(0, 0, canvas.width, canvas.height); modifyOpacity();" style="margin-top: 5px">Modify opacity in range</button>
+    </div>
 
     <script>
         var CLIPBOARD = new CLIPBOARD_CLASS("my_canvas", true);

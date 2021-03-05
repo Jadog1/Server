@@ -29,36 +29,35 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Files\ProfilePic.jpg" />
     <Content Include="Modules\email.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="views\Distance.html">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="views\Home.html">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="views\ImageDistort.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Modules\extendFS.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\index.ejs">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="views\SeniorGame.html">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="views\pages\Distance.ejs" />
+    <Content Include="views\pages\Home.ejs" />
+    <Content Include="views\pages\ImageDistort.ejs" />
+    <Content Include="views\pages\SeniorGame.ejs" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="Files\Resume.pdf" />
+    <Content Include="views\partials\header.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\partials\navbar.ejs">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Modules\" />
+    <Folder Include="public\" />
     <Folder Include="views\" />
+    <Folder Include="views\pages\" />
+    <Folder Include="views\partials\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

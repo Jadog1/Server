@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Highschool senior project</title>
+    <%- include('../partials/header') %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         canvas {
@@ -62,28 +63,43 @@
     </style>
 </head>
 <body>
-    <div id="gameContainer">
-        <canvas id="background"></canvas>
-        <canvas id="enviroment" onclick="addBulletAI(0)"></canvas>
-        <div id="extraInfoContainer">
-            <div id="infoContent" class="unselectable">
-                Current kill count: <div id="killCount">0</div><br>
-                Kills until health boost: <div id="healthBoost">10</div><br>
-                Local high score: <div id="highscore">0</div>
+    <%- include('../partials/navbar') %>
+
+    <div class="w3-row-padding w3-padding-64 w3-container" style="position: absolute; top: 70px;">
+        <div id="gameContainer">
+            <canvas id="background"></canvas>
+            <canvas id="enviroment" onclick="addBulletAI(0)"></canvas>
+            <div id="extraInfoContainer">
+                <div id="infoContent" class="unselectable">
+                    Current kill count:
+                    <div id="killCount">0</div>
+                    <br />
+                    Kills until health boost:
+                    <div id="healthBoost">10</div>
+                    <br />
+                    Local high score:
+                    <div id="highscore">0</div>
+                </div>
             </div>
         </div>
+
+        <div id="startMenu">
+            Select difficulty:
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="normal">Normal</option>
+                <option value="hard">Hard</option>
+            </select><br />
+            ~Use WASD to move, and the mouse to fire<br />
+            ~ The longer that you don't fire, the stronger the bullet becomes. You can rapid fire, but the damage output will be smaller in comparison.<br />
+            ~ When you shoot another bullet, the bullet will
+        either be destroyed or lose some damage.<br />
+            ~ The bigger a bullet, the more damage it does.<br />
+            <button onclick="startGame()">Start game</button>
+        </div>
+        <br />
     </div>
 
-    <div id="startMenu">
-        Select difficulty: <select id="difficulty">
-            <option value="easy">Easy</option>
-            <option value="normal">Normal</option>
-            <option value="hard">Hard</option>
-        </select><br> ~Use WASD to move, and the mouse to fire<br>~ The longer that you don't fire, the stronger the bullet becomes. You can rapid fire, but the damage output will be smaller in comparison.<br>~ When you shoot another bullet, the bullet will
-        either be destroyed or lose some damage.<br>~ The bigger a bullet, the more damage it does.<br>
-        <button onclick="startGame()">Start game</button>
-    </div><br />
-    <a style ="float: right"href="/"><div>Go back</div></a>
 
     <script>
         if (localStorage.highscore === undefined) localStorage.highscore = 0;
