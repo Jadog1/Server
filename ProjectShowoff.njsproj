@@ -44,7 +44,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="Files\Resume.pdf" />
-    <Content Include="views\partials\header.ejs">
+    <Content Include="views\partials\Header.ejs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\partials\navbar.ejs">
