@@ -22,16 +22,16 @@ app.get('/', function (req, res) {
 http.createServer(function (req, res) {
     switch (req.url) {
         case '/': 
-            fsExtend.readExtend('Views/Home.html', 'text/html', res);
+            fsExtend.readExtend('views/Home.html', 'text/html', res);
             break;
         case '/game':
-            fsExtend.readExtend('Views/SeniorGame.html', 'text/html', res);
+            fsExtend.readExtend('views/SeniorGame.html', 'text/html', res);
             break;
         case '/distort':
-            fsExtend.readExtend('Views/ImageDistort.html', 'text/html', res);
+            fsExtend.readExtend('views/ImageDistort.html', 'text/html', res);
             break;
         case '/distance':
-            fsExtend.readExtend('Views/Distance.html', 'text/html', res);
+            fsExtend.readExtend('views/Distance.html', 'text/html', res);
             break;
         case '/resume':
             fsExtend.readExtend('Files/Resume.pdf', 'text/pdf', res);

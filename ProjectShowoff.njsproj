@@ -29,22 +29,22 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Views\Distance.html">
+    <Content Include="views\Distance.html">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\Home.html">
+    <Content Include="views\Home.html">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\ImageDistort.html">
+    <Content Include="views\ImageDistort.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Modules\extendFS.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\index.ejs">
+    <Content Include="views\index.ejs">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\SeniorGame.html">
+    <Content Include="views\SeniorGame.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="server.js" />
@@ -55,7 +55,7 @@
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Modules\" />
-    <Folder Include="Views\" />
+    <Folder Include="views\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
