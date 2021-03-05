@@ -29,6 +29,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Modules\email.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\Distance.html">
       <SubType>Code</SubType>
     </Content>
