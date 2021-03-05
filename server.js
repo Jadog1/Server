@@ -2,7 +2,7 @@
 var http = require('http');
 var port = process.env.PORT || 1337;
 var fs = require('fs');
-var fsExtend = require('./extendFS'); //Used to shorten opening of files
+var fsExtend = require('./Modules/extendFS'); //Used to shorten opening of files
 var express = require('express');
 var app = express();
 
@@ -22,16 +22,16 @@ app.get('/', function (req, res) {
 http.createServer(function (req, res) {
     switch (req.url) {
         case '/': 
-            fsExtend.readExtend('Home.html', 'text/html', res);
+            fsExtend.readExtend('Views/Home.html', 'text/html', res);
             break;
         case '/game':
-            fsExtend.readExtend('SeniorGame.html', 'text/html', res);
+            fsExtend.readExtend('Views/SeniorGame.html', 'text/html', res);
             break;
         case '/distort':
-            fsExtend.readExtend('ImageDistort.html', 'text/html', res);
+            fsExtend.readExtend('Views/ImageDistort.html', 'text/html', res);
             break;
         case '/distance':
-            fsExtend.readExtend('Distance.html', 'text/html', res);
+            fsExtend.readExtend('Views/Distance.html', 'text/html', res);
             break;
         case '/resume':
             fsExtend.readExtend('Files/Resume.pdf', 'text/pdf', res);
