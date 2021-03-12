@@ -29,14 +29,23 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".env">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Files\ProfilePic.jpg" />
     <Content Include="Modules\database.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Modules\DealFinder.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Modules\email.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Modules\extendFS.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Modules\weather.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\pages\AboutMe.ejs">
@@ -46,6 +55,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\pages\Distance.ejs" />
+    <Content Include="views\pages\Finance.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\pages\gambling.ejs">
       <SubType>Code</SubType>
     </Content>

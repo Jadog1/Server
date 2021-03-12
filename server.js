@@ -1,8 +1,10 @@
 'use strict';
+require('dotenv').config();
 var port = process.env.PORT || 1337;
 var fsExtend = require('./Modules/extendFS'); //Used to shorten opening of files
 var email = require('./Modules/email');
 var database = require('./Modules/database');
+var dealFinder = require('./Modules/DealFinder');
 var express = require('express');
 var app = express();
 
@@ -16,6 +18,7 @@ app.listen(port);
 
 // set the home page route
 app.get('/', function (req, res) {
+    //database.random();
     res.render('pages/Home');
 });
 app.get('/projects/game', function (req, res) {
