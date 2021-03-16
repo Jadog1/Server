@@ -45,6 +45,9 @@
     <Content Include="Modules\extendFS.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Modules\queries.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Modules\weather.js">
       <SubType>Code</SubType>
     </Content>

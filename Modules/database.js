@@ -1,24 +1,50 @@
-const { Client } = require('pg');
+const { Pool, Client } = require('pg');
 
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
-
-try {
-    client.connect();
-} catch (err) {
-    console.log(err);
-}
-
-exports.random = () => {
-    client.query('SELECT * from users', (err, res) => {
-        if (err) throw err;
-        for (let row of res.rows) {
-            console.log(JSON.stringify(row));
+exports.query = (query) => {
+    const client = new Client({
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false
         }
-        client.end();
+    });
+
+    return new Promise((resolve, reject) => {
+        client.connect();
+
+        client.query(query, (err, res) => {
+            if (err) {
+                client.end();
+                reject(err);
+            }
+            resolve(res.rows);
+            client.end();
+        });
     });
 }
+
+exports.execute = async (transactions) => {
+    if (transactions.constructor !== Array) //If not in array, then put in array
+        transactions = [transactions];
+
+    const client = new Pool({
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false
+        }
+    });
+
+        await client.connect();
+        try {
+            for (i = 0; i < transactions.length; i++) {
+                await client.query('BEGIN');
+                await client.query(transactions[i]);
+            }
+
+            await client.query('COMMIT');
+        } catch (e) {
+            client.query('ROLLBACK');
+            throw e;
+        } finally {
+            client.end();
+        }
+} 

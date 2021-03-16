@@ -3,7 +3,7 @@ require('dotenv').config();
 var port = process.env.PORT || 1337;
 var fsExtend = require('./Modules/extendFS'); //Used to shorten opening of files
 var email = require('./Modules/email');
-var database = require('./Modules/database');
+var queries = require('./Modules/queries');
 var dealFinder = require('./Modules/DealFinder');
 var express = require('express');
 var app = express();
@@ -16,9 +16,19 @@ app.use(express.static(__dirname + '/public'));
 
 app.listen(port);
 
+async function test() {
+    try {
+        //await queries.addUser("appUser11", "myHashed");
+        console.log(await queries.verifyUser("appUser11", "myHashed"));
+        console.log(await queries.verifyUser("appUser10", "myHashed"));
+        console.log(await queries.verifyUser("appUser11", "myHashed1"));
+    } catch (e) {
+        console.log("Error: " + e);
+    }
+}
+test();
 // set the home page route
 app.get('/', function (req, res) {
-    //database.random();
     res.render('pages/Home');
 });
 app.get('/projects/game', function (req, res) {
