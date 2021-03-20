@@ -47,3 +47,45 @@ exports.getBudgetByUser = async (contact_id) => {
         throw e;
     }
 }
+
+//Expense/goal handling
+exports.addExpense = async (amount, expense_name, account_id) => {
+    try {
+        return await database.execute("insert into expense (amount, expense_name, account_id) values (" + amount + ", '" + expense_name + "', " + account_id + ")");
+    } catch (e) {
+        throw e;
+    }
+}
+
+exports.getExpenseByBudget = async (account_id) => {
+    try {
+        return await database.query("select e.expense_id, e.amount, e.expense_name from expense e where e.account_id =" + account_id);
+    } catch (e) {
+        throw e;
+    }
+}
+
+exports.getOnlyExpenseByBudget = async (account_id) => {
+    try {
+        return await database.query("select e.expense_id, e.amount, e.expense_name from only expense e where e.account_id =" + account_id);
+    } catch (e) {
+        throw e;
+    }
+}
+
+exports.addGoal = async (amount, expense_name, account_id, expiration_date, optional, amount_paid) => {
+    try {
+        return await database.execute("insert into goal (amount, expense_name, account_id, expiration_date, optional, amount_paid)"
+                   + "values(" + amount + ", '" + expense_name + "', " + account_id + ", '" + expiration_date + "', " + optional + ", " + amount_paid + ")");
+    } catch (e) {
+        throw e;
+    }
+}
+
+exports.getGoalByBudget = async (account_id) => {
+    try {
+        return await database.query("select expense_id, amount, expense_name, expiration_date, optional, amount_paid from goal where account_id =" + account_id);
+    } catch (e) {
+        throw e;
+    }
+}

@@ -19,8 +19,8 @@ app.listen(port);
 async function test() {
     try {
         //await queries.addUser("appUser11", "myHashed");
-        //await queries.addBudget(100.23, "myHashed2", "a0e44f3c-9323-4c14-bf0c-fd7ed544c589");
-        return await queries.getBudgetByUser("f70b467a-6b14-463f-ba2d-da4a0dc19cf9");
+        await queries.addGoal(100.23, "myHashed2", 17, "12-22-2021", true, 0);
+        return await queries.getGoalByBudget(17);
     } catch (e) {
         console.log("Error: " + e);
     }
