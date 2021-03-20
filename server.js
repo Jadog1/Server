@@ -19,16 +19,16 @@ app.listen(port);
 async function test() {
     try {
         //await queries.addUser("appUser11", "myHashed");
-        console.log(await queries.verifyUser("appUser11", "myHashed"));
-        console.log(await queries.verifyUser("appUser10", "myHashed"));
-        console.log(await queries.verifyUser("appUser11", "myHashed1"));
+        //await queries.addBudget(100.23, "myHashed2", "a0e44f3c-9323-4c14-bf0c-fd7ed544c589");
+        return await queries.getBudgetByUser("f70b467a-6b14-463f-ba2d-da4a0dc19cf9");
     } catch (e) {
         console.log("Error: " + e);
     }
 }
-test();
+
 // set the home page route
-app.get('/', function (req, res) {
+app.get('/', async function (req, res) {
+    console.log(await test());
     res.render('pages/Home');
 });
 app.get('/projects/game', function (req, res) {
