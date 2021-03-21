@@ -4,10 +4,10 @@ const saltRounds = 10;
 
 //User handling
 
-exports.getUsers = async () => {
+exports.getUser = async (username) => {
     try {
-        const query = await database.query("select * from users");
-        return query;
+        const query = await database.query("select contact_id from users where username='" + username +"'");
+        return query[0].contact_id;
     } catch (e) {
         throw e;
     }
@@ -16,6 +16,8 @@ exports.getUsers = async () => {
 exports.verifyUser = async (username, password) => {
     try {
         const query = await database.query("select password from users where username='" + username + "'");
+        if (query.length == 0)
+            return false;
         return await bcrypt.compare(password, query[0].password);
     } catch (e) {
         throw e;

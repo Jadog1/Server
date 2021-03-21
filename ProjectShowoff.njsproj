@@ -58,7 +58,10 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\pages\Distance.ejs" />
-    <Content Include="views\pages\Finance.ejs">
+    <Content Include="views\pages\finance\home.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\pages\finance\login.ejs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\pages\gambling.ejs">
@@ -90,6 +93,7 @@
     <Folder Include="public\" />
     <Folder Include="views\" />
     <Folder Include="views\pages\" />
+    <Folder Include="views\pages\finance\" />
     <Folder Include="views\partials\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

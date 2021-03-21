@@ -7,6 +7,7 @@ var queries = require('./Modules/queries');
 var dealFinder = require('./Modules/DealFinder');
 var express = require('express');
 var app = express();
+const bodyParser = require('body-parser');
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -14,12 +15,14 @@ app.set('view engine', 'ejs');
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.listen(port);
 
 async function test() {
     try {
         //await queries.addUser("appUser11", "myHashed");
-        await queries.addGoal(100.23, "myHashed2", 17, "12-22-2021", true, 0);
+        //await queries.addGoal(100.23, "myHashed2", 17, "12-22-2021", true, 0);
         return await queries.getGoalByBudget(17);
     } catch (e) {
         console.log("Error: " + e);
@@ -28,7 +31,7 @@ async function test() {
 
 // set the home page route
 app.get('/', async function (req, res) {
-    console.log(await test());
+    //console.log(await test());
     res.render('pages/Home');
 });
 app.get('/projects/game', function (req, res) {
@@ -55,8 +58,48 @@ app.get('/projects', function (req, res) {
 app.get('/contact', function (req, res) {
     res.render('pages/Contact');
 });
+app.get('/finance/login', function (req, res) {
+    res.render('pages/finance/login', { error: "" });
+});
 
+//Post
+app.post('/finance/login', async function (req, res) {
+    try {
+        if (req.body.username.trim() == "" || req.body.password.trim() == "")
+            res.render('pages/finance/login', { error: "Fields cannot be blank" });
+        if (await queries.verifyUser(req.body.username, req.body.password)) {
+            const user = await queries.getUser(req.body.username);
+            res.render('pages/finance/home', { contact_id: user });
+        } else {
+            res.render('pages/finance/login', { error: "Username/password does not exist" });
+        }
+    } catch (e) {
+        console.log(e);
+        res.render('pages/finance/login', { error: "Unknown error occured" });
+    }
+});
 
+//Post
+app.post('/finance/register', async function (req, res) {
+    if (req.body.username.trim() == "" || req.body.password.trim() == "")
+        res.render('pages/finance/login', { error: "Fields cannot be blank" });
+    try {
+        await queries.addUser(req.body.username, req.body.password);
+        const user = await queries.getUser(req.body.username);
+        res.render('pages/finance/home', { contact_id: user });
+    } catch (e) {
+        if (e.code == 23505)
+            res.render('pages/finance/login', { error: "Username already exists" });
+        else if (e.code == 23502)
+            res.render('pages/finance/login', { error: "Fields cannot be blank" });
+        else {
+            console.log(e);
+            res.render('pages/finance/login', { error: "Unknown error, try again" });
+        }
+    }
+});
+
+//Get files
 app.get('/resume', function (req, res) {
     fsExtend.readExtend('Files/Resume.pdf', 'text/pdf', res);
 });
