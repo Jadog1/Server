@@ -35,19 +35,8 @@ const getAppCookies = (req) => {
     return parsedCookies;
 };
 
-async function test() {
-    try {
-        //await queries.addUser("appUser11", "myHashed");
-        //await queries.addGoal(100.23, "myHashed2", 17, "12-22-2021", true, 0);
-        return await queries.getGoalByBudget(17);
-    } catch (e) {
-        console.log("Error: " + e);
-    }
-}
-
 // set the home page route
 app.get('/', async function (req, res) {
-    //console.log(await test());
     res.render('pages/Home');
 });
 app.get('/projects/game', function (req, res) {
@@ -80,7 +69,7 @@ app.get('/finance/login', function (req, res) {
     else
         res.redirect('/finance/home');
 });
-app.get('/finance/home', function (req, res) {
+app.get('/finance/home', async function (req, res) {
     res.render('pages/finance/home');
 });
 app.get('/finance/logout', function (req, res) {
