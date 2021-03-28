@@ -8,6 +8,7 @@ var dealFinder = require('./Modules/DealFinder');
 var express = require('express');
 var app = express();
 const bodyParser = require('body-parser');
+const oneDayToSeconds = 24 * 60 * 60 * 1000;
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -18,6 +19,21 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(port);
+
+// returns an object with the cookies' name as keys
+const getAppCookies = (req) => {
+    // We extract the raw cookies from the request headers
+    const rawCookies = req.headers.cookie.split('; ');
+    // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
+
+    const parsedCookies = {};
+    rawCookies.forEach(rawCookie => {
+        const parsedCookie = rawCookie.split('=');
+        // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
+        parsedCookies[parsedCookie[0]] = parsedCookie[1];
+    });
+    return parsedCookies;
+};
 
 async function test() {
     try {
@@ -59,7 +75,24 @@ app.get('/contact', function (req, res) {
     res.render('pages/Contact');
 });
 app.get('/finance/login', function (req, res) {
-    res.render('pages/finance/login', { error: "" });
+    if (getAppCookies(req)['userId'] == undefined || getAppCookies(req)['userId'] == "undefined")
+        res.render('pages/finance/login', { error: "" });
+    else
+        res.redirect('/finance/home');
+});
+app.get('/finance/home', function (req, res) {
+    res.render('pages/finance/home');
+});
+app.get('/finance/logout', function (req, res) {
+    res.cookie('userId', undefined,
+        {
+            maxAge: oneDayToSeconds,
+            // You can't access these tokens in the client's javascript
+            httpOnly: true,
+            // Forces to use https in production
+            secure: process.env.NODE_ENV === 'production' ? true : false
+        });
+    res.redirect('/finance/login');
 });
 
 //Post
@@ -69,7 +102,15 @@ app.post('/finance/login', async function (req, res) {
             res.render('pages/finance/login', { error: "Fields cannot be blank" });
         if (await queries.verifyUser(req.body.username, req.body.password)) {
             const user = await queries.getUser(req.body.username);
-            res.render('pages/finance/home', { contact_id: user });
+            res.cookie('userId', user,
+                {
+                    maxAge: oneDayToSeconds,
+                    // You can't access these tokens in the client's javascript
+                    httpOnly: true,
+                    // Forces to use https in production
+                    secure: process.env.NODE_ENV === 'production' ? true : false
+                });
+            res.redirect('/finance/home');
         } else {
             res.render('pages/finance/login', { error: "Username/password does not exist" });
         }
@@ -86,7 +127,15 @@ app.post('/finance/register', async function (req, res) {
     try {
         await queries.addUser(req.body.username, req.body.password);
         const user = await queries.getUser(req.body.username);
-        res.render('pages/finance/home', { contact_id: user });
+        res.cookie('userId', user,
+            {
+                maxAge: oneDayToSeconds,
+                // You can't access these tokens in the client's javascript
+                httpOnly: true,
+                // Forces to use https in production
+                secure: process.env.NODE_ENV === 'production' ? true : false
+            });
+        res.redirect('/finance/home');
     } catch (e) {
         if (e.code == 23505)
             res.render('pages/finance/login', { error: "Username already exists" });
