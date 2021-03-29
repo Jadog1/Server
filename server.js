@@ -22,18 +22,30 @@ app.listen(port);
 
 // returns an object with the cookies' name as keys
 const getAppCookies = (req) => {
-    // We extract the raw cookies from the request headers
-    const rawCookies = req.headers.cookie.split('; ');
-    // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
+    console.log(req.headers.cookie);
+    try {
+        // We extract the raw cookies from the request headers
+        const rawCookies = req.headers.cookie.split('; ');
+        // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
 
-    const parsedCookies = {};
-    rawCookies.forEach(rawCookie => {
-        const parsedCookie = rawCookie.split('=');
-        // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
-        parsedCookies[parsedCookie[0]] = parsedCookie[1];
-    });
-    return parsedCookies;
+        const parsedCookies = {};
+        rawCookies.forEach(rawCookie => {
+            const parsedCookie = rawCookie.split('=');
+            // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
+            parsedCookies[parsedCookie[0]] = parsedCookie[1];
+        });
+        return parsedCookies;
+    } catch (e) {
+        return {};
+    }
 };
+
+function isLogged(req) {
+    if (req == undefined || req == "undefined")
+        return false;
+    else
+        return true;
+}
 
 // set the home page route
 app.get('/', async function (req, res) {
@@ -64,13 +76,19 @@ app.get('/contact', function (req, res) {
     res.render('pages/Contact');
 });
 app.get('/finance/login', function (req, res) {
-    if (getAppCookies(req)['userId'] == undefined || getAppCookies(req)['userId'] == "undefined")
+    const userId = getAppCookies(req)['userId'];
+    if (isLogged(userId) == false)
         res.render('pages/finance/login', { error: "" });
     else
         res.redirect('/finance/home');
 });
 app.get('/finance/home', async function (req, res) {
-    res.render('pages/finance/home');
+    const userId = getAppCookies(req)['userId'];
+    if (isLogged(userId)) {
+        const budget = await queries.getBudgetByUser(userId);
+        res.render('pages/finance/home', { budget: JSON.stringify(budget) });
+    } else
+        res.redirect('/finance/login');
 });
 app.get('/finance/logout', function (req, res) {
     res.cookie('userId', undefined,

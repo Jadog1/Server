@@ -14,17 +14,46 @@
 
         }
     </style>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
     <div class="w3-row-padding w3-padding-64 w3-container">
         <h1 style="display: inline-block">Welcome</h1> 
         <a href="/finance/logout" class="btn btn-info btn-lg" id="logout"><i class="fa fa-sign-out"></i> Log out</a> 
         <br />
 
+        <div id="ReactComponents">
 
+        </div>
     </div>
 
     <script>
-        
+        'use strict';
+        var test = JSON.parse('<%- budget %>');
+
+        const e = React.createElement;
+
+        class LikeButton extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { liked: false };
+            }
+
+            render() {
+                if (this.state.liked) {
+                    return 'You liked this.';
+                }
+
+                return e(
+                    'button',
+                    { onClick: () => this.setState({ liked: true }) },
+                    'Like'
+                );
+            }
+        }
+
+        const domContainer = document.querySelector('#ReactComponents');
+        ReactDOM.render(e(LikeButton), domContainer);
     </script>
 </body>
 </html>
