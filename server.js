@@ -91,7 +91,6 @@ app.get('/finance/login', function (req, res) {
         res.redirect('/finance/home?userId=' + userId);
 });
 app.get('/finance/home', async function (req, res) {
-    console.log(req.query.userId);
     const userId = getAppCookies(req)['userId'];
     if (isLogged(userId)) {
         const budget = await queries.getBudgetByUser(userId);
@@ -105,7 +104,7 @@ app.get('/finance/logout', function (req, res) {
             proxy: true, // add this when behind a reverse proxy, if you need secure cookies
             maxAge: oneDayToSeconds,
             // You can't access these tokens in the client's javascript
-            httpOnly: false,
+            httpOnly: true,
             // Forces to use https in production
             secure: false
         });
@@ -125,11 +124,11 @@ app.post('/finance/login', async function (req, res) {
                     maxAge: oneDayToSeconds,
                     // You can't access these tokens in the client's javascript
                     // You can't access these tokens in the client's javascript
-                    httpOnly: false,
+                    httpOnly: true,
                     // Forces to use https in production
                     secure: false
                 });
-            res.redirect('/finance/home?userId=' + user);
+            res.redirect('/finance/home');
         } else {
             res.render('pages/finance/login', { error: "Username/password does not exist" });
         }
@@ -151,7 +150,7 @@ app.post('/finance/register', async function (req, res) {
                 proxy: true, // add this when behind a reverse proxy, if you need secure cookies
                 maxAge: oneDayToSeconds,
                 // You can't access these tokens in the client's javascript
-                httpOnly: false,
+                httpOnly: true,
                 // Forces to use https in production
                 secure: false
             });
