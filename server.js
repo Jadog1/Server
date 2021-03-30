@@ -114,9 +114,9 @@ app.post('/finance/login', async function (req, res) {
                 {
                     maxAge: oneDayToSeconds,
                     // You can't access these tokens in the client's javascript
-                    httpOnly: true,
+                    httpOnly: false,
                     // Forces to use https in production
-                    secure: process.env.NODE_ENV === 'production' ? true : false
+                    secure: true
                 });
             res.redirect('/finance/home?userId=' + user);
         } else {
