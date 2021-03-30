@@ -22,7 +22,7 @@ app.listen(port);
 
 // returns an object with the cookies' name as keys
 const getAppCookies = (req) => {
-    console.log(req.headers.cookie);
+    //console.log(req.headers.cookie);
     try {
         // We extract the raw cookies from the request headers
         const rawCookies = req.headers.cookie.split('; ');
@@ -80,9 +80,10 @@ app.get('/finance/login', function (req, res) {
     if (isLogged(userId) == false)
         res.render('pages/finance/login', { error: "" });
     else
-        res.redirect('/finance/home');
+        res.redirect('/finance/home?userId=' + userId);
 });
 app.get('/finance/home', async function (req, res) {
+    console.log(req.query.userId);
     const userId = getAppCookies(req)['userId'];
     if (isLogged(userId)) {
         const budget = await queries.getBudgetByUser(userId);
@@ -95,9 +96,9 @@ app.get('/finance/logout', function (req, res) {
         {
             maxAge: oneDayToSeconds,
             // You can't access these tokens in the client's javascript
-            httpOnly: true,
+            httpOnly: false,
             // Forces to use https in production
-            secure: process.env.NODE_ENV === 'production' ? true : false
+            secure: true
         });
     res.redirect('/finance/login');
 });
@@ -117,7 +118,7 @@ app.post('/finance/login', async function (req, res) {
                     // Forces to use https in production
                     secure: process.env.NODE_ENV === 'production' ? true : false
                 });
-            res.redirect('/finance/home');
+            res.redirect('/finance/home?userId=' + user);
         } else {
             res.render('pages/finance/login', { error: "Username/password does not exist" });
         }
