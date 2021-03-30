@@ -19,6 +19,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(port);
+app.enable('trust proxy'); // optional, not needed for secure cookies
 
 // returns an object with the cookies' name as keys
 const getAppCookies = (req) => {
@@ -46,6 +47,13 @@ function isLogged(req) {
     else
         return true;
 }
+
+app.all('*', function (req, res, next) {
+
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+    res.setHeader("Access-Control-Allow-Credentials", true);
+    next();
+});
 
 // set the home page route
 app.get('/', async function (req, res) {
@@ -94,11 +102,12 @@ app.get('/finance/home', async function (req, res) {
 app.get('/finance/logout', function (req, res) {
     res.cookie('userId', undefined,
         {
+            proxy: true, // add this when behind a reverse proxy, if you need secure cookies
             maxAge: oneDayToSeconds,
             // You can't access these tokens in the client's javascript
-            httpOnly: false,
+            httpOnly: true,
             // Forces to use https in production
-            secure: true
+            secure: process.env.NODE_ENV === 'production' ? true : false
         });
     res.redirect('/finance/login');
 });
@@ -112,11 +121,12 @@ app.post('/finance/login', async function (req, res) {
             const user = await queries.getUser(req.body.username);
             res.cookie('userId', user,
                 {
+                    proxy: true, // add this when behind a reverse proxy, if you need secure cookies
                     maxAge: oneDayToSeconds,
                     // You can't access these tokens in the client's javascript
-                    httpOnly: false,
+                    httpOnly: true,
                     // Forces to use https in production
-                    secure: true
+                    secure: process.env.NODE_ENV === 'production' ? true : false
                 });
             res.redirect('/finance/home?userId=' + user);
         } else {
@@ -137,6 +147,7 @@ app.post('/finance/register', async function (req, res) {
         const user = await queries.getUser(req.body.username);
         res.cookie('userId', user,
             {
+                proxy: true, // add this when behind a reverse proxy, if you need secure cookies
                 maxAge: oneDayToSeconds,
                 // You can't access these tokens in the client's javascript
                 httpOnly: true,
