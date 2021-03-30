@@ -105,9 +105,9 @@ app.get('/finance/logout', function (req, res) {
             proxy: true, // add this when behind a reverse proxy, if you need secure cookies
             maxAge: oneDayToSeconds,
             // You can't access these tokens in the client's javascript
-            httpOnly: true,
+            httpOnly: false,
             // Forces to use https in production
-            secure: process.env.NODE_ENV === 'production' ? true : false
+            secure: false
         });
     res.redirect('/finance/login');
 });
@@ -124,9 +124,10 @@ app.post('/finance/login', async function (req, res) {
                     proxy: true, // add this when behind a reverse proxy, if you need secure cookies
                     maxAge: oneDayToSeconds,
                     // You can't access these tokens in the client's javascript
-                    httpOnly: true,
+                    // You can't access these tokens in the client's javascript
+                    httpOnly: false,
                     // Forces to use https in production
-                    secure: process.env.NODE_ENV === 'production' ? true : false
+                    secure: false
                 });
             res.redirect('/finance/home?userId=' + user);
         } else {
@@ -150,9 +151,9 @@ app.post('/finance/register', async function (req, res) {
                 proxy: true, // add this when behind a reverse proxy, if you need secure cookies
                 maxAge: oneDayToSeconds,
                 // You can't access these tokens in the client's javascript
-                httpOnly: true,
+                httpOnly: false,
                 // Forces to use https in production
-                secure: process.env.NODE_ENV === 'production' ? true : false
+                secure: false
             });
         res.redirect('/finance/home');
     } catch (e) {
