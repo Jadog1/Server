@@ -9,51 +9,203 @@
 <body>
     <%- include('../../partials/navbar') %>
     <style>
-        #logout {
-            float: right;
+        @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fafafa;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+            font-weight: 300;
+            line-height: 1.7em;
+            color: #999;
+        }
+
+        a, a:hover, a:focus {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        #sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            min-height: 95vh;
+            background: #7386D5;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+            #sidebar .sidebar-header {
+                padding: 20px;
+                background: #6d7fcc;
+            }
+
+            #sidebar ul.components {
+                padding: 20px 0;
+                border-bottom: 1px solid #47748b;
+            }
+
+            #sidebar ul p {
+                color: #fff;
+                padding: 10px;
+            }
+
+            #sidebar ul li a {
+                padding: 10px;
+                font-size: 1.1em;
+                display: block;
+            }
+
+                #sidebar ul li a:hover {
+                    color: #7386D5;
+                    background: #fff;
+                }
+
+            #sidebar ul li.active > a, a[aria-expanded="true"] {
+                color: #fff;
+                background: #6d7fcc;
+            }
+
+        ul ul a {
+            font-size: 0.9em !important;
+            padding-left: 30px !important;
+            background: #6d7fcc;
+        }
+
+        @media (max-width: 768px) {
+            #sidebar {
+                margin-left: -250px;
+            }
+
+                #sidebar.active {
+                    margin-left: 0;
+                }
+        }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        .wrapper {
+            display: flex;
+            width: 100%;
+            align-items: stretch;
         }
     </style>
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
     <div class="w3-row-padding w3-padding-64 w3-container">
-        <h1 style="display: inline-block">Welcome</h1> 
-        <a href="/finance/logout" class="btn btn-info btn-lg" id="logout"><i class="fa fa-sign-out"></i> Log out</a> 
-        <br />
+        <div class="wrapper">
+            <!-- Sidebar  -->
+            <nav id="sidebar" class="">
+                <div class="sidebar-header">
+                    <h3>Jadon Steinmetz</h3>
+                </div>
 
-        <div id="ReactComponents">
+                <ul class="list-unstyled components">
+                    <p>Budget starter</p>
+                    <li class="active">
+                        <a href="#budgetSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">Budgets</a>
+                        <ul class="list-unstyled collapse" id="budgetSubMenu" style="">
 
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">Pages</a>
+                        <ul class="list-unstyled collapse" id="pageSubmenu" style="">
+                            <li>
+                                <a href="#">Page 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="/finance/logout" class="btn btn-info btn-lg" id="logout"><i class="fa fa-sign-out"></i>Log out</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content  -->
+            <div id="content">
+
+                <h2>Budgets</h2>
+                
+            </div>
         </div>
     </div>
 
-    <script>
+
+    <script type="text/babel">
         'use strict';
-        var test = JSON.parse('<%- budget %>');
 
-        const e = React.createElement;
+class Budget extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-        class LikeButton extends React.Component {
-            constructor(props) {
-                super(props);
-                this.state = { liked: false };
-            }
+    render() {
+        return (
+            <a>
+                {this.props.data.account_name}
+            </a>
+        );
+    }
+}
 
-            render() {
-                if (this.state.liked) {
-                    return 'You liked this.';
-                }
+class BudgetList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            budgetArr: JSON.parse('<%- budget %>')
+        };
+    }
 
-                return e(
-                    'button',
-                    { onClick: () => this.setState({ liked: true }) },
-                    'Like'
-                );
-            }
-        }
 
-        const domContainer = document.querySelector('#ReactComponents');
-        ReactDOM.render(e(LikeButton), domContainer);
+    render() {
+        return (
+            < span >
+                {this.state.budgetArr.map((budget, index) => (
+                    <li key={index}>
+                        <Budget data={budget} />
+                    </li>
+                ))}
+            </span>
+        );
+    }
+}
+
+const domContainer = document.querySelector('#budgetSubMenu');
+ReactDOM.render(<BudgetList/>, domContainer);
     </script>
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

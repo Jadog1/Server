@@ -51,6 +51,9 @@
     <Content Include="Modules\weather.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\budgets.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\pages\AboutMe.ejs">
       <SubType>Code</SubType>
     </Content>
@@ -90,6 +93,7 @@
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Modules\" />
+    <Folder Include="src\" />
     <Folder Include="public\" />
     <Folder Include="views\" />
     <Folder Include="views\pages\" />

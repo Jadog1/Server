@@ -9,10 +9,10 @@
   "engines": {
     "node": "12.18.2"
   },
-  "author": {
-    "name": ""
-  },
+  "author": "",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.5",
@@ -25,5 +25,16 @@
     "node-gyp": "^7.1.2",
     "nodemailer": "^6.5.0",
     "pg": "^8.5.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jadog1/Server.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jadog1/Server/issues"
+  },
+  "homepage": "https://github.com/Jadog1/Server#readme"
 }
