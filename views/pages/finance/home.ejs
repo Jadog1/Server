@@ -122,7 +122,6 @@
                     <li class="active">
                         <a href="#budgetSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">Budgets</a>
                         <ul class="list-unstyled collapse" id="budgetSubMenu" style="">
-
                         </ul>
                     </li>
                     <li>
@@ -155,7 +154,7 @@
             <div id="content">
 
                 <h2>Budgets</h2>
-                
+                <div id="expenses"></div>
             </div>
         </div>
     </div>
@@ -164,14 +163,53 @@
     <script type="text/babel">
         'use strict';
 
+const eventBus = {
+    on(event, callback) {
+        document.addEventListener(event, (e) => callback(e.detail));
+    },
+    dispatch(event, data) {
+        document.dispatchEvent(new CustomEvent(event, { detail: data }));
+    },
+    remove(event, callback) {
+        document.removeEventListener(event, callback);
+    },
+};
+
+class Expense extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: "Expenses go here. Click on a budget to change this react component!"
+        }
+    }
+
+    componentDidMount() {
+        eventBus.on("expense", (data) =>
+            this.setState({ message: data.message })
+        );
+    }
+
+    componentWillUnmount() {
+        eventBus.remove("expense");
+    }
+
+    render() {
+        return <pre>{this.state.message}</pre>;
+    }
+}
+
 class Budget extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    handleNewReleaseClick(newRelease) {
+        eventBus.dispatch("expense", { message: newRelease });
+    }
+
     render() {
         return (
-            <a>
+            <a onClick={() => this.handleNewReleaseClick(Math.random())}>
                 {this.props.data.account_name}
             </a>
         );
@@ -201,11 +239,13 @@ class BudgetList extends React.Component {
 }
 
 const domContainer = document.querySelector('#budgetSubMenu');
-ReactDOM.render(<BudgetList/>, domContainer);
+ReactDOM.render(<BudgetList />, domContainer);
+const expenseContainer = document.querySelector('#expenses');
+ReactDOM.render(<Expense />, expenseContainer);
     </script>
 
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
