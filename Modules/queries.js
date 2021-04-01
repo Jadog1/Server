@@ -59,9 +59,9 @@ exports.addExpense = async (amount, expense_name, account_id) => {
     }
 }
 
-exports.getExpenseByBudget = async (account_id) => {
+exports.getExpenseByBudget = async (budget_id) => {
     try {
-        return await database.query("select e.expense_id, e.amount, e.expense_name from expense e where e.account_id =" + account_id);
+        return await database.query("select e.expense_id, e.amount, e.expense_name from expense e where e.budget_id =" + budget_id);
     } catch (e) {
         throw e;
     }
