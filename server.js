@@ -83,12 +83,17 @@ app.get('/projects', function (req, res) {
 app.get('/contact', function (req, res) {
     res.render('pages/Contact');
 });
+app.get('/finance/expense-list', async function (req, res) {
+    const expenses = await queries.getExpenseByBudget(req.query.budgetId);
+    console.log(expenses);
+    res.json(expenses);
+});
 app.get('/finance/login', function (req, res) {
     const userId = getAppCookies(req)['userId'];
     if (isLogged(userId) == false)
         res.render('pages/finance/login', { error: "" });
     else
-        res.redirect('/finance/home?userId=' + userId);
+        res.redirect('/finance/home');
 });
 app.get('/finance/home', async function (req, res) {
     const userId = getAppCookies(req)['userId'];

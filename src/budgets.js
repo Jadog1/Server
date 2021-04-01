@@ -15,8 +15,22 @@ const eventBus = {
 class Expense extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    render() {
+        return (
+            <span>
+                {this.props.data.expense_name} - {this.props.data.amount} - {this.props.data.expense_id}
+            </span>
+        );
+    }
+}
+
+class ExpenseList extends React.Component {
+    constructor(props) {
+        super(props);
         this.state = {
-            message: "Random"
+            message: []
         }
     }
 
@@ -31,7 +45,13 @@ class Expense extends React.Component {
     }
 
     render() {
-        return <pre>{this.state.message}</pre>;
+        return <pre>
+            {this.state.message.map((expense, index) => (
+                <div key={index}>
+                    <Expense data={expense} />
+                </div>
+            ))}
+        </pre>;
     }
 }
 
@@ -41,12 +61,24 @@ class Budget extends React.Component {
     }
 
     handleNewReleaseClick(newRelease) {
-        eventBus.dispatch("expense", { message: newRelease });
+        fetch("/finance/expense-list?budgetId=" + newRelease)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    eventBus.dispatch("expense", { message: result });
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    eventBus.dispatch("expense", { message: error });
+                }
+            )
     }
 
     render() {
         return (
-            <a onClick={() => this.handleNewReleaseClick(Math.random())}>
+            <a onClick={() => this.handleNewReleaseClick(this.props.data.account_id)}>
                 {this.props.data.account_name}
             </a>
         );
@@ -78,4 +110,4 @@ class BudgetList extends React.Component {
 const domContainer = document.querySelector('#budgetSubMenu');
 ReactDOM.render(<BudgetList />, domContainer);
 const expenseContainer = document.querySelector('#expenses');
-ReactDOM.render(<Expense />, expenseContainer);
+ReactDOM.render(<ExpenseList />, expenseContainer);
