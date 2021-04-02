@@ -11,20 +11,56 @@
 
     <!-- Navbar -->
     <%- include('../partials/navbar') %>
+    <style>
+        #optionPane {
+            width: 100%;
+            height: 100px;
+            background-color: #eee;
+        }
+
+        input[type="radio"],
+        label {
+            cursor: pointer;
+        }
+
+        textarea {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        #help {
+            display: inline-block;
+            float: right;
+            cursor: pointer;
+        }
+    </style>
 
     <div class="w3-row-padding w3-padding-64 w3-container">
-        <textarea placeholder="Insert addresses here" rows="20" cols="80" id="input">
-        </textarea>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <div id="optionPane">
+            <div id="help" onclick="displayHelp()">
+                <i class="fa fa-question-circle">Help</i>
+            </div>
+            <input id="efficient" type="radio" name="sort" checked="checked" onclick="calculation = 0" />
+            <label for="efficient">Sort by shipping efficiency</label><br />
+            <input id="fair" type="radio" name="sort" onclick="calculation = 1" />
+            <label for="fair">Sort by fairness</label>
+
+            
+        </div>
+
+        <textarea placeholder="Insert addresses here" rows="20" cols="40" id="input"></textarea>
+        <textarea readonly rows="20" cols="40" id="output" placeholder="output"></textarea>
         <br />
-        <button onclick="calculateDistance()">
+        <button onclick="chooseCalc()">
             Calculate
         </button>
         FTW: <span id="ftw">0</span>
         OMA: <span id="oma">0</span>
         GSO: <span id="gso">0</span>
-        <br />
-        <textarea readonly="readonly" rows="20" cols="80" id="output">
-        </textarea>
+        <button onclick="clearVals()">
+            Clear
+        </button>
     </div>
 
 
@@ -114,7 +150,85 @@
             return compareDistances;
         }
 
-        function calculateDistance() {
+        function clearVals() {
+            for (i = 0; i < depots.length; i++) depots[i].assigned = 0;
+            document.getElementById("output").innerHTML = "";
+            document.getElementById("input").value = "";
+            document.getElementById("ftw").innerHTML = depots[0].assigned;
+            document.getElementById("oma").innerHTML = depots[1].assigned;
+            document.getElementById("gso").innerHTML = depots[2].assigned;
+        }
+
+        var calculation = 0;
+        function chooseCalc() {
+            for (i = 0; i < depots.length; i++) depots[i].assigned = 0;
+            document.getElementById("output").innerHTML = "";
+
+            if (calculation == 0) {
+                calculateDistanceEfficient();
+            } else calculateDistanceFair();
+        }
+
+        function calculateDistanceEfficient() {
+            document.getElementById("output").innerHTML = "";
+            //Split the list and set the arrays
+            var list = document.getElementById("input").value;
+            list = list.trim();
+            list = list.split("\n");
+            var depots2 = [];
+            var depotSort = [];
+            var addresses = [];
+            var countActive = 0;
+            for (count = 0; count < depots.length; count++)
+                if (depots[count].active === true) countActive++;
+            for (k = 0; k < depots.length; k++) {
+                depots2.push(0);
+                depotSort.push([]);
+            }
+
+            //Find all the distances and locations according to the bitmap
+            for (i = 0; i < list.length; i++) {
+                var temp = list[i].split(" ");
+                if (temp.length > 1) var temp2 = temp[temp.length - 2];
+                else var temp2 = temp[temp.length - 1];
+                if (temp2.length > 2) temp2 = temp2.substring(0, 2);
+                if (temp2.trim() === "") {
+                    continue;
+                }
+
+                temp2 = temp2.toUpperCase();
+                var loc = findLocation(temp2);
+                if (loc == null) {
+                    if (temp.length == 1)
+                        document.getElementById("output").innerHTML =
+                            "Error finding state: " + temp[temp.length - 1];
+                    else
+                        document.getElementById("output").innerHTML =
+                            "Error finding state: " + temp[temp.length - 2];
+                    return;
+                }
+                var distances = findDistances(loc);
+                var smallestMin = distances[distances.length - 1];
+                var selectedDepot;
+                var addr = new address(temp2, loc, distances, smallestMin);
+                depots2.push(addr);
+                depotSort[smallestMin].push(addr);
+                depots[smallestMin].assigned++;
+                selectedDepot = depots[smallestMin];
+                //Make sure to distribute evenly among active depots
+                document.getElementById("output").innerHTML += selectedDepot.name + "\n";
+            }
+
+            for (i = 0; i < depotSort.length; i++) {
+                depotSort[i].sort((a, b) => ((a.distances[i], b.distances[i]) ? 1 : -1));
+            }
+
+            document.getElementById("ftw").innerHTML = depots[0].assigned;
+            document.getElementById("oma").innerHTML = depots[1].assigned;
+            document.getElementById("gso").innerHTML = depots[2].assigned;
+        }
+
+        function calculateDistanceFair() {
             document.getElementById("output").innerHTML = "";
             //Split the list and set the arrays
             var list = document.getElementById("input").value;
@@ -179,6 +293,14 @@
             document.getElementById("oma").innerHTML = depots2[1];
             document.getElementById("gso").innerHTML = depots2[2];
         }
+
+        function displayHelp() {
+            alert(
+                "This page is used for determining shipping locations based off of state abbreviations. There are two formats of addresses that are accepted. One is with just the state abbreviation alone, or as a full address. Both examples are displayed in the input text field. This is used as a bulk adder for calculating depot shipping locations. It uses a generalized algorithm that I made for calculating distances that values speed over actual distance calculation."
+            );
+            document.getElementById("input").value = "IN\n501 Virginia Ave, Hagerstown, MD 21740"
+        }
+
 
     </script>
 </body>
