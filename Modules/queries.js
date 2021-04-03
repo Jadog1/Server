@@ -53,7 +53,7 @@ exports.getBudgetByUser = async (contact_id) => {
 //Expense/goal handling
 exports.addExpense = async (amount, expense_name, budget_id) => {
     try {
-        return await database.execute("insert into expense (amount, expense_name, account_id) values (" + amount + ", '" + expense_name + "', " + budget_id + ")");
+        return await database.execute("insert into expense (amount, expense_name, budget_id) values (" + amount + ", '" + expense_name + "', " + budget_id + ")");
     } catch (e) {
         throw e;
     }
@@ -61,7 +61,7 @@ exports.addExpense = async (amount, expense_name, budget_id) => {
 
 exports.getExpenseByBudget = async (budget_id) => {
     try {
-        return await database.query("select e.expense_id, e.amount, e.expense_name from expense e where e.budget_id =" + budget_id);
+        return await database.query("select e.expense_id, e.amount, e.expense_name, e.budget_id from expense e where e.budget_id =" + budget_id);
     } catch (e) {
         throw e;
     }
@@ -69,7 +69,7 @@ exports.getExpenseByBudget = async (budget_id) => {
 
 exports.getOnlyExpenseByBudget = async (budget_id) => {
     try {
-        return await database.query("select e.expense_id, e.amount, e.expense_name from only expense e where e.budget_id =" + budget_id);
+        return await database.query("select e.expense_id, e.amount, e.expense_name, e.budget_id from only expense e where e.budget_id =" + budget_id);
     } catch (e) {
         throw e;
     }

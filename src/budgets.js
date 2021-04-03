@@ -12,6 +12,53 @@ const eventBus = {
     },
 };
 
+class ExpenseForm extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    submitForm() {
+        var params = {
+            amount: documentGetElementById("amount").value,
+            expenseName: documentGetElementById("expenseName").value,
+            budgetId: documentGetElementById("budgetId").value
+        }
+        fetch("/finance/addExpense", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params)
+        })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    console.log(error);
+                }
+            )
+    }
+
+    render() {
+        return (
+            <div>
+                <label htmlFor="amount">Expected amount:</label>
+                <input type="number" name="amount" id="amount" /><br />
+                <label htmlFor="expenseName">New password:</label>
+                <input type="text" name="expenseName" id="expenseName" /><br />
+                <label htmlFor="budgetId">Budget ID:</label>
+                <input type="text" name="budgetId" id="budgetId" readOnly value={this.props.budgetId} /><br />
+                <input type="submit" value="Submit" id="registerSubmit" onClick={() => this.submitForm()} />
+            </div>
+        );
+    }
+}
+
 class Expense extends React.Component {
     constructor(props) {
         super(props);
@@ -30,13 +77,22 @@ class ExpenseList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: []
+            message: [],
+            budget: null,
+            showAddExpense: false
         }
+    }
+
+    handleToggle() {
+        if (this.state.showAddExpense)
+            this.setState({ showAddExpense: false });
+        else
+            this.setState({ showAddExpense: true });
     }
 
     componentDidMount() {
         eventBus.on("expense", (data) =>
-            this.setState({ message: data.message })
+            this.setState({ message: data.message, budget: data.budget })
         );
     }
 
@@ -44,14 +100,24 @@ class ExpenseList extends React.Component {
         eventBus.remove("expense");
     }
 
+
     render() {
-        return <pre>
+        return <div>
+            <div>
+                {this.state.budget != null ?
+                    <button onClick={() => this.handleToggle()}>Toggle Expense adding</button>
+                    : null}
+                {this.state.showAddExpense ?
+                    <ExpenseForm budgetId={this.state.budget} /> :
+                    null
+                }
+            </div>
             {this.state.message.map((expense, index) => (
                 <div key={index}>
                     <Expense data={expense} />
                 </div>
             ))}
-        </pre>;
+        </div>;
     }
 }
 
@@ -65,13 +131,13 @@ class Budget extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    eventBus.dispatch("expense", { message: result });
+                    eventBus.dispatch("expense", { message: result, budget: newRelease });
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
                 // exceptions from actual bugs in components.
                 (error) => {
-                    eventBus.dispatch("expense", { message: error });
+                    alert(error);
                 }
             )
     }

@@ -85,7 +85,6 @@ app.get('/contact', function (req, res) {
 });
 app.get('/finance/expense-list', async function (req, res) {
     const expenses = await queries.getExpenseByBudget(req.query.budgetId);
-    console.log(expenses);
     res.json(expenses);
 });
 app.get('/finance/login', function (req, res) {
@@ -168,6 +167,27 @@ app.post('/finance/register', async function (req, res) {
         else {
             console.log(e);
             res.render('pages/finance/login', { error: "Unknown error, try again" });
+        }
+    }
+});
+
+let jsonParser = bodyParser.json();
+
+app.post('/finance/addExpense', jsonParser, async function (req, res) {
+    console.log(req.body);
+    if (req.body.expenseName.trim() == "" || req.body.amount.trim() == "")
+        res.json({ error: "Fields blank" });
+    try {
+        await queries.addExpense(req.body.amount, req.body.expenseName, req.body.budgetId);
+        res.json({ success: "OK" });
+    } catch (e) {
+        if (e.code == 23505)
+            res.json({ error: "Username already exists" });
+        else if (e.code == 23502)
+            res.json({ error: "Fields cannot be blank" });
+        else {
+            console.log(e);
+            res.json({ error: "Unknown error, try again" });
         }
     }
 });
