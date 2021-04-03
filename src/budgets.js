@@ -12,45 +12,71 @@ const eventBus = {
     },
 };
 
+function updateExpenseList(budgetId) {
+    fetch("/finance/expense-list?budgetId=" + budgetId)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                eventBus.dispatch("expense", { message: result, budget: budgetId });
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+                alert(error);
+            }
+        )
+}
+
 class ExpenseForm extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            amount: null,
+            expenseName: null,
+            budgetId: null
+        }
     }
     submitForm() {
-        var params = {
-            amount: documentGetElementById("amount").value,
-            expenseName: documentGetElementById("expenseName").value,
-            budgetId: documentGetElementById("budgetId").value
+        const amount = this.state.amount;
+        const expenseName = this.state.expenseName;
+        const budgetId = this.props.budgetId;
+        var data = {
+            amount: amount,
+            expenseName: expenseName,
+            budgetId: budgetId
         }
         fetch("/finance/addExpense", {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(params)
+            body: JSON.stringify(data)
         })
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
+                    updateExpenseList(this.props.budgetId);
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
                 (error) => {
-                    console.log(error);
+                    alert(error);
                 }
             )
     }
 
+    handleChangeAmount(event) {
+        this.setState({ amount: event.target.value });
+    }
+    handleChangeName(event) {
+        this.setState({ expenseName: event.target.value });
+    }
     render() {
         return (
             <div>
                 <label htmlFor="amount">Expected amount:</label>
-                <input type="number" name="amount" id="amount" /><br />
-                <label htmlFor="expenseName">New password:</label>
-                <input type="text" name="expenseName" id="expenseName" /><br />
+                <input type="number" name="amount" id="amount" onChange={this.handleChangeAmount.bind(this)} /><br />
+                <label htmlFor="expenseName">Name of expense:</label>
+                <input type="text" name="expenseName" id="expenseName" onChange={this.handleChangeName.bind(this)} /><br />
                 <label htmlFor="budgetId">Budget ID:</label>
                 <input type="text" name="budgetId" id="budgetId" readOnly value={this.props.budgetId} /><br />
                 <input type="submit" value="Submit" id="registerSubmit" onClick={() => this.submitForm()} />
@@ -127,19 +153,7 @@ class Budget extends React.Component {
     }
 
     handleNewReleaseClick(newRelease) {
-        fetch("/finance/expense-list?budgetId=" + newRelease)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    eventBus.dispatch("expense", { message: result, budget: newRelease });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    alert(error);
-                }
-            )
+        updateExpenseList(newRelease);
     }
 
     render() {
@@ -155,10 +169,25 @@ class BudgetList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            budgetArr: JSON.parse('<%- budget %>')
+            budgetArr: []
         };
     }
 
+    componentDidMount() {
+        fetch("/finance/budget-list")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({ budgetArr: result });
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    alert(error.Error);
+                }
+            )
+   }
 
     render() {
         return (

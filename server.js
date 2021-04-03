@@ -87,6 +87,14 @@ app.get('/finance/expense-list', async function (req, res) {
     const expenses = await queries.getExpenseByBudget(req.query.budgetId);
     res.json(expenses);
 });
+app.get('/finance/budget-list', async function (req, res) {
+    const userId = getAppCookies(req)['userId'];
+    if (isLogged(userId)) {
+        const budgets = await queries.getBudgetByUser(userId);
+        res.json(budgets);
+    } else
+        res.json({'Error': 'Account not logged in'});
+});
 app.get('/finance/login', function (req, res) {
     const userId = getAppCookies(req)['userId'];
     if (isLogged(userId) == false)
@@ -174,7 +182,6 @@ app.post('/finance/register', async function (req, res) {
 let jsonParser = bodyParser.json();
 
 app.post('/finance/addExpense', jsonParser, async function (req, res) {
-    console.log(req.body);
     if (req.body.expenseName.trim() == "" || req.body.amount.trim() == "")
         res.json({ error: "Fields blank" });
     try {
