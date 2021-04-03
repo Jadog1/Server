@@ -13,6 +13,9 @@ const eventBus = {
 };
 
 function updateExpenseList(budgetId) {
+    if (budgetId == null)
+        eventBus.dispatch("expense", { message: [], budget: null });
+
     fetch("/finance/expense-list?budgetId=" + budgetId)
         .then(res => res.json())
         .then(
@@ -155,11 +158,30 @@ class Budget extends React.Component {
     handleNewReleaseClick(newRelease) {
         updateExpenseList(newRelease);
     }
+    deleteBudget() {
+        if (confirm("Are you sure you want to delete budget " + this.props.data.account_name)) {
+            fetch("/finance/deleteBudget?budgetId=" + this.props.data.account_id)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        this.props.updateFunction();
+                        updateExpenseList(null);
+                    },
+                    // Note: it's important to handle errors here
+                    // instead of a catch() block so that we don't swallow
+                    // exceptions from actual bugs in components.
+                    (error) => {
+                        alert(error.error);
+                    }
+                )
+        }
+    }
 
     render() {
         return (
-            <a onClick={() => this.handleNewReleaseClick(this.props.data.account_id)}>
-                {this.props.data.account_name}
+            <a>
+                <span onClick={() => this.handleNewReleaseClick(this.props.data.account_id)}>{this.props.data.account_name}</span>
+                <i className="fa fa-minus-circle deleteMe" onClick={() => this.deleteBudget()}></i>
             </a>
         );
     }
@@ -172,32 +194,79 @@ class BudgetList extends React.Component {
             budgetArr: []
         };
     }
-
-    componentDidMount() {
+    updateBudgets() {
         fetch("/finance/budget-list")
             .then(res => res.json())
             .then(
                 (result) => {
                     this.setState({ budgetArr: result });
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
+
                 (error) => {
-                    alert(error.Error);
+                    alert(error.error);
                 }
             )
-   }
+    }
+
+    componentDidMount() {
+        this.updateBudgets();
+    }
+
+    addBudget() {
+        var getSalary;
+        do {
+            getSalary = prompt("What is the expected salary? Enter only numbers.");
+            if (getSalary == null)
+                return;
+        } while (isNaN(getSalary))
+        var getName;
+        do {
+            getName = prompt("What is the name of the budget?");
+            if (getName == null)
+                return;
+        } while (getName.trim() == "")
+
+        var data = {
+            salary: getSalary,
+            accountName: getName
+        };
+
+        fetch("/finance/addBudget", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.updateBudgets();
+                },
+                (error) => {
+                    alert(error);
+                }
+            )
+    }
 
     render() {
         return (
-            < span >
+            <span>
+                <li>
                 {this.state.budgetArr.map((budget, index) => (
-                    <li key={index}>
-                        <Budget data={budget} />
-                    </li>
+                    <div key={index}>
+                        <Budget data={budget} updateFunction={this.updateBudgets.bind(this)} />
+                    </div>
                 ))}
+                </li>
+                <li>
+                    <a className="btn btn-success btn-lg sideBarButtons" onClick={() => this.addBudget()}>Add budget</a>
+                </li>
+                <li>
+                    <a href="/finance/logout" className="btn btn-danger btn-lg sideBarButtons" id="logout"><i className="fa fa-sign-out"></i>Log out</a>
+                </li>
             </span>
+
         );
     }
 }

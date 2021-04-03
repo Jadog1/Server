@@ -95,6 +95,16 @@ app.get('/finance/budget-list', async function (req, res) {
     } else
         res.json({'Error': 'Account not logged in'});
 });
+app.get('/finance/deleteBudget', async function (req, res) {
+    try {
+        const deleteBudget = await queries.deleteBudget(req.query.budgetId);
+        res.status(200);
+        res.json({success: "OK"});
+    } catch (e) {
+        res.status(400);
+        res.json({ error: 'Error has occured' });
+    }
+});
 app.get('/finance/login', function (req, res) {
     const userId = getAppCookies(req)['userId'];
     if (isLogged(userId) == false)
@@ -181,13 +191,46 @@ app.post('/finance/register', async function (req, res) {
 
 let jsonParser = bodyParser.json();
 
-app.post('/finance/addExpense', jsonParser, async function (req, res) {
-    if (req.body.expenseName.trim() == "" || req.body.amount.trim() == "")
+app.post('/finance/addBudget', jsonParser, async function (req, res) {
+    if (req.body.salary.trim() == "" || req.body.accountName.trim() == "") {
+        res.status(400);
         res.json({ error: "Fields blank" });
+    }
+    try {
+        const userId = getAppCookies(req)['userId'];
+        if (isLogged(userId)) {
+            await queries.addBudget(req.body.salary, req.body.accountName, userId);
+            res.status(201);
+            res.json({ success: "OK" });
+        } else {
+            res.status(401);
+            res.json({ error: "Unauthorized" });
+        }
+    } catch (e) {
+        res.status(400);
+        if (e.code == 23505)
+            res.json({ error: "Username already exists" });
+        else if (e.code == 23502)
+            res.json({ error: "Fields cannot be blank" });
+        else {
+            console.log(e);
+            res.json({ error: "Unknown error, try again" });
+        }
+    }
+});
+
+
+app.post('/finance/addExpense', jsonParser, async function (req, res) {
+    if (req.body.expenseName.trim() == "" || req.body.amount.trim() == "") {
+        res.status(400);
+        res.json({ error: "Fields blank" });
+    }
     try {
         await queries.addExpense(req.body.amount, req.body.expenseName, req.body.budgetId);
+        res.status(201);
         res.json({ success: "OK" });
     } catch (e) {
+        res.status(400);
         if (e.code == 23505)
             res.json({ error: "Username already exists" });
         else if (e.code == 23502)

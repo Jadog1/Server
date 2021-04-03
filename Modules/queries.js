@@ -42,6 +42,14 @@ exports.addBudget = async (salary, account_name, contact_id) => {
     }
 }
 
+exports.deleteBudget = async (account_id) => {
+    try {
+        return await database.execute("DELETE from budget where account_id=" + account_id);
+    } catch (e) {
+        throw e;
+    }
+}
+
 exports.getBudgetByUser = async (contact_id) => {
     try {
         return await database.query("select b.account_id, b.salary, b.account_name from budget b where b.contact_id = '" + contact_id + "'");

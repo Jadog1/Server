@@ -23,6 +23,8 @@ var eventBus = {
 };
 
 function updateExpenseList(budgetId) {
+    if (budgetId == null) eventBus.dispatch("expense", { message: [], budget: null });
+
     fetch("/finance/expense-list?budgetId=" + budgetId).then(function (res) {
         return res.json();
     }).then(function (result) {
@@ -239,16 +241,43 @@ var Budget = function (_React$Component4) {
             updateExpenseList(newRelease);
         }
     }, {
+        key: "deleteBudget",
+        value: function deleteBudget() {
+            var _this9 = this;
+
+            if (confirm("Are you sure you want to delete budget " + this.props.data.account_name)) {
+                fetch("/finance/deleteBudget?budgetId=" + this.props.data.account_id).then(function (res) {
+                    return res.json();
+                }).then(function (result) {
+                    _this9.props.updateFunction();
+                    updateExpenseList(null);
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                function (error) {
+                    alert(error.error);
+                });
+            }
+        }
+    }, {
         key: "render",
         value: function render() {
-            var _this9 = this;
+            var _this10 = this;
 
             return React.createElement(
                 "a",
-                { onClick: function onClick() {
-                        return _this9.handleNewReleaseClick(_this9.props.data.account_id);
-                    } },
-                this.props.data.account_name
+                null,
+                React.createElement(
+                    "span",
+                    { onClick: function onClick() {
+                            return _this10.handleNewReleaseClick(_this10.props.data.account_id);
+                        } },
+                    this.props.data.account_name
+                ),
+                React.createElement("i", { className: "fa fa-minus-circle deleteMe", onClick: function onClick() {
+                        return _this10.deleteBudget();
+                    } })
             );
         }
     }]);
@@ -262,44 +291,107 @@ var BudgetList = function (_React$Component5) {
     function BudgetList(props) {
         _classCallCheck(this, BudgetList);
 
-        var _this10 = _possibleConstructorReturn(this, (BudgetList.__proto__ || Object.getPrototypeOf(BudgetList)).call(this, props));
+        var _this11 = _possibleConstructorReturn(this, (BudgetList.__proto__ || Object.getPrototypeOf(BudgetList)).call(this, props));
 
-        _this10.state = {
+        _this11.state = {
             budgetArr: []
         };
-        return _this10;
+        return _this11;
     }
 
     _createClass(BudgetList, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            var _this11 = this;
+        key: "updateBudgets",
+        value: function updateBudgets() {
+            var _this12 = this;
 
             fetch("/finance/budget-list").then(function (res) {
                 return res.json();
             }).then(function (result) {
-                _this11.setState({ budgetArr: result });
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            function (error) {
-                alert(error.Error);
+                _this12.setState({ budgetArr: result });
+            }, function (error) {
+                alert(error.error);
+            });
+        }
+    }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.updateBudgets();
+        }
+    }, {
+        key: "addBudget",
+        value: function addBudget() {
+            var _this13 = this;
+
+            var getSalary;
+            do {
+                getSalary = prompt("What is the expected salary? Enter only numbers.");
+                if (getSalary == null) return;
+            } while (isNaN(getSalary));
+            var getName;
+            do {
+                getName = prompt("What is the name of the budget?");
+                if (getName == null) return;
+            } while (getName.trim() == "");
+
+            var data = {
+                salary: getSalary,
+                accountName: getName
+            };
+
+            fetch("/finance/addBudget", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(function (res) {
+                return res.json();
+            }).then(function (result) {
+                _this13.updateBudgets();
+            }, function (error) {
+                alert(error);
             });
         }
     }, {
         key: "render",
         value: function render() {
+            var _this14 = this;
+
             return React.createElement(
                 "span",
                 null,
-                this.state.budgetArr.map(function (budget, index) {
-                    return React.createElement(
-                        "li",
-                        { key: index },
-                        React.createElement(Budget, { data: budget })
-                    );
-                })
+                React.createElement(
+                    "li",
+                    null,
+                    this.state.budgetArr.map(function (budget, index) {
+                        return React.createElement(
+                            "div",
+                            { key: index },
+                            React.createElement(Budget, { data: budget, updateFunction: _this14.updateBudgets.bind(_this14) })
+                        );
+                    })
+                ),
+                React.createElement(
+                    "li",
+                    null,
+                    React.createElement(
+                        "a",
+                        { className: "btn btn-success btn-lg sideBarButtons", onClick: function onClick() {
+                                return _this14.addBudget();
+                            } },
+                        "Add budget"
+                    )
+                ),
+                React.createElement(
+                    "li",
+                    null,
+                    React.createElement(
+                        "a",
+                        { href: "/finance/logout", className: "btn btn-danger btn-lg sideBarButtons", id: "logout" },
+                        React.createElement("i", { className: "fa fa-sign-out" }),
+                        "Log out"
+                    )
+                )
             );
         }
     }]);

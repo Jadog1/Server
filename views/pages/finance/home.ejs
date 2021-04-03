@@ -34,7 +34,7 @@
         #sidebar {
             min-width: 250px;
             max-width: 250px;
-            min-height: 95vh;
+            min-height: 85vh;
             background: #7386D5;
             color: #fff;
             transition: all 0.3s;
@@ -104,6 +104,17 @@
             width: 100%;
             align-items: stretch;
         }
+
+        .sideBarButtons {
+            width: 187px;
+            margin: auto;
+            margin-top: 2vh;
+        }
+
+        .deleteMe {
+            cursor: pointer;
+            float: right;
+        }
     </style>
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
@@ -116,36 +127,8 @@
                     <h3>Jadon Steinmetz</h3>
                 </div>
 
-                <ul class="list-unstyled components">
-                    <p>Budget starter</p>
-                    <li class="active">
-                        <a href="#budgetSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">Budgets</a>
-                        <ul class="list-unstyled collapse" id="budgetSubMenu" style="">
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">Pages</a>
-                        <ul class="list-unstyled collapse" id="pageSubmenu" style="">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="/finance/logout" class="btn btn-info btn-lg" id="logout"><i class="fa fa-sign-out"></i>Log out</a>
-                    </li>
+                <ul class="list-unstyled components" id="budgetSubMenu">
+                    
                 </ul>
             </nav>
 
