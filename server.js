@@ -84,8 +84,9 @@ app.get('/contact', function (req, res) {
     res.render('pages/Contact');
 });
 app.get('/finance/expense-list', async function (req, res) {
-    const expenses = await queries.getExpenseByBudget(req.query.budgetId);
-    res.json(expenses);
+    const expenses = await queries.getOnlyExpenseByBudget(req.query.budgetId);
+    const goals = await queries.getGoalByBudget(req.query.budgetId)
+    res.json(expenses.concat(goals));
 });
 app.get('/finance/budget-list', async function (req, res) {
     const userId = getAppCookies(req)['userId'];
@@ -97,9 +98,19 @@ app.get('/finance/budget-list', async function (req, res) {
 });
 app.get('/finance/deleteBudget', async function (req, res) {
     try {
-        const deleteBudget = await queries.deleteBudget(req.query.budgetId);
+        await queries.deleteBudget(req.query.budgetId);
         res.status(200);
         res.json({success: "OK"});
+    } catch (e) {
+        res.status(400);
+        res.json({ error: 'Error has occured' });
+    }
+});
+app.get('/finance/deleteExpense', async function (req, res) {
+    try {
+        await queries.deleteExpense(req.query.expenseId);
+        res.status(200);
+        res.json({ success: "OK" });
     } catch (e) {
         res.status(400);
         res.json({ error: 'Error has occured' });
@@ -221,18 +232,17 @@ app.post('/finance/addBudget', jsonParser, async function (req, res) {
 
 
 app.post('/finance/addExpense', jsonParser, async function (req, res) {
-    if (req.body.expenseName.trim() == "" || req.body.amount.trim() == "") {
-        res.status(400);
-        res.json({ error: "Fields blank" });
-    }
     try {
-        await queries.addExpense(req.body.amount, req.body.expenseName, req.body.budgetId);
+        if (req.body.goal)
+            await queries.addGoal(req.body.amount, req.body.expenseName, req.body.budgetId, req.body.expirationDate, req.body.optional, req.body.amountPaid);
+        else 
+            await queries.addExpense(req.body.amount, req.body.expenseName, req.body.budgetId);
         res.status(201);
         res.json({ success: "OK" });
     } catch (e) {
         res.status(400);
         if (e.code == 23505)
-            res.json({ error: "Username already exists" });
+            res.json({ error: "Expense already exists" });
         else if (e.code == 23502)
             res.json({ error: "Fields cannot be blank" });
         else {

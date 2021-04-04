@@ -95,6 +95,7 @@
     <Folder Include="Files\" />
     <Folder Include="Modules\" />
     <Folder Include="public\js\" />
+    <Folder Include="public\css\" />
     <Folder Include="src\" />
     <Folder Include="public\" />
     <Folder Include="views\" />

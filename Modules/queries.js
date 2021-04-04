@@ -44,7 +44,7 @@ exports.addBudget = async (salary, account_name, contact_id) => {
 
 exports.deleteBudget = async (account_id) => {
     try {
-        return await database.execute("DELETE from budget where account_id=" + account_id);
+        return await database.execute(["DELETE from budget where account_id=" + account_id + "", "DELETE from expense where budget_id=" + account_id + "", "DELETE from goal where budget_id=" + account_id + ""]);
     } catch (e) {
         throw e;
     }
@@ -83,6 +83,14 @@ exports.getOnlyExpenseByBudget = async (budget_id) => {
     }
 }
 
+exports.deleteExpense = async (expenseId) => {
+    try {
+        return await database.execute("DELETE from Expense where expense_id=" + expenseId);
+    } catch (e) {
+        throw e;
+    }
+}
+
 exports.addGoal = async (amount, expense_name, budget_id, expiration_date, optional, amount_paid) => {
     try {
         return await database.execute("insert into goal (amount, expense_name, budget_id, expiration_date, optional, amount_paid)"
@@ -94,7 +102,7 @@ exports.addGoal = async (amount, expense_name, budget_id, expiration_date, optio
 
 exports.getGoalByBudget = async (budget_id) => {
     try {
-        return await database.query("select expense_id, amount, expense_name, expiration_date, optional, amount_paid from goal where budget_id =" + budget_id);
+        return await database.query("select expense_id, budget_id, amount, expense_name, expiration_date, optional, amount_paid from goal where budget_id =" + budget_id);
     } catch (e) {
         throw e;
     }
