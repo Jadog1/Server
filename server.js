@@ -234,7 +234,7 @@ app.post('/finance/addBudget', jsonParser, async function (req, res) {
 app.post('/finance/addExpense', jsonParser, async function (req, res) {
     try {
         if (req.body.goal)
-            await queries.addGoal(req.body.amount, req.body.expenseName, req.body.budgetId, req.body.expirationDate, req.body.optional, req.body.amountPaid);
+            await queries.addGoal(req.body.amount, req.body.expenseName, req.body.budgetId, req.body.date, req.body.optional, req.body.amountPaid);
         else 
             await queries.addExpense(req.body.amount, req.body.expenseName, req.body.budgetId);
         res.status(201);

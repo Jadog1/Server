@@ -121,7 +121,7 @@ var ExpenseForm = function (_React$Component) {
     }, {
         key: "handleChangeAmountPaid",
         value: function handleChangeAmountPaid(event) {
-            this.setState({ AmountPaid: event.target.value });
+            this.setState({ amountPaid: event.target.value });
         }
     }, {
         key: "toggleGoal",

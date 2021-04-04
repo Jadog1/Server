@@ -98,7 +98,7 @@ class ExpenseForm extends React.Component {
             this.setState({ optional: true });
     }
     handleChangeAmountPaid(event) {
-        this.setState({ AmountPaid: event.target.value });
+        this.setState({ amountPaid: event.target.value });
     }
     toggleGoal() {
         if (this.state.goal)
