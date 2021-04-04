@@ -44,7 +44,7 @@ exports.addBudget = async (salary, account_name, contact_id) => {
 
 exports.deleteBudget = async (account_id) => {
     try {
-        return await database.execute(["DELETE from budget where account_id=" + account_id + "", "DELETE from expense where budget_id=" + account_id + "", "DELETE from goal where budget_id=" + account_id + ""]);
+        return await database.execute(["DELETE from expense where budget_id=" + account_id + "", "DELETE from goal where budget_id=" + account_id + "", "DELETE from budget where account_id=" + account_id + ""]);
     } catch (e) {
         throw e;
     }

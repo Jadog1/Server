@@ -162,6 +162,7 @@ app.post('/finance/login', async function (req, res) {
                     secure: false
                 });
             res.redirect('/finance/home');
+            return;
         } else {
             res.render('pages/finance/login', { error: "Username/password does not exist" });
         }
@@ -188,6 +189,7 @@ app.post('/finance/register', async function (req, res) {
                 secure: false
             });
         res.redirect('/finance/home');
+        return;
     } catch (e) {
         if (e.code == 23505)
             res.render('pages/finance/login', { error: "Username already exists" });

@@ -38,7 +38,6 @@ class ExpenseForm extends React.Component {
             amount: null,
             expenseName: null,
             budgetId: null,
-            goal: false,
             date: null,
             optional: false,
             amountPaid: null
@@ -46,7 +45,7 @@ class ExpenseForm extends React.Component {
     }
     submitForm() {
         var data;
-        if (this.state.goal) {
+        if (this.props.goal) {
             data = {
                 amount: this.state.amount,
                 expenseName: this.state.expenseName,
@@ -75,6 +74,7 @@ class ExpenseForm extends React.Component {
             .then(
                 (result) => {
                     updateExpenseList(this.props.budgetId);
+                    this.props.resetRender(null);
                 },
                 (error) => {
                     alert(error);
@@ -100,26 +100,21 @@ class ExpenseForm extends React.Component {
     handleChangeAmountPaid(event) {
         this.setState({ amountPaid: event.target.value });
     }
-    toggleGoal() {
-        if (this.state.goal)
-            this.setState({ goal: false });
-        else
-            this.setState({ goal: true });
-    }
     render() {
         return (
             <div id="AddExpenseForm">
-                Goal: <input type="checkbox" onClick={() => this.toggleGoal() } /><br />
+                <i onClick={() => this.props.resetRender(null)} className="fa fa-times-circle deleteMe"></i>
                 <label htmlFor="expenseName">Name of expense:</label>
                 <input type="text" name="expenseName" id="expenseName" onChange={this.handleChangeName.bind(this)} /><br />
                 <label htmlFor="amount">Expected cost:</label>
                 <input type="number" name="amount" id="amount" onChange={this.handleChangeAmount.bind(this)} /><br />
-                <label htmlFor="date">Expiration date:</label>
+                {this.props.goal == true ?
+                    (<span><label htmlFor="date">Expiration date:</label>
                 <input type="date" name="date" id="date" onChange={this.handleChangeDate.bind(this)} /><br />
                 <label htmlFor="optional">Optional:</label>
                 <input type="checkbox" name="optional" id="optional" onChange={this.handleChangeOptional.bind(this)} /><br />
                 <label htmlFor="amountPaid">Amount paid:</label>
-                <input type="number" name="amountPaid" id="amountPaid" onChange={this.handleChangeAmountPaid.bind(this)} /><br />
+                <input type="number" name="amountPaid" id="amountPaid" onChange={this.handleChangeAmountPaid.bind(this)} /><br /></span>) : null}
                 <label htmlFor="budgetId">Budget ID:</label>
                 <input type="text" name="budgetId" id="budgetId" readOnly value={this.props.budgetId} /><br />
                 <input type="submit" value="Submit" id="registerSubmit" onClick={() => this.submitForm()} />
@@ -192,6 +187,34 @@ class ExpenseTable extends React.Component {
     }
 }
 
+class ExpenseFormDropDown extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            goal: null
+        }
+    }
+
+    renderExpenseForm(goalStatus) {
+        this.setState({ goal: goalStatus });
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <div className="dropdown" style={{ float: 'left' }} >
+                    <button className="btn btn-success" type="button" data-toggle="dropdown">Add <span class="caret"></span></button>
+                    <ul className="dropdown-menu">
+                        <li className="ExpenseDropDown" onClick={() => this.renderExpenseForm(false) }>Expense</li>
+                        <li className="ExpenseDropDown" onClick={() => this.renderExpenseForm(true)}>Goal</li>
+                    </ul>
+                </div>
+                {this.state.goal != null ? <ExpenseForm budgetId={this.props.budgetId} goal={this.state.goal} resetRender={this.renderExpenseForm.bind(this)} /> : null}
+            </div>
+        );
+    }
+}
+
 class ExpenseList extends React.Component {
     constructor(props) {
         super(props);
@@ -229,12 +252,8 @@ class ExpenseList extends React.Component {
             <div>
                 <div>
                     {this.state.budget != null ?
-                        <button className="btn btn-success" style={{ float: "right" }} onClick={() => this.handleToggle()}>Add</button>
+                        <ExpenseFormDropDown budgetId={this.state.budget} />
                         : null}
-                    {this.state.showAddExpense ?
-                        <ExpenseForm budgetId={this.state.budget} /> :
-                        null
-                    }
                 </div>
                 {table}
             </div>
