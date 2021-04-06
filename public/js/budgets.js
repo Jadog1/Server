@@ -401,9 +401,22 @@ var HighLevelMetrics = function (_React$Component5) {
     _createClass(HighLevelMetrics, [{
         key: "render",
         value: function render() {
+            var allExpenses = this.props.data;
+            var afterTax = this.props.budget.salary;
+            var cost = 0;
+            var i;
+            for (i = 0; i < allExpenses.length; i++) {
+                cost += parseFloat(allExpenses[i].amount);
+            }
+            var includeTax = afterTax * parseFloat(this.props.budget.tax_rate);
+            afterTax -= includeTax;
+            afterTax -= cost * 12;
+            var yearly = afterTax.toFixed(2);
+            var monthly = (afterTax / 12).toFixed(2);
+            var weekly = (afterTax / 48).toFixed(2);
             return React.createElement(
                 "div",
-                { className: "container", style: { marginBottom: 15 + "px" } },
+                { className: "container", style: { textAlign: "center", marginBottom: 15 + "px" } },
                 React.createElement(
                     "div",
                     { className: "row" },
@@ -416,21 +429,13 @@ var HighLevelMetrics = function (_React$Component5) {
                             React.createElement(
                                 "div",
                                 { className: "notification_title" },
-                                "Active"
+                                "Yearly quota"
                             ),
                             React.createElement(
                                 "div",
                                 { className: "notification_desc" },
-                                "10"
-                            ),
-                            React.createElement(
-                                "i",
-                                { className: "fa fa-info-circle", style: { float: "right" } },
-                                React.createElement(
-                                    "span",
-                                    { className: "tooltiptext" },
-                                    "Number of purchase orders that are active and not near empty"
-                                )
+                                "$",
+                                yearly
                             )
                         )
                     ),
@@ -443,21 +448,13 @@ var HighLevelMetrics = function (_React$Component5) {
                             React.createElement(
                                 "div",
                                 { className: "notification_title" },
-                                "Near empty"
+                                "Monthly quota"
                             ),
                             React.createElement(
                                 "div",
                                 { className: "notification_desc", id: "nearEmpty" },
-                                "0"
-                            ),
-                            React.createElement(
-                                "i",
-                                { className: "fa fa-info-circle", style: { float: "right" } },
-                                React.createElement(
-                                    "span",
-                                    { className: "tooltiptext" },
-                                    "Number of purchase orders near empty according to set percentage"
-                                )
+                                "$",
+                                monthly
                             )
                         )
                     ),
@@ -470,21 +467,13 @@ var HighLevelMetrics = function (_React$Component5) {
                             React.createElement(
                                 "div",
                                 { className: "notification_title" },
-                                "Empty"
+                                "Weekly quota"
                             ),
                             React.createElement(
                                 "div",
                                 { className: "notification_desc", id: "empty" },
-                                "100"
-                            ),
-                            React.createElement(
-                                "i",
-                                { className: "fa fa-info-circle", style: { float: "right" } },
-                                React.createElement(
-                                    "span",
-                                    { className: "tooltiptext" },
-                                    "Number of purchase orders that are empty and are not marked as disposed"
-                                )
+                                "$",
+                                weekly
                             )
                         )
                     )
@@ -578,7 +567,7 @@ var ExpenseList = function (_React$Component6) {
                                 return _this14.changeTaxRate();
                             } })
                     ),
-                    React.createElement(HighLevelMetrics, { data: this.state.message }),
+                    React.createElement(HighLevelMetrics, { data: this.state.message, budget: this.state.budget }),
                     React.createElement(ExpenseFormDropDown, { budgetId: this.state.budget.account_id, budget: this.state.budget }),
                     React.createElement(ExpenseTable, { message: this.state.message, budget: this.state.budget })
                 ) : null

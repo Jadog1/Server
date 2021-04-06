@@ -223,34 +223,38 @@ class HighLevelMetrics extends React.Component {
     }
 
     render() {
+        let allExpenses = this.props.data;
+        var afterTax = this.props.budget.salary;
+        var cost = 0;
+        var i;
+        for (i = 0; i < allExpenses.length; i++) {
+            cost += parseFloat(allExpenses[i].amount);
+        }
+        var includeTax = (afterTax * parseFloat(this.props.budget.tax_rate))
+        afterTax -= includeTax
+        afterTax -= (cost * 12);
+        var yearly = (afterTax.toFixed(2));
+        var monthly = ((afterTax / 12).toFixed(2));
+        var weekly = ((afterTax / 48).toFixed(2));
         return (
-            <div className="container" style={{ marginBottom: 15 + "px" }}>
+            <div className="container" style={{ textAlign: "center", marginBottom: 15 + "px" }}>
                 <div className="row">
                     <div className="col">
                         <div className="notification">
-                            <div className="notification_title">Active</div>
-                            <div className="notification_desc">10</div>
-                            <i className="fa fa-info-circle" style={{ float: "right" }}>
-                                <span className="tooltiptext">Number of purchase orders that are active and not near empty</span>
-                            </i>
+                            <div className="notification_title">Yearly quota</div>
+                            <div className="notification_desc">${yearly}</div>
                         </div>
                     </div>
                     <div className="col">
                         <div className="notification">
-                            <div className="notification_title">Near empty</div>
-                            <div className="notification_desc" id="nearEmpty">0</div>
-                            <i className="fa fa-info-circle" style={{ float: "right" }}>
-                                <span className="tooltiptext">Number of purchase orders near empty according to set percentage</span>
-                            </i>
+                            <div className="notification_title">Monthly quota</div>
+                            <div className="notification_desc" id="nearEmpty">${monthly}</div>
                         </div>
                     </div>
                     <div className="col">
                         <div className="notification">
-                            <div className="notification_title">Empty</div>
-                            <div className="notification_desc" id="empty">100</div>
-                            <i className="fa fa-info-circle" style={{ float: "right" }}>
-                                <span className="tooltiptext">Number of purchase orders that are empty and are not marked as disposed</span>
-                            </i>
+                            <div className="notification_title">Weekly quota</div>
+                            <div className="notification_desc" id="empty">${weekly}</div>
                         </div>
                     </div>
                 </div>
@@ -316,7 +320,7 @@ class ExpenseList extends React.Component {
                     < span >
                         <h2 style={{ textAlign: "center" }}>{this.state.budget.account_name}</h2>
                         <h4 id="taxRate">{tax_rate} <i className="fa fa-edit editMe" onClick={() => this.changeTaxRate()} ></i></h4>
-                        <HighLevelMetrics data={this.state.message} />
+                        <HighLevelMetrics data={this.state.message} budget={this.state.budget} />
                         <ExpenseFormDropDown budgetId={this.state.budget.account_id} budget={this.state.budget} />
                         <ExpenseTable message={this.state.message} budget={this.state.budget} />
                     </span> : null
