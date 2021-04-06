@@ -131,13 +131,14 @@
             left: 50%;
             top: 30%;
             z-index: 5;
-            overflow:auto;
+            overflow: auto;
         }
 
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
         }
+
         tbody tr:hover {
             cursor: pointer;
             background-color: #ff6666;
@@ -148,8 +149,55 @@
             font-weight: bolder;
             margin-bottom: 2px;
         }
-        .ExpenseDropDown:hover {
-            background-color: greenyellow;
+
+            .ExpenseDropDown:hover {
+                background-color: greenyellow;
+                cursor: pointer;
+            }
+
+        .notification {
+            height: auto; /*150px*/
+            width: 75%;
+            border-radius: 4%;
+            display: inline-block;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+        }
+
+        .notification_title {
+            font-size: 1.5vw;
+        }
+
+        .notification_desc {
+            position: relative;
+            top: 25%;
+            font-size: 2.5vw;
+        }
+
+        .fa .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+        }
+
+        .fa:hover .tooltiptext {
+            visibility: visible;
+        }
+
+        #taxRate {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .editMe:hover {
+            color: green;
             cursor: pointer;
         }
     </style>
@@ -170,8 +218,6 @@
 
             <!-- Page Content  -->
             <div id="content" style="width: 100%;">
-
-                <h2>Budgets</h2>
                 <div id="expenses"></div>
             </div>
         </div>

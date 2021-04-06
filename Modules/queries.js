@@ -34,9 +34,9 @@ exports.addUser = async (username, password) => {
 }
 
 //Budget handling
-exports.addBudget = async (salary, account_name, contact_id) => {
+exports.addBudget = async (salary, account_name, contact_id, tax_rate) => {
     try {
-        return await database.execute("insert into budget (salary, account_name, contact_id) values (" + salary + ", '" + account_name + "', '" + contact_id + "')");
+        return await database.execute("insert into budget (salary, account_name, contact_id, tax_rate) values (" + salary + ", '" + account_name + "', '" + contact_id + "', " + tax_rate + ")");
     } catch (e) {
         throw e;
     }
@@ -52,7 +52,15 @@ exports.deleteBudget = async (account_id) => {
 
 exports.getBudgetByUser = async (contact_id) => {
     try {
-        return await database.query("select b.account_id, b.salary, b.account_name from budget b where b.contact_id = '" + contact_id + "'");
+        return await database.query("select b.account_id, b.salary, b.account_name, b.tax_rate from budget b where b.contact_id = '" + contact_id + "'");
+    } catch (e) {
+        throw e;
+    }
+}
+
+exports.updateTaxRate = async (account_id, tax_rate) => {
+    try {
+        return await database.execute("update budget set tax_rate=" + tax_rate + " where account_id=" + account_id);
     } catch (e) {
         throw e;
     }

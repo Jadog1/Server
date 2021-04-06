@@ -22,15 +22,16 @@ var eventBus = {
     }
 };
 
-function updateExpenseList(budgetId) {
-    var needNull = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+function updateExpenseList(budget) {
+    if (budget == null) {
+        eventBus.dispatch("expense", { message: [], budget: null });
+        return;
+    }
 
-    if (needNull == true) eventBus.dispatch("expense", { message: [], budget: null });
-
-    fetch("/finance/expense-list?budgetId=" + budgetId).then(function (res) {
+    fetch("/finance/expense-list?budgetId=" + budget.account_id).then(function (res) {
         return res.json();
     }).then(function (result) {
-        eventBus.dispatch("expense", { message: result, budget: budgetId });
+        eventBus.dispatch("expense", { message: result, budget: budget });
     },
     // Note: it's important to handle errors here
     // instead of a catch() block so that we don't swallow
@@ -92,7 +93,7 @@ var ExpenseForm = function (_React$Component) {
             }).then(function (res) {
                 return res.json();
             }).then(function (result) {
-                updateExpenseList(_this2.props.budgetId);
+                updateExpenseList(_this2.props.budget);
                 _this2.props.resetRender(null);
             }, function (error) {
                 alert(error);
@@ -208,7 +209,7 @@ var Expense = function (_React$Component2) {
                 fetch("/finance/deleteExpense?expenseId=" + this.props.data.expense_id).then(function (res) {
                     return res.json();
                 }).then(function (result) {
-                    updateExpenseList(_this5.props.data.budget_id);
+                    updateExpenseList(_this5.props.budget);
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -273,6 +274,8 @@ var ExpenseTable = function (_React$Component3) {
     _createClass(ExpenseTable, [{
         key: "render",
         value: function render() {
+            var _this8 = this;
+
             return React.createElement(
                 "table",
                 { style: { width: 90 + '%', margin: 'auto' } },
@@ -313,7 +316,7 @@ var ExpenseTable = function (_React$Component3) {
                     "tbody",
                     null,
                     this.props.message.map(function (expense, index) {
-                        return React.createElement(Expense, { data: expense, key: index });
+                        return React.createElement(Expense, { data: expense, budget: _this8.props.budget, key: index });
                     })
                 )
             );
@@ -329,12 +332,12 @@ var ExpenseFormDropDown = function (_React$Component4) {
     function ExpenseFormDropDown(props) {
         _classCallCheck(this, ExpenseFormDropDown);
 
-        var _this8 = _possibleConstructorReturn(this, (ExpenseFormDropDown.__proto__ || Object.getPrototypeOf(ExpenseFormDropDown)).call(this, props));
+        var _this9 = _possibleConstructorReturn(this, (ExpenseFormDropDown.__proto__ || Object.getPrototypeOf(ExpenseFormDropDown)).call(this, props));
 
-        _this8.state = {
+        _this9.state = {
             goal: null
         };
-        return _this8;
+        return _this9;
     }
 
     _createClass(ExpenseFormDropDown, [{
@@ -345,7 +348,7 @@ var ExpenseFormDropDown = function (_React$Component4) {
     }, {
         key: "render",
         value: function render() {
-            var _this9 = this;
+            var _this10 = this;
 
             return React.createElement(
                 "div",
@@ -357,7 +360,7 @@ var ExpenseFormDropDown = function (_React$Component4) {
                         "button",
                         { className: "btn btn-success", type: "button", "data-toggle": "dropdown" },
                         "Add ",
-                        React.createElement("span", { "class": "caret" })
+                        React.createElement("span", { className: "caret" })
                     ),
                     React.createElement(
                         "ul",
@@ -365,20 +368,20 @@ var ExpenseFormDropDown = function (_React$Component4) {
                         React.createElement(
                             "li",
                             { className: "ExpenseDropDown", onClick: function onClick() {
-                                    return _this9.renderExpenseForm(false);
+                                    return _this10.renderExpenseForm(false);
                                 } },
                             "Expense"
                         ),
                         React.createElement(
                             "li",
                             { className: "ExpenseDropDown", onClick: function onClick() {
-                                    return _this9.renderExpenseForm(true);
+                                    return _this10.renderExpenseForm(true);
                                 } },
                             "Goal"
                         )
                     )
                 ),
-                this.state.goal != null ? React.createElement(ExpenseForm, { budgetId: this.props.budgetId, goal: this.state.goal, resetRender: this.renderExpenseForm.bind(this) }) : null
+                this.state.goal != null ? React.createElement(ExpenseForm, { budgetId: this.props.budgetId, budget: this.props.budget, goal: this.state.goal, resetRender: this.renderExpenseForm.bind(this) }) : null
             );
         }
     }]);
@@ -386,34 +389,160 @@ var ExpenseFormDropDown = function (_React$Component4) {
     return ExpenseFormDropDown;
 }(React.Component);
 
-var ExpenseList = function (_React$Component5) {
-    _inherits(ExpenseList, _React$Component5);
+var HighLevelMetrics = function (_React$Component5) {
+    _inherits(HighLevelMetrics, _React$Component5);
+
+    function HighLevelMetrics(props) {
+        _classCallCheck(this, HighLevelMetrics);
+
+        return _possibleConstructorReturn(this, (HighLevelMetrics.__proto__ || Object.getPrototypeOf(HighLevelMetrics)).call(this, props));
+    }
+
+    _createClass(HighLevelMetrics, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                { className: "container", style: { marginBottom: 15 + "px" } },
+                React.createElement(
+                    "div",
+                    { className: "row" },
+                    React.createElement(
+                        "div",
+                        { className: "col" },
+                        React.createElement(
+                            "div",
+                            { className: "notification" },
+                            React.createElement(
+                                "div",
+                                { className: "notification_title" },
+                                "Active"
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "notification_desc" },
+                                "10"
+                            ),
+                            React.createElement(
+                                "i",
+                                { className: "fa fa-info-circle", style: { float: "right" } },
+                                React.createElement(
+                                    "span",
+                                    { className: "tooltiptext" },
+                                    "Number of purchase orders that are active and not near empty"
+                                )
+                            )
+                        )
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "col" },
+                        React.createElement(
+                            "div",
+                            { className: "notification" },
+                            React.createElement(
+                                "div",
+                                { className: "notification_title" },
+                                "Near empty"
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "notification_desc", id: "nearEmpty" },
+                                "0"
+                            ),
+                            React.createElement(
+                                "i",
+                                { className: "fa fa-info-circle", style: { float: "right" } },
+                                React.createElement(
+                                    "span",
+                                    { className: "tooltiptext" },
+                                    "Number of purchase orders near empty according to set percentage"
+                                )
+                            )
+                        )
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "col" },
+                        React.createElement(
+                            "div",
+                            { className: "notification" },
+                            React.createElement(
+                                "div",
+                                { className: "notification_title" },
+                                "Empty"
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "notification_desc", id: "empty" },
+                                "100"
+                            ),
+                            React.createElement(
+                                "i",
+                                { className: "fa fa-info-circle", style: { float: "right" } },
+                                React.createElement(
+                                    "span",
+                                    { className: "tooltiptext" },
+                                    "Number of purchase orders that are empty and are not marked as disposed"
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return HighLevelMetrics;
+}(React.Component);
+
+var ExpenseList = function (_React$Component6) {
+    _inherits(ExpenseList, _React$Component6);
 
     function ExpenseList(props) {
         _classCallCheck(this, ExpenseList);
 
-        var _this10 = _possibleConstructorReturn(this, (ExpenseList.__proto__ || Object.getPrototypeOf(ExpenseList)).call(this, props));
+        var _this12 = _possibleConstructorReturn(this, (ExpenseList.__proto__ || Object.getPrototypeOf(ExpenseList)).call(this, props));
 
-        _this10.state = {
+        _this12.state = {
             message: [],
-            budget: null,
-            showAddExpense: false
+            budget: null
         };
-        return _this10;
+        return _this12;
     }
 
     _createClass(ExpenseList, [{
-        key: "handleToggle",
-        value: function handleToggle() {
-            if (this.state.showAddExpense) this.setState({ showAddExpense: false });else this.setState({ showAddExpense: true });
+        key: "changeTaxRate",
+        value: function changeTaxRate() {
+            var newTax;
+            do {
+                newTax = prompt("What is the new tax rate you want? Please enter as percentage (E.G. 0.235 should be 23.5%)");
+                if (newTax == null) return;
+            } while (isNaN(newTax));
+            newTax = parseFloat(newTax);
+            newTax = newTax / 100;
+            newTax = newTax.toFixed(4);
+
+            fetch("/finance/updateBudgetTax?budgetId=" + this.state.budget.account_id + "&taxRate=" + newTax).then(function (res) {
+                return res.json();
+            }).then(function (result) {
+                location.reload();
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            function (error) {
+                alert("Error!");
+                console.log(error);
+            });
         }
     }, {
         key: "componentDidMount",
         value: function componentDidMount() {
-            var _this11 = this;
+            var _this13 = this;
 
             eventBus.on("expense", function (data) {
-                return _this11.setState({ message: data.message, budget: data.budget });
+                return _this13.setState({ message: data.message, budget: data.budget });
             });
         }
     }, {
@@ -424,18 +553,35 @@ var ExpenseList = function (_React$Component5) {
     }, {
         key: "render",
         value: function render() {
-            var table = void 0;
-            if (this.state.budget != null) table = React.createElement(ExpenseTable, { message: this.state.message });
+            var _this14 = this;
+
+            var tax_rate = void 0;
+            if (this.state.budget != null) tax_rate = parseFloat(this.state.budget.tax_rate) * 100 + "%";
 
             return React.createElement(
                 "div",
                 null,
-                React.createElement(
-                    "div",
+                this.state.budget != null ? React.createElement(
+                    "span",
                     null,
-                    this.state.budget != null ? React.createElement(ExpenseFormDropDown, { budgetId: this.state.budget }) : null
-                ),
-                table
+                    React.createElement(
+                        "h2",
+                        { style: { textAlign: "center" } },
+                        this.state.budget.account_name
+                    ),
+                    React.createElement(
+                        "h4",
+                        { id: "taxRate" },
+                        tax_rate,
+                        " ",
+                        React.createElement("i", { className: "fa fa-edit editMe", onClick: function onClick() {
+                                return _this14.changeTaxRate();
+                            } })
+                    ),
+                    React.createElement(HighLevelMetrics, { data: this.state.message }),
+                    React.createElement(ExpenseFormDropDown, { budgetId: this.state.budget.account_id, budget: this.state.budget }),
+                    React.createElement(ExpenseTable, { message: this.state.message, budget: this.state.budget })
+                ) : null
             );
         }
     }]);
@@ -443,8 +589,8 @@ var ExpenseList = function (_React$Component5) {
     return ExpenseList;
 }(React.Component);
 
-var Budget = function (_React$Component6) {
-    _inherits(Budget, _React$Component6);
+var Budget = function (_React$Component7) {
+    _inherits(Budget, _React$Component7);
 
     function Budget(props) {
         _classCallCheck(this, Budget);
@@ -460,14 +606,14 @@ var Budget = function (_React$Component6) {
     }, {
         key: "deleteBudget",
         value: function deleteBudget() {
-            var _this13 = this;
+            var _this16 = this;
 
-            if (confirm("Are you sure you want to delete budget " + this.props.data.account_name)) {
+            if (confirm("Are you sure you want to delete budget: '" + this.props.data.account_name + "'")) {
                 fetch("/finance/deleteBudget?budgetId=" + this.props.data.account_id).then(function (res) {
                     return res.json();
                 }).then(function (result) {
-                    _this13.props.updateFunction();
-                    updateExpenseList(null, true);
+                    _this16.props.updateFunction();
+                    updateExpenseList(null);
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -481,12 +627,12 @@ var Budget = function (_React$Component6) {
     }, {
         key: "render",
         value: function render() {
-            var _this14 = this;
+            var _this17 = this;
 
             return React.createElement(
                 "a",
                 { onClick: function onClick() {
-                        return _this14.handleNewReleaseClick(_this14.props.data.account_id);
+                        return _this17.handleNewReleaseClick(_this17.props.data);
                     } },
                 React.createElement(
                     "span",
@@ -494,7 +640,7 @@ var Budget = function (_React$Component6) {
                     this.props.data.account_name
                 ),
                 React.createElement("i", { className: "fa fa-minus-circle deleteMe", onClick: function onClick() {
-                        return _this14.deleteBudget();
+                        return _this17.deleteBudget();
                     } })
             );
         }
@@ -503,29 +649,29 @@ var Budget = function (_React$Component6) {
     return Budget;
 }(React.Component);
 
-var BudgetList = function (_React$Component7) {
-    _inherits(BudgetList, _React$Component7);
+var BudgetList = function (_React$Component8) {
+    _inherits(BudgetList, _React$Component8);
 
     function BudgetList(props) {
         _classCallCheck(this, BudgetList);
 
-        var _this15 = _possibleConstructorReturn(this, (BudgetList.__proto__ || Object.getPrototypeOf(BudgetList)).call(this, props));
+        var _this18 = _possibleConstructorReturn(this, (BudgetList.__proto__ || Object.getPrototypeOf(BudgetList)).call(this, props));
 
-        _this15.state = {
+        _this18.state = {
             budgetArr: []
         };
-        return _this15;
+        return _this18;
     }
 
     _createClass(BudgetList, [{
         key: "updateBudgets",
         value: function updateBudgets() {
-            var _this16 = this;
+            var _this19 = this;
 
             fetch("/finance/budget-list").then(function (res) {
                 return res.json();
             }).then(function (result) {
-                _this16.setState({ budgetArr: result });
+                _this19.setState({ budgetArr: result });
             }, function (error) {
                 alert("Error!");
                 console.log(error);
@@ -539,22 +685,27 @@ var BudgetList = function (_React$Component7) {
     }, {
         key: "addBudget",
         value: function addBudget() {
-            var _this17 = this;
+            var _this20 = this;
 
-            var getSalary;
-            do {
-                getSalary = prompt("What is the expected salary? Enter only numbers.");
-                if (getSalary == null) return;
-            } while (isNaN(getSalary));
             var getName;
             do {
                 getName = prompt("What is the name of the budget?");
                 if (getName == null) return;
             } while (getName.trim() == "");
+            var getSalary;
+            do {
+                getSalary = prompt("What is the expected salary? Enter only numbers.");
+                if (getSalary == null) return;
+            } while (isNaN(getSalary));
+            var taxRate;
+            if (getSalary < 10000) taxRate = 0.175;else {
+                taxRate = parseFloat((0.175 + 0.0075 * Math.round((getSalary - 10000) / 5000)).toFixed(4));
+            }
 
             var data = {
                 salary: getSalary,
-                accountName: getName
+                accountName: getName,
+                taxRate: taxRate
             };
 
             fetch("/finance/addBudget", {
@@ -566,7 +717,7 @@ var BudgetList = function (_React$Component7) {
             }).then(function (res) {
                 return res.json();
             }).then(function (result) {
-                _this17.updateBudgets();
+                _this20.updateBudgets();
             }, function (error) {
                 alert("Error!");
                 console.log(error);
@@ -575,7 +726,7 @@ var BudgetList = function (_React$Component7) {
     }, {
         key: "render",
         value: function render() {
-            var _this18 = this;
+            var _this21 = this;
 
             return React.createElement(
                 "span",
@@ -587,7 +738,7 @@ var BudgetList = function (_React$Component7) {
                         return React.createElement(
                             "div",
                             { key: index },
-                            React.createElement(Budget, { data: budget, updateFunction: _this18.updateBudgets.bind(_this18) })
+                            React.createElement(Budget, { data: budget, updateFunction: _this21.updateBudgets.bind(_this21) })
                         );
                     })
                 ),
@@ -597,7 +748,7 @@ var BudgetList = function (_React$Component7) {
                     React.createElement(
                         "a",
                         { className: "btn btn-success btn-lg sideBarButtons", onClick: function onClick() {
-                                return _this18.addBudget();
+                                return _this21.addBudget();
                             } },
                         "Add budget"
                     )

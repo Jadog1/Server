@@ -96,6 +96,17 @@ app.get('/finance/budget-list', async function (req, res) {
     } else
         res.json({'Error': 'Account not logged in'});
 });
+app.get('/finance/updateBudgetTax', async function (req, res) {
+    try {
+        await queries.updateTaxRate(req.query.budgetId, req.query.taxRate);
+        res.status(200);
+        res.json({ success: "OK" });
+    } catch (e) {
+        console.log(e);
+        res.status(400);
+        res.json({ error: 'Error has occured' });
+    }
+});
 app.get('/finance/deleteBudget', async function (req, res) {
     try {
         await queries.deleteBudget(req.query.budgetId);
@@ -212,7 +223,7 @@ app.post('/finance/addBudget', jsonParser, async function (req, res) {
     try {
         const userId = getAppCookies(req)['userId'];
         if (isLogged(userId)) {
-            await queries.addBudget(req.body.salary, req.body.accountName, userId);
+            await queries.addBudget(req.body.salary, req.body.accountName, userId, req.body.taxRate);
             res.status(201);
             res.json({ success: "OK" });
         } else {

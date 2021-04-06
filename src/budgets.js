@@ -12,15 +12,17 @@ const eventBus = {
     },
 };
 
-function updateExpenseList(budgetId, needNull = false) {
-    if (needNull == true)
+function updateExpenseList(budget) {
+    if (budget == null) {
         eventBus.dispatch("expense", { message: [], budget: null });
+        return;
+    }
 
-    fetch("/finance/expense-list?budgetId=" + budgetId)
+    fetch("/finance/expense-list?budgetId=" + budget.account_id)
         .then(res => res.json())
         .then(
             (result) => {
-                eventBus.dispatch("expense", { message: result, budget: budgetId });
+                eventBus.dispatch("expense", { message: result, budget: budget});
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -73,7 +75,7 @@ class ExpenseForm extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    updateExpenseList(this.props.budgetId);
+                    updateExpenseList(this.props.budget);
                     this.props.resetRender(null);
                 },
                 (error) => {
@@ -110,11 +112,11 @@ class ExpenseForm extends React.Component {
                 <input type="number" name="amount" id="amount" onChange={this.handleChangeAmount.bind(this)} /><br />
                 {this.props.goal == true ?
                     (<span><label htmlFor="date">Expiration date:</label>
-                <input type="date" name="date" id="date" onChange={this.handleChangeDate.bind(this)} /><br />
-                <label htmlFor="optional">Optional:</label>
-                <input type="checkbox" name="optional" id="optional" onChange={this.handleChangeOptional.bind(this)} /><br />
-                <label htmlFor="amountPaid">Amount paid:</label>
-                <input type="number" name="amountPaid" id="amountPaid" onChange={this.handleChangeAmountPaid.bind(this)} /><br /></span>) : null}
+                        <input type="date" name="date" id="date" onChange={this.handleChangeDate.bind(this)} /><br />
+                        <label htmlFor="optional">Optional:</label>
+                        <input type="checkbox" name="optional" id="optional" onChange={this.handleChangeOptional.bind(this)} /><br />
+                        <label htmlFor="amountPaid">Amount paid:</label>
+                        <input type="number" name="amountPaid" id="amountPaid" onChange={this.handleChangeAmountPaid.bind(this)} /><br /></span>) : null}
                 <label htmlFor="budgetId">Budget ID:</label>
                 <input type="text" name="budgetId" id="budgetId" readOnly value={this.props.budgetId} /><br />
                 <input type="submit" value="Submit" id="registerSubmit" onClick={() => this.submitForm()} />
@@ -134,7 +136,7 @@ class Expense extends React.Component {
                 .then(res => res.json())
                 .then(
                     (result) => {
-                        updateExpenseList(this.props.data.budget_id);
+                        updateExpenseList(this.props.budget);
                     },
                     // Note: it's important to handle errors here
                     // instead of a catch() block so that we don't swallow
@@ -179,7 +181,7 @@ class ExpenseTable extends React.Component {
                 </thead>
                 <tbody>
                     {this.props.message.map((expense, index) => (
-                        <Expense data={expense} key={index} />
+                        <Expense data={expense} budget={this.props.budget} key={index} />
                     ))}
                 </tbody>
             </table>
@@ -203,13 +205,55 @@ class ExpenseFormDropDown extends React.Component {
         return (
             <div className="container">
                 <div className="dropdown" style={{ float: 'left' }} >
-                    <button className="btn btn-success" type="button" data-toggle="dropdown">Add <span class="caret"></span></button>
+                    <button className="btn btn-success" type="button" data-toggle="dropdown">Add <span className="caret"></span></button>
                     <ul className="dropdown-menu">
-                        <li className="ExpenseDropDown" onClick={() => this.renderExpenseForm(false) }>Expense</li>
+                        <li className="ExpenseDropDown" onClick={() => this.renderExpenseForm(false)}>Expense</li>
                         <li className="ExpenseDropDown" onClick={() => this.renderExpenseForm(true)}>Goal</li>
                     </ul>
                 </div>
-                {this.state.goal != null ? <ExpenseForm budgetId={this.props.budgetId} goal={this.state.goal} resetRender={this.renderExpenseForm.bind(this)} /> : null}
+                {this.state.goal != null ? <ExpenseForm budgetId={this.props.budgetId} budget={this.props.budget} goal={this.state.goal} resetRender={this.renderExpenseForm.bind(this)} /> : null}
+            </div>
+        );
+    }
+}
+
+class HighLevelMetrics extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="container" style={{ marginBottom: 15 + "px" }}>
+                <div className="row">
+                    <div className="col">
+                        <div className="notification">
+                            <div className="notification_title">Active</div>
+                            <div className="notification_desc">10</div>
+                            <i className="fa fa-info-circle" style={{ float: "right" }}>
+                                <span className="tooltiptext">Number of purchase orders that are active and not near empty</span>
+                            </i>
+                        </div>
+                    </div>
+                    <div className="col">
+                        <div className="notification">
+                            <div className="notification_title">Near empty</div>
+                            <div className="notification_desc" id="nearEmpty">0</div>
+                            <i className="fa fa-info-circle" style={{ float: "right" }}>
+                                <span className="tooltiptext">Number of purchase orders near empty according to set percentage</span>
+                            </i>
+                        </div>
+                    </div>
+                    <div className="col">
+                        <div className="notification">
+                            <div className="notification_title">Empty</div>
+                            <div className="notification_desc" id="empty">100</div>
+                            <i className="fa fa-info-circle" style={{ float: "right" }}>
+                                <span className="tooltiptext">Number of purchase orders that are empty and are not marked as disposed</span>
+                            </i>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -221,15 +265,33 @@ class ExpenseList extends React.Component {
         this.state = {
             message: [],
             budget: null,
-            showAddExpense: false
         }
     }
+    changeTaxRate() {
+        var newTax;
+        do {
+            newTax = prompt("What is the new tax rate you want? Please enter as percentage (E.G. 0.235 should be 23.5%)")
+            if (newTax == null)
+                return;
+        } while (isNaN(newTax))
+        newTax = parseFloat(newTax);
+        newTax = newTax / 100;
+        newTax = newTax.toFixed(4);
 
-    handleToggle() {
-        if (this.state.showAddExpense)
-            this.setState({ showAddExpense: false });
-        else
-            this.setState({ showAddExpense: true });
+        fetch("/finance/updateBudgetTax?budgetId=" + this.state.budget.account_id + "&taxRate=" + newTax)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    location.reload();
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    alert("Error!");
+                    console.log(error)
+                }
+            )
     }
 
     componentDidMount() {
@@ -244,18 +306,21 @@ class ExpenseList extends React.Component {
 
 
     render() {
-        let table;
-        if (this.state.budget != null)
-            table = <ExpenseTable message={this.state.message} />
+        let tax_rate;
+        if(this.state.budget != null)
+            tax_rate = (parseFloat(this.state.budget.tax_rate) * 100) + "%";
 
         return (
             <div>
-                <div>
-                    {this.state.budget != null ?
-                        <ExpenseFormDropDown budgetId={this.state.budget} />
-                        : null}
-                </div>
-                {table}
+                {this.state.budget != null ?
+                    < span >
+                        <h2 style={{ textAlign: "center" }}>{this.state.budget.account_name}</h2>
+                        <h4 id="taxRate">{tax_rate} <i className="fa fa-edit editMe" onClick={() => this.changeTaxRate()} ></i></h4>
+                        <HighLevelMetrics data={this.state.message} />
+                        <ExpenseFormDropDown budgetId={this.state.budget.account_id} budget={this.state.budget} />
+                        <ExpenseTable message={this.state.message} budget={this.state.budget} />
+                    </span> : null
+                }
             </div>
         );
     }
@@ -270,13 +335,13 @@ class Budget extends React.Component {
         updateExpenseList(newRelease);
     }
     deleteBudget() {
-        if (confirm("Are you sure you want to delete budget " + this.props.data.account_name)) {
+        if (confirm("Are you sure you want to delete budget: '" + this.props.data.account_name + "'")) {
             fetch("/finance/deleteBudget?budgetId=" + this.props.data.account_id)
                 .then(res => res.json())
                 .then(
                     (result) => {
                         this.props.updateFunction();
-                        updateExpenseList(null, true);
+                        updateExpenseList(null);
                     },
                     // Note: it's important to handle errors here
                     // instead of a catch() block so that we don't swallow
@@ -291,7 +356,7 @@ class Budget extends React.Component {
 
     render() {
         return (
-            <a onClick={() => this.handleNewReleaseClick(this.props.data.account_id)}>
+            <a onClick={() => this.handleNewReleaseClick(this.props.data)}>
                 <span>{this.props.data.account_name}</span>
                 <i className="fa fa-minus-circle deleteMe" onClick={() => this.deleteBudget()}></i>
             </a>
@@ -326,22 +391,29 @@ class BudgetList extends React.Component {
     }
 
     addBudget() {
-        var getSalary;
-        do {
-            getSalary = prompt("What is the expected salary? Enter only numbers.");
-            if (getSalary == null)
-                return;
-        } while (isNaN(getSalary))
         var getName;
         do {
             getName = prompt("What is the name of the budget?");
             if (getName == null)
                 return;
         } while (getName.trim() == "")
+        var getSalary;
+        do {
+            getSalary = prompt("What is the expected salary? Enter only numbers.");
+            if (getSalary == null)
+                return;
+        } while (isNaN(getSalary))
+        var taxRate;
+        if (getSalary < 10000)
+            taxRate = 0.175;
+        else {
+            taxRate = parseFloat(((0.175) + (0.0075 * (Math.round((getSalary - 10000) / 5000)))).toFixed(4));
+        }
 
         var data = {
             salary: getSalary,
-            accountName: getName
+            accountName: getName,
+            taxRate: taxRate
         };
 
         fetch("/finance/addBudget", {
@@ -357,7 +429,7 @@ class BudgetList extends React.Component {
                     this.updateBudgets();
                 },
                 (error) => {
-                    alert("Error!"); 
+                    alert("Error!");
                     console.log(error);
                 }
             )
