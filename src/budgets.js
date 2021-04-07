@@ -22,7 +22,7 @@ function updateExpenseList(budget) {
         .then(res => res.json())
         .then(
             (result) => {
-                eventBus.dispatch("expense", { message: result, budget: budget});
+                eventBus.dispatch("expense", { message: result, budget: budget });
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -108,12 +108,13 @@ class ExpenseForm extends React.Component {
                 <i onClick={() => this.props.resetRender(null)} className="fa fa-times-circle deleteMe"></i>
                 <label htmlFor="expenseName">Name of expense:</label>
                 <input type="text" name="expenseName" id="expenseName" onChange={this.handleChangeName.bind(this)} /><br />
-                <label htmlFor="amount">Expected cost:</label>
-                <input type="number" name="amount" id="amount" onChange={this.handleChangeAmount.bind(this)} /><br />
+                <label htmlFor="amount">Monthly expected cost:</label>
+                <input type="number" name="amount" id="amount" onChange={this.handleChangeAmount.bind(this)} />
+                <br />
                 {this.props.goal == true ?
                     (<span><label htmlFor="date">Expiration date:</label>
                         <input type="date" name="date" id="date" onChange={this.handleChangeDate.bind(this)} /><br />
-                        <label htmlFor="optional">Optional:</label>
+                        <label htmlFor="optional">Optional payments:</label>
                         <input type="checkbox" name="optional" id="optional" onChange={this.handleChangeOptional.bind(this)} /><br />
                         <label htmlFor="amountPaid">Amount paid:</label>
                         <input type="number" name="amountPaid" id="amountPaid" onChange={this.handleChangeAmountPaid.bind(this)} /><br /></span>) : null}
@@ -150,13 +151,17 @@ class Expense extends React.Component {
     }
 
     render() {
+        let amountFormat = parseFloat(this.props.data.amount).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+        let amount_paidFormat;
+        if(this.props.data.amount_paid != null)
+            amount_paidFormat = parseFloat(this.props.data.amount_paid).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
         return (
             <tr onClick={() => this.deleteExpense()}>
                 <td>{this.props.data.expense_name}</td>
-                <td>{this.props.data.amount}</td>
+                <td>${amountFormat}</td>
                 <td>{this.props.data.expiration_date}</td>
                 <td>{this.props.data.optional == null ? "False" : "True"}</td>
-                <td>{this.props.data.amount_paid}</td>
+                <td>${amount_paidFormat}</td>
             </tr>
         );
     }
@@ -228,32 +233,43 @@ class HighLevelMetrics extends React.Component {
         var cost = 0;
         var i;
         for (i = 0; i < allExpenses.length; i++) {
-            cost += parseFloat(allExpenses[i].amount);
+            var expenseAmount = parseFloat(allExpenses[i].amount);
+            if (allExpenses[i].expiration_date != null) {
+                expenseAmount -= parseFloat(allExpenses[i].amount_paid);
+                var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                var secondDate = new Date(allExpenses[i].expiration_date + "T00:00:00");
+                var firstDate = new Date();
+                var numDays = Math.ceil(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+                var numMonths = (numDays / 30 < 1 ? 1 : Math.floor(numDays / 30));
+                expenseAmount = expenseAmount / numMonths;
+            } else
+                expenseAmount = expenseAmount * 12;
+            cost += parseFloat(expenseAmount);
         }
         var includeTax = (afterTax * parseFloat(this.props.budget.tax_rate))
         afterTax -= includeTax
-        afterTax -= (cost * 12);
-        var yearly = (afterTax.toFixed(2));
-        var monthly = ((afterTax / 12).toFixed(2));
-        var weekly = ((afterTax / 48).toFixed(2));
+        afterTax -= (cost);
+        var yearly = (afterTax.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }));
+        var monthly = ((afterTax / 12).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }));
+        var weekly = ((afterTax / 48).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }));
         return (
             <div className="container" style={{ textAlign: "center", marginBottom: 15 + "px" }}>
                 <div className="row">
                     <div className="col">
                         <div className="notification">
-                            <div className="notification_title">Yearly quota</div>
+                            <div className="notification_title">Yearly aftermath</div>
                             <div className="notification_desc">${yearly}</div>
                         </div>
                     </div>
                     <div className="col">
                         <div className="notification">
-                            <div className="notification_title">Monthly quota</div>
+                            <div className="notification_title">Monthly aftermath</div>
                             <div className="notification_desc" id="nearEmpty">${monthly}</div>
                         </div>
                     </div>
                     <div className="col">
                         <div className="notification">
-                            <div className="notification_title">Weekly quota</div>
+                            <div className="notification_title">Weekly aftermath</div>
                             <div className="notification_desc" id="empty">${weekly}</div>
                         </div>
                     </div>
@@ -310,16 +326,22 @@ class ExpenseList extends React.Component {
 
 
     render() {
-        let tax_rate;
-        if(this.state.budget != null)
+        let tax_rate, net_income, displayedSalary;
+        if (this.state.budget != null) {
+            let salary = parseFloat(this.state.budget.salary)
             tax_rate = (parseFloat(this.state.budget.tax_rate) * 100) + "%";
+            displayedSalary = salary.toLocaleString('en-US', { maximumFractionDigits: 0});
+            net_income = (salary - (salary * parseFloat(this.state.budget.tax_rate))).toLocaleString('en-US', { maximumFractionDigits: 0});
+        }
 
         return (
             <div>
                 {this.state.budget != null ?
                     < span >
-                        <h2 style={{ textAlign: "center" }}>{this.state.budget.account_name}</h2>
-                        <h4 id="taxRate">{tax_rate} <i className="fa fa-edit editMe" onClick={() => this.changeTaxRate()} ></i></h4>
+                        <h1 style={{ textAlign: "center", fontWeight: "bolder" }}>{this.state.budget.account_name}</h1>
+                        <h3 style={{ textAlign: "center" }}>Gross income: ${displayedSalary}</h3>
+                        <h3 style={{ textAlign: "center" }}>Net income: ${net_income} </h3>
+                        <h4 id="taxRate">Tax rate: {tax_rate} <i className="fa fa-edit editMe" onClick={() => this.changeTaxRate()} ></i></h4>
                         <HighLevelMetrics data={this.state.message} budget={this.state.budget} />
                         <ExpenseFormDropDown budgetId={this.state.budget.account_id} budget={this.state.budget} />
                         <ExpenseTable message={this.state.message} budget={this.state.budget} />

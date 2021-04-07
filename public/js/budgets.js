@@ -145,7 +145,7 @@ var ExpenseForm = function (_React$Component) {
                 React.createElement(
                     "label",
                     { htmlFor: "amount" },
-                    "Expected cost:"
+                    "Monthly expected cost:"
                 ),
                 React.createElement("input", { type: "number", name: "amount", id: "amount", onChange: this.handleChangeAmount.bind(this) }),
                 React.createElement("br", null),
@@ -162,7 +162,7 @@ var ExpenseForm = function (_React$Component) {
                     React.createElement(
                         "label",
                         { htmlFor: "optional" },
-                        "Optional:"
+                        "Optional payments:"
                     ),
                     React.createElement("input", { type: "checkbox", name: "optional", id: "optional", onChange: this.handleChangeOptional.bind(this) }),
                     React.createElement("br", null),
@@ -225,6 +225,9 @@ var Expense = function (_React$Component2) {
         value: function render() {
             var _this6 = this;
 
+            var amountFormat = parseFloat(this.props.data.amount).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+            var amount_paidFormat = void 0;
+            if (this.props.data.amount_paid != null) amount_paidFormat = parseFloat(this.props.data.amount_paid).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
             return React.createElement(
                 "tr",
                 { onClick: function onClick() {
@@ -238,7 +241,8 @@ var Expense = function (_React$Component2) {
                 React.createElement(
                     "td",
                     null,
-                    this.props.data.amount
+                    "$",
+                    amountFormat
                 ),
                 React.createElement(
                     "td",
@@ -253,7 +257,8 @@ var Expense = function (_React$Component2) {
                 React.createElement(
                     "td",
                     null,
-                    this.props.data.amount_paid
+                    "$",
+                    amount_paidFormat
                 )
             );
         }
@@ -406,14 +411,24 @@ var HighLevelMetrics = function (_React$Component5) {
             var cost = 0;
             var i;
             for (i = 0; i < allExpenses.length; i++) {
-                cost += parseFloat(allExpenses[i].amount);
+                var expenseAmount = parseFloat(allExpenses[i].amount);
+                if (allExpenses[i].expiration_date != null) {
+                    expenseAmount -= parseFloat(allExpenses[i].amount_paid);
+                    var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                    var secondDate = new Date(allExpenses[i].expiration_date + "T00:00:00");
+                    var firstDate = new Date();
+                    var numDays = Math.ceil(Math.abs((firstDate.getTime() - secondDate.getTime()) / oneDay));
+                    var numMonths = numDays / 30 < 1 ? 1 : Math.floor(numDays / 30);
+                    expenseAmount = expenseAmount / numMonths;
+                } else expenseAmount = expenseAmount * 12;
+                cost += parseFloat(expenseAmount);
             }
             var includeTax = afterTax * parseFloat(this.props.budget.tax_rate);
             afterTax -= includeTax;
-            afterTax -= cost * 12;
-            var yearly = afterTax.toFixed(2);
-            var monthly = (afterTax / 12).toFixed(2);
-            var weekly = (afterTax / 48).toFixed(2);
+            afterTax -= cost;
+            var yearly = afterTax.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+            var monthly = (afterTax / 12).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+            var weekly = (afterTax / 48).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
             return React.createElement(
                 "div",
                 { className: "container", style: { textAlign: "center", marginBottom: 15 + "px" } },
@@ -429,7 +444,7 @@ var HighLevelMetrics = function (_React$Component5) {
                             React.createElement(
                                 "div",
                                 { className: "notification_title" },
-                                "Yearly quota"
+                                "Yearly aftermath"
                             ),
                             React.createElement(
                                 "div",
@@ -448,7 +463,7 @@ var HighLevelMetrics = function (_React$Component5) {
                             React.createElement(
                                 "div",
                                 { className: "notification_title" },
-                                "Monthly quota"
+                                "Monthly aftermath"
                             ),
                             React.createElement(
                                 "div",
@@ -467,7 +482,7 @@ var HighLevelMetrics = function (_React$Component5) {
                             React.createElement(
                                 "div",
                                 { className: "notification_title" },
-                                "Weekly quota"
+                                "Weekly aftermath"
                             ),
                             React.createElement(
                                 "div",
@@ -544,8 +559,15 @@ var ExpenseList = function (_React$Component6) {
         value: function render() {
             var _this14 = this;
 
-            var tax_rate = void 0;
-            if (this.state.budget != null) tax_rate = parseFloat(this.state.budget.tax_rate) * 100 + "%";
+            var tax_rate = void 0,
+                net_income = void 0,
+                displayedSalary = void 0;
+            if (this.state.budget != null) {
+                var salary = parseFloat(this.state.budget.salary);
+                tax_rate = parseFloat(this.state.budget.tax_rate) * 100 + "%";
+                displayedSalary = salary.toLocaleString('en-US', { maximumFractionDigits: 0 });
+                net_income = (salary - salary * parseFloat(this.state.budget.tax_rate)).toLocaleString('en-US', { maximumFractionDigits: 0 });
+            }
 
             return React.createElement(
                 "div",
@@ -554,13 +576,27 @@ var ExpenseList = function (_React$Component6) {
                     "span",
                     null,
                     React.createElement(
-                        "h2",
-                        { style: { textAlign: "center" } },
+                        "h1",
+                        { style: { textAlign: "center", fontWeight: "bolder" } },
                         this.state.budget.account_name
+                    ),
+                    React.createElement(
+                        "h3",
+                        { style: { textAlign: "center" } },
+                        "Gross income: $",
+                        displayedSalary
+                    ),
+                    React.createElement(
+                        "h3",
+                        { style: { textAlign: "center" } },
+                        "Net income: $",
+                        net_income,
+                        " "
                     ),
                     React.createElement(
                         "h4",
                         { id: "taxRate" },
+                        "Tax rate: ",
                         tax_rate,
                         " ",
                         React.createElement("i", { className: "fa fa-edit editMe", onClick: function onClick() {
