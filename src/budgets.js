@@ -154,14 +154,14 @@ class Expense extends React.Component {
         let amountFormat = parseFloat(this.props.data.amount).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
         let amount_paidFormat;
         if(this.props.data.amount_paid != null)
-            amount_paidFormat = parseFloat(this.props.data.amount_paid).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+            amount_paidFormat = "$" + parseFloat(this.props.data.amount_paid).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
         return (
             <tr onClick={() => this.deleteExpense()}>
                 <td>{this.props.data.expense_name}</td>
                 <td>${amountFormat}</td>
                 <td>{this.props.data.expiration_date}</td>
                 <td>{this.props.data.optional == null ? "False" : "True"}</td>
-                <td>${amount_paidFormat}</td>
+                <td>{amount_paidFormat}</td>
             </tr>
         );
     }

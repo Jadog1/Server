@@ -227,7 +227,7 @@ var Expense = function (_React$Component2) {
 
             var amountFormat = parseFloat(this.props.data.amount).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
             var amount_paidFormat = void 0;
-            if (this.props.data.amount_paid != null) amount_paidFormat = parseFloat(this.props.data.amount_paid).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+            if (this.props.data.amount_paid != null) amount_paidFormat = "$" + parseFloat(this.props.data.amount_paid).toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
             return React.createElement(
                 "tr",
                 { onClick: function onClick() {
@@ -257,7 +257,6 @@ var Expense = function (_React$Component2) {
                 React.createElement(
                     "td",
                     null,
-                    "$",
                     amount_paidFormat
                 )
             );
