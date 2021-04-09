@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Distance calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%- include('../partials/Header') %>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <%- include('../partials/navbar') %>
+    <style>
+        #optionPane {
+            width: 100%;
+            height: 100px;
+            background-color: #eee;
+        }
+
+        input[type="radio"],
+        label {
+            cursor: pointer;
+        }
+
+        textarea {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        #help {
+            display: inline-block;
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="w3-row-padding w3-padding-64 w3-container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <div id="optionPane">
+            <div id="help" onclick="displayHelp()">
+                <i class="fa fa-question-circle">Help</i>
+            </div>
+            <input id="efficient" type="radio" name="sort" checked="checked" onclick="calculation = 0" />
+            <label for="efficient">Sort by shipping efficiency</label><br />
+            <input id="fair" type="radio" name="sort" onclick="calculation = 0" />
+            <label for="fair">Sort by fairness (NOT IMPLEMENTED YET, will just run the efficiency algorithm for now)</label>
+
+            <a href="/projects/distance"><h4>Click here to return</h4></a>
+        </div>
+
+        <textarea placeholder="Insert addresses here" rows="20" cols="40" id="input"></textarea>
+        <textarea readonly rows="20" cols="40" id="output" placeholder="output"></textarea>
+        <br />
+        <button onclick="chooseCalc()">
+            Calculate
+        </button>
+        FTW: <span id="ftw">0</span>
+        OMA: <span id="oma">0</span>
+        GSO: <span id="gso">0</span>
+        <button onclick="clearVals()">
+            Clear
+        </button> <br />
+        <h1>Efficiency</h1>
+        <p>
+            I am currently working on changing the algorithm for both fairness and efficiency algorithms. As of right now, the efficiency algorithm is using the new algorithm that I designed that relies on km distance between states, as opposed to my previous setup which relied on basic graph theory and grouping of states. This should help to improve overall speed, and accuracy, of location pickings.
+        </p>
+    </div>
+
+
+    <script>
+        var cachedDistances;
+        var cachedStateLocations = [];
+        //Find the current state depots, which is kept up to date on a JSON file
+        $(document).ready(function () {
+            $.get("/currentDepots", function (data) {
+                cachedDistances = data;
+                //The below loop is to quickly find the states
+                for (var i = 0; i < data[0].distances.length; i++) {
+                    cachedStateLocations[data[0].distances[i].name] = i;
+                }
+            });
+        });
+        function depotObj(name, state) {
+            this.name = name;
+            this.state = state;
+            this.assigned = 0;
+        }
+        var depotList = [new depotObj("FTW", "IN"), new depotObj("OMA", "NE"), new depotObj("GSO", "NC")]
+
+        function clearVals() {
+            for (i = 0; i < depotList.length; i++) depotList[i].assigned = 0;
+            document.getElementById("output").innerHTML = "";
+            document.getElementById("input").value = "";
+            document.getElementById("ftw").innerHTML = depotList[0].assigned;
+            document.getElementById("oma").innerHTML = depotList[1].assigned;
+            document.getElementById("gso").innerHTML = depotList[2].assigned;
+        }
+
+        var calculation = 0;
+        function chooseCalc() {
+            for (i = 0; i < depotList.length; i++) depotList[i].assigned = 0;
+            document.getElementById("output").innerHTML = "";
+
+            if (calculation == 0) {
+                calculateDistanceEfficient();
+            } else calculateDistanceFair();
+        }
+
+        function calculateDistanceEfficient() {
+            document.getElementById("output").innerHTML = "";
+            //Split the list and set the arrays
+            var list = document.getElementById("input").value;
+            list = list.trim();
+            list = list.split("\n");
+            for (var i = 0; i < list.length; i++) {
+                list[i] = list[i].toUpperCase();
+                var stateInArray = cachedStateLocations[list[i]];
+                if (stateInArray == undefined) {
+                    $('#output').val("Unrecognized state: " + list[i]);
+                    return;
+                }
+
+                var min = Number.MAX_SAFE_INTEGER;
+                var chosenDepot;
+                //Find the most efficient depot
+                for (var searchDepots = 0; searchDepots < cachedDistances.length; searchDepots++) {
+                    var weight = cachedDistances[searchDepots].distances[stateInArray].weight;
+                    if (weight < min) {
+                        min = weight;
+                        chosenDepot = cachedDistances[searchDepots].name
+                    }
+                }
+                var depotName;
+                //Assign out the count to the most efficient depot
+                for (var j = 0; j < depotList.length; j++) {
+                    if (depotList[j].state == chosenDepot) {
+                        depotList[j].assigned++;
+                        depotName = depotList[j].name;
+                        break;
+                    }
+                }
+
+                document.getElementById("output").innerHTML += depotName + "\n";
+            }
+
+            document.getElementById("ftw").innerHTML = depotList[0].assigned;
+            document.getElementById("oma").innerHTML = depotList[1].assigned;
+            document.getElementById("gso").innerHTML = depotList[2].assigned;
+        }
+
+        /****
+         * LEGACY
+         * */
+
+        function calculateDistanceFair() {
+            document.getElementById("output").innerHTML = "";
+            //Split the list and set the arrays
+            var list = document.getElementById("input").value;
+            list = list.trim();
+            list = list.split("\n");
+
+            for (var i = 0; i < list.length; i++) {
+                list[i] = list[i].toUpperCase();
+                var stateInArray = cachedStateLocations[list[i]];
+                if (stateInArray == undefined) {
+                    $('#output').text("Unrecognized state: " + list[i]);
+                    return;
+                }
+
+                var min = Number.MAX_SAFE_INTEGER;
+                var chosenDepot;
+                //Find the most efficient depot
+                for (var searchDepots = 0; searchDepots < cachedDistances.length; searchDepots++) {
+                    var weight = cachedDistances[searchDepots].distances[stateInArray].weight;
+                    if (weight < min) {
+                        min = weight;
+                        chosenDepot = cachedDistances[searchDepots].name
+                    }
+                }
+                var depotName;
+                //Assign out the count to the most efficient depot
+                for (var j = 0; j < depotList.length; j++) {
+                    if (depotList[j].state == chosenDepot) {
+                        depotList[j].assigned++;
+                        depotName = depotList[j].name;
+                        break;
+                    }
+                }
+
+                document.getElementById("output").innerHTML += depotName + "\n";
+            }
+
+            document.getElementById("ftw").innerHTML = depotList[0].assigned;
+            document.getElementById("oma").innerHTML = depotList[1].assigned;
+            document.getElementById("gso").innerHTML = depotList[2].assigned;
+        }
+
+        function displayHelp() {
+            alert(
+                "This page is used for determining shipping locations based off of state abbreviations. There are two formats of addresses that are accepted. One is with just the state abbreviation alone, or as a full address. Both examples are displayed in the input text field. This is used as a bulk adder for calculating depot shipping locations. It uses a generalized algorithm that I made for calculating distances that values speed over actual distance calculation."
+            );
+            document.getElementById("input").value = "IN\n501 Virginia Ave, Hagerstown, MD 21740"
+        }
+
+
+    </script>
+</body>
+</html>

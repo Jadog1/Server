@@ -65,6 +65,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\pages\Distance.ejs" />
+    <Content Include="views\pages\DistanceNew.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\pages\finance\home.ejs">
       <SubType>Code</SubType>
     </Content>

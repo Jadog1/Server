@@ -68,6 +68,9 @@ app.get('/projects/distort', function (req, res) {
 app.get('/projects/distance', function (req, res) {
     res.render('pages/Distance');
 });
+app.get('/projects/distanceNew', function (req, res) {
+    res.render('pages/DistanceNew');
+});
 app.get('/projects/gamble', function (req, res) {
     res.render('pages/gambling');
 });
