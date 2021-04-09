@@ -1,0 +1,10252 @@
+[
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 0
+      },
+      {
+        "name": "AK",
+        "weight": 5703.110537
+      },
+      {
+        "name": "AZ",
+        "weight": 2254.252825
+      },
+      {
+        "name": "AR",
+        "weight": 563.013818
+      },
+      {
+        "name": "CA",
+        "weight": 3004.222923
+      },
+      {
+        "name": "CO",
+        "weight": 1825.060537
+      },
+      {
+        "name": "CT",
+        "weight": 1626.414659
+      },
+      {
+        "name": "DE",
+        "weight": 1268.452125
+      },
+      {
+        "name": "FL",
+        "weight": 689.41878
+      },
+      {
+        "name": "GA",
+        "weight": 339.652908
+      },
+      {
+        "name": "HI",
+        "weight": 6916.312593
+      },
+      {
+        "name": "ID",
+        "weight": 2742.588304
+      },
+      {
+        "name": "IL",
+        "weight": 874.608165
+      },
+      {
+        "name": "IN",
+        "weight": 887.299215
+      },
+      {
+        "name": "IA",
+        "weight": 1230.713828
+      },
+      {
+        "name": "KS",
+        "weight": 1216.763017
+      },
+      {
+        "name": "KY",
+        "weight": 658.906617
+      },
+      {
+        "name": "LA",
+        "weight": 557.959856
+      },
+      {
+        "name": "ME",
+        "weight": 2116.189055
+      },
+      {
+        "name": "MD",
+        "weight": 1189.629106
+      },
+      {
+        "name": "MA",
+        "weight": 1766.987879
+      },
+      {
+        "name": "MI",
+        "weight": 1335.525933
+      },
+      {
+        "name": "MN",
+        "weight": 1698.327486
+      },
+      {
+        "name": "MS",
+        "weight": 299.721713
+      },
+      {
+        "name": "MO",
+        "weight": 865.948135
+      },
+      {
+        "name": "MT",
+        "weight": 2514.935126
+      },
+      {
+        "name": "NE",
+        "weight": 1545.482144
+      },
+      {
+        "name": "NV",
+        "weight": 2835.356788
+      },
+      {
+        "name": "NH",
+        "weight": 1865.105248
+      },
+      {
+        "name": "NJ",
+        "weight": 1364.383183
+      },
+      {
+        "name": "NM",
+        "weight": 1787.340523
+      },
+      {
+        "name": "NY",
+        "weight": 1580.561796
+      },
+      {
+        "name": "NC",
+        "weight": 681.754369
+      },
+      {
+        "name": "ND",
+        "weight": 2051.592258
+      },
+      {
+        "name": "OH",
+        "weight": 960.696901
+      },
+      {
+        "name": "OK",
+        "weight": 1011.425349
+      },
+      {
+        "name": "OR",
+        "weight": 3183.510442
+      },
+      {
+        "name": "PA",
+        "weight": 1311.226453
+      },
+      {
+        "name": "RI",
+        "weight": 1715.591053
+      },
+      {
+        "name": "SC",
+        "weight": 560.595203
+      },
+      {
+        "name": "SD",
+        "weight": 1766.581327
+      },
+      {
+        "name": "TN",
+        "weight": 394.470347
+      },
+      {
+        "name": "TX",
+        "weight": 1247.501975
+      },
+      {
+        "name": "UT",
+        "weight": 2381.775111
+      },
+      {
+        "name": "VT",
+        "weight": 1791.898161
+      },
+      {
+        "name": "VA",
+        "weight": 1019.359374
+      },
+      {
+        "name": "WA",
+        "weight": 3314.453439
+      },
+      {
+        "name": "WV",
+        "weight": 941.012513
+      },
+      {
+        "name": "WI",
+        "weight": 1373.126896
+      },
+      {
+        "name": "WY",
+        "weight": 2146.953304
+      }
+    ],
+    "name": "AL"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 5703.110537
+      },
+      {
+        "name": "AK",
+        "weight": 0
+      },
+      {
+        "name": "AZ",
+        "weight": 4508.180464
+      },
+      {
+        "name": "AR",
+        "weight": 5225.570435
+      },
+      {
+        "name": "CA",
+        "weight": 3924.773153
+      },
+      {
+        "name": "CO",
+        "weight": 4237.640789
+      },
+      {
+        "name": "CT",
+        "weight": 5446.644096
+      },
+      {
+        "name": "DE",
+        "weight": 5569.326683
+      },
+      {
+        "name": "FL",
+        "weight": 6358.625299
+      },
+      {
+        "name": "GA",
+        "weight": 5767.320931
+      },
+      {
+        "name": "HI",
+        "weight": 5164.650801
+      },
+      {
+        "name": "ID",
+        "weight": 3373.619989
+      },
+      {
+        "name": "IL",
+        "weight": 4869.261703
+      },
+      {
+        "name": "IN",
+        "weight": 4972.455739
+      },
+      {
+        "name": "IA",
+        "weight": 4472.978331
+      },
+      {
+        "name": "KS",
+        "weight": 4612.643187
+      },
+      {
+        "name": "KY",
+        "weight": 5287.004647
+      },
+      {
+        "name": "LA",
+        "weight": 5652.590318
+      },
+      {
+        "name": "ME",
+        "weight": 5255.375346
+      },
+      {
+        "name": "MD",
+        "weight": 5514.103227
+      },
+      {
+        "name": "MA",
+        "weight": 5428.263436
+      },
+      {
+        "name": "MI",
+        "weight": 4681.062472
+      },
+      {
+        "name": "MN",
+        "weight": 4024.930793
+      },
+      {
+        "name": "MS",
+        "weight": 5498.588653
+      },
+      {
+        "name": "MO",
+        "weight": 4843.685498
+      },
+      {
+        "name": "MT",
+        "weight": 3316.503017
+      },
+      {
+        "name": "NE",
+        "weight": 4238.951163
+      },
+      {
+        "name": "NV",
+        "weight": 3690.030399
+      },
+      {
+        "name": "NH",
+        "weight": 5273.792181
+      },
+      {
+        "name": "NJ",
+        "weight": 5517.916743
+      },
+      {
+        "name": "NM",
+        "weight": 4683.614347
+      },
+      {
+        "name": "NY",
+        "weight": 5213.898534
+      },
+      {
+        "name": "NC",
+        "weight": 5640.693153
+      },
+      {
+        "name": "ND",
+        "weight": 3652.547056
+      },
+      {
+        "name": "OH",
+        "weight": 5104.270991
+      },
+      {
+        "name": "OK",
+        "weight": 4893.32576
+      },
+      {
+        "name": "OR",
+        "weight": 3158.761421
+      },
+      {
+        "name": "PA",
+        "weight": 5285.148079
+      },
+      {
+        "name": "RI",
+        "weight": 5489.83454
+      },
+      {
+        "name": "SC",
+        "weight": 5812.408416
+      },
+      {
+        "name": "SD",
+        "weight": 3958.415292
+      },
+      {
+        "name": "TN",
+        "weight": 5369.716828
+      },
+      {
+        "name": "TX",
+        "weight": 5262.590643
+      },
+      {
+        "name": "UT",
+        "weight": 3938.17861
+      },
+      {
+        "name": "VT",
+        "weight": 5221.527104
+      },
+      {
+        "name": "VA",
+        "weight": 5559.006178
+      },
+      {
+        "name": "WA",
+        "weight": 2785.464815
+      },
+      {
+        "name": "WV",
+        "weight": 5345.77189
+      },
+      {
+        "name": "WI",
+        "weight": 4427.652389
+      },
+      {
+        "name": "WY",
+        "weight": 3775.482097
+      }
+    ],
+    "name": "AK"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 2254.252825
+      },
+      {
+        "name": "AK",
+        "weight": 4508.180464
+      },
+      {
+        "name": "AZ",
+        "weight": 0
+      },
+      {
+        "name": "AR",
+        "weight": 1732.421292
+      },
+      {
+        "name": "CA",
+        "weight": 812.748006
+      },
+      {
+        "name": "CO",
+        "weight": 760.768779
+      },
+      {
+        "name": "CT",
+        "weight": 3444.81131
+      },
+      {
+        "name": "DE",
+        "weight": 3206.954578
+      },
+      {
+        "name": "FL",
+        "weight": 2864.462264
+      },
+      {
+        "name": "GA",
+        "weight": 2553.409727
+      },
+      {
+        "name": "HI",
+        "weight": 4671.917881
+      },
+      {
+        "name": "ID",
+        "weight": 1157.438677
+      },
+      {
+        "name": "IL",
+        "weight": 2063.522232
+      },
+      {
+        "name": "IN",
+        "weight": 2309.175073
+      },
+      {
+        "name": "IA",
+        "weight": 1767.009994
+      },
+      {
+        "name": "KS",
+        "weight": 1272.322758
+      },
+      {
+        "name": "KY",
+        "weight": 2442.52812
+      },
+      {
+        "name": "LA",
+        "weight": 1808.604591
+      },
+      {
+        "name": "ME",
+        "weight": 3767.299589
+      },
+      {
+        "name": "MD",
+        "weight": 3108.294629
+      },
+      {
+        "name": "MA",
+        "weight": 3556.125859
+      },
+      {
+        "name": "MI",
+        "weight": 2540.055284
+      },
+      {
+        "name": "MN",
+        "weight": 1951.125065
+      },
+      {
+        "name": "MS",
+        "weight": 1955.359582
+      },
+      {
+        "name": "MO",
+        "weight": 1727.949367
+      },
+      {
+        "name": "MT",
+        "weight": 1442.192147
+      },
+      {
+        "name": "NE",
+        "weight": 1277.61013
+      },
+      {
+        "name": "NV",
+        "weight": 845.993839
+      },
+      {
+        "name": "NH",
+        "weight": 3556.177165
+      },
+      {
+        "name": "NJ",
+        "weight": 3259.680834
+      },
+      {
+        "name": "NM",
+        "weight": 467.749389
+      },
+      {
+        "name": "NY",
+        "weight": 3265.308381
+      },
+      {
+        "name": "NC",
+        "weight": 2758.506822
+      },
+      {
+        "name": "ND",
+        "weight": 1754.316461
+      },
+      {
+        "name": "OH",
+        "weight": 2573.38495
+      },
+      {
+        "name": "OK",
+        "weight": 1308.314435
+      },
+      {
+        "name": "OR",
+        "weight": 1370.796948
+      },
+      {
+        "name": "PA",
+        "weight": 3068.335105
+      },
+      {
+        "name": "RI",
+        "weight": 3544.702659
+      },
+      {
+        "name": "SC",
+        "weight": 2751.092307
+      },
+      {
+        "name": "SD",
+        "weight": 1501.207987
+      },
+      {
+        "name": "TN",
+        "weight": 2230.062501
+      },
+      {
+        "name": "TX",
+        "weight": 1093.2489
+      },
+      {
+        "name": "UT",
+        "weight": 602.003033
+      },
+      {
+        "name": "VT",
+        "weight": 3460.543321
+      },
+      {
+        "name": "VA",
+        "weight": 2990.500891
+      },
+      {
+        "name": "WA",
+        "weight": 1722.735073
+      },
+      {
+        "name": "WV",
+        "weight": 2774.940284
+      },
+      {
+        "name": "WI",
+        "weight": 2181.76556
+      },
+      {
+        "name": "WY",
+        "weight": 1056.514703
+      }
+    ],
+    "name": "AZ"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 563.013818
+      },
+      {
+        "name": "AK",
+        "weight": 5225.570435
+      },
+      {
+        "name": "AZ",
+        "weight": 1732.421292
+      },
+      {
+        "name": "AR",
+        "weight": 0
+      },
+      {
+        "name": "CA",
+        "weight": 2456.566768
+      },
+      {
+        "name": "CO",
+        "weight": 1262.215116
+      },
+      {
+        "name": "CT",
+        "weight": 1858.68818
+      },
+      {
+        "name": "DE",
+        "weight": 1554.012405
+      },
+      {
+        "name": "FL",
+        "weight": 1245.51451
+      },
+      {
+        "name": "GA",
+        "weight": 825.149811
+      },
+      {
+        "name": "HI",
+        "weight": 6404.339173
+      },
+      {
+        "name": "ID",
+        "weight": 2183.018058
+      },
+      {
+        "name": "IL",
+        "weight": 643.486936
+      },
+      {
+        "name": "IN",
+        "weight": 810.221465
+      },
+      {
+        "name": "IA",
+        "weight": 813.192545
+      },
+      {
+        "name": "KS",
+        "weight": 660.808666
+      },
+      {
+        "name": "KY",
+        "weight": 786.375016
+      },
+      {
+        "name": "LA",
+        "weight": 490.315057
+      },
+      {
+        "name": "ME",
+        "weight": 2286.661099
+      },
+      {
+        "name": "MD",
+        "weight": 1459.170136
+      },
+      {
+        "name": "MA",
+        "weight": 1989.923187
+      },
+      {
+        "name": "MI",
+        "weight": 1233.274548
+      },
+      {
+        "name": "MN",
+        "weight": 1305.147542
+      },
+      {
+        "name": "MS",
+        "weight": 285.092794
+      },
+      {
+        "name": "MO",
+        "weight": 421.182754
+      },
+      {
+        "name": "MT",
+        "weight": 1980.000588
+      },
+      {
+        "name": "NE",
+        "weight": 1009.182737
+      },
+      {
+        "name": "NV",
+        "weight": 2274.923806
+      },
+      {
+        "name": "NH",
+        "weight": 2043.401575
+      },
+      {
+        "name": "NJ",
+        "weight": 1628.106503
+      },
+      {
+        "name": "NM",
+        "weight": 1265.642299
+      },
+      {
+        "name": "NY",
+        "weight": 1740.410511
+      },
+      {
+        "name": "NC",
+        "weight": 1040.405781
+      },
+      {
+        "name": "ND",
+        "weight": 1584.115958
+      },
+      {
+        "name": "OH",
+        "weight": 1019.332029
+      },
+      {
+        "name": "OK",
+        "weight": 450.875298
+      },
+      {
+        "name": "OR",
+        "weight": 2621.441933
+      },
+      {
+        "name": "PA",
+        "weight": 1492.242161
+      },
+      {
+        "name": "RI",
+        "weight": 1957.297664
+      },
+      {
+        "name": "SC",
+        "weight": 1018.677746
+      },
+      {
+        "name": "SD",
+        "weight": 1267.189019
+      },
+      {
+        "name": "TN",
+        "weight": 516.114389
+      },
+      {
+        "name": "TX",
+        "weight": 841.524802
+      },
+      {
+        "name": "UT",
+        "weight": 1820.884741
+      },
+      {
+        "name": "VT",
+        "weight": 1955.665623
+      },
+      {
+        "name": "VA",
+        "weight": 1314.528448
+      },
+      {
+        "name": "WA",
+        "weight": 2762.273494
+      },
+      {
+        "name": "WV",
+        "weight": 1139.219292
+      },
+      {
+        "name": "WI",
+        "weight": 1102.904536
+      },
+      {
+        "name": "WY",
+        "weight": 1592.99382
+      }
+    ],
+    "name": "AR"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 3004.222923
+      },
+      {
+        "name": "AK",
+        "weight": 3924.773153
+      },
+      {
+        "name": "AZ",
+        "weight": 812.748006
+      },
+      {
+        "name": "AR",
+        "weight": 2456.566768
+      },
+      {
+        "name": "CA",
+        "weight": 0
+      },
+      {
+        "name": "CO",
+        "weight": 1258.460129
+      },
+      {
+        "name": "CT",
+        "weight": 4012.47223
+      },
+      {
+        "name": "DE",
+        "weight": 3824.502841
+      },
+      {
+        "name": "FL",
+        "weight": 3642.853366
+      },
+      {
+        "name": "GA",
+        "weight": 3280.550347
+      },
+      {
+        "name": "HI",
+        "weight": 4005.106446
+      },
+      {
+        "name": "ID",
+        "weight": 901.687337
+      },
+      {
+        "name": "IL",
+        "weight": 2662.101493
+      },
+      {
+        "name": "IN",
+        "weight": 2904.702643
+      },
+      {
+        "name": "IA",
+        "weight": 2285.703652
+      },
+      {
+        "name": "KS",
+        "weight": 1891.284937
+      },
+      {
+        "name": "KY",
+        "weight": 3092.381726
+      },
+      {
+        "name": "LA",
+        "weight": 2597.955338
+      },
+      {
+        "name": "ME",
+        "weight": 4262.533288
+      },
+      {
+        "name": "MD",
+        "weight": 3726.558245
+      },
+      {
+        "name": "MA",
+        "weight": 4107.934906
+      },
+      {
+        "name": "MI",
+        "weight": 3040.082926
+      },
+      {
+        "name": "MN",
+        "weight": 2308.251662
+      },
+      {
+        "name": "MS",
+        "weight": 2704.989898
+      },
+      {
+        "name": "MO",
+        "weight": 2359.915771
+      },
+      {
+        "name": "MT",
+        "weight": 1395.042454
+      },
+      {
+        "name": "NE",
+        "weight": 1750.642485
+      },
+      {
+        "name": "NV",
+        "weight": 394.009382
+      },
+      {
+        "name": "NH",
+        "weight": 4077.972913
+      },
+      {
+        "name": "NJ",
+        "weight": 3861.608273
+      },
+      {
+        "name": "NM",
+        "weight": 1241.986253
+      },
+      {
+        "name": "NY",
+        "weight": 3806.903104
+      },
+      {
+        "name": "NC",
+        "weight": 3440.282898
+      },
+      {
+        "name": "ND",
+        "weight": 1967.089736
+      },
+      {
+        "name": "OH",
+        "weight": 3168.794429
+      },
+      {
+        "name": "OK",
+        "weight": 2009.474391
+      },
+      {
+        "name": "OR",
+        "weight": 808.211481
+      },
+      {
+        "name": "PA",
+        "weight": 3646.133826
+      },
+      {
+        "name": "RI",
+        "weight": 4109.500381
+      },
+      {
+        "name": "SC",
+        "weight": 3463.645131
+      },
+      {
+        "name": "SD",
+        "weight": 1843.284939
+      },
+      {
+        "name": "TN",
+        "weight": 2922.267095
+      },
+      {
+        "name": "TX",
+        "weight": 1899.834214
+      },
+      {
+        "name": "UT",
+        "weight": 716.06446
+      },
+      {
+        "name": "VT",
+        "weight": 3982.383
+      },
+      {
+        "name": "VA",
+        "weight": 3630.633229
+      },
+      {
+        "name": "WA",
+        "weight": 1224.911616
+      },
+      {
+        "name": "WV",
+        "weight": 3398.197501
+      },
+      {
+        "name": "WI",
+        "weight": 2648.905731
+      },
+      {
+        "name": "WY",
+        "weight": 1246.929939
+      }
+    ],
+    "name": "CA"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1825.060537
+      },
+      {
+        "name": "AK",
+        "weight": 4237.640789
+      },
+      {
+        "name": "AZ",
+        "weight": 760.768779
+      },
+      {
+        "name": "AR",
+        "weight": 1262.215116
+      },
+      {
+        "name": "CA",
+        "weight": 1258.460129
+      },
+      {
+        "name": "CO",
+        "weight": 0
+      },
+      {
+        "name": "CT",
+        "weight": 2764.507201
+      },
+      {
+        "name": "DE",
+        "weight": 2566.455534
+      },
+      {
+        "name": "FL",
+        "weight": 2500.957782
+      },
+      {
+        "name": "GA",
+        "weight": 2066.320721
+      },
+      {
+        "name": "HI",
+        "weight": 5262.988253
+      },
+      {
+        "name": "ID",
+        "weight": 954.273763
+      },
+      {
+        "name": "IL",
+        "weight": 1403.948134
+      },
+      {
+        "name": "IN",
+        "weight": 1647.319793
+      },
+      {
+        "name": "IA",
+        "weight": 1045.343764
+      },
+      {
+        "name": "KS",
+        "weight": 641.104107
+      },
+      {
+        "name": "KY",
+        "weight": 1837.118526
+      },
+      {
+        "name": "LA",
+        "weight": 1532.577024
+      },
+      {
+        "name": "ME",
+        "weight": 3047.407185
+      },
+      {
+        "name": "MD",
+        "weight": 2468.391937
+      },
+      {
+        "name": "MA",
+        "weight": 2865.673449
+      },
+      {
+        "name": "MI",
+        "weight": 1816.120652
+      },
+      {
+        "name": "MN",
+        "weight": 1190.364121
+      },
+      {
+        "name": "MS",
+        "weight": 1536.1119
+      },
+      {
+        "name": "MO",
+        "weight": 1105.379264
+      },
+      {
+        "name": "MT",
+        "weight": 936.37486
+      },
+      {
+        "name": "NE",
+        "weight": 526.103174
+      },
+      {
+        "name": "NV",
+        "weight": 1020.897206
+      },
+      {
+        "name": "NH",
+        "weight": 2848.376719
+      },
+      {
+        "name": "NJ",
+        "weight": 2605.32176
+      },
+      {
+        "name": "NM",
+        "weight": 537.604205
+      },
+      {
+        "name": "NY",
+        "weight": 2567.527839
+      },
+      {
+        "name": "NC",
+        "weight": 2193.053004
+      },
+      {
+        "name": "ND",
+        "weight": 1028.751263
+      },
+      {
+        "name": "OH",
+        "weight": 1912.060418
+      },
+      {
+        "name": "OK",
+        "weight": 815.613383
+      },
+      {
+        "name": "OR",
+        "weight": 1369.383582
+      },
+      {
+        "name": "PA",
+        "weight": 2394.219857
+      },
+      {
+        "name": "RI",
+        "weight": 2862.723208
+      },
+      {
+        "name": "SC",
+        "weight": 2234.053235
+      },
+      {
+        "name": "SD",
+        "weight": 745.343056
+      },
+      {
+        "name": "TN",
+        "weight": 1685.759257
+      },
+      {
+        "name": "TX",
+        "weight": 1025.045029
+      },
+      {
+        "name": "UT",
+        "weight": 568.372764
+      },
+      {
+        "name": "VT",
+        "weight": 2752.395981
+      },
+      {
+        "name": "VA",
+        "weight": 2372.686013
+      },
+      {
+        "name": "WA",
+        "weight": 1565.247164
+      },
+      {
+        "name": "WV",
+        "weight": 2139.738161
+      },
+      {
+        "name": "WI",
+        "weight": 1441.306997
+      },
+      {
+        "name": "WY",
+        "weight": 469.405802
+      }
+    ],
+    "name": "CO"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1626.414659
+      },
+      {
+        "name": "AK",
+        "weight": 5446.644096
+      },
+      {
+        "name": "AZ",
+        "weight": 3444.81131
+      },
+      {
+        "name": "AR",
+        "weight": 1858.68818
+      },
+      {
+        "name": "CA",
+        "weight": 4012.47223
+      },
+      {
+        "name": "CO",
+        "weight": 2764.507201
+      },
+      {
+        "name": "CT",
+        "weight": 0
+      },
+      {
+        "name": "DE",
+        "weight": 374.074447
+      },
+      {
+        "name": "FL",
+        "weight": 1721.87122
+      },
+      {
+        "name": "GA",
+        "weight": 1325.450568
+      },
+      {
+        "name": "HI",
+        "weight": 8010.986677
+      },
+      {
+        "name": "ID",
+        "weight": 3401.845649
+      },
+      {
+        "name": "IL",
+        "weight": 1381.412871
+      },
+      {
+        "name": "IN",
+        "weight": 1136.291724
+      },
+      {
+        "name": "IA",
+        "weight": 1726.863016
+      },
+      {
+        "name": "KS",
+        "weight": 2172.855708
+      },
+      {
+        "name": "KY",
+        "weight": 1073.161053
+      },
+      {
+        "name": "LA",
+        "weight": 2152.966746
+      },
+      {
+        "name": "ME",
+        "weight": 515.585572
+      },
+      {
+        "name": "MD",
+        "weight": 438.44066
+      },
+      {
+        "name": "MA",
+        "weight": 141.095758
+      },
+      {
+        "name": "MI",
+        "weight": 1002.769598
+      },
+      {
+        "name": "MN",
+        "weight": 1827.013136
+      },
+      {
+        "name": "MS",
+        "weight": 1799.286751
+      },
+      {
+        "name": "MO",
+        "weight": 1722.265789
+      },
+      {
+        "name": "MT",
+        "weight": 2963.581101
+      },
+      {
+        "name": "NE",
+        "weight": 2262.253211
+      },
+      {
+        "name": "NV",
+        "weight": 3714.272505
+      },
+      {
+        "name": "NH",
+        "weight": 284.250977
+      },
+      {
+        "name": "NJ",
+        "weight": 268.442054
+      },
+      {
+        "name": "NM",
+        "weight": 3011.027234
+      },
+      {
+        "name": "NY",
+        "weight": 244.96351
+      },
+      {
+        "name": "NC",
+        "weight": 954.124218
+      },
+      {
+        "name": "ND",
+        "weight": 2281.819847
+      },
+      {
+        "name": "OH",
+        "weight": 874.520804
+      },
+      {
+        "name": "OK",
+        "weight": 2177.294747
+      },
+      {
+        "name": "OR",
+        "weight": 3854.092738
+      },
+      {
+        "name": "PA",
+        "weight": 377.414402
+      },
+      {
+        "name": "RI",
+        "weight": 100.321358
+      },
+      {
+        "name": "SC",
+        "weight": 1138.757393
+      },
+      {
+        "name": "SD",
+        "weight": 2230.98868
+      },
+      {
+        "name": "TN",
+        "weight": 1366.498407
+      },
+      {
+        "name": "TX",
+        "weight": 2699.914362
+      },
+      {
+        "name": "UT",
+        "weight": 3298.51569
+      },
+      {
+        "name": "VT",
+        "weight": 266.868046
+      },
+      {
+        "name": "VA",
+        "weight": 611.305832
+      },
+      {
+        "name": "WA",
+        "weight": 3796.690453
+      },
+      {
+        "name": "WV",
+        "weight": 721.537126
+      },
+      {
+        "name": "WI",
+        "weight": 1399.940005
+      },
+      {
+        "name": "WY",
+        "weight": 2827.652715
+      }
+    ],
+    "name": "CT"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1268.452125
+      },
+      {
+        "name": "AK",
+        "weight": 5569.326683
+      },
+      {
+        "name": "AZ",
+        "weight": 3206.954578
+      },
+      {
+        "name": "AR",
+        "weight": 1554.012405
+      },
+      {
+        "name": "CA",
+        "weight": 3824.502841
+      },
+      {
+        "name": "CO",
+        "weight": 2566.455534
+      },
+      {
+        "name": "CT",
+        "weight": 374.074447
+      },
+      {
+        "name": "DE",
+        "weight": 0
+      },
+      {
+        "name": "FL",
+        "weight": 1353.540903
+      },
+      {
+        "name": "GA",
+        "weight": 957.303737
+      },
+      {
+        "name": "HI",
+        "weight": 7829.430811
+      },
+      {
+        "name": "ID",
+        "weight": 3282.747261
+      },
+      {
+        "name": "IL",
+        "weight": 1162.508064
+      },
+      {
+        "name": "IN",
+        "weight": 920.375615
+      },
+      {
+        "name": "IA",
+        "weight": 1562.057346
+      },
+      {
+        "name": "KS",
+        "weight": 1947.003196
+      },
+      {
+        "name": "KY",
+        "weight": 774.537711
+      },
+      {
+        "name": "LA",
+        "weight": 1807.47285
+      },
+      {
+        "name": "ME",
+        "weight": 888.506971
+      },
+      {
+        "name": "MD",
+        "weight": 98.721378
+      },
+      {
+        "name": "MA",
+        "weight": 513.68913
+      },
+      {
+        "name": "MI",
+        "weight": 944.087782
+      },
+      {
+        "name": "MN",
+        "weight": 1760.355796
+      },
+      {
+        "name": "MS",
+        "weight": 1462.669831
+      },
+      {
+        "name": "MO",
+        "weight": 1481.033095
+      },
+      {
+        "name": "MT",
+        "weight": 2880.69322
+      },
+      {
+        "name": "NE",
+        "weight": 2090.620655
+      },
+      {
+        "name": "NV",
+        "weight": 3551.487642
+      },
+      {
+        "name": "NH",
+        "weight": 647.936133
+      },
+      {
+        "name": "NJ",
+        "weight": 107.278822
+      },
+      {
+        "name": "NM",
+        "weight": 2758.530491
+      },
+      {
+        "name": "NY",
+        "weight": 446.751925
+      },
+      {
+        "name": "NC",
+        "weight": 588.649876
+      },
+      {
+        "name": "ND",
+        "weight": 2221.585269
+      },
+      {
+        "name": "OH",
+        "weight": 659.025667
+      },
+      {
+        "name": "OK",
+        "weight": 1911.65894
+      },
+      {
+        "name": "OR",
+        "weight": 3741.47919
+      },
+      {
+        "name": "PA",
+        "weight": 284.231597
+      },
+      {
+        "name": "RI",
+        "weight": 452.71235
+      },
+      {
+        "name": "SC",
+        "weight": 765.511689
+      },
+      {
+        "name": "SD",
+        "weight": 2113.306603
+      },
+      {
+        "name": "TN",
+        "weight": 1044.592798
+      },
+      {
+        "name": "TX",
+        "weight": 2392.919653
+      },
+      {
+        "name": "UT",
+        "weight": 3119.205783
+      },
+      {
+        "name": "VT",
+        "weight": 602.795522
+      },
+      {
+        "name": "VA",
+        "weight": 250.117209
+      },
+      {
+        "name": "WA",
+        "weight": 3726.419897
+      },
+      {
+        "name": "WV",
+        "weight": 432.01912
+      },
+      {
+        "name": "WI",
+        "weight": 1310.112873
+      },
+      {
+        "name": "WY",
+        "weight": 2687.953749
+      }
+    ],
+    "name": "DE"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 689.41878
+      },
+      {
+        "name": "AK",
+        "weight": 6358.625299
+      },
+      {
+        "name": "AZ",
+        "weight": 2864.462264
+      },
+      {
+        "name": "AR",
+        "weight": 1245.51451
+      },
+      {
+        "name": "CA",
+        "weight": 3642.853366
+      },
+      {
+        "name": "CO",
+        "weight": 2500.957782
+      },
+      {
+        "name": "CT",
+        "weight": 1721.87122
+      },
+      {
+        "name": "DE",
+        "weight": 1353.540903
+      },
+      {
+        "name": "FL",
+        "weight": 0
+      },
+      {
+        "name": "GA",
+        "weight": 605.867777
+      },
+      {
+        "name": "HI",
+        "weight": 7479.61736
+      },
+      {
+        "name": "ID",
+        "weight": 3428.514265
+      },
+      {
+        "name": "IL",
+        "weight": 1491.146409
+      },
+      {
+        "name": "IN",
+        "weight": 1422.770951
+      },
+      {
+        "name": "IA",
+        "weight": 1892.096603
+      },
+      {
+        "name": "KS",
+        "weight": 1904.212994
+      },
+      {
+        "name": "KY",
+        "weight": 1119.355616
+      },
+      {
+        "name": "LA",
+        "weight": 1059.521925
+      },
+      {
+        "name": "ME",
+        "weight": 2236.901619
+      },
+      {
+        "name": "MD",
+        "weight": 1316.664737
+      },
+      {
+        "name": "MA",
+        "weight": 1856.078068
+      },
+      {
+        "name": "MI",
+        "weight": 1816.550794
+      },
+      {
+        "name": "MN",
+        "weight": 2335.222825
+      },
+      {
+        "name": "MS",
+        "weight": 965.383506
+      },
+      {
+        "name": "MO",
+        "weight": 1546.710017
+      },
+      {
+        "name": "MT",
+        "weight": 3202.981517
+      },
+      {
+        "name": "NE",
+        "weight": 2234.558506
+      },
+      {
+        "name": "NV",
+        "weight": 3499.951348
+      },
+      {
+        "name": "NH",
+        "weight": 2001.07363
+      },
+      {
+        "name": "NJ",
+        "weight": 1460.698369
+      },
+      {
+        "name": "NM",
+        "weight": 2405.953267
+      },
+      {
+        "name": "NY",
+        "weight": 1775.671904
+      },
+      {
+        "name": "NC",
+        "weight": 870.741639
+      },
+      {
+        "name": "ND",
+        "weight": 2717.458047
+      },
+      {
+        "name": "OH",
+        "weight": 1380.468942
+      },
+      {
+        "name": "OK",
+        "weight": 1685.439896
+      },
+      {
+        "name": "OR",
+        "weight": 3865.725907
+      },
+      {
+        "name": "PA",
+        "weight": 1526.433106
+      },
+      {
+        "name": "RI",
+        "weight": 1785.540665
+      },
+      {
+        "name": "SC",
+        "weight": 652.048694
+      },
+      {
+        "name": "SD",
+        "weight": 2446.898001
+      },
+      {
+        "name": "TN",
+        "weight": 988.960108
+      },
+      {
+        "name": "TX",
+        "weight": 1794.453996
+      },
+      {
+        "name": "UT",
+        "weight": 3048.885173
+      },
+      {
+        "name": "VT",
+        "weight": 1954.517108
+      },
+      {
+        "name": "VA",
+        "weight": 1157.815697
+      },
+      {
+        "name": "WA",
+        "weight": 4003.601385
+      },
+      {
+        "name": "WV",
+        "weight": 1229.293879
+      },
+      {
+        "name": "WI",
+        "weight": 1959.896629
+      },
+      {
+        "name": "WY",
+        "weight": 2835.54754
+      }
+    ],
+    "name": "FL"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 339.652908
+      },
+      {
+        "name": "AK",
+        "weight": 5767.320931
+      },
+      {
+        "name": "AZ",
+        "weight": 2553.409727
+      },
+      {
+        "name": "AR",
+        "weight": 825.149811
+      },
+      {
+        "name": "CA",
+        "weight": 3280.550347
+      },
+      {
+        "name": "CO",
+        "weight": 2066.320721
+      },
+      {
+        "name": "CT",
+        "weight": 1325.450568
+      },
+      {
+        "name": "DE",
+        "weight": 957.303737
+      },
+      {
+        "name": "FL",
+        "weight": 605.867777
+      },
+      {
+        "name": "GA",
+        "weight": 0
+      },
+      {
+        "name": "HI",
+        "weight": 7223.854676
+      },
+      {
+        "name": "ID",
+        "weight": 2949.143964
+      },
+      {
+        "name": "IL",
+        "weight": 899.428685
+      },
+      {
+        "name": "IN",
+        "weight": 816.911963
+      },
+      {
+        "name": "IA",
+        "weight": 1321.488558
+      },
+      {
+        "name": "KS",
+        "weight": 1433.719731
+      },
+      {
+        "name": "KY",
+        "weight": 516.017659
+      },
+      {
+        "name": "LA",
+        "weight": 897.412559
+      },
+      {
+        "name": "ME",
+        "weight": 1828.966117
+      },
+      {
+        "name": "MD",
+        "weight": 887.380218
+      },
+      {
+        "name": "MA",
+        "weight": 1466.524299
+      },
+      {
+        "name": "MI",
+        "weight": 1219.32128
+      },
+      {
+        "name": "MN",
+        "weight": 1742.648134
+      },
+      {
+        "name": "MS",
+        "weight": 611.310698
+      },
+      {
+        "name": "MO",
+        "weight": 1014.842118
+      },
+      {
+        "name": "MT",
+        "weight": 2672.345435
+      },
+      {
+        "name": "NE",
+        "weight": 1722.589369
+      },
+      {
+        "name": "NV",
+        "weight": 3086.221328
+      },
+      {
+        "name": "NH",
+        "weight": 1579.484451
+      },
+      {
+        "name": "NJ",
+        "weight": 1058.439117
+      },
+      {
+        "name": "NM",
+        "weight": 2085.725479
+      },
+      {
+        "name": "NY",
+        "weight": 1310.335082
+      },
+      {
+        "name": "NC",
+        "weight": 371.798536
+      },
+      {
+        "name": "ND",
+        "weight": 2142.87116
+      },
+      {
+        "name": "OH",
+        "weight": 792.650313
+      },
+      {
+        "name": "OK",
+        "weight": 1271.362333
+      },
+      {
+        "name": "OR",
+        "weight": 3400.175524
+      },
+      {
+        "name": "PA",
+        "weight": 1042.576755
+      },
+      {
+        "name": "RI",
+        "weight": 1409.494364
+      },
+      {
+        "name": "SC",
+        "weight": 220.965606
+      },
+      {
+        "name": "SD",
+        "weight": 1896.076511
+      },
+      {
+        "name": "TN",
+        "weight": 413.800611
+      },
+      {
+        "name": "TX",
+        "weight": 1577.527457
+      },
+      {
+        "name": "UT",
+        "weight": 2632.161888
+      },
+      {
+        "name": "VT",
+        "weight": 1513.81802
+      },
+      {
+        "name": "VA",
+        "weight": 714.264062
+      },
+      {
+        "name": "WA",
+        "weight": 3496.590735
+      },
+      {
+        "name": "WV",
+        "weight": 691.898419
+      },
+      {
+        "name": "WI",
+        "weight": 1355.669129
+      },
+      {
+        "name": "WY",
+        "weight": 2342.495909
+      }
+    ],
+    "name": "GA"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 6916.312593
+      },
+      {
+        "name": "AK",
+        "weight": 5164.650801
+      },
+      {
+        "name": "AZ",
+        "weight": 4671.917881
+      },
+      {
+        "name": "AR",
+        "weight": 6404.339173
+      },
+      {
+        "name": "CA",
+        "weight": 4005.106446
+      },
+      {
+        "name": "CO",
+        "weight": 5262.988253
+      },
+      {
+        "name": "CT",
+        "weight": 8010.986677
+      },
+      {
+        "name": "DE",
+        "weight": 7829.430811
+      },
+      {
+        "name": "FL",
+        "weight": 7479.61736
+      },
+      {
+        "name": "GA",
+        "weight": 7223.854676
+      },
+      {
+        "name": "HI",
+        "weight": 0
+      },
+      {
+        "name": "ID",
+        "weight": 4656.943791
+      },
+      {
+        "name": "IL",
+        "weight": 6666.93112
+      },
+      {
+        "name": "IN",
+        "weight": 6909.803795
+      },
+      {
+        "name": "IA",
+        "weight": 6285.562829
+      },
+      {
+        "name": "KS",
+        "weight": 5889.363391
+      },
+      {
+        "name": "KY",
+        "weight": 7089.633647
+      },
+      {
+        "name": "LA",
+        "weight": 6426.47465
+      },
+      {
+        "name": "ME",
+        "weight": 8223.006574
+      },
+      {
+        "name": "MD",
+        "weight": 7731.379262
+      },
+      {
+        "name": "MA",
+        "weight": 8100.598523
+      },
+      {
+        "name": "MI",
+        "weight": 7023.781886
+      },
+      {
+        "name": "MN",
+        "weight": 6241.889887
+      },
+      {
+        "name": "MS",
+        "weight": 6620.120027
+      },
+      {
+        "name": "MO",
+        "weight": 6358.68296
+      },
+      {
+        "name": "MT",
+        "weight": 5150.937616
+      },
+      {
+        "name": "NE",
+        "weight": 5750.22364
+      },
+      {
+        "name": "NV",
+        "weight": 4298.303442
+      },
+      {
+        "name": "NH",
+        "weight": 8057.224636
+      },
+      {
+        "name": "NJ",
+        "weight": 7866.451988
+      },
+      {
+        "name": "NM",
+        "weight": 5139.006995
+      },
+      {
+        "name": "NY",
+        "weight": 7798.03805
+      },
+      {
+        "name": "NC",
+        "weight": 7424.151825
+      },
+      {
+        "name": "ND",
+        "weight": 5830.879976
+      },
+      {
+        "name": "OH",
+        "weight": 7173.847483
+      },
+      {
+        "name": "OK",
+        "weight": 5974.554582
+      },
+      {
+        "name": "OR",
+        "weight": 4236.75015
+      },
+      {
+        "name": "PA",
+        "weight": 7648.498984
+      },
+      {
+        "name": "RI",
+        "weight": 8106.66306
+      },
+      {
+        "name": "SC",
+        "weight": 7423.007353
+      },
+      {
+        "name": "SD",
+        "weight": 5798.252771
+      },
+      {
+        "name": "TN",
+        "weight": 6897.836059
+      },
+      {
+        "name": "TX",
+        "weight": 5690.47963
+      },
+      {
+        "name": "UT",
+        "weight": 4714.560152
+      },
+      {
+        "name": "VT",
+        "weight": 7962.818464
+      },
+      {
+        "name": "VA",
+        "weight": 7632.148634
+      },
+      {
+        "name": "WA",
+        "weight": 4430.739913
+      },
+      {
+        "name": "WV",
+        "weight": 7402.166202
+      },
+      {
+        "name": "WI",
+        "weight": 6626.607598
+      },
+      {
+        "name": "WY",
+        "weight": 5193.236151
+      }
+    ],
+    "name": "HI"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 2742.588304
+      },
+      {
+        "name": "AK",
+        "weight": 3373.619989
+      },
+      {
+        "name": "AZ",
+        "weight": 1157.438677
+      },
+      {
+        "name": "AR",
+        "weight": 2183.018058
+      },
+      {
+        "name": "CA",
+        "weight": 901.687337
+      },
+      {
+        "name": "CO",
+        "weight": 954.273763
+      },
+      {
+        "name": "CT",
+        "weight": 3401.845649
+      },
+      {
+        "name": "DE",
+        "weight": 3282.747261
+      },
+      {
+        "name": "FL",
+        "weight": 3428.514265
+      },
+      {
+        "name": "GA",
+        "weight": 2949.143964
+      },
+      {
+        "name": "HI",
+        "weight": 4656.943791
+      },
+      {
+        "name": "ID",
+        "weight": 0
+      },
+      {
+        "name": "IL",
+        "weight": 2164.192002
+      },
+      {
+        "name": "IN",
+        "weight": 2383.186054
+      },
+      {
+        "name": "IA",
+        "weight": 1729.374198
+      },
+      {
+        "name": "KS",
+        "weight": 1526.150062
+      },
+      {
+        "name": "KY",
+        "weight": 2634.398501
+      },
+      {
+        "name": "LA",
+        "weight": 2486.03813
+      },
+      {
+        "name": "ME",
+        "weight": 3570.057152
+      },
+      {
+        "name": "MD",
+        "weight": 3189.788148
+      },
+      {
+        "name": "MA",
+        "weight": 3476.499303
+      },
+      {
+        "name": "MI",
+        "weight": 2399.597995
+      },
+      {
+        "name": "MN",
+        "weight": 1591.084566
+      },
+      {
+        "name": "MS",
+        "weight": 2464.961751
+      },
+      {
+        "name": "MO",
+        "weight": 1940.055234
+      },
+      {
+        "name": "MT",
+        "weight": 517.927719
+      },
+      {
+        "name": "NE",
+        "weight": 1234.652478
+      },
+      {
+        "name": "NV",
+        "weight": 509.247058
+      },
+      {
+        "name": "NH",
+        "weight": 3416.135619
+      },
+      {
+        "name": "NJ",
+        "weight": 3297.904866
+      },
+      {
+        "name": "NM",
+        "weight": 1318.647207
+      },
+      {
+        "name": "NY",
+        "weight": 3174.589137
+      },
+      {
+        "name": "NC",
+        "weight": 3013.548721
+      },
+      {
+        "name": "ND",
+        "weight": 1175.095438
+      },
+      {
+        "name": "OH",
+        "weight": 2629.764135
+      },
+      {
+        "name": "OK",
+        "weight": 1751.510518
+      },
+      {
+        "name": "OR",
+        "weight": 460.2653
+      },
+      {
+        "name": "PA",
+        "weight": 3061.242568
+      },
+      {
+        "name": "RI",
+        "weight": 3492.42952
+      },
+      {
+        "name": "SC",
+        "weight": 3092.255879
+      },
+      {
+        "name": "SD",
+        "weight": 1172.899716
+      },
+      {
+        "name": "TN",
+        "weight": 2546.07372
+      },
+      {
+        "name": "TX",
+        "weight": 1943.568759
+      },
+      {
+        "name": "UT",
+        "weight": 566.355709
+      },
+      {
+        "name": "VT",
+        "weight": 3323.553873
+      },
+      {
+        "name": "VA",
+        "weight": 3128.805291
+      },
+      {
+        "name": "WA",
+        "weight": 618.584112
+      },
+      {
+        "name": "WV",
+        "weight": 2883.65508
+      },
+      {
+        "name": "WI",
+        "weight": 2001.90692
+      },
+      {
+        "name": "WY",
+        "weight": 610.154786
+      }
+    ],
+    "name": "ID"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 874.608165
+      },
+      {
+        "name": "AK",
+        "weight": 4869.261703
+      },
+      {
+        "name": "AZ",
+        "weight": 2063.522232
+      },
+      {
+        "name": "AR",
+        "weight": 643.486936
+      },
+      {
+        "name": "CA",
+        "weight": 2662.101493
+      },
+      {
+        "name": "CO",
+        "weight": 1403.948134
+      },
+      {
+        "name": "CT",
+        "weight": 1381.412871
+      },
+      {
+        "name": "DE",
+        "weight": 1162.508064
+      },
+      {
+        "name": "FL",
+        "weight": 1491.146409
+      },
+      {
+        "name": "GA",
+        "weight": 899.428685
+      },
+      {
+        "name": "HI",
+        "weight": 6666.93112
+      },
+      {
+        "name": "ID",
+        "weight": 2164.192002
+      },
+      {
+        "name": "IL",
+        "weight": 0
+      },
+      {
+        "name": "IN",
+        "weight": 246.109003
+      },
+      {
+        "name": "IA",
+        "weight": 445.836002
+      },
+      {
+        "name": "KS",
+        "weight": 792.34513
+      },
+      {
+        "name": "KY",
+        "weight": 474.41943
+      },
+      {
+        "name": "LA",
+        "weight": 1110.135509
+      },
+      {
+        "name": "ME",
+        "weight": 1736.860691
+      },
+      {
+        "name": "MD",
+        "weight": 1064.468805
+      },
+      {
+        "name": "MA",
+        "weight": 1495.151866
+      },
+      {
+        "name": "MI",
+        "weight": 594.541738
+      },
+      {
+        "name": "MN",
+        "weight": 844.463978
+      },
+      {
+        "name": "MS",
+        "weight": 783.463184
+      },
+      {
+        "name": "MO",
+        "weight": 348.29682
+      },
+      {
+        "name": "MT",
+        "weight": 1821.528871
+      },
+      {
+        "name": "NE",
+        "weight": 940.821048
+      },
+      {
+        "name": "NV",
+        "weight": 2396.199053
+      },
+      {
+        "name": "NH",
+        "weight": 1509.567727
+      },
+      {
+        "name": "NJ",
+        "weight": 1203.783811
+      },
+      {
+        "name": "NM",
+        "weight": 1632.238759
+      },
+      {
+        "name": "NY",
+        "weight": 1211.046591
+      },
+      {
+        "name": "NC",
+        "weight": 858.824261
+      },
+      {
+        "name": "ND",
+        "weight": 1248.781734
+      },
+      {
+        "name": "OH",
+        "weight": 511.559699
+      },
+      {
+        "name": "OK",
+        "weight": 818.495625
+      },
+      {
+        "name": "OR",
+        "weight": 2624.212445
+      },
+      {
+        "name": "PA",
+        "weight": 1004.818757
+      },
+      {
+        "name": "RI",
+        "weight": 1481.409868
+      },
+      {
+        "name": "SC",
+        "weight": 976.49652
+      },
+      {
+        "name": "SD",
+        "weight": 1033.203729
+      },
+      {
+        "name": "TN",
+        "weight": 503.952479
+      },
+      {
+        "name": "TX",
+        "weight": 1409.574161
+      },
+      {
+        "name": "UT",
+        "weight": 1958.868538
+      },
+      {
+        "name": "VT",
+        "weight": 1415.638632
+      },
+      {
+        "name": "VA",
+        "weight": 975.791564
+      },
+      {
+        "name": "WA",
+        "weight": 2664.161173
+      },
+      {
+        "name": "WV",
+        "weight": 737.438707
+      },
+      {
+        "name": "WI",
+        "weight": 502.063694
+      },
+      {
+        "name": "WY",
+        "weight": 1556.88599
+      }
+    ],
+    "name": "IL"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 887.299215
+      },
+      {
+        "name": "AK",
+        "weight": 4972.455739
+      },
+      {
+        "name": "AZ",
+        "weight": 2309.175073
+      },
+      {
+        "name": "AR",
+        "weight": 810.221465
+      },
+      {
+        "name": "CA",
+        "weight": 2904.702643
+      },
+      {
+        "name": "CO",
+        "weight": 1647.319793
+      },
+      {
+        "name": "CT",
+        "weight": 1136.291724
+      },
+      {
+        "name": "DE",
+        "weight": 920.375615
+      },
+      {
+        "name": "FL",
+        "weight": 1422.770951
+      },
+      {
+        "name": "GA",
+        "weight": 816.911963
+      },
+      {
+        "name": "HI",
+        "weight": 6909.803795
+      },
+      {
+        "name": "ID",
+        "weight": 2383.186054
+      },
+      {
+        "name": "IL",
+        "weight": 246.109003
+      },
+      {
+        "name": "IN",
+        "weight": 0
+      },
+      {
+        "name": "IA",
+        "weight": 653.816226
+      },
+      {
+        "name": "KS",
+        "weight": 1038.409517
+      },
+      {
+        "name": "KY",
+        "weight": 314.574873
+      },
+      {
+        "name": "LA",
+        "weight": 1233.615721
+      },
+      {
+        "name": "ME",
+        "weight": 1505.677653
+      },
+      {
+        "name": "MD",
+        "weight": 822.984245
+      },
+      {
+        "name": "MA",
+        "weight": 1251.912467
+      },
+      {
+        "name": "MI",
+        "weight": 454.611926
+      },
+      {
+        "name": "MN",
+        "weight": 966.714169
+      },
+      {
+        "name": "MS",
+        "weight": 879.261005
+      },
+      {
+        "name": "MO",
+        "weight": 587.37327
+      },
+      {
+        "name": "MT",
+        "weight": 2016.23691
+      },
+      {
+        "name": "NE",
+        "weight": 1172.879833
+      },
+      {
+        "name": "NV",
+        "weight": 2632.640671
+      },
+      {
+        "name": "NH",
+        "weight": 1273.185321
+      },
+      {
+        "name": "NJ",
+        "weight": 958.563451
+      },
+      {
+        "name": "NM",
+        "weight": 1875.453798
+      },
+      {
+        "name": "NY",
+        "weight": 972.236781
+      },
+      {
+        "name": "NC",
+        "weight": 683.575799
+      },
+      {
+        "name": "ND",
+        "weight": 1405.182578
+      },
+      {
+        "name": "OH",
+        "weight": 265.61479
+      },
+      {
+        "name": "OK",
+        "weight": 1051.21231
+      },
+      {
+        "name": "OR",
+        "weight": 2843.409046
+      },
+      {
+        "name": "PA",
+        "weight": 759.297767
+      },
+      {
+        "name": "RI",
+        "weight": 1236.414857
+      },
+      {
+        "name": "SC",
+        "weight": 840.101899
+      },
+      {
+        "name": "SD",
+        "weight": 1230.497997
+      },
+      {
+        "name": "TN",
+        "weight": 492.957436
+      },
+      {
+        "name": "TX",
+        "weight": 1619.804159
+      },
+      {
+        "name": "UT",
+        "weight": 2198.85599
+      },
+      {
+        "name": "VT",
+        "weight": 1180.435516
+      },
+      {
+        "name": "VA",
+        "weight": 745.897591
+      },
+      {
+        "name": "WA",
+        "weight": 2863.23082
+      },
+      {
+        "name": "WV",
+        "weight": 502.119767
+      },
+      {
+        "name": "WI",
+        "weight": 545.416058
+      },
+      {
+        "name": "WY",
+        "weight": 1780.163966
+      }
+    ],
+    "name": "IN"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1230.713828
+      },
+      {
+        "name": "AK",
+        "weight": 4472.978331
+      },
+      {
+        "name": "AZ",
+        "weight": 1767.009994
+      },
+      {
+        "name": "AR",
+        "weight": 813.192545
+      },
+      {
+        "name": "CA",
+        "weight": 2285.703652
+      },
+      {
+        "name": "CO",
+        "weight": 1045.343764
+      },
+      {
+        "name": "CT",
+        "weight": 1726.863016
+      },
+      {
+        "name": "DE",
+        "weight": 1562.057346
+      },
+      {
+        "name": "FL",
+        "weight": 1892.096603
+      },
+      {
+        "name": "GA",
+        "weight": 1321.488558
+      },
+      {
+        "name": "HI",
+        "weight": 6285.562829
+      },
+      {
+        "name": "ID",
+        "weight": 1729.374198
+      },
+      {
+        "name": "IL",
+        "weight": 445.836002
+      },
+      {
+        "name": "IN",
+        "weight": 653.816226
+      },
+      {
+        "name": "IA",
+        "weight": 0
+      },
+      {
+        "name": "KS",
+        "weight": 542.867334
+      },
+      {
+        "name": "KY",
+        "weight": 919.932889
+      },
+      {
+        "name": "LA",
+        "weight": 1299.260094
+      },
+      {
+        "name": "ME",
+        "weight": 2004.568675
+      },
+      {
+        "name": "MD",
+        "weight": 1466.88555
+      },
+      {
+        "name": "MA",
+        "weight": 1823.303236
+      },
+      {
+        "name": "MI",
+        "weight": 773.989668
+      },
+      {
+        "name": "MN",
+        "weight": 491.967888
+      },
+      {
+        "name": "MS",
+        "weight": 1052.643396
+      },
+      {
+        "name": "MO",
+        "weight": 393.454922
+      },
+      {
+        "name": "MT",
+        "weight": 1375.692923
+      },
+      {
+        "name": "NE",
+        "weight": 535.48377
+      },
+      {
+        "name": "NV",
+        "weight": 1993.443618
+      },
+      {
+        "name": "NH",
+        "weight": 1803.04028
+      },
+      {
+        "name": "NJ",
+        "weight": 1587.321779
+      },
+      {
+        "name": "NM",
+        "weight": 1383.147532
+      },
+      {
+        "name": "NY",
+        "weight": 1523.612641
+      },
+      {
+        "name": "NC",
+        "weight": 1304.566016
+      },
+      {
+        "name": "ND",
+        "weight": 825.370159
+      },
+      {
+        "name": "OH",
+        "weight": 904.135139
+      },
+      {
+        "name": "OK",
+        "weight": 721.395643
+      },
+      {
+        "name": "OR",
+        "weight": 2189.593008
+      },
+      {
+        "name": "PA",
+        "weight": 1363.247685
+      },
+      {
+        "name": "RI",
+        "weight": 1823.797395
+      },
+      {
+        "name": "SC",
+        "weight": 1417.500946
+      },
+      {
+        "name": "SD",
+        "weight": 587.41128
+      },
+      {
+        "name": "TN",
+        "weight": 910.059387
+      },
+      {
+        "name": "TX",
+        "weight": 1353.238298
+      },
+      {
+        "name": "UT",
+        "weight": 1571.758387
+      },
+      {
+        "name": "VT",
+        "weight": 1707.058485
+      },
+      {
+        "name": "VA",
+        "weight": 1399.509141
+      },
+      {
+        "name": "WA",
+        "weight": 2218.839483
+      },
+      {
+        "name": "WV",
+        "weight": 1154.732881
+      },
+      {
+        "name": "WI",
+        "weight": 429.400848
+      },
+      {
+        "name": "WY",
+        "weight": 1127.580428
+      }
+    ],
+    "name": "IA"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1216.763017
+      },
+      {
+        "name": "AK",
+        "weight": 4612.643187
+      },
+      {
+        "name": "AZ",
+        "weight": 1272.322758
+      },
+      {
+        "name": "AR",
+        "weight": 660.808666
+      },
+      {
+        "name": "CA",
+        "weight": 1891.284937
+      },
+      {
+        "name": "CO",
+        "weight": 641.104107
+      },
+      {
+        "name": "CT",
+        "weight": 2172.855708
+      },
+      {
+        "name": "DE",
+        "weight": 1947.003196
+      },
+      {
+        "name": "FL",
+        "weight": 1904.212994
+      },
+      {
+        "name": "GA",
+        "weight": 1433.719731
+      },
+      {
+        "name": "HI",
+        "weight": 5889.363391
+      },
+      {
+        "name": "ID",
+        "weight": 1526.150062
+      },
+      {
+        "name": "IL",
+        "weight": 792.34513
+      },
+      {
+        "name": "IN",
+        "weight": 1038.409517
+      },
+      {
+        "name": "IA",
+        "weight": 542.867334
+      },
+      {
+        "name": "KS",
+        "weight": 0
+      },
+      {
+        "name": "KY",
+        "weight": 1201.399369
+      },
+      {
+        "name": "LA",
+        "weight": 1040.245342
+      },
+      {
+        "name": "ME",
+        "weight": 2503.903707
+      },
+      {
+        "name": "MD",
+        "weight": 1848.356466
+      },
+      {
+        "name": "MA",
+        "weight": 2283.845081
+      },
+      {
+        "name": "MI",
+        "weight": 1289.229506
+      },
+      {
+        "name": "MN",
+        "weight": 919.738912
+      },
+      {
+        "name": "MS",
+        "weight": 945.468124
+      },
+      {
+        "name": "MO",
+        "weight": 469.355346
+      },
+      {
+        "name": "MT",
+        "weight": 1329.024514
+      },
+      {
+        "name": "NE",
+        "weight": 374.539253
+      },
+      {
+        "name": "NV",
+        "weight": 1660.645292
+      },
+      {
+        "name": "NH",
+        "weight": 2287.194602
+      },
+      {
+        "name": "NJ",
+        "weight": 1993.830651
+      },
+      {
+        "name": "NM",
+        "weight": 855.214503
+      },
+      {
+        "name": "NY",
+        "weight": 1994.058574
+      },
+      {
+        "name": "NC",
+        "weight": 1552.383462
+      },
+      {
+        "name": "ND",
+        "weight": 1036.426707
+      },
+      {
+        "name": "OH",
+        "weight": 1303.543969
+      },
+      {
+        "name": "OK",
+        "weight": 285.016636
+      },
+      {
+        "name": "OR",
+        "weight": 1970.624572
+      },
+      {
+        "name": "PA",
+        "weight": 1796.835674
+      },
+      {
+        "name": "RI",
+        "weight": 2272.644429
+      },
+      {
+        "name": "SC",
+        "weight": 1595.005094
+      },
+      {
+        "name": "SD",
+        "weight": 687.583686
+      },
+      {
+        "name": "TN",
+        "weight": 1045.833604
+      },
+      {
+        "name": "TX",
+        "weight": 853.676508
+      },
+      {
+        "name": "UT",
+        "weight": 1209.338841
+      },
+      {
+        "name": "VT",
+        "weight": 2191.903479
+      },
+      {
+        "name": "VA",
+        "weight": 1742.907048
+      },
+      {
+        "name": "WA",
+        "weight": 2101.46543
+      },
+      {
+        "name": "WV",
+        "weight": 1516.268279
+      },
+      {
+        "name": "WI",
+        "weight": 971.736633
+      },
+      {
+        "name": "WY",
+        "weight": 932.214592
+      }
+    ],
+    "name": "KS"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 658.906617
+      },
+      {
+        "name": "AK",
+        "weight": 5287.004647
+      },
+      {
+        "name": "AZ",
+        "weight": 2442.52812
+      },
+      {
+        "name": "AR",
+        "weight": 786.375016
+      },
+      {
+        "name": "CA",
+        "weight": 3092.381726
+      },
+      {
+        "name": "CO",
+        "weight": 1837.118526
+      },
+      {
+        "name": "CT",
+        "weight": 1073.161053
+      },
+      {
+        "name": "DE",
+        "weight": 774.537711
+      },
+      {
+        "name": "FL",
+        "weight": 1119.355616
+      },
+      {
+        "name": "GA",
+        "weight": 516.017659
+      },
+      {
+        "name": "HI",
+        "weight": 7089.633647
+      },
+      {
+        "name": "ID",
+        "weight": 2634.398501
+      },
+      {
+        "name": "IL",
+        "weight": 474.41943
+      },
+      {
+        "name": "IN",
+        "weight": 314.574873
+      },
+      {
+        "name": "IA",
+        "weight": 919.932889
+      },
+      {
+        "name": "KS",
+        "weight": 1201.399369
+      },
+      {
+        "name": "KY",
+        "weight": 0
+      },
+      {
+        "name": "LA",
+        "weight": 1110.897877
+      },
+      {
+        "name": "ME",
+        "weight": 1518.735032
+      },
+      {
+        "name": "MD",
+        "weight": 677.58506
+      },
+      {
+        "name": "MA",
+        "weight": 1206.079984
+      },
+      {
+        "name": "MI",
+        "weight": 705.5741
+      },
+      {
+        "name": "MN",
+        "weight": 1276.719878
+      },
+      {
+        "name": "MS",
+        "weight": 747.448835
+      },
+      {
+        "name": "MO",
+        "weight": 732.472124
+      },
+      {
+        "name": "MT",
+        "weight": 2295.425859
+      },
+      {
+        "name": "NE",
+        "weight": 1404.201984
+      },
+      {
+        "name": "NV",
+        "weight": 2846.245943
+      },
+      {
+        "name": "NH",
+        "weight": 1270.772485
+      },
+      {
+        "name": "NJ",
+        "weight": 843.222268
+      },
+      {
+        "name": "NM",
+        "weight": 1988.862374
+      },
+      {
+        "name": "NY",
+        "weight": 971.202418
+      },
+      {
+        "name": "NC",
+        "weight": 384.80783
+      },
+      {
+        "name": "ND",
+        "weight": 1706.621912
+      },
+      {
+        "name": "OH",
+        "weight": 301.830376
+      },
+      {
+        "name": "OK",
+        "weight": 1139.932086
+      },
+      {
+        "name": "OR",
+        "weight": 3093.882929
+      },
+      {
+        "name": "PA",
+        "weight": 712.552632
+      },
+      {
+        "name": "RI",
+        "weight": 1171.350259
+      },
+      {
+        "name": "SC",
+        "weight": 525.803011
+      },
+      {
+        "name": "SD",
+        "weight": 1506.965241
+      },
+      {
+        "name": "TN",
+        "weight": 306.022723
+      },
+      {
+        "name": "TX",
+        "weight": 1627.897183
+      },
+      {
+        "name": "UT",
+        "weight": 2401.476065
+      },
+      {
+        "name": "VT",
+        "weight": 1187.425192
+      },
+      {
+        "name": "VA",
+        "weight": 548.069772
+      },
+      {
+        "name": "WA",
+        "weight": 3138.564554
+      },
+      {
+        "name": "WV",
+        "weight": 352.851258
+      },
+      {
+        "name": "WI",
+        "weight": 859.888069
+      },
+      {
+        "name": "WY",
+        "weight": 2025.443065
+      }
+    ],
+    "name": "KY"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 557.959856
+      },
+      {
+        "name": "AK",
+        "weight": 5652.590318
+      },
+      {
+        "name": "AZ",
+        "weight": 1808.604591
+      },
+      {
+        "name": "AR",
+        "weight": 490.315057
+      },
+      {
+        "name": "CA",
+        "weight": 2597.955338
+      },
+      {
+        "name": "CO",
+        "weight": 1532.577024
+      },
+      {
+        "name": "CT",
+        "weight": 2152.966746
+      },
+      {
+        "name": "DE",
+        "weight": 1807.47285
+      },
+      {
+        "name": "FL",
+        "weight": 1059.521925
+      },
+      {
+        "name": "GA",
+        "weight": 897.412559
+      },
+      {
+        "name": "HI",
+        "weight": 6426.47465
+      },
+      {
+        "name": "ID",
+        "weight": 2486.03813
+      },
+      {
+        "name": "IL",
+        "weight": 1110.135509
+      },
+      {
+        "name": "IN",
+        "weight": 1233.615721
+      },
+      {
+        "name": "IA",
+        "weight": 1299.260094
+      },
+      {
+        "name": "KS",
+        "weight": 1040.245342
+      },
+      {
+        "name": "KY",
+        "weight": 1110.897877
+      },
+      {
+        "name": "LA",
+        "weight": 0
+      },
+      {
+        "name": "ME",
+        "weight": 2624.019167
+      },
+      {
+        "name": "MD",
+        "weight": 1722.814265
+      },
+      {
+        "name": "MA",
+        "weight": 2291.678448
+      },
+      {
+        "name": "MI",
+        "weight": 1680.368412
+      },
+      {
+        "name": "MN",
+        "weight": 1790.295961
+      },
+      {
+        "name": "MS",
+        "weight": 364.205979
+      },
+      {
+        "name": "MO",
+        "weight": 910.155468
+      },
+      {
+        "name": "MT",
+        "weight": 2361.008841
+      },
+      {
+        "name": "NE",
+        "weight": 1413.6429
+      },
+      {
+        "name": "NV",
+        "weight": 2486.172206
+      },
+      {
+        "name": "NH",
+        "weight": 2373.986724
+      },
+      {
+        "name": "NJ",
+        "weight": 1898.174198
+      },
+      {
+        "name": "NM",
+        "weight": 1356.251313
+      },
+      {
+        "name": "NY",
+        "weight": 2078.537946
+      },
+      {
+        "name": "NC",
+        "weight": 1229.284742
+      },
+      {
+        "name": "ND",
+        "weight": 2040.120862
+      },
+      {
+        "name": "OH",
+        "weight": 1393.292362
+      },
+      {
+        "name": "OK",
+        "weight": 763.37439
+      },
+      {
+        "name": "OR",
+        "weight": 2896.412061
+      },
+      {
+        "name": "PA",
+        "weight": 1813.967678
+      },
+      {
+        "name": "RI",
+        "weight": 2246.089519
+      },
+      {
+        "name": "SC",
+        "weight": 1118.371824
+      },
+      {
+        "name": "SD",
+        "weight": 1706.726914
+      },
+      {
+        "name": "TN",
+        "weight": 804.894605
+      },
+      {
+        "name": "TX",
+        "weight": 736.41648
+      },
+      {
+        "name": "UT",
+        "weight": 2045.133009
+      },
+      {
+        "name": "VT",
+        "weight": 2294.067714
+      },
+      {
+        "name": "VA",
+        "weight": 1557.387686
+      },
+      {
+        "name": "WA",
+        "weight": 3090.95358
+      },
+      {
+        "name": "WV",
+        "weight": 1441.878368
+      },
+      {
+        "name": "WI",
+        "weight": 1588.237516
+      },
+      {
+        "name": "WY",
+        "weight": 1934.87473
+      }
+    ],
+    "name": "LA"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 2116.189055
+      },
+      {
+        "name": "AK",
+        "weight": 5255.375346
+      },
+      {
+        "name": "AZ",
+        "weight": 3767.299589
+      },
+      {
+        "name": "AR",
+        "weight": 2286.661099
+      },
+      {
+        "name": "CA",
+        "weight": 4262.533288
+      },
+      {
+        "name": "CO",
+        "weight": 3047.407185
+      },
+      {
+        "name": "CT",
+        "weight": 515.585572
+      },
+      {
+        "name": "DE",
+        "weight": 888.506971
+      },
+      {
+        "name": "FL",
+        "weight": 2236.901619
+      },
+      {
+        "name": "GA",
+        "weight": 1828.966117
+      },
+      {
+        "name": "HI",
+        "weight": 8223.006574
+      },
+      {
+        "name": "ID",
+        "weight": 3570.057152
+      },
+      {
+        "name": "IL",
+        "weight": 1736.860691
+      },
+      {
+        "name": "IN",
+        "weight": 1505.677653
+      },
+      {
+        "name": "IA",
+        "weight": 2004.568675
+      },
+      {
+        "name": "KS",
+        "weight": 2503.903707
+      },
+      {
+        "name": "KY",
+        "weight": 1518.735032
+      },
+      {
+        "name": "LA",
+        "weight": 2624.019167
+      },
+      {
+        "name": "ME",
+        "weight": 0
+      },
+      {
+        "name": "MD",
+        "weight": 944.179325
+      },
+      {
+        "name": "MA",
+        "weight": 381.619702
+      },
+      {
+        "name": "MI",
+        "weight": 1231.347992
+      },
+      {
+        "name": "MN",
+        "weight": 1981.188428
+      },
+      {
+        "name": "MS",
+        "weight": 2263.368307
+      },
+      {
+        "name": "MO",
+        "weight": 2085.133196
+      },
+      {
+        "name": "MT",
+        "weight": 3093.655802
+      },
+      {
+        "name": "NE",
+        "weight": 2525.83049
+      },
+      {
+        "name": "NV",
+        "weight": 3934.937338
+      },
+      {
+        "name": "NH",
+        "weight": 251.105013
+      },
+      {
+        "name": "NJ",
+        "weight": 781.7049
+      },
+      {
+        "name": "NM",
+        "weight": 3357.926905
+      },
+      {
+        "name": "NY",
+        "weight": 547.817607
+      },
+      {
+        "name": "NC",
+        "weight": 1457.364263
+      },
+      {
+        "name": "ND",
+        "weight": 2404.587697
+      },
+      {
+        "name": "OH",
+        "weight": 1268.627133
+      },
+      {
+        "name": "OK",
+        "weight": 2554.609034
+      },
+      {
+        "name": "OR",
+        "weight": 4005.901497
+      },
+      {
+        "name": "PA",
+        "weight": 810.121131
+      },
+      {
+        "name": "RI",
+        "weight": 455.832324
+      },
+      {
+        "name": "SC",
+        "weight": 1649.909991
+      },
+      {
+        "name": "SD",
+        "weight": 2429.175419
+      },
+      {
+        "name": "TN",
+        "weight": 1822.863213
+      },
+      {
+        "name": "TX",
+        "weight": 3118.740685
+      },
+      {
+        "name": "UT",
+        "weight": 3547.383426
+      },
+      {
+        "name": "VT",
+        "weight": 331.592057
+      },
+      {
+        "name": "VA",
+        "weight": 1116.751851
+      },
+      {
+        "name": "WA",
+        "weight": 3892.493026
+      },
+      {
+        "name": "WV",
+        "weight": 1182.757851
+      },
+      {
+        "name": "WI",
+        "weight": 1614.387121
+      },
+      {
+        "name": "WY",
+        "weight": 3035.152429
+      }
+    ],
+    "name": "ME"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1189.629106
+      },
+      {
+        "name": "AK",
+        "weight": 5514.103227
+      },
+      {
+        "name": "AZ",
+        "weight": 3108.294629
+      },
+      {
+        "name": "AR",
+        "weight": 1459.170136
+      },
+      {
+        "name": "CA",
+        "weight": 3726.558245
+      },
+      {
+        "name": "CO",
+        "weight": 2468.391937
+      },
+      {
+        "name": "CT",
+        "weight": 438.44066
+      },
+      {
+        "name": "DE",
+        "weight": 98.721378
+      },
+      {
+        "name": "FL",
+        "weight": 1316.664737
+      },
+      {
+        "name": "GA",
+        "weight": 887.380218
+      },
+      {
+        "name": "HI",
+        "weight": 7731.379262
+      },
+      {
+        "name": "ID",
+        "weight": 3189.788148
+      },
+      {
+        "name": "IL",
+        "weight": 1064.468805
+      },
+      {
+        "name": "IN",
+        "weight": 822.984245
+      },
+      {
+        "name": "IA",
+        "weight": 1466.88555
+      },
+      {
+        "name": "KS",
+        "weight": 1848.356466
+      },
+      {
+        "name": "KY",
+        "weight": 677.58506
+      },
+      {
+        "name": "LA",
+        "weight": 1722.814265
+      },
+      {
+        "name": "ME",
+        "weight": 944.179325
+      },
+      {
+        "name": "MD",
+        "weight": 0
+      },
+      {
+        "name": "MA",
+        "weight": 579.524186
+      },
+      {
+        "name": "MI",
+        "weight": 867.479747
+      },
+      {
+        "name": "MN",
+        "weight": 1676.219415
+      },
+      {
+        "name": "MS",
+        "weight": 1374.596835
+      },
+      {
+        "name": "MO",
+        "weight": 1382.312734
+      },
+      {
+        "name": "MT",
+        "weight": 2792.070204
+      },
+      {
+        "name": "NE",
+        "weight": 1994.224045
+      },
+      {
+        "name": "NV",
+        "weight": 3454.899535
+      },
+      {
+        "name": "NH",
+        "weight": 697.3063
+      },
+      {
+        "name": "NJ",
+        "weight": 175.404671
+      },
+      {
+        "name": "NM",
+        "weight": 2660.145569
+      },
+      {
+        "name": "NY",
+        "weight": 460.718935
+      },
+      {
+        "name": "NC",
+        "weight": 515.799857
+      },
+      {
+        "name": "ND",
+        "weight": 2137.049425
+      },
+      {
+        "name": "OH",
+        "weight": 563.004633
+      },
+      {
+        "name": "OK",
+        "weight": 1813.577798
+      },
+      {
+        "name": "OR",
+        "weight": 3648.880781
+      },
+      {
+        "name": "PA",
+        "weight": 244.47734
+      },
+      {
+        "name": "RI",
+        "weight": 525.962065
+      },
+      {
+        "name": "SC",
+        "weight": 706.333212
+      },
+      {
+        "name": "SD",
+        "weight": 2021.714712
+      },
+      {
+        "name": "TN",
+        "weight": 952.013465
+      },
+      {
+        "name": "TX",
+        "weight": 2299.010871
+      },
+      {
+        "name": "UT",
+        "weight": 3021.811233
+      },
+      {
+        "name": "VT",
+        "weight": 641.008335
+      },
+      {
+        "name": "VA",
+        "weight": 173.148757
+      },
+      {
+        "name": "WA",
+        "weight": 3638.574189
+      },
+      {
+        "name": "WV",
+        "weight": 333.356668
+      },
+      {
+        "name": "WI",
+        "weight": 1224.700289
+      },
+      {
+        "name": "WY",
+        "weight": 2593.534049
+      }
+    ],
+    "name": "MD"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1766.987879
+      },
+      {
+        "name": "AK",
+        "weight": 5428.263436
+      },
+      {
+        "name": "AZ",
+        "weight": 3556.125859
+      },
+      {
+        "name": "AR",
+        "weight": 1989.923187
+      },
+      {
+        "name": "CA",
+        "weight": 4107.934906
+      },
+      {
+        "name": "CO",
+        "weight": 2865.673449
+      },
+      {
+        "name": "CT",
+        "weight": 141.095758
+      },
+      {
+        "name": "DE",
+        "weight": 513.68913
+      },
+      {
+        "name": "FL",
+        "weight": 1856.078068
+      },
+      {
+        "name": "GA",
+        "weight": 1466.524299
+      },
+      {
+        "name": "HI",
+        "weight": 8100.598523
+      },
+      {
+        "name": "ID",
+        "weight": 3476.499303
+      },
+      {
+        "name": "IL",
+        "weight": 1495.151866
+      },
+      {
+        "name": "IN",
+        "weight": 1251.912467
+      },
+      {
+        "name": "IA",
+        "weight": 1823.303236
+      },
+      {
+        "name": "KS",
+        "weight": 2283.845081
+      },
+      {
+        "name": "KY",
+        "weight": 1206.079984
+      },
+      {
+        "name": "LA",
+        "weight": 2291.678448
+      },
+      {
+        "name": "ME",
+        "weight": 381.619702
+      },
+      {
+        "name": "MD",
+        "weight": 579.524186
+      },
+      {
+        "name": "MA",
+        "weight": 0
+      },
+      {
+        "name": "MI",
+        "weight": 1079.131832
+      },
+      {
+        "name": "MN",
+        "weight": 1892.336173
+      },
+      {
+        "name": "MS",
+        "weight": 1936.786686
+      },
+      {
+        "name": "MO",
+        "weight": 1839.230499
+      },
+      {
+        "name": "MT",
+        "weight": 3027.562105
+      },
+      {
+        "name": "NE",
+        "weight": 2357.447926
+      },
+      {
+        "name": "NV",
+        "weight": 3802.337857
+      },
+      {
+        "name": "NH",
+        "weight": 177.366135
+      },
+      {
+        "name": "NJ",
+        "weight": 408.968416
+      },
+      {
+        "name": "NM",
+        "weight": 3127.15393
+      },
+      {
+        "name": "NY",
+        "weight": 302.838705
+      },
+      {
+        "name": "NC",
+        "weight": 1095.219771
+      },
+      {
+        "name": "ND",
+        "weight": 2341.474329
+      },
+      {
+        "name": "OH",
+        "weight": 994.196668
+      },
+      {
+        "name": "OK",
+        "weight": 2298.664625
+      },
+      {
+        "name": "OR",
+        "weight": 3925.486779
+      },
+      {
+        "name": "PA",
+        "weight": 499.878671
+      },
+      {
+        "name": "RI",
+        "weight": 79.234902
+      },
+      {
+        "name": "SC",
+        "weight": 1279.016508
+      },
+      {
+        "name": "SD",
+        "weight": 2309.791585
+      },
+      {
+        "name": "TN",
+        "weight": 1502.204865
+      },
+      {
+        "name": "TX",
+        "weight": 2830.395032
+      },
+      {
+        "name": "UT",
+        "weight": 3392.652638
+      },
+      {
+        "name": "VT",
+        "weight": 206.807993
+      },
+      {
+        "name": "VA",
+        "weight": 752.400663
+      },
+      {
+        "name": "WA",
+        "weight": 3853.802658
+      },
+      {
+        "name": "WV",
+        "weight": 856.244503
+      },
+      {
+        "name": "WI",
+        "weight": 1477.689939
+      },
+      {
+        "name": "WY",
+        "weight": 2910.741399
+      }
+    ],
+    "name": "MA"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1335.525933
+      },
+      {
+        "name": "AK",
+        "weight": 4681.062472
+      },
+      {
+        "name": "AZ",
+        "weight": 2540.055284
+      },
+      {
+        "name": "AR",
+        "weight": 1233.274548
+      },
+      {
+        "name": "CA",
+        "weight": 3040.082926
+      },
+      {
+        "name": "CO",
+        "weight": 1816.120652
+      },
+      {
+        "name": "CT",
+        "weight": 1002.769598
+      },
+      {
+        "name": "DE",
+        "weight": 944.087782
+      },
+      {
+        "name": "FL",
+        "weight": 1816.550794
+      },
+      {
+        "name": "GA",
+        "weight": 1219.32128
+      },
+      {
+        "name": "HI",
+        "weight": 7023.781886
+      },
+      {
+        "name": "ID",
+        "weight": 2399.597995
+      },
+      {
+        "name": "IL",
+        "weight": 594.541738
+      },
+      {
+        "name": "IN",
+        "weight": 454.611926
+      },
+      {
+        "name": "IA",
+        "weight": 773.989668
+      },
+      {
+        "name": "KS",
+        "weight": 1289.229506
+      },
+      {
+        "name": "KY",
+        "weight": 705.5741
+      },
+      {
+        "name": "LA",
+        "weight": 1680.368412
+      },
+      {
+        "name": "ME",
+        "weight": 1231.347992
+      },
+      {
+        "name": "MD",
+        "weight": 867.479747
+      },
+      {
+        "name": "MA",
+        "weight": 1079.131832
+      },
+      {
+        "name": "MI",
+        "weight": 0
+      },
+      {
+        "name": "MN",
+        "weight": 828.983176
+      },
+      {
+        "name": "MS",
+        "weight": 1331.092414
+      },
+      {
+        "name": "MO",
+        "weight": 918.560865
+      },
+      {
+        "name": "MT",
+        "weight": 1963.758716
+      },
+      {
+        "name": "NE",
+        "weight": 1295.792465
+      },
+      {
+        "name": "NV",
+        "weight": 2725.782202
+      },
+      {
+        "name": "NH",
+        "weight": 1037.891833
+      },
+      {
+        "name": "NJ",
+        "weight": 930.49072
+      },
+      {
+        "name": "NM",
+        "weight": 2143.705091
+      },
+      {
+        "name": "NY",
+        "weight": 776.385012
+      },
+      {
+        "name": "NC",
+        "weight": 985.881632
+      },
+      {
+        "name": "ND",
+        "weight": 1288.567171
+      },
+      {
+        "name": "OH",
+        "weight": 441.989607
+      },
+      {
+        "name": "OK",
+        "weight": 1384.554151
+      },
+      {
+        "name": "OR",
+        "weight": 2851.32737
+      },
+      {
+        "name": "PA",
+        "weight": 682.906632
+      },
+      {
+        "name": "RI",
+        "weight": 1092.838825
+      },
+      {
+        "name": "SC",
+        "weight": 1185.857552
+      },
+      {
+        "name": "SD",
+        "weight": 1230.765736
+      },
+      {
+        "name": "TN",
+        "weight": 943.267035
+      },
+      {
+        "name": "TX",
+        "weight": 1996.212158
+      },
+      {
+        "name": "UT",
+        "weight": 2324.023724
+      },
+      {
+        "name": "VT",
+        "weight": 942.348598
+      },
+      {
+        "name": "VA",
+        "weight": 882.107925
+      },
+      {
+        "name": "WA",
+        "weight": 2802.238136
+      },
+      {
+        "name": "WV",
+        "weight": 665.437767
+      },
+      {
+        "name": "WI",
+        "weight": 398.590842
+      },
+      {
+        "name": "WY",
+        "weight": 1831.966327
+      }
+    ],
+    "name": "MI"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1698.327486
+      },
+      {
+        "name": "AK",
+        "weight": 4024.930793
+      },
+      {
+        "name": "AZ",
+        "weight": 1951.125065
+      },
+      {
+        "name": "AR",
+        "weight": 1305.147542
+      },
+      {
+        "name": "CA",
+        "weight": 2308.251662
+      },
+      {
+        "name": "CO",
+        "weight": 1190.364121
+      },
+      {
+        "name": "CT",
+        "weight": 1827.013136
+      },
+      {
+        "name": "DE",
+        "weight": 1760.355796
+      },
+      {
+        "name": "FL",
+        "weight": 2335.222825
+      },
+      {
+        "name": "GA",
+        "weight": 1742.648134
+      },
+      {
+        "name": "HI",
+        "weight": 6241.889887
+      },
+      {
+        "name": "ID",
+        "weight": 1591.084566
+      },
+      {
+        "name": "IL",
+        "weight": 844.463978
+      },
+      {
+        "name": "IN",
+        "weight": 966.714169
+      },
+      {
+        "name": "IA",
+        "weight": 491.967888
+      },
+      {
+        "name": "KS",
+        "weight": 919.738912
+      },
+      {
+        "name": "KY",
+        "weight": 1276.719878
+      },
+      {
+        "name": "LA",
+        "weight": 1790.295961
+      },
+      {
+        "name": "ME",
+        "weight": 1981.188428
+      },
+      {
+        "name": "MD",
+        "weight": 1676.219415
+      },
+      {
+        "name": "MA",
+        "weight": 1892.336173
+      },
+      {
+        "name": "MI",
+        "weight": 828.983176
+      },
+      {
+        "name": "MN",
+        "weight": 0
+      },
+      {
+        "name": "MS",
+        "weight": 1540.365595
+      },
+      {
+        "name": "MO",
+        "weight": 885.120338
+      },
+      {
+        "name": "MT",
+        "weight": 1136.58501
+      },
+      {
+        "name": "NE",
+        "weight": 692.719708
+      },
+      {
+        "name": "NV",
+        "weight": 1962.373806
+      },
+      {
+        "name": "NH",
+        "weight": 1825.593371
+      },
+      {
+        "name": "NJ",
+        "weight": 1756.006172
+      },
+      {
+        "name": "NM",
+        "weight": 1650.431894
+      },
+      {
+        "name": "NY",
+        "weight": 1592.738762
+      },
+      {
+        "name": "NC",
+        "weight": 1649.967375
+      },
+      {
+        "name": "ND",
+        "weight": 461.309993
+      },
+      {
+        "name": "OH",
+        "weight": 1152.972508
+      },
+      {
+        "name": "OK",
+        "weight": 1161.850107
+      },
+      {
+        "name": "OR",
+        "weight": 2034.736173
+      },
+      {
+        "name": "PA",
+        "weight": 1510.036179
+      },
+      {
+        "name": "RI",
+        "weight": 1913.5723
+      },
+      {
+        "name": "SC",
+        "weight": 1800.812347
+      },
+      {
+        "name": "SD",
+        "weight": 468.230477
+      },
+      {
+        "name": "TN",
+        "weight": 1346.63444
+      },
+      {
+        "name": "TX",
+        "weight": 1772.631582
+      },
+      {
+        "name": "UT",
+        "weight": 1604.390874
+      },
+      {
+        "name": "VT",
+        "weight": 1733.565461
+      },
+      {
+        "name": "VA",
+        "weight": 1656.225175
+      },
+      {
+        "name": "WA",
+        "weight": 1973.265747
+      },
+      {
+        "name": "WV",
+        "weight": 1414.431038
+      },
+      {
+        "name": "WI",
+        "weight": 452.454811
+      },
+      {
+        "name": "WY",
+        "weight": 1063.94544
+      }
+    ],
+    "name": "MN"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 299.721713
+      },
+      {
+        "name": "AK",
+        "weight": 5498.588653
+      },
+      {
+        "name": "AZ",
+        "weight": 1955.359582
+      },
+      {
+        "name": "AR",
+        "weight": 285.092794
+      },
+      {
+        "name": "CA",
+        "weight": 2704.989898
+      },
+      {
+        "name": "CO",
+        "weight": 1536.1119
+      },
+      {
+        "name": "CT",
+        "weight": 1799.286751
+      },
+      {
+        "name": "DE",
+        "weight": 1462.669831
+      },
+      {
+        "name": "FL",
+        "weight": 965.383506
+      },
+      {
+        "name": "GA",
+        "weight": 611.310698
+      },
+      {
+        "name": "HI",
+        "weight": 6620.120027
+      },
+      {
+        "name": "ID",
+        "weight": 2464.961751
+      },
+      {
+        "name": "IL",
+        "weight": 783.463184
+      },
+      {
+        "name": "IN",
+        "weight": 879.261005
+      },
+      {
+        "name": "IA",
+        "weight": 1052.643396
+      },
+      {
+        "name": "KS",
+        "weight": 945.468124
+      },
+      {
+        "name": "KY",
+        "weight": 747.448835
+      },
+      {
+        "name": "LA",
+        "weight": 364.205979
+      },
+      {
+        "name": "ME",
+        "weight": 2263.368307
+      },
+      {
+        "name": "MD",
+        "weight": 1374.596835
+      },
+      {
+        "name": "MA",
+        "weight": 1936.786686
+      },
+      {
+        "name": "MI",
+        "weight": 1331.092414
+      },
+      {
+        "name": "MN",
+        "weight": 1540.365595
+      },
+      {
+        "name": "MS",
+        "weight": 0
+      },
+      {
+        "name": "MO",
+        "weight": 662.713545
+      },
+      {
+        "name": "MT",
+        "weight": 2264.369943
+      },
+      {
+        "name": "NE",
+        "weight": 1293.090493
+      },
+      {
+        "name": "NV",
+        "weight": 2541.054542
+      },
+      {
+        "name": "NH",
+        "weight": 2013.946853
+      },
+      {
+        "name": "NJ",
+        "weight": 1549.317281
+      },
+      {
+        "name": "NM",
+        "weight": 1488.166361
+      },
+      {
+        "name": "NY",
+        "weight": 1716.895678
+      },
+      {
+        "name": "NC",
+        "weight": 899.179489
+      },
+      {
+        "name": "ND",
+        "weight": 1849.934153
+      },
+      {
+        "name": "OH",
+        "weight": 1029.357913
+      },
+      {
+        "name": "OK",
+        "weight": 720.512489
+      },
+      {
+        "name": "OR",
+        "weight": 2900.420542
+      },
+      {
+        "name": "PA",
+        "weight": 1453.897099
+      },
+      {
+        "name": "RI",
+        "weight": 1894.0091
+      },
+      {
+        "name": "SC",
+        "weight": 825.098982
+      },
+      {
+        "name": "SD",
+        "weight": 1542.410713
+      },
+      {
+        "name": "TN",
+        "weight": 441.494253
+      },
+      {
+        "name": "TX",
+        "weight": 968.426284
+      },
+      {
+        "name": "UT",
+        "weight": 2088.229215
+      },
+      {
+        "name": "VT",
+        "weight": 1932.776805
+      },
+      {
+        "name": "VA",
+        "weight": 1213.711452
+      },
+      {
+        "name": "WA",
+        "weight": 3046.780752
+      },
+      {
+        "name": "WV",
+        "weight": 1083.126388
+      },
+      {
+        "name": "WI",
+        "weight": 1279.469312
+      },
+      {
+        "name": "WY",
+        "weight": 1877.437016
+      }
+    ],
+    "name": "MS"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 865.948135
+      },
+      {
+        "name": "AK",
+        "weight": 4843.685498
+      },
+      {
+        "name": "AZ",
+        "weight": 1727.949367
+      },
+      {
+        "name": "AR",
+        "weight": 421.182754
+      },
+      {
+        "name": "CA",
+        "weight": 2359.915771
+      },
+      {
+        "name": "CO",
+        "weight": 1105.379264
+      },
+      {
+        "name": "CT",
+        "weight": 1722.265789
+      },
+      {
+        "name": "DE",
+        "weight": 1481.033095
+      },
+      {
+        "name": "FL",
+        "weight": 1546.710017
+      },
+      {
+        "name": "GA",
+        "weight": 1014.842118
+      },
+      {
+        "name": "HI",
+        "weight": 6358.68296
+      },
+      {
+        "name": "ID",
+        "weight": 1940.055234
+      },
+      {
+        "name": "IL",
+        "weight": 348.29682
+      },
+      {
+        "name": "IN",
+        "weight": 587.37327
+      },
+      {
+        "name": "IA",
+        "weight": 393.454922
+      },
+      {
+        "name": "KS",
+        "weight": 469.355346
+      },
+      {
+        "name": "KY",
+        "weight": 732.472124
+      },
+      {
+        "name": "LA",
+        "weight": 910.155468
+      },
+      {
+        "name": "ME",
+        "weight": 2085.133196
+      },
+      {
+        "name": "MD",
+        "weight": 1382.312734
+      },
+      {
+        "name": "MA",
+        "weight": 1839.230499
+      },
+      {
+        "name": "MI",
+        "weight": 918.560865
+      },
+      {
+        "name": "MN",
+        "weight": 885.120338
+      },
+      {
+        "name": "MS",
+        "weight": 662.713545
+      },
+      {
+        "name": "MO",
+        "weight": 0
+      },
+      {
+        "name": "MT",
+        "weight": 1661.857042
+      },
+      {
+        "name": "NE",
+        "weight": 708.415121
+      },
+      {
+        "name": "NV",
+        "weight": 2119.002676
+      },
+      {
+        "name": "NH",
+        "weight": 1857.45437
+      },
+      {
+        "name": "NJ",
+        "weight": 1531.752985
+      },
+      {
+        "name": "NM",
+        "weight": 1288.762496
+      },
+      {
+        "name": "NY",
+        "weight": 1558.143794
+      },
+      {
+        "name": "NC",
+        "weight": 1090.501073
+      },
+      {
+        "name": "ND",
+        "weight": 1191.464572
+      },
+      {
+        "name": "OH",
+        "weight": 847.973965
+      },
+      {
+        "name": "OK",
+        "weight": 471.452714
+      },
+      {
+        "name": "OR",
+        "weight": 2395.023745
+      },
+      {
+        "name": "PA",
+        "weight": 1344.872858
+      },
+      {
+        "name": "RI",
+        "weight": 1822.524402
+      },
+      {
+        "name": "SC",
+        "weight": 1152.539983
+      },
+      {
+        "name": "SD",
+        "weight": 901.010591
+      },
+      {
+        "name": "TN",
+        "weight": 606.487551
+      },
+      {
+        "name": "TX",
+        "weight": 1078.729444
+      },
+      {
+        "name": "UT",
+        "weight": 1671.373797
+      },
+      {
+        "name": "VT",
+        "weight": 1763.709851
+      },
+      {
+        "name": "VA",
+        "weight": 1273.759513
+      },
+      {
+        "name": "WA",
+        "weight": 2481.775525
+      },
+      {
+        "name": "WV",
+        "weight": 1049.380089
+      },
+      {
+        "name": "WI",
+        "weight": 707.631444
+      },
+      {
+        "name": "WY",
+        "weight": 1331.004704
+      }
+    ],
+    "name": "MO"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 2514.935126
+      },
+      {
+        "name": "AK",
+        "weight": 3316.503017
+      },
+      {
+        "name": "AZ",
+        "weight": 1442.192147
+      },
+      {
+        "name": "AR",
+        "weight": 1980.000588
+      },
+      {
+        "name": "CA",
+        "weight": 1395.042454
+      },
+      {
+        "name": "CO",
+        "weight": 936.37486
+      },
+      {
+        "name": "CT",
+        "weight": 2963.581101
+      },
+      {
+        "name": "DE",
+        "weight": 2880.69322
+      },
+      {
+        "name": "FL",
+        "weight": 3202.981517
+      },
+      {
+        "name": "GA",
+        "weight": 2672.345435
+      },
+      {
+        "name": "HI",
+        "weight": 5150.937616
+      },
+      {
+        "name": "ID",
+        "weight": 517.927719
+      },
+      {
+        "name": "IL",
+        "weight": 1821.528871
+      },
+      {
+        "name": "IN",
+        "weight": 2016.23691
+      },
+      {
+        "name": "IA",
+        "weight": 1375.692923
+      },
+      {
+        "name": "KS",
+        "weight": 1329.024514
+      },
+      {
+        "name": "KY",
+        "weight": 2295.425859
+      },
+      {
+        "name": "LA",
+        "weight": 2361.008841
+      },
+      {
+        "name": "ME",
+        "weight": 3093.655802
+      },
+      {
+        "name": "MD",
+        "weight": 2792.070204
+      },
+      {
+        "name": "MA",
+        "weight": 3027.562105
+      },
+      {
+        "name": "MI",
+        "weight": 1963.758716
+      },
+      {
+        "name": "MN",
+        "weight": 1136.58501
+      },
+      {
+        "name": "MS",
+        "weight": 2264.369943
+      },
+      {
+        "name": "MO",
+        "weight": 1661.857042
+      },
+      {
+        "name": "MT",
+        "weight": 0
+      },
+      {
+        "name": "NE",
+        "weight": 971.562387
+      },
+      {
+        "name": "NV",
+        "weight": 1002.53875
+      },
+      {
+        "name": "NH",
+        "weight": 2954.055542
+      },
+      {
+        "name": "NJ",
+        "weight": 2884.332625
+      },
+      {
+        "name": "NM",
+        "weight": 1438.035753
+      },
+      {
+        "name": "NY",
+        "weight": 2728.898309
+      },
+      {
+        "name": "NC",
+        "weight": 2680.170229
+      },
+      {
+        "name": "ND",
+        "weight": 689.673772
+      },
+      {
+        "name": "OH",
+        "weight": 2244.240397
+      },
+      {
+        "name": "OK",
+        "weight": 1597.839669
+      },
+      {
+        "name": "OR",
+        "weight": 915.342848
+      },
+      {
+        "name": "PA",
+        "weight": 2640.915992
+      },
+      {
+        "name": "RI",
+        "weight": 3050.003226
+      },
+      {
+        "name": "SC",
+        "weight": 2787.828458
+      },
+      {
+        "name": "SD",
+        "weight": 788.467056
+      },
+      {
+        "name": "TN",
+        "weight": 2259.190465
+      },
+      {
+        "name": "TX",
+        "weight": 1953.685355
+      },
+      {
+        "name": "UT",
+        "weight": 861.536493
+      },
+      {
+        "name": "VT",
+        "weight": 2863.74755
+      },
+      {
+        "name": "VA",
+        "weight": 2750.976898
+      },
+      {
+        "name": "WA",
+        "weight": 847.879684
+      },
+      {
+        "name": "WV",
+        "weight": 2504.794755
+      },
+      {
+        "name": "WI",
+        "weight": 1574.379104
+      },
+      {
+        "name": "WY",
+        "weight": 466.981324
+      }
+    ],
+    "name": "MT"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1545.482144
+      },
+      {
+        "name": "AK",
+        "weight": 4238.951163
+      },
+      {
+        "name": "AZ",
+        "weight": 1277.61013
+      },
+      {
+        "name": "AR",
+        "weight": 1009.182737
+      },
+      {
+        "name": "CA",
+        "weight": 1750.642485
+      },
+      {
+        "name": "CO",
+        "weight": 526.103174
+      },
+      {
+        "name": "CT",
+        "weight": 2262.253211
+      },
+      {
+        "name": "DE",
+        "weight": 2090.620655
+      },
+      {
+        "name": "FL",
+        "weight": 2234.558506
+      },
+      {
+        "name": "GA",
+        "weight": 1722.589369
+      },
+      {
+        "name": "HI",
+        "weight": 5750.22364
+      },
+      {
+        "name": "ID",
+        "weight": 1234.652478
+      },
+      {
+        "name": "IL",
+        "weight": 940.821048
+      },
+      {
+        "name": "IN",
+        "weight": 1172.879833
+      },
+      {
+        "name": "IA",
+        "weight": 535.48377
+      },
+      {
+        "name": "KS",
+        "weight": 374.539253
+      },
+      {
+        "name": "KY",
+        "weight": 1404.201984
+      },
+      {
+        "name": "LA",
+        "weight": 1413.6429
+      },
+      {
+        "name": "ME",
+        "weight": 2525.83049
+      },
+      {
+        "name": "MD",
+        "weight": 1994.224045
+      },
+      {
+        "name": "MA",
+        "weight": 2357.447926
+      },
+      {
+        "name": "MI",
+        "weight": 1295.792465
+      },
+      {
+        "name": "MN",
+        "weight": 692.719708
+      },
+      {
+        "name": "MS",
+        "weight": 1293.090493
+      },
+      {
+        "name": "MO",
+        "weight": 708.415121
+      },
+      {
+        "name": "MT",
+        "weight": 971.562387
+      },
+      {
+        "name": "NE",
+        "weight": 0
+      },
+      {
+        "name": "NV",
+        "weight": 1460.977538
+      },
+      {
+        "name": "NH",
+        "weight": 2331.890089
+      },
+      {
+        "name": "NJ",
+        "weight": 2119.958026
+      },
+      {
+        "name": "NM",
+        "weight": 957.790079
+      },
+      {
+        "name": "NY",
+        "weight": 2056.832738
+      },
+      {
+        "name": "NC",
+        "weight": 1780.415298
+      },
+      {
+        "name": "ND",
+        "weight": 684.786404
+      },
+      {
+        "name": "OH",
+        "weight": 1431.602336
+      },
+      {
+        "name": "OK",
+        "weight": 658.504685
+      },
+      {
+        "name": "OR",
+        "weight": 1692.260161
+      },
+      {
+        "name": "PA",
+        "weight": 1898.335619
+      },
+      {
+        "name": "RI",
+        "weight": 2359.00969
+      },
+      {
+        "name": "SC",
+        "weight": 1858.552693
+      },
+      {
+        "name": "SD",
+        "weight": 333.58478
+      },
+      {
+        "name": "TN",
+        "weight": 1314.763693
+      },
+      {
+        "name": "TX",
+        "weight": 1167.54673
+      },
+      {
+        "name": "UT",
+        "weight": 1036.286672
+      },
+      {
+        "name": "VT",
+        "weight": 2236.017359
+      },
+      {
+        "name": "VA",
+        "weight": 1915.652657
+      },
+      {
+        "name": "WA",
+        "weight": 1775.42085
+      },
+      {
+        "name": "WV",
+        "weight": 1674.385715
+      },
+      {
+        "name": "WI",
+        "weight": 915.890166
+      },
+      {
+        "name": "WY",
+        "weight": 624.531257
+      }
+    ],
+    "name": "NE"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 2835.356788
+      },
+      {
+        "name": "AK",
+        "weight": 3690.030399
+      },
+      {
+        "name": "AZ",
+        "weight": 845.993839
+      },
+      {
+        "name": "AR",
+        "weight": 2274.923806
+      },
+      {
+        "name": "CA",
+        "weight": 394.009382
+      },
+      {
+        "name": "CO",
+        "weight": 1020.897206
+      },
+      {
+        "name": "CT",
+        "weight": 3714.272505
+      },
+      {
+        "name": "DE",
+        "weight": 3551.487642
+      },
+      {
+        "name": "FL",
+        "weight": 3499.951348
+      },
+      {
+        "name": "GA",
+        "weight": 3086.221328
+      },
+      {
+        "name": "HI",
+        "weight": 4298.303442
+      },
+      {
+        "name": "ID",
+        "weight": 509.247058
+      },
+      {
+        "name": "IL",
+        "weight": 2396.199053
+      },
+      {
+        "name": "IN",
+        "weight": 2632.640671
+      },
+      {
+        "name": "IA",
+        "weight": 1993.443618
+      },
+      {
+        "name": "KS",
+        "weight": 1660.645292
+      },
+      {
+        "name": "KY",
+        "weight": 2846.245943
+      },
+      {
+        "name": "LA",
+        "weight": 2486.172206
+      },
+      {
+        "name": "ME",
+        "weight": 3934.937338
+      },
+      {
+        "name": "MD",
+        "weight": 3454.899535
+      },
+      {
+        "name": "MA",
+        "weight": 3802.337857
+      },
+      {
+        "name": "MI",
+        "weight": 2725.782202
+      },
+      {
+        "name": "MN",
+        "weight": 1962.373806
+      },
+      {
+        "name": "MS",
+        "weight": 2541.054542
+      },
+      {
+        "name": "MO",
+        "weight": 2119.002676
+      },
+      {
+        "name": "MT",
+        "weight": 1002.53875
+      },
+      {
+        "name": "NE",
+        "weight": 1460.977538
+      },
+      {
+        "name": "NV",
+        "weight": 0
+      },
+      {
+        "name": "NH",
+        "weight": 3761.005201
+      },
+      {
+        "name": "NJ",
+        "weight": 3580.419722
+      },
+      {
+        "name": "NM",
+        "weight": 1169.663382
+      },
+      {
+        "name": "NY",
+        "weight": 3499.741707
+      },
+      {
+        "name": "NC",
+        "weight": 3209.346139
+      },
+      {
+        "name": "ND",
+        "weight": 1596.245233
+      },
+      {
+        "name": "OH",
+        "weight": 2892.507671
+      },
+      {
+        "name": "OK",
+        "weight": 1824.366375
+      },
+      {
+        "name": "OR",
+        "weight": 532.527665
+      },
+      {
+        "name": "PA",
+        "weight": 3355.814073
+      },
+      {
+        "name": "RI",
+        "weight": 3809.283013
+      },
+      {
+        "name": "SC",
+        "weight": 3254.873189
+      },
+      {
+        "name": "SD",
+        "weight": 1505.825826
+      },
+      {
+        "name": "TN",
+        "weight": 2706.265726
+      },
+      {
+        "name": "TX",
+        "weight": 1841.342051
+      },
+      {
+        "name": "UT",
+        "weight": 454.282327
+      },
+      {
+        "name": "VT",
+        "weight": 3666.17407
+      },
+      {
+        "name": "VA",
+        "weight": 3371.805911
+      },
+      {
+        "name": "WA",
+        "weight": 919.727162
+      },
+      {
+        "name": "WV",
+        "weight": 3132.904969
+      },
+      {
+        "name": "WI",
+        "weight": 2329.303862
+      },
+      {
+        "name": "WY",
+        "weight": 900.097253
+      }
+    ],
+    "name": "NV"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1865.105248
+      },
+      {
+        "name": "AK",
+        "weight": 5273.792181
+      },
+      {
+        "name": "AZ",
+        "weight": 3556.177165
+      },
+      {
+        "name": "AR",
+        "weight": 2043.401575
+      },
+      {
+        "name": "CA",
+        "weight": 4077.972913
+      },
+      {
+        "name": "CO",
+        "weight": 2848.376719
+      },
+      {
+        "name": "CT",
+        "weight": 284.250977
+      },
+      {
+        "name": "DE",
+        "weight": 647.936133
+      },
+      {
+        "name": "FL",
+        "weight": 2001.07363
+      },
+      {
+        "name": "GA",
+        "weight": 1579.484451
+      },
+      {
+        "name": "HI",
+        "weight": 8057.224636
+      },
+      {
+        "name": "ID",
+        "weight": 3416.135619
+      },
+      {
+        "name": "IL",
+        "weight": 1509.567727
+      },
+      {
+        "name": "IN",
+        "weight": 1273.185321
+      },
+      {
+        "name": "IA",
+        "weight": 1803.04028
+      },
+      {
+        "name": "KS",
+        "weight": 2287.194602
+      },
+      {
+        "name": "KY",
+        "weight": 1270.772485
+      },
+      {
+        "name": "LA",
+        "weight": 2373.986724
+      },
+      {
+        "name": "ME",
+        "weight": 251.105013
+      },
+      {
+        "name": "MD",
+        "weight": 697.3063
+      },
+      {
+        "name": "MA",
+        "weight": 177.366135
+      },
+      {
+        "name": "MI",
+        "weight": 1037.891833
+      },
+      {
+        "name": "MN",
+        "weight": 1825.593371
+      },
+      {
+        "name": "MS",
+        "weight": 2013.946853
+      },
+      {
+        "name": "MO",
+        "weight": 1857.45437
+      },
+      {
+        "name": "MT",
+        "weight": 2954.055542
+      },
+      {
+        "name": "NE",
+        "weight": 2331.890089
+      },
+      {
+        "name": "NV",
+        "weight": 3761.005201
+      },
+      {
+        "name": "NH",
+        "weight": 0
+      },
+      {
+        "name": "NJ",
+        "weight": 540.660138
+      },
+      {
+        "name": "NM",
+        "weight": 3138.236517
+      },
+      {
+        "name": "NY",
+        "weight": 303.380889
+      },
+      {
+        "name": "NC",
+        "weight": 1208.199691
+      },
+      {
+        "name": "ND",
+        "weight": 2264.906309
+      },
+      {
+        "name": "OH",
+        "weight": 1028.588106
+      },
+      {
+        "name": "OK",
+        "weight": 2324.321107
+      },
+      {
+        "name": "OR",
+        "weight": 3859.764308
+      },
+      {
+        "name": "PA",
+        "weight": 560.096389
+      },
+      {
+        "name": "RI",
+        "weight": 255.74822
+      },
+      {
+        "name": "SC",
+        "weight": 1403.638602
+      },
+      {
+        "name": "SD",
+        "weight": 2259.133893
+      },
+      {
+        "name": "TN",
+        "weight": 1573.995422
+      },
+      {
+        "name": "TX",
+        "weight": 2878.612604
+      },
+      {
+        "name": "UT",
+        "weight": 3361.911764
+      },
+      {
+        "name": "VT",
+        "weight": 95.983237
+      },
+      {
+        "name": "VA",
+        "weight": 868.987837
+      },
+      {
+        "name": "WA",
+        "weight": 3769.900105
+      },
+      {
+        "name": "WV",
+        "weight": 932.302055
+      },
+      {
+        "name": "WI",
+        "weight": 1431.863259
+      },
+      {
+        "name": "WY",
+        "weight": 2864.016512
+      }
+    ],
+    "name": "NH"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1364.383183
+      },
+      {
+        "name": "AK",
+        "weight": 5517.916743
+      },
+      {
+        "name": "AZ",
+        "weight": 3259.680834
+      },
+      {
+        "name": "AR",
+        "weight": 1628.106503
+      },
+      {
+        "name": "CA",
+        "weight": 3861.608273
+      },
+      {
+        "name": "CO",
+        "weight": 2605.32176
+      },
+      {
+        "name": "CT",
+        "weight": 268.442054
+      },
+      {
+        "name": "DE",
+        "weight": 107.278822
+      },
+      {
+        "name": "FL",
+        "weight": 1460.698369
+      },
+      {
+        "name": "GA",
+        "weight": 1058.439117
+      },
+      {
+        "name": "HI",
+        "weight": 7866.451988
+      },
+      {
+        "name": "ID",
+        "weight": 3297.904866
+      },
+      {
+        "name": "IL",
+        "weight": 1203.783811
+      },
+      {
+        "name": "IN",
+        "weight": 958.563451
+      },
+      {
+        "name": "IA",
+        "weight": 1587.321779
+      },
+      {
+        "name": "KS",
+        "weight": 1993.830651
+      },
+      {
+        "name": "KY",
+        "weight": 843.222268
+      },
+      {
+        "name": "LA",
+        "weight": 1898.174198
+      },
+      {
+        "name": "ME",
+        "weight": 781.7049
+      },
+      {
+        "name": "MD",
+        "weight": 175.404671
+      },
+      {
+        "name": "MA",
+        "weight": 408.968416
+      },
+      {
+        "name": "MI",
+        "weight": 930.49072
+      },
+      {
+        "name": "MN",
+        "weight": 1756.006172
+      },
+      {
+        "name": "MS",
+        "weight": 1549.317281
+      },
+      {
+        "name": "MO",
+        "weight": 1531.752985
+      },
+      {
+        "name": "MT",
+        "weight": 2884.332625
+      },
+      {
+        "name": "NE",
+        "weight": 2119.958026
+      },
+      {
+        "name": "NV",
+        "weight": 3580.419722
+      },
+      {
+        "name": "NH",
+        "weight": 540.660138
+      },
+      {
+        "name": "NJ",
+        "weight": 0
+      },
+      {
+        "name": "NM",
+        "weight": 2815.722231
+      },
+      {
+        "name": "NY",
+        "weight": 352.221767
+      },
+      {
+        "name": "NC",
+        "weight": 687.896337
+      },
+      {
+        "name": "ND",
+        "weight": 2217.009512
+      },
+      {
+        "name": "OH",
+        "weight": 693.311847
+      },
+      {
+        "name": "OK",
+        "weight": 1972.155055
+      },
+      {
+        "name": "OR",
+        "weight": 3755.208215
+      },
+      {
+        "name": "PA",
+        "weight": 248.453318
+      },
+      {
+        "name": "RI",
+        "weight": 351.653361
+      },
+      {
+        "name": "SC",
+        "weight": 870.318811
+      },
+      {
+        "name": "SD",
+        "weight": 2125.737935
+      },
+      {
+        "name": "TN",
+        "weight": 1124.273992
+      },
+      {
+        "name": "TX",
+        "weight": 2468.981643
+      },
+      {
+        "name": "UT",
+        "weight": 3152.849232
+      },
+      {
+        "name": "VT",
+        "weight": 496.836883
+      },
+      {
+        "name": "VA",
+        "weight": 345.583788
+      },
+      {
+        "name": "WA",
+        "weight": 3727.49867
+      },
+      {
+        "name": "WV",
+        "weight": 492.198969
+      },
+      {
+        "name": "WI",
+        "weight": 1310.094991
+      },
+      {
+        "name": "WY",
+        "weight": 2708.524468
+      }
+    ],
+    "name": "NJ"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1787.340523
+      },
+      {
+        "name": "AK",
+        "weight": 4683.614347
+      },
+      {
+        "name": "AZ",
+        "weight": 467.749389
+      },
+      {
+        "name": "AR",
+        "weight": 1265.642299
+      },
+      {
+        "name": "CA",
+        "weight": 1241.986253
+      },
+      {
+        "name": "CO",
+        "weight": 537.604205
+      },
+      {
+        "name": "CT",
+        "weight": 3011.027234
+      },
+      {
+        "name": "DE",
+        "weight": 2758.530491
+      },
+      {
+        "name": "FL",
+        "weight": 2405.953267
+      },
+      {
+        "name": "GA",
+        "weight": 2085.725479
+      },
+      {
+        "name": "HI",
+        "weight": 5139.006995
+      },
+      {
+        "name": "ID",
+        "weight": 1318.647207
+      },
+      {
+        "name": "IL",
+        "weight": 1632.238759
+      },
+      {
+        "name": "IN",
+        "weight": 1875.453798
+      },
+      {
+        "name": "IA",
+        "weight": 1383.147532
+      },
+      {
+        "name": "KS",
+        "weight": 855.214503
+      },
+      {
+        "name": "KY",
+        "weight": 1988.862374
+      },
+      {
+        "name": "LA",
+        "weight": 1356.251313
+      },
+      {
+        "name": "ME",
+        "weight": 3357.926905
+      },
+      {
+        "name": "MD",
+        "weight": 2660.145569
+      },
+      {
+        "name": "MA",
+        "weight": 3127.15393
+      },
+      {
+        "name": "MI",
+        "weight": 2143.705091
+      },
+      {
+        "name": "MN",
+        "weight": 1650.431894
+      },
+      {
+        "name": "MS",
+        "weight": 1488.166361
+      },
+      {
+        "name": "MO",
+        "weight": 1288.762496
+      },
+      {
+        "name": "MT",
+        "weight": 1438.035753
+      },
+      {
+        "name": "NE",
+        "weight": 957.790079
+      },
+      {
+        "name": "NV",
+        "weight": 1169.663382
+      },
+      {
+        "name": "NH",
+        "weight": 3138.236517
+      },
+      {
+        "name": "NJ",
+        "weight": 2815.722231
+      },
+      {
+        "name": "NM",
+        "weight": 0
+      },
+      {
+        "name": "NY",
+        "weight": 2842.249393
+      },
+      {
+        "name": "NC",
+        "weight": 2295.861161
+      },
+      {
+        "name": "ND",
+        "weight": 1554.868027
+      },
+      {
+        "name": "OH",
+        "weight": 2136.678518
+      },
+      {
+        "name": "OK",
+        "weight": 849.527653
+      },
+      {
+        "name": "OR",
+        "weight": 1645.149719
+      },
+      {
+        "name": "PA",
+        "weight": 2633.635023
+      },
+      {
+        "name": "RI",
+        "weight": 3111.281623
+      },
+      {
+        "name": "SC",
+        "weight": 2284.140791
+      },
+      {
+        "name": "SD",
+        "weight": 1244.872342
+      },
+      {
+        "name": "TN",
+        "weight": 1766.958491
+      },
+      {
+        "name": "TX",
+        "weight": 672.59502
+      },
+      {
+        "name": "UT",
+        "weight": 775.30274
+      },
+      {
+        "name": "VT",
+        "weight": 3043.364621
+      },
+      {
+        "name": "VA",
+        "weight": 2536.709705
+      },
+      {
+        "name": "WA",
+        "weight": 1932.141072
+      },
+      {
+        "name": "WV",
+        "weight": 2327.166387
+      },
+      {
+        "name": "WI",
+        "weight": 1810.259749
+      },
+      {
+        "name": "WY",
+        "weight": 981.245263
+      }
+    ],
+    "name": "NM"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1580.561796
+      },
+      {
+        "name": "AK",
+        "weight": 5213.898534
+      },
+      {
+        "name": "AZ",
+        "weight": 3265.308381
+      },
+      {
+        "name": "AR",
+        "weight": 1740.410511
+      },
+      {
+        "name": "CA",
+        "weight": 3806.903104
+      },
+      {
+        "name": "CO",
+        "weight": 2567.527839
+      },
+      {
+        "name": "CT",
+        "weight": 244.96351
+      },
+      {
+        "name": "DE",
+        "weight": 446.751925
+      },
+      {
+        "name": "FL",
+        "weight": 1775.671904
+      },
+      {
+        "name": "GA",
+        "weight": 1310.335082
+      },
+      {
+        "name": "HI",
+        "weight": 7798.03805
+      },
+      {
+        "name": "ID",
+        "weight": 3174.589137
+      },
+      {
+        "name": "IL",
+        "weight": 1211.046591
+      },
+      {
+        "name": "IN",
+        "weight": 972.236781
+      },
+      {
+        "name": "IA",
+        "weight": 1523.612641
+      },
+      {
+        "name": "KS",
+        "weight": 1994.058574
+      },
+      {
+        "name": "KY",
+        "weight": 971.202418
+      },
+      {
+        "name": "LA",
+        "weight": 2078.537946
+      },
+      {
+        "name": "ME",
+        "weight": 547.817607
+      },
+      {
+        "name": "MD",
+        "weight": 460.718935
+      },
+      {
+        "name": "MA",
+        "weight": 302.838705
+      },
+      {
+        "name": "MI",
+        "weight": 776.385012
+      },
+      {
+        "name": "MN",
+        "weight": 1592.738762
+      },
+      {
+        "name": "MS",
+        "weight": 1716.895678
+      },
+      {
+        "name": "MO",
+        "weight": 1558.143794
+      },
+      {
+        "name": "MT",
+        "weight": 2728.898309
+      },
+      {
+        "name": "NE",
+        "weight": 2056.832738
+      },
+      {
+        "name": "NV",
+        "weight": 3499.741707
+      },
+      {
+        "name": "NH",
+        "weight": 303.380889
+      },
+      {
+        "name": "NJ",
+        "weight": 352.221767
+      },
+      {
+        "name": "NM",
+        "weight": 2842.249393
+      },
+      {
+        "name": "NY",
+        "weight": 0
+      },
+      {
+        "name": "NC",
+        "weight": 943.89254
+      },
+      {
+        "name": "ND",
+        "weight": 2044.560554
+      },
+      {
+        "name": "OH",
+        "weight": 725.291423
+      },
+      {
+        "name": "OK",
+        "weight": 2023.362637
+      },
+      {
+        "name": "OR",
+        "weight": 3624.409354
+      },
+      {
+        "name": "PA",
+        "weight": 269.595063
+      },
+      {
+        "name": "RI",
+        "weight": 321.866969
+      },
+      {
+        "name": "SC",
+        "weight": 1150.997796
+      },
+      {
+        "name": "SD",
+        "weight": 2007.122153
+      },
+      {
+        "name": "TN",
+        "weight": 1275.886781
+      },
+      {
+        "name": "TX",
+        "weight": 2575.233703
+      },
+      {
+        "name": "UT",
+        "weight": 3091.339498
+      },
+      {
+        "name": "VT",
+        "weight": 216.273338
+      },
+      {
+        "name": "VA",
+        "weight": 619.32285
+      },
+      {
+        "name": "WA",
+        "weight": 3558.578326
+      },
+      {
+        "name": "WV",
+        "weight": 640.712719
+      },
+      {
+        "name": "WI",
+        "weight": 1174.969762
+      },
+      {
+        "name": "WY",
+        "weight": 2607.902704
+      }
+    ],
+    "name": "NY"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 681.754369
+      },
+      {
+        "name": "AK",
+        "weight": 5640.693153
+      },
+      {
+        "name": "AZ",
+        "weight": 2758.506822
+      },
+      {
+        "name": "AR",
+        "weight": 1040.405781
+      },
+      {
+        "name": "CA",
+        "weight": 3440.282898
+      },
+      {
+        "name": "CO",
+        "weight": 2193.053004
+      },
+      {
+        "name": "CT",
+        "weight": 954.124218
+      },
+      {
+        "name": "DE",
+        "weight": 588.649876
+      },
+      {
+        "name": "FL",
+        "weight": 870.741639
+      },
+      {
+        "name": "GA",
+        "weight": 371.798536
+      },
+      {
+        "name": "HI",
+        "weight": 7424.151825
+      },
+      {
+        "name": "ID",
+        "weight": 3013.548721
+      },
+      {
+        "name": "IL",
+        "weight": 858.824261
+      },
+      {
+        "name": "IN",
+        "weight": 683.575799
+      },
+      {
+        "name": "IA",
+        "weight": 1304.566016
+      },
+      {
+        "name": "KS",
+        "weight": 1552.383462
+      },
+      {
+        "name": "KY",
+        "weight": 384.80783
+      },
+      {
+        "name": "LA",
+        "weight": 1229.284742
+      },
+      {
+        "name": "ME",
+        "weight": 1457.364263
+      },
+      {
+        "name": "MD",
+        "weight": 515.799857
+      },
+      {
+        "name": "MA",
+        "weight": 1095.219771
+      },
+      {
+        "name": "MI",
+        "weight": 985.881632
+      },
+      {
+        "name": "MN",
+        "weight": 1649.967375
+      },
+      {
+        "name": "MS",
+        "weight": 899.179489
+      },
+      {
+        "name": "MO",
+        "weight": 1090.501073
+      },
+      {
+        "name": "MT",
+        "weight": 2680.170229
+      },
+      {
+        "name": "NE",
+        "weight": 1780.415298
+      },
+      {
+        "name": "NV",
+        "weight": 3209.346139
+      },
+      {
+        "name": "NH",
+        "weight": 1208.199691
+      },
+      {
+        "name": "NJ",
+        "weight": 687.896337
+      },
+      {
+        "name": "NM",
+        "weight": 2295.861161
+      },
+      {
+        "name": "NY",
+        "weight": 943.89254
+      },
+      {
+        "name": "NC",
+        "weight": 0
+      },
+      {
+        "name": "ND",
+        "weight": 2087.133623
+      },
+      {
+        "name": "OH",
+        "weight": 545.049853
+      },
+      {
+        "name": "OK",
+        "weight": 1450.796666
+      },
+      {
+        "name": "OR",
+        "weight": 3472.288237
+      },
+      {
+        "name": "PA",
+        "weight": 679.157125
+      },
+      {
+        "name": "RI",
+        "weight": 1039.43526
+      },
+      {
+        "name": "SC",
+        "weight": 219.018917
+      },
+      {
+        "name": "SD",
+        "weight": 1891.724195
+      },
+      {
+        "name": "TN",
+        "weight": 528.946043
+      },
+      {
+        "name": "TX",
+        "weight": 1857.153784
+      },
+      {
+        "name": "UT",
+        "weight": 2760.566685
+      },
+      {
+        "name": "VT",
+        "weight": 1144.083834
+      },
+      {
+        "name": "VA",
+        "weight": 342.822454
+      },
+      {
+        "name": "WA",
+        "weight": 3522.869076
+      },
+      {
+        "name": "WV",
+        "weight": 358.743818
+      },
+      {
+        "name": "WI",
+        "weight": 1218.061938
+      },
+      {
+        "name": "WY",
+        "weight": 2403.761342
+      }
+    ],
+    "name": "NC"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 2051.592258
+      },
+      {
+        "name": "AK",
+        "weight": 3652.547056
+      },
+      {
+        "name": "AZ",
+        "weight": 1754.316461
+      },
+      {
+        "name": "AR",
+        "weight": 1584.115958
+      },
+      {
+        "name": "CA",
+        "weight": 1967.089736
+      },
+      {
+        "name": "CO",
+        "weight": 1028.751263
+      },
+      {
+        "name": "CT",
+        "weight": 2281.819847
+      },
+      {
+        "name": "DE",
+        "weight": 2221.585269
+      },
+      {
+        "name": "FL",
+        "weight": 2717.458047
+      },
+      {
+        "name": "GA",
+        "weight": 2142.87116
+      },
+      {
+        "name": "HI",
+        "weight": 5830.879976
+      },
+      {
+        "name": "ID",
+        "weight": 1175.095438
+      },
+      {
+        "name": "IL",
+        "weight": 1248.781734
+      },
+      {
+        "name": "IN",
+        "weight": 1405.182578
+      },
+      {
+        "name": "IA",
+        "weight": 825.370159
+      },
+      {
+        "name": "KS",
+        "weight": 1036.426707
+      },
+      {
+        "name": "KY",
+        "weight": 1706.621912
+      },
+      {
+        "name": "LA",
+        "weight": 2040.120862
+      },
+      {
+        "name": "ME",
+        "weight": 2404.587697
+      },
+      {
+        "name": "MD",
+        "weight": 2137.049425
+      },
+      {
+        "name": "MA",
+        "weight": 2341.474329
+      },
+      {
+        "name": "MI",
+        "weight": 1288.567171
+      },
+      {
+        "name": "MN",
+        "weight": 461.309993
+      },
+      {
+        "name": "MS",
+        "weight": 1849.934153
+      },
+      {
+        "name": "MO",
+        "weight": 1191.464572
+      },
+      {
+        "name": "MT",
+        "weight": 689.673772
+      },
+      {
+        "name": "NE",
+        "weight": 684.786404
+      },
+      {
+        "name": "NV",
+        "weight": 1596.245233
+      },
+      {
+        "name": "NH",
+        "weight": 2264.906309
+      },
+      {
+        "name": "NJ",
+        "weight": 2217.009512
+      },
+      {
+        "name": "NM",
+        "weight": 1554.868027
+      },
+      {
+        "name": "NY",
+        "weight": 2044.560554
+      },
+      {
+        "name": "NC",
+        "weight": 2087.133623
+      },
+      {
+        "name": "ND",
+        "weight": 0
+      },
+      {
+        "name": "OH",
+        "weight": 1607.528812
+      },
+      {
+        "name": "OK",
+        "weight": 1318.235728
+      },
+      {
+        "name": "OR",
+        "weight": 1601.685712
+      },
+      {
+        "name": "PA",
+        "weight": 1970.6501
+      },
+      {
+        "name": "RI",
+        "weight": 2366.252268
+      },
+      {
+        "name": "SC",
+        "weight": 2223.510033
+      },
+      {
+        "name": "SD",
+        "weight": 351.945893
+      },
+      {
+        "name": "TN",
+        "weight": 1733.885638
+      },
+      {
+        "name": "TX",
+        "weight": 1851.834442
+      },
+      {
+        "name": "UT",
+        "weight": 1300.884648
+      },
+      {
+        "name": "VT",
+        "weight": 2175.019662
+      },
+      {
+        "name": "VA",
+        "weight": 2113.132453
+      },
+      {
+        "name": "WA",
+        "weight": 1515.04208
+      },
+      {
+        "name": "WV",
+        "weight": 1869.647393
+      },
+      {
+        "name": "WI",
+        "weight": 912.467679
+      },
+      {
+        "name": "WY",
+        "weight": 737.992445
+      }
+    ],
+    "name": "ND"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 960.696901
+      },
+      {
+        "name": "AK",
+        "weight": 5104.270991
+      },
+      {
+        "name": "AZ",
+        "weight": 2573.38495
+      },
+      {
+        "name": "AR",
+        "weight": 1019.332029
+      },
+      {
+        "name": "CA",
+        "weight": 3168.794429
+      },
+      {
+        "name": "CO",
+        "weight": 1912.060418
+      },
+      {
+        "name": "CT",
+        "weight": 874.520804
+      },
+      {
+        "name": "DE",
+        "weight": 659.025667
+      },
+      {
+        "name": "FL",
+        "weight": 1380.468942
+      },
+      {
+        "name": "GA",
+        "weight": 792.650313
+      },
+      {
+        "name": "HI",
+        "weight": 7173.847483
+      },
+      {
+        "name": "ID",
+        "weight": 2629.764135
+      },
+      {
+        "name": "IL",
+        "weight": 511.559699
+      },
+      {
+        "name": "IN",
+        "weight": 265.61479
+      },
+      {
+        "name": "IA",
+        "weight": 904.135139
+      },
+      {
+        "name": "KS",
+        "weight": 1303.543969
+      },
+      {
+        "name": "KY",
+        "weight": 301.830376
+      },
+      {
+        "name": "LA",
+        "weight": 1393.292362
+      },
+      {
+        "name": "ME",
+        "weight": 1268.627133
+      },
+      {
+        "name": "MD",
+        "weight": 563.004633
+      },
+      {
+        "name": "MA",
+        "weight": 994.196668
+      },
+      {
+        "name": "MI",
+        "weight": 441.989607
+      },
+      {
+        "name": "MN",
+        "weight": 1152.972508
+      },
+      {
+        "name": "MS",
+        "weight": 1029.357913
+      },
+      {
+        "name": "MO",
+        "weight": 847.973965
+      },
+      {
+        "name": "MT",
+        "weight": 2244.240397
+      },
+      {
+        "name": "NE",
+        "weight": 1431.602336
+      },
+      {
+        "name": "NV",
+        "weight": 2892.507671
+      },
+      {
+        "name": "NH",
+        "weight": 1028.588106
+      },
+      {
+        "name": "NJ",
+        "weight": 693.311847
+      },
+      {
+        "name": "NM",
+        "weight": 2136.678518
+      },
+      {
+        "name": "NY",
+        "weight": 725.291423
+      },
+      {
+        "name": "NC",
+        "weight": 545.049853
+      },
+      {
+        "name": "ND",
+        "weight": 1607.528812
+      },
+      {
+        "name": "OH",
+        "weight": 0
+      },
+      {
+        "name": "OK",
+        "weight": 1304.467999
+      },
+      {
+        "name": "OR",
+        "weight": 3089.426215
+      },
+      {
+        "name": "PA",
+        "weight": 497.121286
+      },
+      {
+        "name": "RI",
+        "weight": 974.823783
+      },
+      {
+        "name": "SC",
+        "weight": 744.16573
+      },
+      {
+        "name": "SD",
+        "weight": 1465.949046
+      },
+      {
+        "name": "TN",
+        "weight": 594.795648
+      },
+      {
+        "name": "TX",
+        "weight": 1850.44639
+      },
+      {
+        "name": "UT",
+        "weight": 2461.406919
+      },
+      {
+        "name": "VT",
+        "weight": 938.69508
+      },
+      {
+        "name": "VA",
+        "weight": 507.250468
+      },
+      {
+        "name": "WA",
+        "weight": 3092.081049
+      },
+      {
+        "name": "WV",
+        "weight": 262.18445
+      },
+      {
+        "name": "WI",
+        "weight": 703.900753
+      },
+      {
+        "name": "WY",
+        "weight": 2031.332078
+      }
+    ],
+    "name": "OH"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1011.425349
+      },
+      {
+        "name": "AK",
+        "weight": 4893.32576
+      },
+      {
+        "name": "AZ",
+        "weight": 1308.314435
+      },
+      {
+        "name": "AR",
+        "weight": 450.875298
+      },
+      {
+        "name": "CA",
+        "weight": 2009.474391
+      },
+      {
+        "name": "CO",
+        "weight": 815.613383
+      },
+      {
+        "name": "CT",
+        "weight": 2177.294747
+      },
+      {
+        "name": "DE",
+        "weight": 1911.65894
+      },
+      {
+        "name": "FL",
+        "weight": 1685.439896
+      },
+      {
+        "name": "GA",
+        "weight": 1271.362333
+      },
+      {
+        "name": "HI",
+        "weight": 5974.554582
+      },
+      {
+        "name": "ID",
+        "weight": 1751.510518
+      },
+      {
+        "name": "IL",
+        "weight": 818.495625
+      },
+      {
+        "name": "IN",
+        "weight": 1051.21231
+      },
+      {
+        "name": "IA",
+        "weight": 721.395643
+      },
+      {
+        "name": "KS",
+        "weight": 285.016636
+      },
+      {
+        "name": "KY",
+        "weight": 1139.932086
+      },
+      {
+        "name": "LA",
+        "weight": 763.37439
+      },
+      {
+        "name": "ME",
+        "weight": 2554.609034
+      },
+      {
+        "name": "MD",
+        "weight": 1813.577798
+      },
+      {
+        "name": "MA",
+        "weight": 2298.664625
+      },
+      {
+        "name": "MI",
+        "weight": 1384.554151
+      },
+      {
+        "name": "MN",
+        "weight": 1161.850107
+      },
+      {
+        "name": "MS",
+        "weight": 720.512489
+      },
+      {
+        "name": "MO",
+        "weight": 471.452714
+      },
+      {
+        "name": "MT",
+        "weight": 1597.839669
+      },
+      {
+        "name": "NE",
+        "weight": 658.504685
+      },
+      {
+        "name": "NV",
+        "weight": 1824.366375
+      },
+      {
+        "name": "NH",
+        "weight": 2324.321107
+      },
+      {
+        "name": "NJ",
+        "weight": 1972.155055
+      },
+      {
+        "name": "NM",
+        "weight": 849.527653
+      },
+      {
+        "name": "NY",
+        "weight": 2023.362637
+      },
+      {
+        "name": "NC",
+        "weight": 1450.796666
+      },
+      {
+        "name": "ND",
+        "weight": 1318.235728
+      },
+      {
+        "name": "OH",
+        "weight": 1304.467999
+      },
+      {
+        "name": "OK",
+        "weight": 0
+      },
+      {
+        "name": "OR",
+        "weight": 2181.683079
+      },
+      {
+        "name": "PA",
+        "weight": 1800.572202
+      },
+      {
+        "name": "RI",
+        "weight": 2277.577514
+      },
+      {
+        "name": "SC",
+        "weight": 1455.899023
+      },
+      {
+        "name": "SD",
+        "weight": 971.291923
+      },
+      {
+        "name": "TN",
+        "weight": 923.318506
+      },
+      {
+        "name": "TX",
+        "weight": 633.196241
+      },
+      {
+        "name": "UT",
+        "weight": 1370.514422
+      },
+      {
+        "name": "VT",
+        "weight": 2231.273844
+      },
+      {
+        "name": "VA",
+        "weight": 1687.471729
+      },
+      {
+        "name": "WA",
+        "weight": 2344.292249
+      },
+      {
+        "name": "WV",
+        "weight": 1481.443191
+      },
+      {
+        "name": "WI",
+        "weight": 1126.64834
+      },
+      {
+        "name": "WY",
+        "weight": 1179.046487
+      }
+    ],
+    "name": "OK"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 3183.510442
+      },
+      {
+        "name": "AK",
+        "weight": 3158.761421
+      },
+      {
+        "name": "AZ",
+        "weight": 1370.796948
+      },
+      {
+        "name": "AR",
+        "weight": 2621.441933
+      },
+      {
+        "name": "CA",
+        "weight": 808.211481
+      },
+      {
+        "name": "CO",
+        "weight": 1369.383582
+      },
+      {
+        "name": "CT",
+        "weight": 3854.092738
+      },
+      {
+        "name": "DE",
+        "weight": 3741.47919
+      },
+      {
+        "name": "FL",
+        "weight": 3865.725907
+      },
+      {
+        "name": "GA",
+        "weight": 3400.175524
+      },
+      {
+        "name": "HI",
+        "weight": 4236.75015
+      },
+      {
+        "name": "ID",
+        "weight": 460.2653
+      },
+      {
+        "name": "IL",
+        "weight": 2624.212445
+      },
+      {
+        "name": "IN",
+        "weight": 2843.409046
+      },
+      {
+        "name": "IA",
+        "weight": 2189.593008
+      },
+      {
+        "name": "KS",
+        "weight": 1970.624572
+      },
+      {
+        "name": "KY",
+        "weight": 3093.882929
+      },
+      {
+        "name": "LA",
+        "weight": 2896.412061
+      },
+      {
+        "name": "ME",
+        "weight": 4005.901497
+      },
+      {
+        "name": "MD",
+        "weight": 3648.880781
+      },
+      {
+        "name": "MA",
+        "weight": 3925.486779
+      },
+      {
+        "name": "MI",
+        "weight": 2851.32737
+      },
+      {
+        "name": "MN",
+        "weight": 2034.736173
+      },
+      {
+        "name": "MS",
+        "weight": 2900.420542
+      },
+      {
+        "name": "MO",
+        "weight": 2395.023745
+      },
+      {
+        "name": "MT",
+        "weight": 915.342848
+      },
+      {
+        "name": "NE",
+        "weight": 1692.260161
+      },
+      {
+        "name": "NV",
+        "weight": 532.527665
+      },
+      {
+        "name": "NH",
+        "weight": 3859.764308
+      },
+      {
+        "name": "NJ",
+        "weight": 3755.208215
+      },
+      {
+        "name": "NM",
+        "weight": 1645.149719
+      },
+      {
+        "name": "NY",
+        "weight": 3624.409354
+      },
+      {
+        "name": "NC",
+        "weight": 3472.288237
+      },
+      {
+        "name": "ND",
+        "weight": 1601.685712
+      },
+      {
+        "name": "OH",
+        "weight": 3089.426215
+      },
+      {
+        "name": "OK",
+        "weight": 2181.683079
+      },
+      {
+        "name": "OR",
+        "weight": 0
+      },
+      {
+        "name": "PA",
+        "weight": 3517.244717
+      },
+      {
+        "name": "RI",
+        "weight": 3943.547534
+      },
+      {
+        "name": "SC",
+        "weight": 3547.561093
+      },
+      {
+        "name": "SD",
+        "weight": 1629.470904
+      },
+      {
+        "name": "TN",
+        "weight": 3000.030459
+      },
+      {
+        "name": "TX",
+        "weight": 2303.92478
+      },
+      {
+        "name": "UT",
+        "weight": 872.793581
+      },
+      {
+        "name": "VT",
+        "weight": 3768.141672
+      },
+      {
+        "name": "VA",
+        "weight": 3588.968357
+      },
+      {
+        "name": "WA",
+        "weight": 417.514083
+      },
+      {
+        "name": "WV",
+        "weight": 3343.731155
+      },
+      {
+        "name": "WI",
+        "weight": 2454.863137
+      },
+      {
+        "name": "WY",
+        "weight": 1068.584737
+      }
+    ],
+    "name": "OR"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1311.226453
+      },
+      {
+        "name": "AK",
+        "weight": 5285.148079
+      },
+      {
+        "name": "AZ",
+        "weight": 3068.335105
+      },
+      {
+        "name": "AR",
+        "weight": 1492.242161
+      },
+      {
+        "name": "CA",
+        "weight": 3646.133826
+      },
+      {
+        "name": "CO",
+        "weight": 2394.219857
+      },
+      {
+        "name": "CT",
+        "weight": 377.414402
+      },
+      {
+        "name": "DE",
+        "weight": 284.231597
+      },
+      {
+        "name": "FL",
+        "weight": 1526.433106
+      },
+      {
+        "name": "GA",
+        "weight": 1042.576755
+      },
+      {
+        "name": "HI",
+        "weight": 7648.498984
+      },
+      {
+        "name": "ID",
+        "weight": 3061.242568
+      },
+      {
+        "name": "IL",
+        "weight": 1004.818757
+      },
+      {
+        "name": "IN",
+        "weight": 759.297767
+      },
+      {
+        "name": "IA",
+        "weight": 1363.247685
+      },
+      {
+        "name": "KS",
+        "weight": 1796.835674
+      },
+      {
+        "name": "KY",
+        "weight": 712.552632
+      },
+      {
+        "name": "LA",
+        "weight": 1813.967678
+      },
+      {
+        "name": "ME",
+        "weight": 810.121131
+      },
+      {
+        "name": "MD",
+        "weight": 244.47734
+      },
+      {
+        "name": "MA",
+        "weight": 499.878671
+      },
+      {
+        "name": "MI",
+        "weight": 682.906632
+      },
+      {
+        "name": "MN",
+        "weight": 1510.036179
+      },
+      {
+        "name": "MS",
+        "weight": 1453.897099
+      },
+      {
+        "name": "MO",
+        "weight": 1344.872858
+      },
+      {
+        "name": "MT",
+        "weight": 2640.915992
+      },
+      {
+        "name": "NE",
+        "weight": 1898.335619
+      },
+      {
+        "name": "NV",
+        "weight": 3355.814073
+      },
+      {
+        "name": "NH",
+        "weight": 560.096389
+      },
+      {
+        "name": "NJ",
+        "weight": 248.453318
+      },
+      {
+        "name": "NM",
+        "weight": 2633.635023
+      },
+      {
+        "name": "NY",
+        "weight": 269.595063
+      },
+      {
+        "name": "NC",
+        "weight": 679.157125
+      },
+      {
+        "name": "ND",
+        "weight": 1970.6501
+      },
+      {
+        "name": "OH",
+        "weight": 497.121286
+      },
+      {
+        "name": "OK",
+        "weight": 1800.572202
+      },
+      {
+        "name": "OR",
+        "weight": 3517.244717
+      },
+      {
+        "name": "PA",
+        "weight": 0
+      },
+      {
+        "name": "RI",
+        "weight": 477.707061
+      },
+      {
+        "name": "SC",
+        "weight": 890.585646
+      },
+      {
+        "name": "SD",
+        "weight": 1888.357748
+      },
+      {
+        "name": "TN",
+        "weight": 1014.340876
+      },
+      {
+        "name": "TX",
+        "weight": 2331.720676
+      },
+      {
+        "name": "UT",
+        "weight": 2934.050592
+      },
+      {
+        "name": "VT",
+        "weight": 481.56697
+      },
+      {
+        "name": "VA",
+        "weight": 371.207733
+      },
+      {
+        "name": "WA",
+        "weight": 3482.630244
+      },
+      {
+        "name": "WV",
+        "weight": 372.860705
+      },
+      {
+        "name": "WI",
+        "weight": 1066.703484
+      },
+      {
+        "name": "WY",
+        "weight": 2476.832459
+      }
+    ],
+    "name": "PA"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1715.591053
+      },
+      {
+        "name": "AK",
+        "weight": 5489.83454
+      },
+      {
+        "name": "AZ",
+        "weight": 3544.702659
+      },
+      {
+        "name": "AR",
+        "weight": 1957.297664
+      },
+      {
+        "name": "CA",
+        "weight": 4109.500381
+      },
+      {
+        "name": "CO",
+        "weight": 2862.723208
+      },
+      {
+        "name": "CT",
+        "weight": 100.321358
+      },
+      {
+        "name": "DE",
+        "weight": 452.71235
+      },
+      {
+        "name": "FL",
+        "weight": 1785.540665
+      },
+      {
+        "name": "GA",
+        "weight": 1409.494364
+      },
+      {
+        "name": "HI",
+        "weight": 8106.66306
+      },
+      {
+        "name": "ID",
+        "weight": 3492.42952
+      },
+      {
+        "name": "IL",
+        "weight": 1481.409868
+      },
+      {
+        "name": "IN",
+        "weight": 1236.414857
+      },
+      {
+        "name": "IA",
+        "weight": 1823.797395
+      },
+      {
+        "name": "KS",
+        "weight": 2272.644429
+      },
+      {
+        "name": "KY",
+        "weight": 1171.350259
+      },
+      {
+        "name": "LA",
+        "weight": 2246.089519
+      },
+      {
+        "name": "ME",
+        "weight": 455.832324
+      },
+      {
+        "name": "MD",
+        "weight": 525.962065
+      },
+      {
+        "name": "MA",
+        "weight": 79.234902
+      },
+      {
+        "name": "MI",
+        "weight": 1092.838825
+      },
+      {
+        "name": "MN",
+        "weight": 1913.5723
+      },
+      {
+        "name": "MS",
+        "weight": 1894.0091
+      },
+      {
+        "name": "MO",
+        "weight": 1822.524402
+      },
+      {
+        "name": "MT",
+        "weight": 3050.003226
+      },
+      {
+        "name": "NE",
+        "weight": 2359.00969
+      },
+      {
+        "name": "NV",
+        "weight": 3809.283013
+      },
+      {
+        "name": "NH",
+        "weight": 255.74822
+      },
+      {
+        "name": "NJ",
+        "weight": 351.653361
+      },
+      {
+        "name": "NM",
+        "weight": 3111.281623
+      },
+      {
+        "name": "NY",
+        "weight": 321.866969
+      },
+      {
+        "name": "NC",
+        "weight": 1039.43526
+      },
+      {
+        "name": "ND",
+        "weight": 2366.252268
+      },
+      {
+        "name": "OH",
+        "weight": 974.823783
+      },
+      {
+        "name": "OK",
+        "weight": 2277.577514
+      },
+      {
+        "name": "OR",
+        "weight": 3943.547534
+      },
+      {
+        "name": "PA",
+        "weight": 477.707061
+      },
+      {
+        "name": "RI",
+        "weight": 0
+      },
+      {
+        "name": "SC",
+        "weight": 1217.515241
+      },
+      {
+        "name": "SD",
+        "weight": 2322.778407
+      },
+      {
+        "name": "TN",
+        "weight": 1462.953879
+      },
+      {
+        "name": "TX",
+        "weight": 2798.67702
+      },
+      {
+        "name": "UT",
+        "weight": 3395.150862
+      },
+      {
+        "name": "VT",
+        "weight": 273.810385
+      },
+      {
+        "name": "VA",
+        "weight": 697.232822
+      },
+      {
+        "name": "WA",
+        "weight": 3880.41557
+      },
+      {
+        "name": "WV",
+        "weight": 819.128611
+      },
+      {
+        "name": "WI",
+        "weight": 1490.949265
+      },
+      {
+        "name": "WY",
+        "weight": 2921.01506
+      }
+    ],
+    "name": "RI"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 560.595203
+      },
+      {
+        "name": "AK",
+        "weight": 5812.408416
+      },
+      {
+        "name": "AZ",
+        "weight": 2751.092307
+      },
+      {
+        "name": "AR",
+        "weight": 1018.677746
+      },
+      {
+        "name": "CA",
+        "weight": 3463.645131
+      },
+      {
+        "name": "CO",
+        "weight": 2234.053235
+      },
+      {
+        "name": "CT",
+        "weight": 1138.757393
+      },
+      {
+        "name": "DE",
+        "weight": 765.511689
+      },
+      {
+        "name": "FL",
+        "weight": 652.048694
+      },
+      {
+        "name": "GA",
+        "weight": 220.965606
+      },
+      {
+        "name": "HI",
+        "weight": 7423.007353
+      },
+      {
+        "name": "ID",
+        "weight": 3092.255879
+      },
+      {
+        "name": "IL",
+        "weight": 976.49652
+      },
+      {
+        "name": "IN",
+        "weight": 840.101899
+      },
+      {
+        "name": "IA",
+        "weight": 1417.500946
+      },
+      {
+        "name": "KS",
+        "weight": 1595.005094
+      },
+      {
+        "name": "KY",
+        "weight": 525.803011
+      },
+      {
+        "name": "LA",
+        "weight": 1118.371824
+      },
+      {
+        "name": "ME",
+        "weight": 1649.909991
+      },
+      {
+        "name": "MD",
+        "weight": 706.333212
+      },
+      {
+        "name": "MA",
+        "weight": 1279.016508
+      },
+      {
+        "name": "MI",
+        "weight": 1185.857552
+      },
+      {
+        "name": "MN",
+        "weight": 1800.812347
+      },
+      {
+        "name": "MS",
+        "weight": 825.098982
+      },
+      {
+        "name": "MO",
+        "weight": 1152.539983
+      },
+      {
+        "name": "MT",
+        "weight": 2787.828458
+      },
+      {
+        "name": "NE",
+        "weight": 1858.552693
+      },
+      {
+        "name": "NV",
+        "weight": 3254.873189
+      },
+      {
+        "name": "NH",
+        "weight": 1403.638602
+      },
+      {
+        "name": "NJ",
+        "weight": 870.318811
+      },
+      {
+        "name": "NM",
+        "weight": 2284.140791
+      },
+      {
+        "name": "NY",
+        "weight": 1150.997796
+      },
+      {
+        "name": "NC",
+        "weight": 219.018917
+      },
+      {
+        "name": "ND",
+        "weight": 2223.510033
+      },
+      {
+        "name": "OH",
+        "weight": 744.16573
+      },
+      {
+        "name": "OK",
+        "weight": 1455.899023
+      },
+      {
+        "name": "OR",
+        "weight": 3547.561093
+      },
+      {
+        "name": "PA",
+        "weight": 890.585646
+      },
+      {
+        "name": "RI",
+        "weight": 1217.515241
+      },
+      {
+        "name": "SC",
+        "weight": 0
+      },
+      {
+        "name": "SD",
+        "weight": 2002.655175
+      },
+      {
+        "name": "TN",
+        "weight": 549.637427
+      },
+      {
+        "name": "TX",
+        "weight": 1793.330066
+      },
+      {
+        "name": "UT",
+        "weight": 2802.098258
+      },
+      {
+        "name": "VT",
+        "weight": 1344.960865
+      },
+      {
+        "name": "VA",
+        "weight": 535.523873
+      },
+      {
+        "name": "WA",
+        "weight": 3622.77637
+      },
+      {
+        "name": "WV",
+        "weight": 577.259209
+      },
+      {
+        "name": "WI",
+        "weight": 1384.811105
+      },
+      {
+        "name": "WY",
+        "weight": 2482.65172
+      }
+    ],
+    "name": "SC"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1766.581327
+      },
+      {
+        "name": "AK",
+        "weight": 3958.415292
+      },
+      {
+        "name": "AZ",
+        "weight": 1501.207987
+      },
+      {
+        "name": "AR",
+        "weight": 1267.189019
+      },
+      {
+        "name": "CA",
+        "weight": 1843.284939
+      },
+      {
+        "name": "CO",
+        "weight": 745.343056
+      },
+      {
+        "name": "CT",
+        "weight": 2230.98868
+      },
+      {
+        "name": "DE",
+        "weight": 2113.306603
+      },
+      {
+        "name": "FL",
+        "weight": 2446.898001
+      },
+      {
+        "name": "GA",
+        "weight": 1896.076511
+      },
+      {
+        "name": "HI",
+        "weight": 5798.252771
+      },
+      {
+        "name": "ID",
+        "weight": 1172.899716
+      },
+      {
+        "name": "IL",
+        "weight": 1033.203729
+      },
+      {
+        "name": "IN",
+        "weight": 1230.497997
+      },
+      {
+        "name": "IA",
+        "weight": 587.41128
+      },
+      {
+        "name": "KS",
+        "weight": 687.583686
+      },
+      {
+        "name": "KY",
+        "weight": 1506.965241
+      },
+      {
+        "name": "LA",
+        "weight": 1706.726914
+      },
+      {
+        "name": "ME",
+        "weight": 2429.175419
+      },
+      {
+        "name": "MD",
+        "weight": 2021.714712
+      },
+      {
+        "name": "MA",
+        "weight": 2309.791585
+      },
+      {
+        "name": "MI",
+        "weight": 1230.765736
+      },
+      {
+        "name": "MN",
+        "weight": 468.230477
+      },
+      {
+        "name": "MS",
+        "weight": 1542.410713
+      },
+      {
+        "name": "MO",
+        "weight": 901.010591
+      },
+      {
+        "name": "MT",
+        "weight": 788.467056
+      },
+      {
+        "name": "NE",
+        "weight": 333.58478
+      },
+      {
+        "name": "NV",
+        "weight": 1505.825826
+      },
+      {
+        "name": "NH",
+        "weight": 2259.133893
+      },
+      {
+        "name": "NJ",
+        "weight": 2125.737935
+      },
+      {
+        "name": "NM",
+        "weight": 1244.872342
+      },
+      {
+        "name": "NY",
+        "weight": 2007.122153
+      },
+      {
+        "name": "NC",
+        "weight": 1891.724195
+      },
+      {
+        "name": "ND",
+        "weight": 351.945893
+      },
+      {
+        "name": "OH",
+        "weight": 1465.949046
+      },
+      {
+        "name": "OK",
+        "weight": 971.291923
+      },
+      {
+        "name": "OR",
+        "weight": 1629.470904
+      },
+      {
+        "name": "PA",
+        "weight": 1888.357748
+      },
+      {
+        "name": "RI",
+        "weight": 2322.778407
+      },
+      {
+        "name": "SC",
+        "weight": 2002.655175
+      },
+      {
+        "name": "SD",
+        "weight": 0
+      },
+      {
+        "name": "TN",
+        "weight": 1482.308188
+      },
+      {
+        "name": "TX",
+        "weight": 1501.13151
+      },
+      {
+        "name": "UT",
+        "weight": 1136.59837
+      },
+      {
+        "name": "VT",
+        "weight": 2164.990559
+      },
+      {
+        "name": "VA",
+        "weight": 1970.462302
+      },
+      {
+        "name": "WA",
+        "weight": 1633.41516
+      },
+      {
+        "name": "WV",
+        "weight": 1724.190178
+      },
+      {
+        "name": "WI",
+        "weight": 832.179887
+      },
+      {
+        "name": "WY",
+        "weight": 606.01396
+      }
+    ],
+    "name": "SD"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 394.470347
+      },
+      {
+        "name": "AK",
+        "weight": 5369.716828
+      },
+      {
+        "name": "AZ",
+        "weight": 2230.062501
+      },
+      {
+        "name": "AR",
+        "weight": 516.114389
+      },
+      {
+        "name": "CA",
+        "weight": 2922.267095
+      },
+      {
+        "name": "CO",
+        "weight": 1685.759257
+      },
+      {
+        "name": "CT",
+        "weight": 1366.498407
+      },
+      {
+        "name": "DE",
+        "weight": 1044.592798
+      },
+      {
+        "name": "FL",
+        "weight": 988.960108
+      },
+      {
+        "name": "GA",
+        "weight": 413.800611
+      },
+      {
+        "name": "HI",
+        "weight": 6897.836059
+      },
+      {
+        "name": "ID",
+        "weight": 2546.07372
+      },
+      {
+        "name": "IL",
+        "weight": 503.952479
+      },
+      {
+        "name": "IN",
+        "weight": 492.957436
+      },
+      {
+        "name": "IA",
+        "weight": 910.059387
+      },
+      {
+        "name": "KS",
+        "weight": 1045.833604
+      },
+      {
+        "name": "KY",
+        "weight": 306.022723
+      },
+      {
+        "name": "LA",
+        "weight": 804.894605
+      },
+      {
+        "name": "ME",
+        "weight": 1822.863213
+      },
+      {
+        "name": "MD",
+        "weight": 952.013465
+      },
+      {
+        "name": "MA",
+        "weight": 1502.204865
+      },
+      {
+        "name": "MI",
+        "weight": 943.267035
+      },
+      {
+        "name": "MN",
+        "weight": 1346.63444
+      },
+      {
+        "name": "MS",
+        "weight": 441.494253
+      },
+      {
+        "name": "MO",
+        "weight": 606.487551
+      },
+      {
+        "name": "MT",
+        "weight": 2259.190465
+      },
+      {
+        "name": "NE",
+        "weight": 1314.763693
+      },
+      {
+        "name": "NV",
+        "weight": 2706.265726
+      },
+      {
+        "name": "NH",
+        "weight": 1573.995422
+      },
+      {
+        "name": "NJ",
+        "weight": 1124.273992
+      },
+      {
+        "name": "NM",
+        "weight": 1766.958491
+      },
+      {
+        "name": "NY",
+        "weight": 1275.886781
+      },
+      {
+        "name": "NC",
+        "weight": 528.946043
+      },
+      {
+        "name": "ND",
+        "weight": 1733.885638
+      },
+      {
+        "name": "OH",
+        "weight": 594.795648
+      },
+      {
+        "name": "OK",
+        "weight": 923.318506
+      },
+      {
+        "name": "OR",
+        "weight": 3000.030459
+      },
+      {
+        "name": "PA",
+        "weight": 1014.340876
+      },
+      {
+        "name": "RI",
+        "weight": 1462.953879
+      },
+      {
+        "name": "SC",
+        "weight": 549.637427
+      },
+      {
+        "name": "SD",
+        "weight": 1482.308188
+      },
+      {
+        "name": "TN",
+        "weight": 0
+      },
+      {
+        "name": "TX",
+        "weight": 1349.174275
+      },
+      {
+        "name": "UT",
+        "weight": 2254.064636
+      },
+      {
+        "name": "VT",
+        "weight": 1491.93119
+      },
+      {
+        "name": "VA",
+        "weight": 801.211321
+      },
+      {
+        "name": "WA",
+        "weight": 3086.079521
+      },
+      {
+        "name": "WV",
+        "weight": 646.109272
+      },
+      {
+        "name": "WI",
+        "weight": 990.363551
+      },
+      {
+        "name": "WY",
+        "weight": 1937.392921
+      }
+    ],
+    "name": "TN"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1247.501975
+      },
+      {
+        "name": "AK",
+        "weight": 5262.590643
+      },
+      {
+        "name": "AZ",
+        "weight": 1093.2489
+      },
+      {
+        "name": "AR",
+        "weight": 841.524802
+      },
+      {
+        "name": "CA",
+        "weight": 1899.834214
+      },
+      {
+        "name": "CO",
+        "weight": 1025.045029
+      },
+      {
+        "name": "CT",
+        "weight": 2699.914362
+      },
+      {
+        "name": "DE",
+        "weight": 2392.919653
+      },
+      {
+        "name": "FL",
+        "weight": 1794.453996
+      },
+      {
+        "name": "GA",
+        "weight": 1577.527457
+      },
+      {
+        "name": "HI",
+        "weight": 5690.47963
+      },
+      {
+        "name": "ID",
+        "weight": 1943.568759
+      },
+      {
+        "name": "IL",
+        "weight": 1409.574161
+      },
+      {
+        "name": "IN",
+        "weight": 1619.804159
+      },
+      {
+        "name": "IA",
+        "weight": 1353.238298
+      },
+      {
+        "name": "KS",
+        "weight": 853.676508
+      },
+      {
+        "name": "KY",
+        "weight": 1627.897183
+      },
+      {
+        "name": "LA",
+        "weight": 736.41648
+      },
+      {
+        "name": "ME",
+        "weight": 3118.740685
+      },
+      {
+        "name": "MD",
+        "weight": 2299.010871
+      },
+      {
+        "name": "MA",
+        "weight": 2830.395032
+      },
+      {
+        "name": "MI",
+        "weight": 1996.212158
+      },
+      {
+        "name": "MN",
+        "weight": 1772.631582
+      },
+      {
+        "name": "MS",
+        "weight": 968.426284
+      },
+      {
+        "name": "MO",
+        "weight": 1078.729444
+      },
+      {
+        "name": "MT",
+        "weight": 1953.685355
+      },
+      {
+        "name": "NE",
+        "weight": 1167.54673
+      },
+      {
+        "name": "NV",
+        "weight": 1841.342051
+      },
+      {
+        "name": "NH",
+        "weight": 2878.612604
+      },
+      {
+        "name": "NJ",
+        "weight": 2468.981643
+      },
+      {
+        "name": "NM",
+        "weight": 672.59502
+      },
+      {
+        "name": "NY",
+        "weight": 2575.233703
+      },
+      {
+        "name": "NC",
+        "weight": 1857.153784
+      },
+      {
+        "name": "ND",
+        "weight": 1851.834442
+      },
+      {
+        "name": "OH",
+        "weight": 1850.44639
+      },
+      {
+        "name": "OK",
+        "weight": 633.196241
+      },
+      {
+        "name": "OR",
+        "weight": 2303.92478
+      },
+      {
+        "name": "PA",
+        "weight": 2331.720676
+      },
+      {
+        "name": "RI",
+        "weight": 2798.67702
+      },
+      {
+        "name": "SC",
+        "weight": 1793.330066
+      },
+      {
+        "name": "SD",
+        "weight": 1501.13151
+      },
+      {
+        "name": "TN",
+        "weight": 1349.174275
+      },
+      {
+        "name": "TX",
+        "weight": 0
+      },
+      {
+        "name": "UT",
+        "weight": 1431.2683
+      },
+      {
+        "name": "VT",
+        "weight": 2789.141111
+      },
+      {
+        "name": "VA",
+        "weight": 2150.360711
+      },
+      {
+        "name": "WA",
+        "weight": 2562.151796
+      },
+      {
+        "name": "WV",
+        "weight": 1980.735473
+      },
+      {
+        "name": "WI",
+        "weight": 1758.881736
+      },
+      {
+        "name": "WY",
+        "weight": 1489.086801
+      }
+    ],
+    "name": "TX"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 2381.775111
+      },
+      {
+        "name": "AK",
+        "weight": 3938.17861
+      },
+      {
+        "name": "AZ",
+        "weight": 602.003033
+      },
+      {
+        "name": "AR",
+        "weight": 1820.884741
+      },
+      {
+        "name": "CA",
+        "weight": 716.06446
+      },
+      {
+        "name": "CO",
+        "weight": 568.372764
+      },
+      {
+        "name": "CT",
+        "weight": 3298.51569
+      },
+      {
+        "name": "DE",
+        "weight": 3119.205783
+      },
+      {
+        "name": "FL",
+        "weight": 3048.885173
+      },
+      {
+        "name": "GA",
+        "weight": 2632.161888
+      },
+      {
+        "name": "HI",
+        "weight": 4714.560152
+      },
+      {
+        "name": "ID",
+        "weight": 566.355709
+      },
+      {
+        "name": "IL",
+        "weight": 1958.868538
+      },
+      {
+        "name": "IN",
+        "weight": 2198.85599
+      },
+      {
+        "name": "IA",
+        "weight": 1571.758387
+      },
+      {
+        "name": "KS",
+        "weight": 1209.338841
+      },
+      {
+        "name": "KY",
+        "weight": 2401.476065
+      },
+      {
+        "name": "LA",
+        "weight": 2045.133009
+      },
+      {
+        "name": "ME",
+        "weight": 3547.383426
+      },
+      {
+        "name": "MD",
+        "weight": 3021.811233
+      },
+      {
+        "name": "MA",
+        "weight": 3392.652638
+      },
+      {
+        "name": "MI",
+        "weight": 2324.023724
+      },
+      {
+        "name": "MN",
+        "weight": 1604.390874
+      },
+      {
+        "name": "MS",
+        "weight": 2088.229215
+      },
+      {
+        "name": "MO",
+        "weight": 1671.373797
+      },
+      {
+        "name": "MT",
+        "weight": 861.536493
+      },
+      {
+        "name": "NE",
+        "weight": 1036.286672
+      },
+      {
+        "name": "NV",
+        "weight": 454.282327
+      },
+      {
+        "name": "NH",
+        "weight": 3361.911764
+      },
+      {
+        "name": "NJ",
+        "weight": 3152.849232
+      },
+      {
+        "name": "NM",
+        "weight": 775.30274
+      },
+      {
+        "name": "NY",
+        "weight": 3091.339498
+      },
+      {
+        "name": "NC",
+        "weight": 2760.566685
+      },
+      {
+        "name": "ND",
+        "weight": 1300.884648
+      },
+      {
+        "name": "OH",
+        "weight": 2461.406919
+      },
+      {
+        "name": "OK",
+        "weight": 1370.514422
+      },
+      {
+        "name": "OR",
+        "weight": 872.793581
+      },
+      {
+        "name": "PA",
+        "weight": 2934.050592
+      },
+      {
+        "name": "RI",
+        "weight": 3395.150862
+      },
+      {
+        "name": "SC",
+        "weight": 2802.098258
+      },
+      {
+        "name": "SD",
+        "weight": 1136.59837
+      },
+      {
+        "name": "TN",
+        "weight": 2254.064636
+      },
+      {
+        "name": "TX",
+        "weight": 1431.2683
+      },
+      {
+        "name": "UT",
+        "weight": 0
+      },
+      {
+        "name": "VT",
+        "weight": 3266.318643
+      },
+      {
+        "name": "VA",
+        "weight": 2932.504635
+      },
+      {
+        "name": "WA",
+        "weight": 1164.366863
+      },
+      {
+        "name": "WV",
+        "weight": 2696.292985
+      },
+      {
+        "name": "WI",
+        "weight": 1933.313152
+      },
+      {
+        "name": "WY",
+        "weight": 562.970761
+      }
+    ],
+    "name": "UT"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1791.898161
+      },
+      {
+        "name": "AK",
+        "weight": 5221.527104
+      },
+      {
+        "name": "AZ",
+        "weight": 3460.543321
+      },
+      {
+        "name": "AR",
+        "weight": 1955.665623
+      },
+      {
+        "name": "CA",
+        "weight": 3982.383
+      },
+      {
+        "name": "CO",
+        "weight": 2752.395981
+      },
+      {
+        "name": "CT",
+        "weight": 266.868046
+      },
+      {
+        "name": "DE",
+        "weight": 602.795522
+      },
+      {
+        "name": "FL",
+        "weight": 1954.517108
+      },
+      {
+        "name": "GA",
+        "weight": 1513.81802
+      },
+      {
+        "name": "HI",
+        "weight": 7962.818464
+      },
+      {
+        "name": "ID",
+        "weight": 3323.553873
+      },
+      {
+        "name": "IL",
+        "weight": 1415.638632
+      },
+      {
+        "name": "IN",
+        "weight": 1180.435516
+      },
+      {
+        "name": "IA",
+        "weight": 1707.058485
+      },
+      {
+        "name": "KS",
+        "weight": 2191.903479
+      },
+      {
+        "name": "KY",
+        "weight": 1187.425192
+      },
+      {
+        "name": "LA",
+        "weight": 2294.067714
+      },
+      {
+        "name": "ME",
+        "weight": 331.592057
+      },
+      {
+        "name": "MD",
+        "weight": 641.008335
+      },
+      {
+        "name": "MA",
+        "weight": 206.807993
+      },
+      {
+        "name": "MI",
+        "weight": 942.348598
+      },
+      {
+        "name": "MN",
+        "weight": 1733.565461
+      },
+      {
+        "name": "MS",
+        "weight": 1932.776805
+      },
+      {
+        "name": "MO",
+        "weight": 1763.709851
+      },
+      {
+        "name": "MT",
+        "weight": 2863.74755
+      },
+      {
+        "name": "NE",
+        "weight": 2236.017359
+      },
+      {
+        "name": "NV",
+        "weight": 3666.17407
+      },
+      {
+        "name": "NH",
+        "weight": 95.983237
+      },
+      {
+        "name": "NJ",
+        "weight": 496.836883
+      },
+      {
+        "name": "NM",
+        "weight": 3043.364621
+      },
+      {
+        "name": "NY",
+        "weight": 216.273338
+      },
+      {
+        "name": "NC",
+        "weight": 1144.083834
+      },
+      {
+        "name": "ND",
+        "weight": 2175.019662
+      },
+      {
+        "name": "OH",
+        "weight": 938.69508
+      },
+      {
+        "name": "OK",
+        "weight": 2231.273844
+      },
+      {
+        "name": "OR",
+        "weight": 3768.141672
+      },
+      {
+        "name": "PA",
+        "weight": 481.56697
+      },
+      {
+        "name": "RI",
+        "weight": 273.810385
+      },
+      {
+        "name": "SC",
+        "weight": 1344.960865
+      },
+      {
+        "name": "SD",
+        "weight": 2164.990559
+      },
+      {
+        "name": "TN",
+        "weight": 1491.93119
+      },
+      {
+        "name": "TX",
+        "weight": 2789.141111
+      },
+      {
+        "name": "UT",
+        "weight": 3266.318643
+      },
+      {
+        "name": "VT",
+        "weight": 0
+      },
+      {
+        "name": "VA",
+        "weight": 809.487242
+      },
+      {
+        "name": "WA",
+        "weight": 3682.161025
+      },
+      {
+        "name": "WV",
+        "weight": 854.333015
+      },
+      {
+        "name": "WI",
+        "weight": 1336.902929
+      },
+      {
+        "name": "WY",
+        "weight": 2769.583682
+      }
+    ],
+    "name": "VT"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1019.359374
+      },
+      {
+        "name": "AK",
+        "weight": 5559.006178
+      },
+      {
+        "name": "AZ",
+        "weight": 2990.500891
+      },
+      {
+        "name": "AR",
+        "weight": 1314.528448
+      },
+      {
+        "name": "CA",
+        "weight": 3630.633229
+      },
+      {
+        "name": "CO",
+        "weight": 2372.686013
+      },
+      {
+        "name": "CT",
+        "weight": 611.305832
+      },
+      {
+        "name": "DE",
+        "weight": 250.117209
+      },
+      {
+        "name": "FL",
+        "weight": 1157.815697
+      },
+      {
+        "name": "GA",
+        "weight": 714.264062
+      },
+      {
+        "name": "HI",
+        "weight": 7632.148634
+      },
+      {
+        "name": "ID",
+        "weight": 3128.805291
+      },
+      {
+        "name": "IL",
+        "weight": 975.791564
+      },
+      {
+        "name": "IN",
+        "weight": 745.897591
+      },
+      {
+        "name": "IA",
+        "weight": 1399.509141
+      },
+      {
+        "name": "KS",
+        "weight": 1742.907048
+      },
+      {
+        "name": "KY",
+        "weight": 548.069772
+      },
+      {
+        "name": "LA",
+        "weight": 1557.387686
+      },
+      {
+        "name": "ME",
+        "weight": 1116.751851
+      },
+      {
+        "name": "MD",
+        "weight": 173.148757
+      },
+      {
+        "name": "MA",
+        "weight": 752.400663
+      },
+      {
+        "name": "MI",
+        "weight": 882.107925
+      },
+      {
+        "name": "MN",
+        "weight": 1656.225175
+      },
+      {
+        "name": "MS",
+        "weight": 1213.711452
+      },
+      {
+        "name": "MO",
+        "weight": 1273.759513
+      },
+      {
+        "name": "MT",
+        "weight": 2750.976898
+      },
+      {
+        "name": "NE",
+        "weight": 1915.652657
+      },
+      {
+        "name": "NV",
+        "weight": 3371.805911
+      },
+      {
+        "name": "NH",
+        "weight": 868.987837
+      },
+      {
+        "name": "NJ",
+        "weight": 345.583788
+      },
+      {
+        "name": "NM",
+        "weight": 2536.709705
+      },
+      {
+        "name": "NY",
+        "weight": 619.32285
+      },
+      {
+        "name": "NC",
+        "weight": 342.822454
+      },
+      {
+        "name": "ND",
+        "weight": 2113.132453
+      },
+      {
+        "name": "OH",
+        "weight": 507.250468
+      },
+      {
+        "name": "OK",
+        "weight": 1687.471729
+      },
+      {
+        "name": "OR",
+        "weight": 3588.968357
+      },
+      {
+        "name": "PA",
+        "weight": 371.207733
+      },
+      {
+        "name": "RI",
+        "weight": 697.232822
+      },
+      {
+        "name": "SC",
+        "weight": 535.523873
+      },
+      {
+        "name": "SD",
+        "weight": 1970.462302
+      },
+      {
+        "name": "TN",
+        "weight": 801.211321
+      },
+      {
+        "name": "TX",
+        "weight": 2150.360711
+      },
+      {
+        "name": "UT",
+        "weight": 2932.504635
+      },
+      {
+        "name": "VT",
+        "weight": 809.487242
+      },
+      {
+        "name": "VA",
+        "weight": 0
+      },
+      {
+        "name": "WA",
+        "weight": 3598.855571
+      },
+      {
+        "name": "WV",
+        "weight": 246.315462
+      },
+      {
+        "name": "WI",
+        "weight": 1204.522256
+      },
+      {
+        "name": "WY",
+        "weight": 2526.002646
+      }
+    ],
+    "name": "VA"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 3314.453439
+      },
+      {
+        "name": "AK",
+        "weight": 2785.464815
+      },
+      {
+        "name": "AZ",
+        "weight": 1722.735073
+      },
+      {
+        "name": "AR",
+        "weight": 2762.273494
+      },
+      {
+        "name": "CA",
+        "weight": 1224.911616
+      },
+      {
+        "name": "CO",
+        "weight": 1565.247164
+      },
+      {
+        "name": "CT",
+        "weight": 3796.690453
+      },
+      {
+        "name": "DE",
+        "weight": 3726.419897
+      },
+      {
+        "name": "FL",
+        "weight": 4003.601385
+      },
+      {
+        "name": "GA",
+        "weight": 3496.590735
+      },
+      {
+        "name": "HI",
+        "weight": 4430.739913
+      },
+      {
+        "name": "ID",
+        "weight": 618.584112
+      },
+      {
+        "name": "IL",
+        "weight": 2664.161173
+      },
+      {
+        "name": "IN",
+        "weight": 2863.23082
+      },
+      {
+        "name": "IA",
+        "weight": 2218.839483
+      },
+      {
+        "name": "KS",
+        "weight": 2101.46543
+      },
+      {
+        "name": "KY",
+        "weight": 3138.564554
+      },
+      {
+        "name": "LA",
+        "weight": 3090.95358
+      },
+      {
+        "name": "ME",
+        "weight": 3892.493026
+      },
+      {
+        "name": "MD",
+        "weight": 3638.574189
+      },
+      {
+        "name": "MA",
+        "weight": 3853.802658
+      },
+      {
+        "name": "MI",
+        "weight": 2802.238136
+      },
+      {
+        "name": "MN",
+        "weight": 1973.265747
+      },
+      {
+        "name": "MS",
+        "weight": 3046.780752
+      },
+      {
+        "name": "MO",
+        "weight": 2481.775525
+      },
+      {
+        "name": "MT",
+        "weight": 847.879684
+      },
+      {
+        "name": "NE",
+        "weight": 1775.42085
+      },
+      {
+        "name": "NV",
+        "weight": 919.727162
+      },
+      {
+        "name": "NH",
+        "weight": 3769.900105
+      },
+      {
+        "name": "NJ",
+        "weight": 3727.49867
+      },
+      {
+        "name": "NM",
+        "weight": 1932.141072
+      },
+      {
+        "name": "NY",
+        "weight": 3558.578326
+      },
+      {
+        "name": "NC",
+        "weight": 3522.869076
+      },
+      {
+        "name": "ND",
+        "weight": 1515.04208
+      },
+      {
+        "name": "OH",
+        "weight": 3092.081049
+      },
+      {
+        "name": "OK",
+        "weight": 2344.292249
+      },
+      {
+        "name": "OR",
+        "weight": 417.514083
+      },
+      {
+        "name": "PA",
+        "weight": 3482.630244
+      },
+      {
+        "name": "RI",
+        "weight": 3880.41557
+      },
+      {
+        "name": "SC",
+        "weight": 3622.77637
+      },
+      {
+        "name": "SD",
+        "weight": 1633.41516
+      },
+      {
+        "name": "TN",
+        "weight": 3086.079521
+      },
+      {
+        "name": "TX",
+        "weight": 2562.151796
+      },
+      {
+        "name": "UT",
+        "weight": 1164.366863
+      },
+      {
+        "name": "VT",
+        "weight": 3682.161025
+      },
+      {
+        "name": "VA",
+        "weight": 3598.855571
+      },
+      {
+        "name": "WA",
+        "weight": 0
+      },
+      {
+        "name": "WV",
+        "weight": 3352.673783
+      },
+      {
+        "name": "WI",
+        "weight": 2417.698717
+      },
+      {
+        "name": "WY",
+        "weight": 1169.346412
+      }
+    ],
+    "name": "WA"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 941.012513
+      },
+      {
+        "name": "AK",
+        "weight": 5345.77189
+      },
+      {
+        "name": "AZ",
+        "weight": 2774.940284
+      },
+      {
+        "name": "AR",
+        "weight": 1139.219292
+      },
+      {
+        "name": "CA",
+        "weight": 3398.197501
+      },
+      {
+        "name": "CO",
+        "weight": 2139.738161
+      },
+      {
+        "name": "CT",
+        "weight": 721.537126
+      },
+      {
+        "name": "DE",
+        "weight": 432.01912
+      },
+      {
+        "name": "FL",
+        "weight": 1229.293879
+      },
+      {
+        "name": "GA",
+        "weight": 691.898419
+      },
+      {
+        "name": "HI",
+        "weight": 7402.166202
+      },
+      {
+        "name": "ID",
+        "weight": 2883.65508
+      },
+      {
+        "name": "IL",
+        "weight": 737.438707
+      },
+      {
+        "name": "IN",
+        "weight": 502.119767
+      },
+      {
+        "name": "IA",
+        "weight": 1154.732881
+      },
+      {
+        "name": "KS",
+        "weight": 1516.268279
+      },
+      {
+        "name": "KY",
+        "weight": 352.851258
+      },
+      {
+        "name": "LA",
+        "weight": 1441.878368
+      },
+      {
+        "name": "ME",
+        "weight": 1182.757851
+      },
+      {
+        "name": "MD",
+        "weight": 333.356668
+      },
+      {
+        "name": "MA",
+        "weight": 856.244503
+      },
+      {
+        "name": "MI",
+        "weight": 665.437767
+      },
+      {
+        "name": "MN",
+        "weight": 1414.431038
+      },
+      {
+        "name": "MS",
+        "weight": 1083.126388
+      },
+      {
+        "name": "MO",
+        "weight": 1049.380089
+      },
+      {
+        "name": "MT",
+        "weight": 2504.794755
+      },
+      {
+        "name": "NE",
+        "weight": 1674.385715
+      },
+      {
+        "name": "NV",
+        "weight": 3132.904969
+      },
+      {
+        "name": "NH",
+        "weight": 932.302055
+      },
+      {
+        "name": "NJ",
+        "weight": 492.198969
+      },
+      {
+        "name": "NM",
+        "weight": 2327.166387
+      },
+      {
+        "name": "NY",
+        "weight": 640.712719
+      },
+      {
+        "name": "NC",
+        "weight": 358.743818
+      },
+      {
+        "name": "ND",
+        "weight": 1869.647393
+      },
+      {
+        "name": "OH",
+        "weight": 262.18445
+      },
+      {
+        "name": "OK",
+        "weight": 1481.443191
+      },
+      {
+        "name": "OR",
+        "weight": 3343.731155
+      },
+      {
+        "name": "PA",
+        "weight": 372.860705
+      },
+      {
+        "name": "RI",
+        "weight": 819.128611
+      },
+      {
+        "name": "SC",
+        "weight": 577.259209
+      },
+      {
+        "name": "SD",
+        "weight": 1724.190178
+      },
+      {
+        "name": "TN",
+        "weight": 646.109272
+      },
+      {
+        "name": "TX",
+        "weight": 1980.735473
+      },
+      {
+        "name": "UT",
+        "weight": 2696.292985
+      },
+      {
+        "name": "VT",
+        "weight": 854.333015
+      },
+      {
+        "name": "VA",
+        "weight": 246.315462
+      },
+      {
+        "name": "WA",
+        "weight": 3352.673783
+      },
+      {
+        "name": "WV",
+        "weight": 0
+      },
+      {
+        "name": "WI",
+        "weight": 964.106592
+      },
+      {
+        "name": "WY",
+        "weight": 2281.921833
+      }
+    ],
+    "name": "WV"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 1373.126896
+      },
+      {
+        "name": "AK",
+        "weight": 4427.652389
+      },
+      {
+        "name": "AZ",
+        "weight": 2181.76556
+      },
+      {
+        "name": "AR",
+        "weight": 1102.904536
+      },
+      {
+        "name": "CA",
+        "weight": 2648.905731
+      },
+      {
+        "name": "CO",
+        "weight": 1441.306997
+      },
+      {
+        "name": "CT",
+        "weight": 1399.940005
+      },
+      {
+        "name": "DE",
+        "weight": 1310.112873
+      },
+      {
+        "name": "FL",
+        "weight": 1959.896629
+      },
+      {
+        "name": "GA",
+        "weight": 1355.669129
+      },
+      {
+        "name": "HI",
+        "weight": 6626.607598
+      },
+      {
+        "name": "ID",
+        "weight": 2001.90692
+      },
+      {
+        "name": "IL",
+        "weight": 502.063694
+      },
+      {
+        "name": "IN",
+        "weight": 545.416058
+      },
+      {
+        "name": "IA",
+        "weight": 429.400848
+      },
+      {
+        "name": "KS",
+        "weight": 971.736633
+      },
+      {
+        "name": "KY",
+        "weight": 859.888069
+      },
+      {
+        "name": "LA",
+        "weight": 1588.237516
+      },
+      {
+        "name": "ME",
+        "weight": 1614.387121
+      },
+      {
+        "name": "MD",
+        "weight": 1224.700289
+      },
+      {
+        "name": "MA",
+        "weight": 1477.689939
+      },
+      {
+        "name": "MI",
+        "weight": 398.590842
+      },
+      {
+        "name": "MN",
+        "weight": 452.454811
+      },
+      {
+        "name": "MS",
+        "weight": 1279.469312
+      },
+      {
+        "name": "MO",
+        "weight": 707.631444
+      },
+      {
+        "name": "MT",
+        "weight": 1574.379104
+      },
+      {
+        "name": "NE",
+        "weight": 915.890166
+      },
+      {
+        "name": "NV",
+        "weight": 2329.303862
+      },
+      {
+        "name": "NH",
+        "weight": 1431.863259
+      },
+      {
+        "name": "NJ",
+        "weight": 1310.094991
+      },
+      {
+        "name": "NM",
+        "weight": 1810.259749
+      },
+      {
+        "name": "NY",
+        "weight": 1174.969762
+      },
+      {
+        "name": "NC",
+        "weight": 1218.061938
+      },
+      {
+        "name": "ND",
+        "weight": 912.467679
+      },
+      {
+        "name": "OH",
+        "weight": 703.900753
+      },
+      {
+        "name": "OK",
+        "weight": 1126.64834
+      },
+      {
+        "name": "OR",
+        "weight": 2454.863137
+      },
+      {
+        "name": "PA",
+        "weight": 1066.703484
+      },
+      {
+        "name": "RI",
+        "weight": 1490.949265
+      },
+      {
+        "name": "SC",
+        "weight": 1384.811105
+      },
+      {
+        "name": "SD",
+        "weight": 832.179887
+      },
+      {
+        "name": "TN",
+        "weight": 990.363551
+      },
+      {
+        "name": "TX",
+        "weight": 1758.881736
+      },
+      {
+        "name": "UT",
+        "weight": 1933.313152
+      },
+      {
+        "name": "VT",
+        "weight": 1336.902929
+      },
+      {
+        "name": "VA",
+        "weight": 1204.522256
+      },
+      {
+        "name": "WA",
+        "weight": 2417.698717
+      },
+      {
+        "name": "WV",
+        "weight": 964.106592
+      },
+      {
+        "name": "WI",
+        "weight": 0
+      },
+      {
+        "name": "WY",
+        "weight": 1433.937428
+      }
+    ],
+    "name": "WI"
+  },
+  {
+    "distances": [
+      {
+        "name": "AL",
+        "weight": 2146.953304
+      },
+      {
+        "name": "AK",
+        "weight": 3775.482097
+      },
+      {
+        "name": "AZ",
+        "weight": 1056.514703
+      },
+      {
+        "name": "AR",
+        "weight": 1592.99382
+      },
+      {
+        "name": "CA",
+        "weight": 1246.929939
+      },
+      {
+        "name": "CO",
+        "weight": 469.405802
+      },
+      {
+        "name": "CT",
+        "weight": 2827.652715
+      },
+      {
+        "name": "DE",
+        "weight": 2687.953749
+      },
+      {
+        "name": "FL",
+        "weight": 2835.54754
+      },
+      {
+        "name": "GA",
+        "weight": 2342.495909
+      },
+      {
+        "name": "HI",
+        "weight": 5193.236151
+      },
+      {
+        "name": "ID",
+        "weight": 610.154786
+      },
+      {
+        "name": "IL",
+        "weight": 1556.88599
+      },
+      {
+        "name": "IN",
+        "weight": 1780.163966
+      },
+      {
+        "name": "IA",
+        "weight": 1127.580428
+      },
+      {
+        "name": "KS",
+        "weight": 932.214592
+      },
+      {
+        "name": "KY",
+        "weight": 2025.443065
+      },
+      {
+        "name": "LA",
+        "weight": 1934.87473
+      },
+      {
+        "name": "ME",
+        "weight": 3035.152429
+      },
+      {
+        "name": "MD",
+        "weight": 2593.534049
+      },
+      {
+        "name": "MA",
+        "weight": 2910.741399
+      },
+      {
+        "name": "MI",
+        "weight": 1831.966327
+      },
+      {
+        "name": "MN",
+        "weight": 1063.94544
+      },
+      {
+        "name": "MS",
+        "weight": 1877.437016
+      },
+      {
+        "name": "MO",
+        "weight": 1331.004704
+      },
+      {
+        "name": "MT",
+        "weight": 466.981324
+      },
+      {
+        "name": "NE",
+        "weight": 624.531257
+      },
+      {
+        "name": "NV",
+        "weight": 900.097253
+      },
+      {
+        "name": "NH",
+        "weight": 2864.016512
+      },
+      {
+        "name": "NJ",
+        "weight": 2708.524468
+      },
+      {
+        "name": "NM",
+        "weight": 981.245263
+      },
+      {
+        "name": "NY",
+        "weight": 2607.902704
+      },
+      {
+        "name": "NC",
+        "weight": 2403.761342
+      },
+      {
+        "name": "ND",
+        "weight": 737.992445
+      },
+      {
+        "name": "OH",
+        "weight": 2031.332078
+      },
+      {
+        "name": "OK",
+        "weight": 1179.046487
+      },
+      {
+        "name": "OR",
+        "weight": 1068.584737
+      },
+      {
+        "name": "PA",
+        "weight": 2476.832459
+      },
+      {
+        "name": "RI",
+        "weight": 2921.01506
+      },
+      {
+        "name": "SC",
+        "weight": 2482.65172
+      },
+      {
+        "name": "SD",
+        "weight": 606.01396
+      },
+      {
+        "name": "TN",
+        "weight": 1937.392921
+      },
+      {
+        "name": "TX",
+        "weight": 1489.086801
+      },
+      {
+        "name": "UT",
+        "weight": 562.970761
+      },
+      {
+        "name": "VT",
+        "weight": 2769.583682
+      },
+      {
+        "name": "VA",
+        "weight": 2526.002646
+      },
+      {
+        "name": "WA",
+        "weight": 1169.346412
+      },
+      {
+        "name": "WV",
+        "weight": 2281.921833
+      },
+      {
+        "name": "WI",
+        "weight": 1433.937428
+      },
+      {
+        "name": "WY",
+        "weight": 0
+      }
+    ],
+    "name": "WY"
+  }
+]

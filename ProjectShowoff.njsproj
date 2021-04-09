@@ -33,6 +33,12 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Files\ProfilePic.jpg" />
+    <Content Include="JsonObjects\CurrentCachedDepots.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="JsonObjects\AllCachedDepots.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Modules\database.js">
       <SubType>Code</SubType>
     </Content>
@@ -53,9 +59,6 @@
     </Content>
     <Content Include="public\js\budgets.js" />
     <Content Include="src\budgets.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="views\pages\AboutMe.ejs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\pages\Contact.ejs">
@@ -94,6 +97,7 @@
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Modules\" />
+    <Folder Include="JsonObjects\" />
     <Folder Include="public\js\" />
     <Folder Include="public\css\" />
     <Folder Include="src\" />

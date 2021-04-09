@@ -74,9 +74,6 @@ app.get('/projects/gamble', function (req, res) {
 app.get('/projects/graph', function (req, res) {
     res.render('pages/graph');
 });
-app.get('/about', function (req, res) {
-    res.render('pages/AboutMe');
-});
 app.get('/projects', function (req, res) {
     res.render('pages/Projects');
 });
@@ -271,6 +268,12 @@ app.get('/resume', function (req, res) {
 });
 app.get('/engagement', function (req, res) {
     fsExtend.readExtend('Files/ProfilePic.jpg', 'image/jpeg', res);
+});
+app.get('/currentDepots', function (req, res) {
+    fsExtend.readExtend('JsonObjects/CurrentCachedDepots.json', 'application/json', res);
+});
+app.get('/allDepots', function (req, res) {
+    fsExtend.readExtend('JsonObjects/AllCachedDepots.json', 'application/json', res);
 });
 
 
