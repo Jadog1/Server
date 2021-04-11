@@ -418,7 +418,7 @@ var HighLevelMetrics = function (_React$Component5) {
                     var firstDate = new Date();
                     var numDays = Math.ceil(Math.abs((firstDate.getTime() - secondDate.getTime()) / oneDay));
                     var numMonths = numDays / 30 < 1 ? 1 : Math.floor(numDays / 30);
-                    expenseAmount = expenseAmount / numMonths;
+                    expenseAmount = expenseAmount / numMonths * 12;
                 } else expenseAmount = expenseAmount * 12;
                 cost += parseFloat(expenseAmount);
             }
