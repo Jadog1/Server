@@ -6,6 +6,7 @@ var email = require('./Modules/email');
 var queries = require('./Modules/queries');
 var dealFinder = require('./Modules/DealFinder');
 var express = require('express');
+const request = require('request');
 var app = express();
 const bodyParser = require('body-parser');
 const oneDayToSeconds = 24 * 60 * 60 * 1000;
@@ -47,6 +48,9 @@ function isLogged(req) {
     else
         return true;
 }
+async function getWeather() {
+
+}
 
 app.all('*', function (req, res, next) {
 
@@ -58,6 +62,29 @@ app.all('*', function (req, res, next) {
 // set the home page route
 app.get('/', async function (req, res) {
     res.render('pages/Home');
+});
+app.get('/weather', async function (req, res) {
+    fsExtend.getLastModified("JsonObjects/Weather.json")
+        .then(data => {
+            if (data > 3600) {
+                request('http://api.openweathermap.org/data/2.5/weather?zip=46815&units=Imperial&appid=9410d5ee060c34e41021b0fb8f1a9110', { json: true }, (err, res2, body) => {
+                    if (err) { return console.log(err); }
+                    fsExtend.writeAFile("JsonObjects/Weather.json", JSON.stringify(body));
+                    res.json(body);
+                });
+            } else {
+                fsExtend.readAFile("JsonObjects/Weather.json")
+                    .then(data => {
+                        res.json(JSON.parse(data));
+                    })
+                    .catch(err => {
+                        res.json(null);
+                    })
+            }
+        })
+        .catch(err => {
+            console.log("Error!");
+        })
 });
 app.get('/projects/game', function (req, res) {
     res.render('pages/SeniorGame');
@@ -94,7 +121,7 @@ app.get('/finance/budget-list', async function (req, res) {
         const budgets = await queries.getBudgetByUser(userId);
         res.json(budgets);
     } else
-        res.json({'Error': 'Account not logged in'});
+        res.json({ 'Error': 'Account not logged in' });
 });
 app.get('/finance/updateBudgetTax', async function (req, res) {
     try {
@@ -111,7 +138,7 @@ app.get('/finance/deleteBudget', async function (req, res) {
     try {
         await queries.deleteBudget(req.query.budgetId);
         res.status(200);
-        res.json({success: "OK"});
+        res.json({ success: "OK" });
     } catch (e) {
         res.status(400);
         res.json({ error: 'Error has occured' });
@@ -248,7 +275,7 @@ app.post('/finance/addExpense', jsonParser, async function (req, res) {
     try {
         if (req.body.goal)
             await queries.addGoal(req.body.amount, req.body.expenseName, req.body.budgetId, req.body.date, req.body.optional, req.body.amountPaid);
-        else 
+        else
             await queries.addExpense(req.body.amount, req.body.expenseName, req.body.budgetId);
         res.status(201);
         res.json({ success: "OK" });

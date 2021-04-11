@@ -24,7 +24,8 @@
     "got": "^11.8.2",
     "node-gyp": "^7.1.2",
     "nodemailer": "^6.5.0",
-    "pg": "^8.5.1"
+    "pg": "^8.5.1",
+    "request": "^2.88.2"
   },
   "devDependencies": {},
   "repository": {

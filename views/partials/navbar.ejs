@@ -4,6 +4,8 @@
         <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
         <a href="/projects" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Projects</a>
         <a href="/contact" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contact me</a>
+
+        <span class="w3-bar-item w3-hide-small w3-padding-large" style="float: right" id="weatherHolder"></span>
     </div>
 
     <!-- Navbar on small screens -->
@@ -23,5 +25,12 @@
             } else {
                 x.className = x.className.replace(" w3-show", "");
             }
-        }
+    }
+
+    $(document).ready(function () {
+        $.get("/weather", function (weatherObj) {
+            var weather = "http://openweathermap.org/img/wn/" + weatherObj.weather[0].icon + "@2x.png"
+            $("#weatherHolder").html("<p>Fort Wayne: " + weatherObj.main.temp + "&#176;F  <img src='" + weather + "' width=25 height=25/>");
+        });
+    });
 </script>
