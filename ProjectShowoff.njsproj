@@ -60,6 +60,12 @@
     <Content Include="Modules\weather.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\img\Budget.jpg" />
+    <Content Include="public\img\Distance.jpg" />
+    <Content Include="public\img\Gambling.jpg" />
+    <Content Include="public\img\Graph.jpg" />
+    <Content Include="public\img\PhotoDistort.jpg" />
+    <Content Include="public\img\SeniorGame.jpg" />
     <Content Include="public\js\budgets.js" />
     <Content Include="src\budgets.js">
       <SubType>Code</SubType>
@@ -104,6 +110,7 @@
     <Folder Include="Files\" />
     <Folder Include="Modules\" />
     <Folder Include="JsonObjects\" />
+    <Folder Include="public\img\" />
     <Folder Include="public\js\" />
     <Folder Include="public\css\" />
     <Folder Include="src\" />
