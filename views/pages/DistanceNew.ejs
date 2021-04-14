@@ -17,17 +17,14 @@
             height: 100px;
             background-color: #eee;
         }
-
         input[type="radio"],
         label {
             cursor: pointer;
         }
-
         textarea {
             display: inline-block;
             margin-right: 20px;
         }
-
         #help {
             display: inline-block;
             float: right;
@@ -36,17 +33,17 @@
     </style>
 
     <div class="w3-row-padding w3-padding-64 w3-container">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <div id="optionPane">
             <div id="help" onclick="displayHelp()">
                 <i class="fa fa-question-circle">Help</i>
             </div>
             <input id="efficient" type="radio" name="sort" checked="checked" onclick="calculation = 0" />
             <label for="efficient">Sort by shipping efficiency</label><br />
-            <input id="fair" type="radio" name="sort" onclick="calculation = 0" />
-            <label for="fair">Sort by fairness (NOT IMPLEMENTED YET, will just run the efficiency algorithm for now)</label>
-
-            <a href="/projects/distance"><h4>Click here to return</h4></a>
+            <input id="fair" type="radio" name="sort" onclick="calculation = 1" />
+            <label for="fair">Sort by fairness</label>
+            <br />
+            <h3 style="display: inline-block">UPDATE:</h3> This is now the legacy page. <a href="/projects/distance">Click here</a> to test out the new algorithm. The sorting feature has now been updated and is in beta
         </div>
 
         <textarea placeholder="Insert addresses here" rows="20" cols="40" id="input"></textarea>
@@ -60,150 +57,232 @@
         GSO: <span id="gso">0</span>
         <button onclick="clearVals()">
             Clear
-        </button> <br />
-        <h1>Efficiency</h1>
-        <p>
-            I am currently working on changing the algorithm for both fairness and efficiency algorithms. As of right now, the efficiency algorithm is using the new algorithm that I designed that relies on km distance between states, as opposed to my previous setup which relied on basic graph theory and grouping of states. This should help to improve overall speed, and accuracy, of location pickings.
-        </p>
+        </button>
+
+        <h2>This is quickly becoming the legacy page</h2>
     </div>
 
 
     <script>
-        var cachedDistances;
-        var cachedStateLocations = [];
-        //Find the current state depots, which is kept up to date on a JSON file
-        $(document).ready(function () {
-            $.get("/currentDepots", function (data) {
-                cachedDistances = data;
-                //The below loop is to quickly find the states
-                for (var i = 0; i < data[0].distances.length; i++) {
-                    cachedStateLocations[data[0].distances[i].name] = i;
-                }
-            });
-        });
-        function depotObj(name, state) {
+        function region(states) {
+            this.states = states;
+        }
+        function depot(name, location) {
             this.name = name;
-            this.state = state;
+            this.location = location;
+            this.active = true;
             this.assigned = 0;
         }
-        var depotList = [new depotObj("FTW", "IN"), new depotObj("OMA", "NE"), new depotObj("GSO", "NC")]
-
+        function address(state, location, distances, depot) {
+            this.state = state;
+            this.location = location;
+            this.distances = distances;
+            this.depot = depot;
+        }
+        function findLocation(name) {
+            for (var i = 0; i < usBitMap.length; i++) {
+                for (var j = 0; j < usBitMap[i].length; j++) {
+                    for (var z = 0; z < usBitMap[i][j].states.length; z++) {
+                        if (name === usBitMap[i][j].states[z]) return { i: i, j: j };
+                    }
+                }
+            }
+            return null;
+        }
+        var usBitMap = [
+            [
+                new region(["WA", "AK", "HI"]),
+                new region(["MT", "ND"]),
+                new region(["MN"]),
+                new region(["ME"])
+            ],
+            [
+                new region(["OR", "ID"]),
+                new region(["WY", "SD"]),
+                new region(["WI", "IA", "MI"]),
+                new region(["NY", "VT", "NH", "MA"])
+            ],
+            [
+                new region(["NV", "UT"]),
+                new region(["CO", "NE", "KS"]),
+                new region(["MO", "IL", "IN"]),
+                new region(["OH", "WV", "PA", "DE", "MD", "RI", "CT", "NJ"])
+            ],
+            [
+                new region(["CA"]),
+                new region(["NM", "OK"]),
+                new region(["AR", "TN", "KY"]),
+                new region(["NC", "VA"])
+            ],
+            [
+                new region(["AZ"]),
+                new region(["TX"]),
+                new region(["LA", "MS", "AL"]),
+                new region(["GA", "SC"])
+            ],
+            [new region([]), new region([]), new region([]), new region(["FL"])]
+        ];
+        var depots = [
+            new depot("FTW", findLocation("IN")),
+            new depot("OMA", findLocation("NE")),
+            new depot("GSO", findLocation("NC"))
+        ];
+        function findDistances(location) {
+            var compareDistances = [];
+            var min = { val: -1, loc: -1 };
+            for (k = 0; k < depots.length; k++) {
+                if (depots[k].active === false) continue;
+                var val =
+                    Math.abs(location.i - depots[k].location.i) +
+                    Math.abs(location.j - depots[k].location.j);
+                compareDistances.push(val);
+                if (min.val == -1 || min.loc == -1 || val < min.val) {
+                    min.val = val;
+                    min.loc = k;
+                }
+            }
+            compareDistances.push(min.loc);
+            return compareDistances;
+        }
         function clearVals() {
-            for (i = 0; i < depotList.length; i++) depotList[i].assigned = 0;
+            for (i = 0; i < depots.length; i++) depots[i].assigned = 0;
             document.getElementById("output").innerHTML = "";
             document.getElementById("input").value = "";
-            document.getElementById("ftw").innerHTML = depotList[0].assigned;
-            document.getElementById("oma").innerHTML = depotList[1].assigned;
-            document.getElementById("gso").innerHTML = depotList[2].assigned;
+            document.getElementById("ftw").innerHTML = depots[0].assigned;
+            document.getElementById("oma").innerHTML = depots[1].assigned;
+            document.getElementById("gso").innerHTML = depots[2].assigned;
         }
-
         var calculation = 0;
         function chooseCalc() {
-            for (i = 0; i < depotList.length; i++) depotList[i].assigned = 0;
+            for (i = 0; i < depots.length; i++) depots[i].assigned = 0;
             document.getElementById("output").innerHTML = "";
-
             if (calculation == 0) {
                 calculateDistanceEfficient();
             } else calculateDistanceFair();
         }
-
         function calculateDistanceEfficient() {
             document.getElementById("output").innerHTML = "";
             //Split the list and set the arrays
             var list = document.getElementById("input").value;
             list = list.trim();
             list = list.split("\n");
-            for (var i = 0; i < list.length; i++) {
-                list[i] = list[i].toUpperCase();
-                var stateInArray = cachedStateLocations[list[i]];
-                if (stateInArray == undefined) {
-                    $('#output').val("Unrecognized state: " + list[i]);
+            var depots2 = [];
+            var depotSort = [];
+            var addresses = [];
+            var countActive = 0;
+            for (count = 0; count < depots.length; count++)
+                if (depots[count].active === true) countActive++;
+            for (k = 0; k < depots.length; k++) {
+                depots2.push(0);
+                depotSort.push([]);
+            }
+            //Find all the distances and locations according to the bitmap
+            for (i = 0; i < list.length; i++) {
+                var temp = list[i].split(" ");
+                if (temp.length > 1) var temp2 = temp[temp.length - 2];
+                else var temp2 = temp[temp.length - 1];
+                if (temp2.length > 2) temp2 = temp2.substring(0, 2);
+                if (temp2.trim() === "") {
+                    continue;
+                }
+                temp2 = temp2.toUpperCase();
+                var loc = findLocation(temp2);
+                if (loc == null) {
+                    if (temp.length == 1)
+                        document.getElementById("output").innerHTML =
+                            "Error finding state: " + temp[temp.length - 1];
+                    else
+                        document.getElementById("output").innerHTML =
+                            "Error finding state: " + temp[temp.length - 2];
                     return;
                 }
-
-                var min = Number.MAX_SAFE_INTEGER;
-                var chosenDepot;
-                //Find the most efficient depot
-                for (var searchDepots = 0; searchDepots < cachedDistances.length; searchDepots++) {
-                    var weight = cachedDistances[searchDepots].distances[stateInArray].weight;
-                    if (weight < min) {
-                        min = weight;
-                        chosenDepot = cachedDistances[searchDepots].name
-                    }
-                }
-                var depotName;
-                //Assign out the count to the most efficient depot
-                for (var j = 0; j < depotList.length; j++) {
-                    if (depotList[j].state == chosenDepot) {
-                        depotList[j].assigned++;
-                        depotName = depotList[j].name;
-                        break;
-                    }
-                }
-
-                document.getElementById("output").innerHTML += depotName + "\n";
+                var distances = findDistances(loc);
+                var smallestMin = distances[distances.length - 1];
+                var selectedDepot;
+                var addr = new address(temp2, loc, distances, smallestMin);
+                depots2.push(addr);
+                depotSort[smallestMin].push(addr);
+                depots[smallestMin].assigned++;
+                selectedDepot = depots[smallestMin];
+                //Make sure to distribute evenly among active depots
+                document.getElementById("output").innerHTML += selectedDepot.name + "\n";
             }
-
-            document.getElementById("ftw").innerHTML = depotList[0].assigned;
-            document.getElementById("oma").innerHTML = depotList[1].assigned;
-            document.getElementById("gso").innerHTML = depotList[2].assigned;
+            for (i = 0; i < depotSort.length; i++) {
+                depotSort[i].sort((a, b) => ((a.distances[i], b.distances[i]) ? 1 : -1));
+            }
+            document.getElementById("ftw").innerHTML = depots[0].assigned;
+            document.getElementById("oma").innerHTML = depots[1].assigned;
+            document.getElementById("gso").innerHTML = depots[2].assigned;
         }
-
-        /****
-         * LEGACY
-         * */
-
         function calculateDistanceFair() {
             document.getElementById("output").innerHTML = "";
             //Split the list and set the arrays
             var list = document.getElementById("input").value;
             list = list.trim();
             list = list.split("\n");
-
-            for (var i = 0; i < list.length; i++) {
-                list[i] = list[i].toUpperCase();
-                var stateInArray = cachedStateLocations[list[i]];
-                if (stateInArray == undefined) {
-                    $('#output').text("Unrecognized state: " + list[i]);
+            var depots2 = [];
+            var addresses = [];
+            var countActive = 0;
+            for (count = 0; count < depots.length; count++)
+                if (depots[count].active === true) countActive++;
+            for (k = 0; k < depots.length; k++) depots2.push(0);
+            //Find all the distances and locations according to the bitmap
+            for (i = 0; i < list.length; i++) {
+                var temp = list[i].split(" ");
+                if (temp.length > 1) var temp2 = temp[temp.length - 2];
+                else var temp2 = temp[temp.length - 1];
+                if (temp2.length > 2) temp2 = temp2.substring(0, 2);
+                if (temp2.trim() === "") {
+                    continue;
+                }
+                var loc = findLocation(temp2);
+                if (loc == null) {
+                    document.getElementById("output").innerHTML =
+                        "Error finding state: " + temp[temp.length - 1];
                     return;
                 }
-
-                var min = Number.MAX_SAFE_INTEGER;
-                var chosenDepot;
-                //Find the most efficient depot
-                for (var searchDepots = 0; searchDepots < cachedDistances.length; searchDepots++) {
-                    var weight = cachedDistances[searchDepots].distances[stateInArray].weight;
-                    if (weight < min) {
-                        min = weight;
-                        chosenDepot = cachedDistances[searchDepots].name
+                var distances = findDistances(loc);
+                var smallestMin = distances[distances.length - 1];
+                var selectedDepot;
+                //Make sure to distribute evenly among active depots
+                if (depots2[smallestMin] / list.length < 1 / countActive) {
+                    //console.log(depots2[smallestMin].length + " and " + list.length + " and " + depots[smallestMin].name + " and " + i);
+                    selectedDepot = depots[smallestMin];
+                    //depots2[smallestMin].push(new address(temp2, loc, distances, i));
+                    depots2[smallestMin]++;
+                } else {
+                    var tempArr = distances;
+                    var count = 0;
+                    var found = false;
+                    while (count < countActive && !found) {
+                        tempArr[smallestMin] = 999; //Set local max
+                        var min = { val: 999, loc: 0 };
+                        for (k = 0; k < tempArr.length - 1; k++)
+                            if (tempArr[k] < min.val) {
+                                min.val = tempArr[k];
+                                min.loc = k;
+                            }
+                        smallestMin = min.loc;
+                        if (depots2[smallestMin] / list.length < 1 / countActive) found = true;
+                        count++;
                     }
+                    selectedDepot = depots[smallestMin];
+                    //depots2[smallestMin].push(new address(temp2, loc, distances, i));
+                    depots2[smallestMin]++;
                 }
-                var depotName;
-                //Assign out the count to the most efficient depot
-                for (var j = 0; j < depotList.length; j++) {
-                    if (depotList[j].state == chosenDepot) {
-                        depotList[j].assigned++;
-                        depotName = depotList[j].name;
-                        break;
-                    }
-                }
-
-                document.getElementById("output").innerHTML += depotName + "\n";
+                //addresses.push(new address(temp2, loc, distances, selectedDepot));
+                document.getElementById("output").innerHTML += selectedDepot.name + "\n";
             }
-
-            document.getElementById("ftw").innerHTML = depotList[0].assigned;
-            document.getElementById("oma").innerHTML = depotList[1].assigned;
-            document.getElementById("gso").innerHTML = depotList[2].assigned;
+            document.getElementById("ftw").innerHTML = depots2[0];
+            document.getElementById("oma").innerHTML = depots2[1];
+            document.getElementById("gso").innerHTML = depots2[2];
         }
-
         function displayHelp() {
             alert(
                 "This page is used for determining shipping locations based off of state abbreviations. There are two formats of addresses that are accepted. One is with just the state abbreviation alone, or as a full address. Both examples are displayed in the input text field. This is used as a bulk adder for calculating depot shipping locations. It uses a generalized algorithm that I made for calculating distances that values speed over actual distance calculation."
             );
             document.getElementById("input").value = "IN\n501 Virginia Ave, Hagerstown, MD 21740"
         }
-
-
     </script>
 </body>
 </html>
