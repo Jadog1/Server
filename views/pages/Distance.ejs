@@ -46,7 +46,7 @@
             <input id="fair" type="radio" name="sort" onclick="calculation = 1" />
             <label for="fair">Sort by fairness (In beta). If you encounter off cases, please send a screenshot to Jadon Steinmetz</label>
 
-            <a href="/projects/distanceNew"><h4>Click here to view the legacy algorithm</h4></a>
+            <a href="/projects/distanceNew" style="float:right"><h4>Click here to view the legacy algorithm</h4></a>
         </div>
 
         <textarea placeholder="Insert addresses here" rows="20" cols="40" id="input"></textarea>
@@ -264,6 +264,7 @@
                             chosenDepotArrayLocation = searchDepots;
                         }
                     }
+                    if (extraDepots[i].weight + 700 < min) continue;
                     extraDepots[i].name = chosenDepot;
                     extraDepots[i].weight = min;
                     extraDepots[i].chosenDepotArrayLoc = chosenDepotArrayLocation;
