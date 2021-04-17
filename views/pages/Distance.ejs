@@ -41,12 +41,10 @@
             <div id="help" onclick="displayHelp()">
                 <i class="fa fa-question-circle">Help</i>
             </div>
-            <input id="efficient" type="radio" name="sort" checked="checked" onclick="calculation = 0" />
+            <input id="efficient" type="radio" name="sort" checked="checked" onclick="calculation = 0; chooseCalc()" />
             <label for="efficient">Sort by shipping efficiency</label><br />
-            <input id="fair" type="radio" name="sort" onclick="calculation = 1" />
-            <label for="fair">Sort by fairness (In beta). If you encounter off cases, please send a screenshot to Jadon Steinmetz</label>
-
-            <a href="/projects/distanceNew" style="float:right"><h4>Click here to view the legacy algorithm</h4></a>
+            <input id="fair" type="radio" name="sort" onclick="calculation = 1; chooseCalc()" />
+            <label for="fair">Sort by fairness -- This is based off TRUE fairness. You can compare the weights post-computation to see the changes</label>
         </div>
 
         <textarea placeholder="Insert addresses here" rows="20" cols="40" id="input"></textarea>
@@ -60,10 +58,12 @@
         GSO: <span id="gso">0</span>
         <button onclick="clearVals()">
             Clear
-        </button> <br />
-        <h1>Efficiency</h1>
+        </button> 
+        <span id="totalShipping"></span>
+        <br />
+        <h1>Goal of efficiency</h1>
         <p>
-            I am currently working on changing the algorithm for both fairness and efficiency algorithms. As of right now, the efficiency algorithm is using the new algorithm that I designed that relies on km distance between states, as opposed to my previous setup which relied on basic graph theory and grouping of states. This should help to improve overall speed, and accuracy, of location pickings.
+            The new algorithm now factors depot calculations in two categories, one purely by how efficient it is to ship something, and the other method splits the workload evenly among all depot locations in the most efficient way possible, and quickest way of shipping possible.
         </p>
     </div>
 
@@ -111,8 +111,12 @@
             document.getElementById("output").innerHTML = "";
             //Split the list and set the arrays
             var list = document.getElementById("input").value;
+            var totalWeight = 0;
             list = list.trim();
+            if (list  == "")
+                return;
             list = list.split("\n");
+           
             for (var i = 0; i < list.length; i++) {
                 //Logic for handling reading full addresses and state abbreviations
                 var chosenState = list[i];
@@ -124,7 +128,7 @@
 
                 var stateInArray = cachedStateLocations[chosenState];
                 if (stateInArray == undefined) {
-                    $('#output').val("Unrecognized state: " + chosenState);
+                    document.getElementById("output").innerHTML = ("Unrecognized state: " + chosenState);
                     return;
                 }
 
@@ -138,6 +142,7 @@
                         chosenDepot = cachedDistances[searchDepots].name
                     }
                 }
+                totalWeight += min;
                 var depotName;
                 //Assign out the count to the most efficient depot
                 for (var j = 0; j < depotList.length; j++) {
@@ -151,32 +156,40 @@
                 document.getElementById("output").innerHTML += depotName + "\n";
             }
 
+            const factor = 0.621371;
+            document.getElementById("totalShipping").innerHTML = "Approximated shipping mileage (in miles): " + ((totalWeight * factor).toFixed(0)) + "mi";
             document.getElementById("ftw").innerHTML = depotList[0].assigned;
             document.getElementById("oma").innerHTML = depotList[1].assigned;
             document.getElementById("gso").innerHTML = depotList[2].assigned;
         }
 
 
-        function fairObj(name, weight, chosenDepot, state) {
-            this.name = name; //Newest location
-            this.weight = weight;
-            this.chosenDepotArrayLoc = chosenDepot;
+        function fairObj(state, allWeights, id) {
+            this.name; //Newest location
+            this.weight = allWeights;
+            this.chosenDepotArrayLoc;
             this.stateInArray = state; //Actual state index
+            this.uniqueId = id; //Set id
         }
 
         function calculateDistanceFair() {
             document.getElementById("output").innerHTML = "";
             //Split the list and set the arrays
             var list = document.getElementById("input").value;
+            var totalWeight = 0;
             var availableDepots = [],
                 depotSelectionHolder = [],
                 originalDepotList = [];
-            for (var i = 0; i < depotList.length; i++) {
-                availableDepots.push(depotList[i]);
+            for (var i = 0; i < cachedDistances.length; i++) {
+                availableDepots.push(cachedDistances[i].name);
                 depotSelectionHolder.push([]);
             }
             list = list.trim();
             list = list.split("\n");
+            if (list.length <= 3) {
+                calculateDistanceEfficient();
+                return;
+            }
 
             for (var i = 0; i < list.length; i++) {
                 //Logic for handling reading full addresses and state abbreviations
@@ -189,88 +202,82 @@
 
                 var stateInArray = cachedStateLocations[chosenState];
                 if (stateInArray == undefined) {
-                    $("#output").text("Unrecognized state: " + chosenState);
+                    document.getElementById("output").innerHTML = ("Unrecognized state: " + chosenState);
                     return;
                 }
 
-                var min = Number.MAX_SAFE_INTEGER;
-                var chosenDepot, chosenDepotArrayLocation;
+                var allWeights = [];
                 //Find the most efficient depot
                 for (
                     var searchDepots = 0;
                     searchDepots < cachedDistances.length;
                     searchDepots++
-                ) {
-                    var weight = cachedDistances[searchDepots].distances[stateInArray].weight;
-                    if (weight < min) {
-                        min = weight;
-                        chosenDepot = cachedDistances[searchDepots].name;
-                        chosenDepotArrayLocation = searchDepots;
-                    }
-                }
-                var fairObj_instance = new fairObj(
-                    chosenDepot,
-                    min,
-                    chosenDepotArrayLocation,
-                    stateInArray
-                );
-                originalDepotList.push(fairObj_instance);
-                depotSelectionHolder[chosenDepotArrayLocation].push(fairObj_instance);
-            }
-            var sortedArrays = availableDepots.length;
-            //Complete the sort and repeat method
-            while (sortedArrays-- > 1) {
-                //Sort and decide which location has the most shipments
-                var max = 0,
-                    maxLocation;
-                for (var loc = 0; loc < availableDepots.length; loc++) {
-                    if (availableDepots[loc] == null) continue;
-                    depotSelectionHolder[loc].sort(function (a, b) {
-                        return a.weight - b.weight;
-                    });
-                    if (depotSelectionHolder[loc].length > max) {
-                        max = depotSelectionHolder[loc].length;
-                        maxLocation = loc;
-                    }
-                }
-                //If max size is only equal to the evened out value, then we can just break out of this
-                if (max / originalDepotList.length <= 1 / availableDepots.length) break;
-                //Take out the available depot for later calculations
-                availableDepots[maxLocation] = null;
-                //Calculate what array will be worked on
-                var arrSlice = Math.round(
-                    (1 / depotSelectionHolder.length) *
-                    depotSelectionHolder[maxLocation].length
-                );
-                var extraDepots = depotSelectionHolder[maxLocation].splice(-arrSlice, arrSlice); //Moves end of array to extra depots for further processing
-
-                for (var i = 0; i < extraDepots.length; i++) {
-                    var stateInArray = extraDepots[i].name;
-                    //Find the most efficient depot
-                    var min = Number.MAX_SAFE_INTEGER;
-                    var chosenDepot, chosenDepotArrayLocation;
-                    for (
-                        var searchDepots = 0;
-                        searchDepots < cachedDistances.length;
-                        searchDepots++
-                    ) {
-                        if (availableDepots[searchDepots] == null) continue;
-                        var weight =
-                            cachedDistances[searchDepots].distances[extraDepots[i].stateInArray]
-                                .weight;
-                        if (weight < min) {
-                            min = weight;
-                            chosenDepot = cachedDistances[searchDepots].name;
-                            chosenDepotArrayLocation = searchDepots;
-                        }
-                    }
-                    if (extraDepots[i].weight + 700 < min) continue;
-                    extraDepots[i].name = chosenDepot;
-                    extraDepots[i].weight = min;
-                    extraDepots[i].chosenDepotArrayLoc = chosenDepotArrayLocation;
-                    depotSelectionHolder[chosenDepotArrayLocation].push(
-                        extraDepots[i]
+                )
+                    allWeights.push(
+                        cachedDistances[searchDepots].distances[stateInArray].weight
                     );
+                var fairObj_instance = new fairObj(stateInArray, allWeights, i);
+                originalDepotList.push(fairObj_instance);
+                for (var z = 0; z < availableDepots.length; z++)
+                    depotSelectionHolder[z].push(fairObj_instance);
+            }
+
+            //Make the fair share amount and sort the depots
+            var fairShare = Math.floor((1 / availableDepots.length) * list.length);
+            for (var loc = 0; loc < availableDepots.length; loc++) {
+                depotSelectionHolder[loc].sort(function (a, b) {
+                    return a.weight[loc] - b.weight[loc];
+                });
+            }
+
+            //Start splitting up the workload
+            for (var depotAt = 0; depotAt < depotSelectionHolder.length; depotAt++) {
+                for (var stateAt = 0; stateAt < fairShare; stateAt++) {
+                    var depotStateAt = depotSelectionHolder[depotAt][stateAt];
+                    if (depotStateAt.name == undefined) {
+                        depotStateAt.name = cachedDistances[depotAt].name;
+                        depotStateAt.chosenDepotArrayLoc = depotAt;
+                    } else {
+                        if (depotSelectionHolder[depotAt].length > fairShare) {
+                            var otherDepot =
+                                depotSelectionHolder[depotStateAt.chosenDepotArrayLoc];
+                            var otherStateArrayLoc;
+                            //Get the location of the other state
+                            for (var k = 0; k < otherDepot.length; k++) {
+                                if (otherDepot[k].uniqueId == depotStateAt.uniqueId) {
+                                    otherStateArrayLoc = k;
+                                    break;
+                                }
+                            }
+                            var otherState = otherDepot[otherStateArrayLoc];
+                            if (
+                                otherDepot.length > fairShare &&
+                                depotSelectionHolder[depotAt][fairShare].weight[depotAt] >
+                                otherDepot[fairShare].weight[otherState.chosenDepotArrayLoc]
+                            ) {
+                                while (otherDepot.length > fairShare && otherDepot[fairShare].name != undefined)
+                                    otherDepot.splice(fairShare, 1);
+
+                                if (otherDepot.length > fairShare) {
+                                    otherDepot[fairShare].name = otherState.name;
+                                    otherDepot[fairShare].chosenDepotArrayLoc = otherState.chosenDepotArrayLoc;
+                                    otherDepot.splice(otherStateArrayLoc, 1);
+                                    depotStateAt.name = cachedDistances[depotAt].name;
+                                    depotStateAt.chosenDepotArrayLoc = depotAt;
+                                }
+                            } else {
+                                while (depotSelectionHolder[depotAt].length > fairShare && depotSelectionHolder[depotAt][fairShare].name != undefined)
+                                    depotSelectionHolder[depotAt].splice(fairShare, 1);
+
+                                if (depotSelectionHolder[depotAt].length > fairShare) {
+                                    depotSelectionHolder[depotAt][fairShare].name = cachedDistances[depotAt].name;
+                                    depotSelectionHolder[depotAt][fairShare].chosenDepotArrayLoc = depotAt;
+                                    depotSelectionHolder[depotAt].splice(stateAt, 1);
+                                    //stateAt--;
+                                }
+                            }
+                        } //Otherwise, ignore if depotStateAt is already reaching minimum
+                    }
                 }
             }
 
@@ -278,10 +285,26 @@
             //Assign out the count to the most efficient depot
             for (var j = 0; j < originalDepotList.length; j++) {
                 chosenDepot = originalDepotList[j];
+                if (chosenDepot.name == undefined) {
+                    var min = Number.MAX_SAFE_INTEGER;
+                    var minDepot;
+                    for (var k = 0; k < availableDepots.length; k++) {
+                        var weight = originalDepotList[j].weight[k];
+                        if (weight < min) {
+                            min = weight;
+                            minDepot = k;
+                        }
+                    }
+                    chosenDepot.name = availableDepots[minDepot];
+                    chosenDepot.chosenDepotArrayLoc = minDepot;
+                }
                 depotList[chosenDepot.chosenDepotArrayLoc].assigned++;
                 document.getElementById("output").innerHTML +=
                     depotList[chosenDepot.chosenDepotArrayLoc].name + "\n";
+                totalWeight += chosenDepot.weight[chosenDepot.chosenDepotArrayLoc];
             }
+            const factor = 0.621371;
+            document.getElementById("totalShipping").innerHTML = "Approximated shipping mileage (in miles): " + ((totalWeight*factor).toFixed(0)) + "mi";
             document.getElementById("ftw").innerHTML = depotList[0].assigned;
             document.getElementById("oma").innerHTML = depotList[1].assigned;
             document.getElementById("gso").innerHTML = depotList[2].assigned;
