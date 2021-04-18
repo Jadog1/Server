@@ -202,8 +202,7 @@
 
                 var stateInArray = cachedStateLocations[chosenState];
                 if (stateInArray == undefined) {
-                    document.getElementById("output").innerHTML =
-                        "Unrecognized state: " + chosenState;
+                    document.getElementById("output").innerHTML = ("Unrecognized state: " + chosenState);
                     return;
                 }
 
@@ -243,13 +242,11 @@
                             var otherDepot =
                                 depotSelectionHolder[depotStateAt.chosenDepotArrayLoc];
                             var otherStateArrayLoc;
-                            var minWeight = Number.MAX_SAFE_INTEGER;
                             //Get the location of the other state
-                            for (var k = 0; k < fairShare; k++) {
-                                var computedTotalWeight = otherDepot[k].weight[otherDepot[k].chosenDepotArrayLoc] + depotStateAt.weight[depotAt]
-                                if (computedTotalWeight < minWeight) {
-                                    minWeight = computedTotalWeight;
+                            for (var k = 0; k < otherDepot.length; k++) {
+                                if (otherDepot[k].uniqueId == depotStateAt.uniqueId) {
                                     otherStateArrayLoc = k;
+                                    break;
                                 }
                             }
                             var otherState = otherDepot[otherStateArrayLoc];
@@ -258,33 +255,23 @@
                                 depotSelectionHolder[depotAt][fairShare].weight[depotAt] >
                                 otherDepot[fairShare].weight[otherState.chosenDepotArrayLoc]
                             ) {
-                                while (
-                                    otherDepot.length > fairShare &&
-                                    otherDepot[fairShare].name != undefined
-                                )
+                                while (otherDepot.length > fairShare && otherDepot[fairShare].name != undefined)
                                     otherDepot.splice(fairShare, 1);
 
                                 if (otherDepot.length > fairShare) {
                                     otherDepot[fairShare].name = otherState.name;
-                                    otherDepot[fairShare].chosenDepotArrayLoc =
-                                        otherState.chosenDepotArrayLoc;
+                                    otherDepot[fairShare].chosenDepotArrayLoc = otherState.chosenDepotArrayLoc;
                                     otherDepot.splice(otherStateArrayLoc, 1);
                                     depotStateAt.name = cachedDistances[depotAt].name;
                                     depotStateAt.chosenDepotArrayLoc = depotAt;
                                 }
                             } else {
-                                while (
-                                    depotSelectionHolder[depotAt].length > fairShare &&
-                                    depotSelectionHolder[depotAt][fairShare].name != undefined
-                                )
+                                while (depotSelectionHolder[depotAt].length > fairShare && depotSelectionHolder[depotAt][fairShare].name != undefined)
                                     depotSelectionHolder[depotAt].splice(fairShare, 1);
 
                                 if (depotSelectionHolder[depotAt].length > fairShare) {
-                                    depotSelectionHolder[depotAt][fairShare].name =
-                                        cachedDistances[depotAt].name;
-                                    depotSelectionHolder[depotAt][
-                                        fairShare
-                                    ].chosenDepotArrayLoc = depotAt;
+                                    depotSelectionHolder[depotAt][fairShare].name = cachedDistances[depotAt].name;
+                                    depotSelectionHolder[depotAt][fairShare].chosenDepotArrayLoc = depotAt;
                                     depotSelectionHolder[depotAt].splice(stateAt, 1);
                                     stateAt--;
                                 }
@@ -302,7 +289,7 @@
                     var min = Number.MAX_SAFE_INTEGER;
                     var minDepot;
                     for (var k = 0; k < availableDepots.length; k++) {
-                        var weight = chosenDepot.weight[k];
+                        var weight = originalDepotList[j].weight[k];
                         if (weight < min) {
                             min = weight;
                             minDepot = k;
@@ -317,10 +304,7 @@
                 totalWeight += chosenDepot.weight[chosenDepot.chosenDepotArrayLoc];
             }
             const factor = 0.621371;
-            document.getElementById("totalShipping").innerHTML =
-                "Approximated shipping mileage (in miles): " +
-                (totalWeight * factor).toFixed(0) +
-                "mi";
+            document.getElementById("totalShipping").innerHTML = "Approximated shipping mileage (in miles): " + ((totalWeight*factor).toFixed(0)) + "mi";
             document.getElementById("ftw").innerHTML = depotList[0].assigned;
             document.getElementById("oma").innerHTML = depotList[1].assigned;
             document.getElementById("gso").innerHTML = depotList[2].assigned;
