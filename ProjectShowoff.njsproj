@@ -39,9 +39,6 @@
     <Content Include="JsonObjects\AllCachedDepots.json">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="JsonObjects\Weather.json">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="Modules\database.js">
       <SubType>Code</SubType>
     </Content>

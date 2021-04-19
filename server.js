@@ -143,28 +143,6 @@ app.get('/weather', async function (req, res) {
         res.status(401);
         res.json({ error: 'Expiration not up yet' });
     }
-    
-    /*fsExtend.getLastModified("JsonObjects/Weather.json")
-        .then(data => {
-            if (data > 3600) {
-                request('http://api.openweathermap.org/data/2.5/weather?zip=46815&units=Imperial&appid=' + process.env.WEATHER_API_KEY, { json: true }, (err, res2, body) => {
-                    if (err) { return console.log(err); }
-                    fsExtend.writeAFile("JsonObjects/Weather.json", JSON.stringify(body));
-                    res.json(body);
-                });
-            } else {
-                fsExtend.readAFile("JsonObjects/Weather.json")
-                    .then(data => {
-                        res.json(JSON.parse(data));
-                    })
-                    .catch(err => {
-                        res.json(null);
-                    })
-            }
-        })
-        .catch(err => {
-            console.log("Error!");
-        })*/
 });
 app.get('/projects/game', function (req, res) {
     res.render('pages/SeniorGame');
