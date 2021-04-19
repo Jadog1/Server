@@ -1,3 +1,12 @@
+<style>
+    #weatherHolder:hover i{
+        color: green;
+    }
+    #weatherHolder i {
+        color: burlywood;
+    }
+</style>
+
 <div class="w3-top">
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
@@ -5,7 +14,7 @@
         <a href="/projects" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Projects</a>
         <a href="/contact" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contact me</a>
 
-        <span class="w3-bar-item w3-hide-small w3-padding-large" style="float: right" id="weatherHolder"></span>
+        <span class="w3-bar-item w3-hide-small w3-padding-large" onclick="getNewZip()" style="float: right; cursor: pointer;" id="weatherHolder"></span>
     </div>
 
     <!-- Navbar on small screens -->
@@ -17,20 +26,44 @@
 </div>
 
 <script>
-        // Used to toggle the menu on small screens when clicking on the menu button
-        function myFunction() {
-            var x = document.getElementById("navDemo");
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-            } else {
-                x.className = x.className.replace(" w3-show", "");
-            }
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+    function getNewZip() {
+        var zipcode;
+        do {
+            zipcode = prompt("What is the new zipcode?");
+            if (zipcode == null)
+                return;
+        } while (isNaN(zipcode))
+        $.get("/weather/changeZipcode?zipcode=" + zipcode, function (weatherObj) {
+            var weather = "http://openweathermap.org/img/wn/" + weatherObj.weather[0].icon + "@2x.png"
+            $("#weatherHolder").html("<p><i class='fa fa-search'></i>" + weatherObj.name + ": " + weatherObj.main.temp + "&#176;F  <img src='" + weather + "' width=25 height=25/>");
+        }).fail(function (e) {
+            if (e.responseJSON.error == "zipcode")
+                alert("Invalid zip code"); // or whatever
+            else
+                alert("Too many changes to weather calls. Please wait approximately 20 minutes. This is done as the weather API is limited in usage.");
+        });
     }
 
     $(document).ready(function () {
         $.get("/weather", function (weatherObj) {
+            console.log("Pulling new data");
             var weather = "http://openweathermap.org/img/wn/" + weatherObj.weather[0].icon + "@2x.png"
-            $("#weatherHolder").html("<p>Fort Wayne: " + weatherObj.main.temp + "&#176;F  <img src='" + weather + "' width=25 height=25/>");
+            $("#weatherHolder").html("<p><i class='fa fa-search'></i>" + weatherObj.name + ": " + weatherObj.main.temp + "&#176;F  <img src='" + weather + "' width=25 height=25/>");
+            localStorage.setItem("weatherObj", JSON.stringify(weatherObj));
+        }).fail(function () {
+            console.log("Using cached data");
+            var weatherObj = JSON.parse(localStorage.getItem("weatherObj"));
+            var weather = "http://openweathermap.org/img/wn/" + weatherObj.weather[0].icon + "@2x.png"
+            $("#weatherHolder").html("<p><i class='fa fa-search'></i>" + weatherObj.name + ": " + weatherObj.main.temp + "&#176;F  <img src='" + weather + "' width=25 height=25/>");
         });
     });
 </script>

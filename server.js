@@ -7,9 +7,11 @@ var queries = require('./Modules/queries');
 var dealFinder = require('./Modules/DealFinder');
 var express = require('express');
 const request = require('request');
+const { postcodeValidator, postcodeValidatorExistsForCountry } = require('postcode-validator');
 var app = express();
 const bodyParser = require('body-parser');
 const oneDayToSeconds = 24 * 60 * 60 * 1000;
+const twentyMinutesToSeconds = 20 * 60 * 1000;
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -63,8 +65,86 @@ app.all('*', function (req, res, next) {
 app.get('/', async function (req, res) {
     res.render('pages/Home');
 });
+app.get('/weather/changeZipcode', async function (req, res) {
+    const zipcode = req.query.zipcode;
+    const weatherExpire = (getAppCookies(req)['weatherExpire'] == undefined ? 1 : (parseInt(getAppCookies(req)['weatherExpire'])+1));
+    if (postcodeValidator(zipcode, 'US') && weatherExpire < 5) {
+        res.cookie('zipcode', zipcode,
+            {
+                proxy: true, // add this when behind a reverse proxy, if you need secure cookies
+                expires: new Date(2147483647000),
+                // You can't access these tokens in the client's javascript
+                httpOnly: true,
+                // Forces to use https in production
+                secure: false
+            });
+        res.cookie('weatherExpire', weatherExpire,
+            {
+                proxy: true, // add this when behind a reverse proxy, if you need secure cookies
+                // You can't access these tokens in the client's javascript
+                httpOnly: true,
+                // Forces to use https in production
+                secure: false,
+                maxAge: twentyMinutesToSeconds
+            });
+        request('http://api.openweathermap.org/data/2.5/weather?zip=' + zipcode + '&units=Imperial&appid=' + process.env.WEATHER_API_KEY, { json: true }, (err, res2, body) => {
+            if (err) { return console.log(err); }
+            res.json(body);
+        });
+    } else if (weatherExpire >= 5) {
+        res.status(400);
+        res.json({ error: 'overload' });
+    } else {
+        res.status(400);
+        res.json({ error: 'zipcode' });
+    }
+});
 app.get('/weather', async function (req, res) {
-    fsExtend.getLastModified("JsonObjects/Weather.json")
+    const zipcode = getAppCookies(req)['zipcode'];
+    const weatherExpire = getAppCookies(req)['weatherExpire'];
+    if (zipcode == undefined) {
+        res.cookie('zipcode', 46815,
+            {
+                proxy: true, // add this when behind a reverse proxy, if you need secure cookies
+                expires: new Date(2147483647000),
+                // You can't access these tokens in the client's javascript
+                httpOnly: true,
+                // Forces to use https in production
+                secure: false
+            });
+        res.cookie('weatherExpire', 1,
+            {
+                proxy: true, // add this when behind a reverse proxy, if you need secure cookies
+                // You can't access these tokens in the client's javascript
+                httpOnly: true,
+                // Forces to use https in production
+                secure: false,
+                maxAge: twentyMinutesToSeconds
+            });
+        request('http://api.openweathermap.org/data/2.5/weather?zip=46815&units=Imperial&appid=' + process.env.WEATHER_API_KEY, { json: true }, (err, res2, body) => {
+            if (err) { return console.log(err); }
+            res.json(body);
+        });
+    } else if (weatherExpire == undefined) {
+        res.cookie('weatherExpire', 1,
+            {
+                proxy: true, // add this when behind a reverse proxy, if you need secure cookies
+                // You can't access these tokens in the client's javascript
+                httpOnly: true,
+                // Forces to use https in production
+                secure: false,
+                maxAge: twentyMinutesToSeconds
+            });
+        request('http://api.openweathermap.org/data/2.5/weather?zip=' + zipcode + '&units=Imperial&appid=' + process.env.WEATHER_API_KEY, { json: true }, (err, res2, body) => {
+            if (err) { return console.log(err); }
+            res.json(body);
+        });
+    } else {
+        res.status(401);
+        res.json({ error: 'Expiration not up yet' });
+    }
+    
+    /*fsExtend.getLastModified("JsonObjects/Weather.json")
         .then(data => {
             if (data > 3600) {
                 request('http://api.openweathermap.org/data/2.5/weather?zip=46815&units=Imperial&appid=' + process.env.WEATHER_API_KEY, { json: true }, (err, res2, body) => {
@@ -84,7 +164,7 @@ app.get('/weather', async function (req, res) {
         })
         .catch(err => {
             console.log("Error!");
-        })
+        })*/
 });
 app.get('/projects/game', function (req, res) {
     res.render('pages/SeniorGame');
