@@ -45,6 +45,7 @@
         $.get("/weather/changeZipcode?zipcode=" + zipcode, function (weatherObj) {
             var weather = "http://openweathermap.org/img/wn/" + weatherObj.weather[0].icon + "@2x.png"
             $("#weatherHolder").html("<p><i class='fa fa-search'></i>" + weatherObj.name + ": " + weatherObj.main.temp + "&#176;F  <img src='" + weather + "' width=25 height=25/>");
+            localStorage.setItem("weatherObj", JSON.stringify(weatherObj));
         }).fail(function (e) {
             if (e.responseJSON.error == "zipcode")
                 alert("Invalid zip code"); // or whatever
