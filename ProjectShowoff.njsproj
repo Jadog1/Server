@@ -63,6 +63,7 @@
     <Content Include="public\img\Graph.jpg" />
     <Content Include="public\img\PhotoDistort.jpg" />
     <Content Include="public\img\SeniorGame.jpg" />
+    <Content Include="public\img\smallimage.png" />
     <Content Include="public\js\budgets.js" />
     <Content Include="src\budgets.js">
       <SubType>Code</SubType>
@@ -88,6 +89,9 @@
     </Content>
     <Content Include="views\pages\Home.ejs" />
     <Content Include="views\pages\ImageDistort.ejs" />
+    <Content Include="views\pages\methodConverter4d.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\pages\Projects.ejs">
       <SubType>Code</SubType>
     </Content>

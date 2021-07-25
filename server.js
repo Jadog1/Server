@@ -50,9 +50,6 @@ function isLogged(req) {
     else
         return true;
 }
-async function getWeather() {
-
-}
 
 app.all('*', function (req, res, next) {
 
@@ -146,6 +143,9 @@ app.get('/weather', async function (req, res) {
 });
 app.get('/projects/game', function (req, res) {
     res.render('pages/SeniorGame');
+});
+app.get('/projects/methodConvert', function (req, res) {
+    res.render('pages/methodConverter4d');
 });
 app.get('/projects/distort', function (req, res) {
     res.render('pages/ImageDistort');
