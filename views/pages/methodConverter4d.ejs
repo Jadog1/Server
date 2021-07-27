@@ -182,16 +182,11 @@
             $('#log').text(outputConsole.detailedLog)
         }
 
-        function extractLineToVar(varGlobalType, varAt, state, splitInput) {
+        function extractLineToVar(varGlobalType, varAt, state, splitInput, commentOnLine) {
             var foundVarName = false;
             for (var variable in varGlobalType) {
                 variable = varGlobalType[variable];
                 var varTypeName = splitInput.substring(0, splitInput.search("\\("));
-                var commentIndex = splitInput.search("//");
-                var commentOnLine = splitInput.substring(
-                    commentIndex == -1 ? splitInput.length : commentIndex,
-                    splitInput.length
-                );
                 if (variable.name === varTypeName || variable.name === state) {
                     foundVarName = true;
                     variable.arr.push(varAt + commentOnLine);
@@ -215,6 +210,7 @@
             var input = document.getElementById("input").value;
             var splitInput = input.split("\n");
             for (var i = 0; i < splitInput.length; i++) {
+                splitInput[i] = splitInput[i].trim();
                 //Load the header comments
                 if (hasHeaderComments) {
                     if (splitInput[i].trim().startsWith("//")) {
@@ -223,12 +219,20 @@
                         continue;
                     } else hasHeaderComments = false;
                 }
-
+                //Throw other commented code into otherCode
                 if (splitInput[i].trim().startsWith("//")) {
                     outputConsole.log("Threw commented line into otherCode " + splitInput[i]);
                     otherCode.push(splitInput[i]);
                     continue;
                 }
+
+                //Remove comment and add back later
+                var commentIndex = splitInput[i].search("//");
+                var commentOnLine = splitInput[i].substring(
+                    commentIndex == -1 ? splitInput[i].length : commentIndex,
+                    splitInput[i].length
+                );
+                splitInput[i]=splitInput[i].substring(0, (commentIndex==-1 ? splitInput[i].length : commentIndex))
 
                 //Test if loading an array line
                 regex = new RegExp("(array (.+\\(.+\\)))");
@@ -260,8 +264,7 @@
                     );
                     //Set varAt if multi-line variable
                 } else if (
-                    (splitInput[i].trim().endsWith("\\") &&
-                        splitInput[i].search(";") != -1) ||
+                    splitInput[i].trim().endsWith("\\") ||
                     foundASplit
                 ) {
                     if (state == "")
@@ -270,7 +273,18 @@
                     if (splitInput[i].search(";") == -1) {
                         //Check if last line in multi-line
                         varAt = splitInput[i].substring(0, splitInput[i].search("\\)"));
-                        foundASplit = false;
+                        console.log(varAt)
+                        if (varAt == "") {
+                            var shouldContinue = false; //For cases when the line starts with a \
+                            for (var z = 0; z < varTypesAllNames.length; z++)
+                                if (splitInput[i].startsWith(varTypesAllNames[z])) shouldContinue = true;
+                            if (shouldContinue) {
+                                foundASplit= true
+                                outputConsole.log("Detected line break at beginning of variable init for line " + splitInput[i])
+                                continue
+                            }
+                        } else
+                            foundASplit = false;
                     } else {
                         //Otherwise process other multi-line variables
                         var regex = new RegExp("(C_[a-zA-Z]+)(\\(.+)");
@@ -310,11 +324,11 @@
                     varAt = splitVarAt[j].trim();
                     if (varAt != undefined) {
                         if (varAt[0] === "<") {
-                            extractLineToVar(interprocess, varAt, state, splitInput[i]);
+                            extractLineToVar(interprocess, varAt, state, splitInput[i], commentOnLine);
                         } else if (varAt[0] == "$") {
-                            extractLineToVar(local, varAt, state, splitInput[i]);
+                            extractLineToVar(local, varAt, state, splitInput[i], commentOnLine);
                         } else if (varAt[0].match(/[a-z]/i)) {
-                            extractLineToVar(process, varAt, state, splitInput[i]);
+                            extractLineToVar(process, varAt, state, splitInput[i], commentOnLine);
                         } else {
                             outputConsole.log("Threw line into otherCode " + splitInput[i]);
                             otherCode.push(splitInput[i]);
