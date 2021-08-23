@@ -365,8 +365,16 @@ app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
         console.log("Doc " + newDoc + " added successfully")
     });
 });
-app.get('/finance/getTransactions', async function (req, res) {
+app.get('/home-server/getTransactions', async function (req, res) {
     db.transactions.find({}, function (err, newDoc) {   // Callback is optional
+        if (err != undefined)
+            res.json({ success: false, code: err })
+        var jsonObj = { dataToSend: newDoc }
+        res.json(jsonObj);
+    });
+});
+app.get('/home-server/getFinances', async function (req, res) {
+    db.transactions.find({table: "finance"}, function (err, newDoc) {   // Callback is optional
         if (err != undefined)
             res.json({ success: false, code: err })
         var jsonObj = { dataToSend: newDoc }
