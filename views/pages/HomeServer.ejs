@@ -14,6 +14,11 @@
   font-size: 20px;
 }
 
+       #interactionInterface {
+           height: 60vw;
+           overflow: scroll;
+       }
+
 .hidden {
   display: none;
 }
@@ -40,15 +45,15 @@
   border: 1px solid #0ba6ff;
   border-radius: 5px;
   width: 40%;
-  height: 5%;
-  font-size: 2.5vw;
+  height: 10%;
+  font-size: 3.5vw;
   color: white;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin:auto;
+  margin-top: 1%;
+  margin-bottom: 3%;
   cursor: pointer;
   display: block;
-  margin: auto;
-  margin-bottom: 10px;
+  
 }
 
 .error {
@@ -60,6 +65,7 @@
   background-color: #24a0ed;
   color: white;
   font-size: 3vw;
+  position: absolute;
   margin-left: 10%;
   top: 25%;
   border: none;
@@ -101,7 +107,7 @@
 <div id="interactionInterface" class="center"></div>
 
 <div id="numberDisplay" class="center hidden" data-type="module">
-  <h3 data-type="title">Enter costs</h3>
+  <h1 data-type="title">Enter costs</h1>
   <input inputmode="numeric" pattern="[0-9]*" type="text" name="price" data-type="input">
   <button data-type="extra" class="hidden">Add 10</button>
 </div>
@@ -112,7 +118,7 @@
 </div>
 
 <div id="noteDisplay" class="center hidden" data-type="module">
-  <h3 data-type="title"></h3>
+  <h1 data-type="title"></h1>
   <textarea data-type="input"></textarea>
 </div>
      </div>
