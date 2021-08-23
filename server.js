@@ -5,6 +5,9 @@ var fsExtend = require('./Modules/extendFS'); //Used to shorten opening of files
 var email = require('./Modules/email');
 var queries = require('./Modules/queries');
 var dealFinder = require('./Modules/DealFinder');
+var Datastore = require('nedb')
+var db = {}
+db.transactions = new Datastore({ filename: 'Datastores/transactions', autoload: true });
 var express = require('express');
 const request = require('request');
 const { postcodeValidator, postcodeValidatorExistsForCountry } = require('postcode-validator');
@@ -140,6 +143,9 @@ app.get('/weather', async function (req, res) {
         res.status(401);
         res.json({ error: 'Expiration not up yet' });
     }
+});
+app.get('/home-server', function (req, res) {
+    res.render('pages/HomeServer');
 });
 app.get('/projects/game', function (req, res) {
     res.render('pages/SeniorGame');
@@ -347,6 +353,34 @@ app.post('/finance/addExpense', jsonParser, async function (req, res) {
             console.log(e);
             res.json({ error: "Unknown error, try again" });
         }
+    }
+});
+
+app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
+    db.transactions.insert(req.body, function (err, newDoc) {   // Callback is optional
+        if (err != undefined)
+            res.json({ success: false })
+        newDoc.success = true
+        res.json(newDoc);
+        console.log("Doc " + newDoc + " added successfully")
+    });
+});
+app.get('/finance/getTransactions', async function (req, res) {
+    db.transactions.find({}, function (err, newDoc) {   // Callback is optional
+        if (err != undefined)
+            res.json({ success: false, code: err })
+        var jsonObj = { dataToSend: newDoc }
+        res.json(jsonObj);
+    });
+});
+app.post('/home-server/dropTransactions', jsonParser, async function (req, res) {
+    if (req.body.password === "U4w2MVzvDnw!Pq6SH@#") {
+        db.remove({}, { multi: true }, function (err, numRemoved) {
+            if (err)
+                res.json({ success: false })
+            else
+                res.json({ success: true })
+        });
     }
 });
 
