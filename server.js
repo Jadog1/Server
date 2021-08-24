@@ -378,9 +378,15 @@ app.get('/home-server/getFinances', async function (req, res) {
         if (err != undefined)
             res.json({ success: false, code: err })
         var jsonObj = { dataToSend: newDoc }
+        var sum = 0;
+        for (var i = 0; i < newDoc.length; i++) {
+            sum += newDoc[i].cost
+        }
+        jsonObj.sum = sum;
         res.json(jsonObj);
     });
 });
+
 app.post('/home-server/dropTransactions', jsonParser, async function (req, res) {
     if (req.body.password === "U4w2MVzvDnw!Pq6SH@#") {
         db.remove({}, { multi: true }, function (err, numRemoved) {
