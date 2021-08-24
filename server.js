@@ -380,7 +380,7 @@ app.get('/home-server/getFinances', async function (req, res) {
         var jsonObj = { dataToSend: newDoc }
         var sum = 0;
         for (var i = 0; i < newDoc.length; i++) {
-            sum += newDoc[i].cost
+            sum += ParseInt(newDoc[i].cost)
         }
         jsonObj.sum = sum;
         res.json(jsonObj);
