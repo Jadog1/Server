@@ -7,120 +7,129 @@
     <%- include('../partials/Header') %>
 
     <style>
-       [data-type="module"],
-#interactionInterface {
-  width: 100vw;
-  text-align: center;
-  font-size: 20px;
-}
+        [data-type="module"],
+        #interactionInterface {
+            width: 70vw;
+            text-align: center;
+            font-size: 20px;
+        }
 
-       #interactionInterface {
-           height: 60vw;
-           overflow: scroll;
-       }
+        #interactionInterface {
+            height: 60vh;
+            overflow: auto;
+        }
 
-.hidden {
-  display: none;
-}
+        .hidden {
+            display: none;
+        }
 
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
 
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
 
-.basicInterfaceButton {
-  background-color: #24a0ed;
-  border: 1px solid #0ba6ff;
-  border-radius: 5px;
-  width: 40%;
-  height: 10%;
-  font-size: 3.5vw;
-  color: white;
-  margin:auto;
-  margin-top: 1%;
-  margin-bottom: 3%;
-  cursor: pointer;
-  display: block;
-  
-}
+        .basicInterfaceButton {
+            background-color: #24a0ed;
+            border: 1px solid #0ba6ff;
+            border-radius: 5px;
+            width: 40vw;
+            height: 10vh;
+            font-size: 3.5vw;
+            color: white;
+            margin: auto;
+            margin-top: 1vh;
+            margin-bottom: 4vh;
+            cursor: pointer;
+            display: block;
+        }
 
-.error {
-  color: red;
-}
+        .error {
+            color: red;
+        }
 
-.nextBtn {
-  height: 100%;
-  background-color: #24a0ed;
-  color: white;
-  font-size: 3vw;
-  position: absolute;
-  margin-left: 10%;
-  top: 25%;
-  border: none;
-  cursor: pointer;
-}
+        .nextBtn {
+            height: 100%;
+            background-color: #24a0ed;
+            color: white;
+            font-size: 3vw;
+            position: absolute;
+            margin-left: 10%;
+            top: 25%;
+            border: none;
+            cursor: pointer;
+        }
 
-.titleBtn {
-  width: 20%;
-  margin-right: 5%;
-  margin-top: 2%;
-  height: 10%;
-  font-size: 2vw;
-  background-color: #eee;
-  border: 1px solid black;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+        body {
+            -webkit-tap-highlight-color: #ccc;
+        }
 
-.titleBtn:hover,
-.titleBtn:active {
-  background-color: #24a0ed;
-  cursor: pointer;
-}
+        .titleBtn {
+            width: 20vw;
+            margin-right: 2.5vw;
+            margin-left: 2.5vw;
+            margin-top: 2vh;
+            height: 10vh;
+            font-size: 2vw;
+            font-weight: bold;
+            background-color: #eee;
+            border: 1px solid black;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
 
-#btnHeader {
-  text-align: center;
-  width: 100%;
-}
+            .titleBtn:hover,
+            .titleBtn:active {
+                background-color: #24a0ed;
+                cursor: pointer;
+            }
 
+        #btnHeader {
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3vw;
+            font-weight: bolder;
+        }
     </style>
 </head>
 <body>
     <%- include('../partials/navbar') %>
      <div class="w3-row-padding w3-padding-64 w3-container">
          <div id="btnHeader">
-  <button class="titleBtn" onclick="preBuiltDataSets('finance')">Finance</button>
-  <button class="titleBtn" onclick="preBuiltDataSets('note')">Notes</button>
-</div>
+             <button class="titleBtn" onclick="preBuiltDataSets('finance')">Finance</button>
+             <button class="titleBtn" onclick="preBuiltDataSets('note')">Notes</button>
+         </div>
 
-<div id="interactionInterface" class="center"></div>
+         <div id="interactionInterface" class="center"></div>
 
-<div id="numberDisplay" class="center hidden" data-type="module">
-  <h1 data-type="title">Enter costs</h1>
-  <input inputmode="numeric" pattern="[0-9]*" type="text" name="price" data-type="input">
-  <button data-type="extra" class="hidden">Add 10</button>
-</div>
+         <div id="numberDisplay" class="center hidden" data-type="module">
+             <h1 data-type="title">Enter costs</h1>
+             <input inputmode="numeric" pattern="[0-9]*" type="text" name="price" data-type="input">
+             <button data-type="extra" class="hidden">Add 10</button>
+         </div>
 
-<div id="dupeOnly" class="center hidden" data-type="module">
-  <h3 data-type="title"></h3>
-  <div data-type="duplicate"></div>
-</div>
+         <div id="dupeOnly" class="center hidden" data-type="module">
+             <h1 data-type="title"></h1>
+             <div data-type="duplicate"></div>
+         </div>
 
-<div id="noteDisplay" class="center hidden" data-type="module">
-  <h1 data-type="title"></h1>
-  <textarea data-type="input"></textarea>
-</div>
+         <div id="noteDisplay" class="center hidden" data-type="module">
+             <h1 data-type="title"></h1>
+             <textarea data-type="input"></textarea>
+         </div>
      </div>
 
     <script>
