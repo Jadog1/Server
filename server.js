@@ -15,6 +15,7 @@ var app = express();
 const bodyParser = require('body-parser');
 const oneDayToSeconds = 24 * 60 * 60 * 1000;
 const twentyMinutesToSeconds = 20 * 60 * 1000;
+var homeServer_Status = { droppedAttempts: 0, getCalls: 0, addedAttempts: 0}
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -358,15 +359,18 @@ app.post('/finance/addExpense', jsonParser, async function (req, res) {
 
 app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
     db.transactions.insert(req.body, function (err, newDoc) {   // Callback is optional
+        homeServer_Status.addedAttempts++;
         if (err != undefined)
             res.json({ success: false })
         newDoc.success = true
         res.json(newDoc);
-        console.log("Doc " + newDoc + " added successfully")
+        console.log("Doc $" + newDoc.cost + " added successfully")
     });
 });
 app.get('/home-server/getTransactions', async function (req, res) {
     db.transactions.find({}, function (err, newDoc) {   // Callback is optional
+        homeServer_Status.getCalls++;
+        console.log("Returning all transaction table")
         if (err != undefined)
             res.json({ success: false, code: err })
         var jsonObj = { dataToSend: newDoc }
@@ -374,7 +378,9 @@ app.get('/home-server/getTransactions', async function (req, res) {
     });
 });
 app.get('/home-server/getFinances', async function (req, res) {
-    db.transactions.find({table: "finance"}, function (err, newDoc) {   // Callback is optional
+    db.transactions.find({ table: "finance" }, function (err, newDoc) {   // Callback is optional
+        homeServer_Status.getCalls++;
+        console.log("Returning all finances")
         if (err != undefined)
             res.json({ success: false, code: err })
         var jsonObj = { dataToSend: newDoc }
@@ -388,7 +394,9 @@ app.get('/home-server/getFinances', async function (req, res) {
 });
 
 app.post('/home-server/dropTransactions', jsonParser, async function (req, res) {
-    if (req.body.password === "U4w2MVzvDnw!Pq6SH@#") {
+    if (req.body.password === process.env.EMBEDDED_DB_PASSWORD) {
+        console.log("Attempted dropping of database")
+        homeServer_Status.droppedAttempts++;
         db.remove({}, { multi: true }, function (err, numRemoved) {
             if (err)
                 res.json({ success: false })
@@ -396,6 +404,10 @@ app.post('/home-server/dropTransactions', jsonParser, async function (req, res) 
                 res.json({ success: true })
         });
     }
+});
+
+app.get('/home-server/status', async function (req, res) {
+    res.json(homeServer_Status)
 });
 
 //Get files
