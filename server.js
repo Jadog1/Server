@@ -397,7 +397,7 @@ app.post('/home-server/dropTransactions', jsonParser, async function (req, res) 
     if (req.body.password === process.env.EMBEDDED_DB_PASSWORD) {
         console.log("Attempted dropping of database")
         homeServer_Status.droppedAttempts++;
-        db.remove({}, { multi: true }, function (err, numRemoved) {
+        db.transactions.remove({}, { multi: true }, function (err, numRemoved) {
             if (err)
                 res.json({ success: false })
             else
