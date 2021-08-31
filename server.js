@@ -426,9 +426,7 @@ app.get('/allDepots', function (req, res) {
 
 
 process.on('SIGTERM', () => {
-    server.close(() => {
-        console.log('Process terminated');
-    })
+    console.log('Error called -- Trying to stay alive');
 });
 
 process.on('uncaughtException', err => {

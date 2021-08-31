@@ -115,3 +115,28 @@ exports.getGoalByBudget = async (budget_id) => {
         throw e;
     }
 }
+
+//Start home server parsing of data
+exports.getHomeServerData = async () => {
+    try {
+        return await database.query("select * from home_server");
+    } catch (e) {
+        throw e;
+    }
+}
+
+exports.addHomeServerData = async (json_data) => {
+    try {
+        return await database.execute("insert into budget (json_data) values (" + json_data + ")");
+    } catch (e) {
+        throw e;
+    }
+}
+
+exports.deleteHomeServerData = async () => {
+    try {
+        return await database.execute("DELETE from home_server");
+    } catch (e) {
+        throw e;
+    }
+}
