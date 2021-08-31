@@ -358,6 +358,48 @@ app.post('/finance/addExpense', jsonParser, async function (req, res) {
 });
 
 app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
+    try {
+        await queries.addHomeServerData(JSON.stringify(req.body))
+        res.statusCode=200
+        res.json({success: true})
+    } catch (e) {
+        res.statusCode=401
+        res.json({ success: false })
+    }
+});
+
+app.get('/home-server/getTransactions', async function (req, res) {
+    try {
+        var results = await queries.getHomeServerData()
+
+        var allParsed = { dataToSend: [] }
+        for (var i = 0; i < results.length; i++)
+            allParsed.dataToSend.push(JSON.parse(results[i].json_data))
+
+        res.statusCode = 200
+        res.json(allParsed)
+    } catch (e) {
+        res.statusCode = 401
+        res.json({ success: false })
+    }
+});
+app.post('/home-server/dropTransactions', jsonParser, async function (req, res) {
+    if (req.body.password === process.env.EMBEDDED_DB_PASSWORD) {
+        console.log("Attempted dropping of database")
+        homeServer_Status.droppedAttempts++;
+        try {
+            await queries.deleteHomeServerData()
+            res.statusCode = 200
+            res.json({ success: true })
+        } catch (e) {
+            res.statusCode = 401
+            res.json({ success: false })
+        }
+    }
+});
+
+/*
+app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
     db.transactions.insert(req.body, function (err, newDoc) {   // Callback is optional
         homeServer_Status.addedAttempts++;
         if (err != undefined)
@@ -404,7 +446,7 @@ app.post('/home-server/dropTransactions', jsonParser, async function (req, res) 
                 res.json({ success: true })
         });
     }
-});
+});*/
 
 app.get('/home-server/status', async function (req, res) {
     res.json(homeServer_Status)
