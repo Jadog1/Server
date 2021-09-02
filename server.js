@@ -5,9 +5,6 @@ var fsExtend = require('./Modules/extendFS'); //Used to shorten opening of files
 var email = require('./Modules/email');
 var queries = require('./Modules/queries');
 var dealFinder = require('./Modules/DealFinder');
-var Datastore = require('nedb')
-var db = {}
-db.transactions = new Datastore({ filename: 'Datastores/transactions', autoload: true });
 var express = require('express');
 const request = require('request');
 const { postcodeValidator, postcodeValidatorExistsForCountry } = require('postcode-validator');
@@ -359,12 +356,12 @@ app.post('/finance/addExpense', jsonParser, async function (req, res) {
 
 app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
     try {
-        await queries.addHomeServerData(JSON.stringify(req.body))
+        await queries.addHomeServerData(JSON.stringify(req.body));
         res.statusCode=200
         res.json({success: true})
     } catch (e) {
-        res.statusCode=401
-        res.json({ success: false })
+        res.statusCode=400
+        res.json({ success: false, error: e })
     }
 });
 
@@ -379,77 +376,22 @@ app.get('/home-server/getTransactions', async function (req, res) {
         res.statusCode = 200
         res.json(allParsed)
     } catch (e) {
-        res.statusCode = 401
+        res.statusCode = 400
         res.json({ success: false })
     }
 });
 app.post('/home-server/dropTransactions', jsonParser, async function (req, res) {
     if (req.body.password === process.env.EMBEDDED_DB_PASSWORD) {
         console.log("Attempted dropping of database")
-        homeServer_Status.droppedAttempts++;
         try {
             await queries.deleteHomeServerData()
             res.statusCode = 200
             res.json({ success: true })
         } catch (e) {
-            res.statusCode = 401
+            res.statusCode = 400
             res.json({ success: false })
         }
     }
-});
-
-/*
-app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
-    db.transactions.insert(req.body, function (err, newDoc) {   // Callback is optional
-        homeServer_Status.addedAttempts++;
-        if (err != undefined)
-            res.json({ success: false })
-        newDoc.success = true
-        res.json(newDoc);
-        console.log("Doc $" + newDoc.cost + " added successfully")
-    });
-});
-app.get('/home-server/getTransactions', async function (req, res) {
-    db.transactions.find({}, function (err, newDoc) {   // Callback is optional
-        homeServer_Status.getCalls++;
-        console.log("Returning all transaction table")
-        if (err != undefined)
-            res.json({ success: false, code: err })
-        var jsonObj = { dataToSend: newDoc }
-        res.json(jsonObj);
-    });
-});
-app.get('/home-server/getFinances', async function (req, res) {
-    db.transactions.find({ table: "finance" }, function (err, newDoc) {   // Callback is optional
-        homeServer_Status.getCalls++;
-        console.log("Returning all finances")
-        if (err != undefined)
-            res.json({ success: false, code: err })
-        var jsonObj = { dataToSend: newDoc }
-        var sum = 0;
-        for (var i = 0; i < newDoc.length; i++) {
-            sum += parseInt(newDoc[i].cost)
-        }
-        jsonObj.sum = sum;
-        res.json(jsonObj);
-    });
-});
-
-app.post('/home-server/dropTransactions', jsonParser, async function (req, res) {
-    if (req.body.password === process.env.EMBEDDED_DB_PASSWORD) {
-        console.log("Attempted dropping of database")
-        homeServer_Status.droppedAttempts++;
-        db.transactions.remove({}, { multi: true }, function (err, numRemoved) {
-            if (err)
-                res.json({ success: false })
-            else
-                res.json({ success: true })
-        });
-    }
-});*/
-
-app.get('/home-server/status', async function (req, res) {
-    res.json(homeServer_Status)
 });
 
 //Get files

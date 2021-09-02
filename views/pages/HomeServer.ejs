@@ -272,18 +272,24 @@
             this.UI = UI_ObjectArray;
             this.loadNextUI = function () {
                 var interface = document.getElementById("interactionInterface");
-                interface.innerHTML = "";
                 if (!this.errorPresent) {
-                    this.index++;
                     //debugger;
-                    if (this.index >= this.UI.length) gotoMobileHome();
-                    else interface.appendChild(dupeModule(this.UI[this.index].UI));
+                    this.index++;
+                    if (this.index >= this.UI.length) {
+                        this.index--;
+                        gotoMobileHome();
+                    }
+                    else {
+                        interface.innerHTML = "";
+                        interface.appendChild(dupeModule(this.UI[this.index].UI));
+                    }
                 } else interface.innerHTML = "<h1 class='error'>Error</h1>";
             };
             this.loadPreviousUI = function () {
                 if (this.index != 0) {
+                    var interface = document.getElementById("interactionInterface");
                     this.index--;
-                    interface.innerHTML = dupeModule(this.UI[index].UI);
+                    interface.appendChild(dupeModule(this.UI[this.index].UI));
                 }
             };
             this.getCurrentField = function () {
@@ -306,9 +312,6 @@
         }
 
         function gotoMobileHome() {
-            clearObject(current_DataSet);
-            current_DataSet = undefined;
-            toggleHidden("interactionInterface");
             //alert("Finished");
             addOrModify("date", new Date(Date.now()).toLocaleDateString());
             console.log(sharedJsonObject.dataToSend[currentStateIndex]);
@@ -316,8 +319,17 @@
                 data: JSON.stringify(sharedJsonObject.dataToSend[currentStateIndex]),
                 contentType: 'application/json',
                 type: 'POST'
-            });
-            currentStateIndex++;
+            })
+                .done(function () {
+                    clearObject(current_DataSet);
+                    current_DataSet = undefined;
+                    toggleHidden("interactionInterface");
+                    currentStateIndex++;
+                    console.log("Completed!")
+                })
+                .fail(function (e) {
+                    alert("Error: " + e.error);
+                });
         }
 
         /*

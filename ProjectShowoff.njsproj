@@ -32,7 +32,6 @@
     <Content Include=".env">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Datastores\transactions" />
     <Content Include="Files\ProfilePic.jpg" />
     <Content Include="JsonObjects\CurrentCachedDepots.json">
       <SubType>Code</SubType>
@@ -112,7 +111,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Datastores\" />
     <Folder Include="Files\" />
     <Folder Include="Modules\" />
     <Folder Include="JsonObjects\" />
