@@ -127,7 +127,7 @@ exports.getHomeServerData = async () => {
 
 exports.addHomeServerData = async (json_data) => {
     try {
-        return await database.execute("insert into home_server (json_data) values ('" + json_data + "')");
+        return await database.execute({ text: "insert into home_server (json_data) values ($1)", values: [json_data], rowMode: "array" });
     } catch (e) {
         throw e;
     }
