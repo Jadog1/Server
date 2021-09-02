@@ -6,7 +6,7 @@ const saltRounds = 10;
 
 exports.getUser = async (username) => {
     try {
-        const query = await database.query("select contact_id from users where username='" + username +"'");
+        const query = await database.query({ text: "select contact_id from users where username=$1", values: [username], rowMode: "array" });
         return query[0].contact_id;
     } catch (e) {
         throw e;
@@ -15,7 +15,7 @@ exports.getUser = async (username) => {
 
 exports.verifyUser = async (username, password) => {
     try {
-        const query = await database.query("select password from users where username='" + username + "'");
+        const query = await database.query({ text: "select password from users where username=$1", values: [username], rowMode: "array" });
         if (query.length == 0)
             return false;
         return await bcrypt.compare(password, query[0].password);
@@ -27,7 +27,7 @@ exports.verifyUser = async (username, password) => {
 exports.addUser = async (username, password) => {
     try {
         const hasher = await bcrypt.hash(password, saltRounds);
-        await database.execute(["insert into users(username,password) values ('" + username + "', '" + hasher + "')"]);
+        await database.execute({ text: "insert into users(username,password) values ($1, $2)", values: [username, hasher], rowMode: "array" });
     } catch (e) {
         throw e;
     }
@@ -36,7 +36,7 @@ exports.addUser = async (username, password) => {
 //Budget handling
 exports.addBudget = async (salary, account_name, contact_id, tax_rate) => {
     try {
-        return await database.execute("insert into budget (salary, account_name, contact_id, tax_rate) values (" + salary + ", '" + account_name + "', '" + contact_id + "', " + tax_rate + ")");
+        return await database.execute({ text: "insert into budget (salary, account_name, contact_id, tax_rate) values ($1, $2, $3, $4)", values: [salary, account_name, contact_id, tax_rate], rowMode: "array" });
     } catch (e) {
         throw e;
     }
@@ -44,7 +44,7 @@ exports.addBudget = async (salary, account_name, contact_id, tax_rate) => {
 
 exports.deleteBudget = async (account_id) => {
     try {
-        return await database.execute(["DELETE from expense where budget_id=" + account_id + "", "DELETE from goal where budget_id=" + account_id + "", "DELETE from budget where account_id=" + account_id + ""]);
+        return await database.execute([{ text: "DELETE from expense where budget_id=$1", values: [account_id], rowMode: "array" }, { text: "DELETE from goal where budget_id=$1", values: [account_id], rowMode: "array" }, { text: "DELETE from budget where account_id=$1", values: [account_id], rowMode: "array" }]);
     } catch (e) {
         throw e;
     }
@@ -52,7 +52,7 @@ exports.deleteBudget = async (account_id) => {
 
 exports.getBudgetByUser = async (contact_id) => {
     try {
-        return await database.query("select b.account_id, b.salary, b.account_name, b.tax_rate from budget b where b.contact_id = '" + contact_id + "'");
+        return await database.query({ text: "select b.account_id, b.salary, b.account_name, b.tax_rate from budget b where b.contact_id = $1", values: [contact_id], rowMode: "array" });
     } catch (e) {
         throw e;
     }
@@ -60,7 +60,7 @@ exports.getBudgetByUser = async (contact_id) => {
 
 exports.updateTaxRate = async (account_id, tax_rate) => {
     try {
-        return await database.execute("update budget set tax_rate=" + tax_rate + " where account_id=" + account_id);
+        return await database.execute({ text: "update budget set tax_rate=$1 where account_id=$2", values: [tax_rate, account_id], rowMode: "array" });
     } catch (e) {
         throw e;
     }
@@ -69,7 +69,7 @@ exports.updateTaxRate = async (account_id, tax_rate) => {
 //Expense/goal handling
 exports.addExpense = async (amount, expense_name, budget_id) => {
     try {
-        return await database.execute("insert into expense (amount, expense_name, budget_id) values (" + amount + ", '" + expense_name + "', " + budget_id + ")");
+        return await database.execute({ text: "insert into expense (amount, expense_name, budget_id) values ($1, $2, $3)", values: [amount, expense_name, budget_id], rowMode: "array" });
     } catch (e) {
         throw e;
     }
@@ -77,7 +77,7 @@ exports.addExpense = async (amount, expense_name, budget_id) => {
 
 exports.getExpenseByBudget = async (budget_id) => {
     try {
-        return await database.query("select e.expense_id, e.amount, e.expense_name, e.budget_id from expense e where e.budget_id =" + budget_id);
+        return await database.query({ text: "select e.expense_id, e.amount, e.expense_name, e.budget_id from expense e where e.budget_id =$1", values: [budget_id], rowMode: "array" });
     } catch (e) {
         throw e;
     }
@@ -85,7 +85,7 @@ exports.getExpenseByBudget = async (budget_id) => {
 
 exports.getOnlyExpenseByBudget = async (budget_id) => {
     try {
-        return await database.query("select e.expense_id, e.amount, e.expense_name, e.budget_id from only expense e where e.budget_id =" + budget_id);
+        return await database.query({ text: "select e.expense_id, e.amount, e.expense_name, e.budget_id from only expense e where e.budget_id =$1", values: [budget_id], rowMode: "array" });
     } catch (e) {
         throw e;
     }
@@ -93,7 +93,7 @@ exports.getOnlyExpenseByBudget = async (budget_id) => {
 
 exports.deleteExpense = async (expenseId) => {
     try {
-        return await database.execute("DELETE from Expense where expense_id=" + expenseId);
+        return await database.execute({ text: "DELETE from Expense where expense_id=$1", values: [expenseId], rowMode: "array" });
     } catch (e) {
         throw e;
     }
@@ -101,8 +101,9 @@ exports.deleteExpense = async (expenseId) => {
 
 exports.addGoal = async (amount, expense_name, budget_id, expiration_date, optional, amount_paid) => {
     try {
-        return await database.execute("insert into goal (amount, expense_name, budget_id, expiration_date, optional, amount_paid)"
-            + "values(" + amount + ", '" + expense_name + "', " + budget_id + ", '" + expiration_date + "', " + optional + ", " + amount_paid + ")");
+        return await database.execute({text: "insert into goal (amount, expense_name, budget_id, expiration_date, optional, amount_paid)"
+            + "values($1, $2, $3, $4, $5, $6)", values: [amount, expense_name, budget_id, expiration_date, optional, amount_paid], rowMode: "array"
+        });
     } catch (e) {
         throw e;
     }
@@ -110,7 +111,7 @@ exports.addGoal = async (amount, expense_name, budget_id, expiration_date, optio
 
 exports.getGoalByBudget = async (budget_id) => {
     try {
-        return await database.query("select expense_id, budget_id, amount, expense_name, expiration_date, optional, amount_paid from goal where budget_id =" + budget_id);
+        return await database.query({ text: "select expense_id, budget_id, amount, expense_name, expiration_date, optional, amount_paid from goal where budget_id =$1", values: [budget_id], rowMode: "array" });
     } catch (e) {
         throw e;
     }
