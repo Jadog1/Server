@@ -360,7 +360,8 @@ app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
         res.statusCode=200
         res.json({success: true})
     } catch (e) {
-        res.statusCode=400
+        res.statusCode = 400
+        console.log(e);
         res.json({ success: false, error: e })
     }
 });
