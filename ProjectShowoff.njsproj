@@ -91,6 +91,12 @@
     <Content Include="views\pages\HomeServer.ejs">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\pages\homeserver\finance.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\pages\homeserver\home.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\pages\ImageDistort.ejs" />
     <Content Include="views\pages\methodConverter4d.ejs">
       <SubType>Code</SubType>
@@ -122,6 +128,7 @@
     <Folder Include="views\" />
     <Folder Include="views\pages\" />
     <Folder Include="views\pages\finance\" />
+    <Folder Include="views\pages\homeserver\" />
     <Folder Include="views\partials\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

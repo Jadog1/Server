@@ -17,6 +17,7 @@
         #interactionInterface {
             height: 60vh;
             overflow: auto;
+            border: 1px solid black;
         }
 
         .hidden {
@@ -52,6 +53,7 @@
             margin-top: 1vh;
             margin-bottom: 4vh;
             cursor: pointer;
+            min-height: 100px;
             display: block;
         }
 
@@ -60,13 +62,12 @@
         }
 
         .nextBtn {
-            height: 100%;
+            height: 20%;
             background-color: #24a0ed;
             color: white;
             font-size: 3vw;
             position: absolute;
-            margin-left: 10%;
-            top: 25%;
+            margin-left: 5%;
             border: none;
             cursor: pointer;
         }
@@ -112,7 +113,7 @@
              <button class="titleBtn" onclick="preBuiltDataSets('finance')">Finance</button>
              <button class="titleBtn" onclick="preBuiltDataSets('note')">Notes</button>
          </div>
-
+         <br />
          <div id="interactionInterface" class="center"></div>
 
          <div id="numberDisplay" class="center hidden" data-type="module">
@@ -128,7 +129,7 @@
 
          <div id="noteDisplay" class="center hidden" data-type="module">
              <h1 data-type="title"></h1>
-             <textarea data-type="input"></textarea>
+             <textarea data-type="input" cols="40" rows="10"></textarea>
          </div>
      </div>
 
@@ -180,7 +181,11 @@
                                 "Bills",
                                 "Entertainment",
                                 "Groceries",
-                                "Gas"
+                                "Gas",
+                                "Church",
+                                "Helping others",
+                                "Decor",
+                                "Gifts"
                             ]),
                             new objectBuilder("numberDisplay", ["Enter costs", "add $10", ""])
                         ]);
