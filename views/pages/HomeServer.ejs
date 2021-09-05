@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <%- include('../partials/Header') %>
+
+    <style>
+        [data-type="module"],
+        #interactionInterface {
+            width: 70vw;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #interactionInterface {
+            height: 60vh;
+            overflow: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .basicInterfaceButton {
+            background-color: #24a0ed;
+            border: 1px solid #0ba6ff;
+            border-radius: 5px;
+            width: 40vw;
+            height: 10vh;
+            font-size: 3.5vw;
+            color: white;
+            margin: auto;
+            margin-top: 1vh;
+            margin-bottom: 4vh;
+            cursor: pointer;
+            display: block;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .nextBtn {
+            height: 100%;
+            background-color: #24a0ed;
+            color: white;
+            font-size: 3vw;
+            position: absolute;
+            margin-left: 10%;
+            top: 25%;
+            border: none;
+            cursor: pointer;
+        }
+
+        body {
+            -webkit-tap-highlight-color: #ccc;
+        }
+
+        .titleBtn {
+            width: 20vw;
+            margin-right: 2.5vw;
+            margin-left: 2.5vw;
+            margin-top: 2vh;
+            height: 10vh;
+            font-size: 2vw;
+            font-weight: bold;
+            background-color: #eee;
+            border: 1px solid black;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+            .titleBtn:hover,
+            .titleBtn:active {
+                background-color: #24a0ed;
+                cursor: pointer;
+            }
+
+        #btnHeader {
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3vw;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+     <div class="w3-row-padding w3-padding-64 w3-container">
+         <div id="btnHeader">
+             <button class="titleBtn" onclick="preBuiltDataSets('finance')">Finance</button>
+             <button class="titleBtn" onclick="preBuiltDataSets('note')">Notes</button>
+         </div>
+
+         <div id="interactionInterface" class="center"></div>
+
+         <div id="numberDisplay" class="center hidden" data-type="module">
+             <h1 data-type="title">Enter costs</h1>
+             <input inputmode="numeric" pattern="[0-9]*" type="text" name="price" data-type="input">
+             <button data-type="extra" class="hidden">Add 10</button>
+         </div>
+
+         <div id="dupeOnly" class="center hidden" data-type="module">
+             <h1 data-type="title"></h1>
+             <div data-type="duplicate"></div>
+         </div>
+
+         <div id="noteDisplay" class="center hidden" data-type="module">
+             <h1 data-type="title"></h1>
+             <textarea data-type="input"></textarea>
+         </div>
+     </div>
+
+    <script>
+        var sharedJsonObject;
+        var currentStateIndex = 0;
+
+        $(document).ready(function () {
+            if (false) {
+                //Enter pulling of data from here
+            } else {
+                sharedJsonObject = { dataToSend: [] };
+            }
+            loadUI_Elements();
+        });
+
+        function clearArray(arr) {
+            arr.splice(0, arr.length);
+        }
+        function clearObject(myObject) {
+            for (var member in myObject) delete myObject[member];
+        }
+
+        //Reset back to default value
+        function clearCurrentState() {
+            currentStateIndex = 0;
+        }
+
+        function addOrModify(attr, value) {
+            try {
+                if (sharedJsonObject.dataToSend[currentStateIndex] == undefined)
+                    sharedJsonObject.dataToSend[currentStateIndex] = {};
+                sharedJsonObject.dataToSend[currentStateIndex][attr] = value;
+            } catch (e) {
+                console.log("Error in modifying attribute");
+            }
+        }
+
+        function preBuiltDataSets(setType) {
+            if (current_DataSet == undefined) {
+                $("#interactionInterface").removeClass("hidden");
+                switch (setType) {
+                    case "finance":
+                        current_DataSet = new UI_DataSet("finance", [
+                            new objectBuilder("dupeOnlyButton", ["User", "Jadon", "Natalie"]),
+                            new objectBuilder("dupeOnlyButton", [
+                                "Payment category",
+                                "Car",
+                                "Bills",
+                                "Entertainment",
+                                "Groceries",
+                                "Gas"
+                            ]),
+                            new objectBuilder("numberDisplay", ["Enter costs", "add $10", ""])
+                        ]);
+                        break;
+                    case "note":
+                        current_DataSet = new UI_DataSet("note", [
+                            new objectBuilder("dupeOnlyButton", [
+                                "Email To:",
+                                "Family",
+                                "Jadon",
+                                "Natalie"
+                            ]),
+                            new objectBuilder("noteDisplay", ["Reminder:"])
+                        ]);
+                }
+            }
+        }
+
+        //Low level code
+        var current_DataSet;
+        var UI_Elements = [];
+
+        /* Sole purpose is to make calling objects cleaner
+         *
+         */
+        function objectBuilder(name, array) {
+            var obj = { name: name };
+            switch (name) {
+                case "numberDisplay":
+                    if (Array.isArray(array)) obj.values = [array[0], ""];
+                    else obj.values = [array[0], "", { name: array[1], code: [array[2]] }];
+                    break;
+                case "dupeOnlyButton":
+                    obj.name = "dupeOnly";
+                    var title = array[0];
+                    array.shift();
+                    obj.values = [
+                        title,
+                        {
+                            dupes: array,
+                            dupType: "button",
+                            length: 1
+                        }
+                    ];
+                    break;
+                case "noteDisplay":
+                    obj.values = [array[0], ""];
+                    break;
+            }
+
+            return obj;
+        }
+
+        /*
+         * table is a given table name, string
+         * UI is an array of modules that gets matched to table fields
+         * Assumes currentState is set
+         */
+        function UI_DataSet(table, UI) {
+            this.table = table;
+            this.jsonResult = {};
+            this.index = -1; //Starts at -1 so that the first index loaded is 0
+            this.errorPresent = false;
+            this.addError = function (error) {
+                console.log("Method: UI_DataSet - " + error);
+                this.errorPresent = true;
+            };
+            addOrModify("table", table);
+
+            //Assign table fields here, and then assign the UI object
+            var fields;
+            switch (table) {
+                case "finance":
+                    fields = ["username", "budgetCategory", "cost"];
+                    break;
+                case "note":
+                    fields = ["email", "note"];
+                    break;
+                default:
+                    this.addError("Unrecognized table " + table);
+            }
+            if (fields.length != UI.length)
+                this.addError("Number of UI modules does not match table field count");
+            var UI_ObjectArray = [];
+            for (var i = 0; i < fields.length; i++) {
+                UI_ObjectArray.push({ field: fields[i], UI: UI[i] });
+            }
+
+            this.UI = UI_ObjectArray;
+            this.loadNextUI = function () {
+                var interface = document.getElementById("interactionInterface");
+                if (!this.errorPresent) {
+                    //debugger;
+                    this.index++;
+                    if (this.index >= this.UI.length) {
+                        this.index--;
+                        gotoMobileHome();
+                    }
+                    else {
+                        interface.innerHTML = "";
+                        interface.appendChild(dupeModule(this.UI[this.index].UI));
+                    }
+                } else interface.innerHTML = "<h1 class='error'>Error</h1>";
+            };
+            this.loadPreviousUI = function () {
+                if (this.index != 0) {
+                    var interface = document.getElementById("interactionInterface");
+                    this.index--;
+                    interface.appendChild(dupeModule(this.UI[this.index].UI));
+                }
+            };
+            this.getCurrentField = function () {
+                return this.UI[this.index].field;
+            };
+            this.loadNextUI(); //Initializes on creation
+        }
+
+        function loadNextUI_DataSet(data, isNextButton) {
+            if (isNextButton === undefined) {
+                addOrModify(current_DataSet.getCurrentField(), data);
+                current_DataSet.loadNextUI();
+            } else {
+                var input = document.querySelector(
+                    "#interactionInterface [data-type='input']"
+                ).value;
+                addOrModify(current_DataSet.getCurrentField(), input);
+                current_DataSet.loadNextUI();
+            }
+        }
+
+        function gotoMobileHome() {
+            //alert("Finished");
+            addOrModify("date", new Date(Date.now()).toLocaleDateString());
+            console.log(sharedJsonObject.dataToSend[currentStateIndex]);
+            $.ajax("/home-server/addTransaction", {
+                data: JSON.stringify(sharedJsonObject.dataToSend[currentStateIndex]),
+                contentType: 'application/json',
+                type: 'POST'
+            })
+                .done(function () {
+                    clearObject(current_DataSet);
+                    current_DataSet = undefined;
+                    toggleHidden("interactionInterface");
+                    currentStateIndex++;
+                    console.log("Completed!")
+                })
+                .fail(function (e) {
+                    console.log(e)
+                    alert("Error: Check log");
+                });
+        }
+
+        /*
+         * arrayOfModules is an object that looks like this: {name: X, values: [...]}
+         * You can pass in multiple modules to combine into one module
+         * modName is name of the module
+         * passedValues is an array of values to set individual components
+         * passedValues may contain dupe types
+         */
+        function dupeModule(arrayOfModules) {
+            //Convert to array if just a single object passed in
+            var modName,
+                passedValues,
+                hasInputValue = false;
+            if (!Array.isArray(arrayOfModules)) arrayOfModules = [arrayOfModules];
+            for (var k = 0; k < arrayOfModules.length; k++) {
+                modName = arrayOfModules[k].name;
+                passedValues = arrayOfModules[k].values;
+                var divDisplay;
+                var UI_Element =
+                    UI_Elements[
+                    UI_Elements.findIndex((val) => {
+                        if (val.name == modName) return true;
+                    })
+                    ];
+                if (UI_Element != undefined) {
+                    divDisplay = document.createElement("div");
+                    //divDisplay.classList.add("center");
+                    for (var i = 0; i < passedValues.length; i++) {
+                        var component = UI_Element.components[i];
+
+                        //debugger;
+                        switch (component.elementPointer.dataset.type) {
+                            case "duplicate":
+                                switch (passedValues[i].dupType) {
+                                    case "button":
+                                        component.basicButtonDuplicate(passedValues[i].dupes);
+                                        break;
+                                    case "default":
+                                        component.basicButtonDuplicate(passedValues[i]);
+                                        break;
+                                    case undefined:
+                                        component.error("dupType undefined");
+                                        break;
+                                }
+                                break;
+                            case "extra":
+                                if (passedValues[i].name != undefined)
+                                    component.setValue(passedValues[i].name, passedValues[i].code);
+                                else component.error("Name undefined");
+                                break;
+                            case "note":
+                            case "input":
+                                hasInputValue = true;
+                                component.setValue(passedValues[i]);
+                                break;
+                            default:
+                                component.setValue(passedValues[i]);
+                        }
+                        divDisplay.appendChild(component.elementPointer.cloneNode(true));
+                    }
+                }
+            }
+
+            if (hasInputValue) {
+                var nextButton = document.createElement("button");
+                nextButton.innerHTML = ">>";
+                nextButton.classList.add("nextBtn");
+                nextButton.setAttribute("onclick", "loadNextUI_DataSet(undefined, true)");
+                divDisplay.appendChild(nextButton);
+            }
+            return divDisplay;
+        }
+
+        function toggleHidden(objectName) {
+            $("#" + objectName).toggleClass("hidden");
+        }
+
+        function loadUI_Elements() {
+            var UI_Element = {}; //Used to push into UI_Elements as a grouped module
+            var UI_Component = {}; //Each individual component of a module
+            var parentModule_ID = ""; //Current parent module ID
+            var item = {};
+            var listItems = document.querySelectorAll("div[data-type='module'] > *"); //Get all modules
+            for (var i = 0; i < listItems.length; i++) {
+                item = listItems[i];
+                //Set up new module
+                if (parentModule_ID != "" && parentModule_ID != item.parentElement.id)
+                    UI_Elements.push(UI_Element);
+                if (parentModule_ID === "" || parentModule_ID != item.parentElement.id) {
+                    parentModule_ID = item.parentElement.id;
+                    UI_Element = { name: parentModule_ID, components: [] };
+                }
+                //Add elementPointer for quick access
+                UI_Component.elementPointer = item;
+
+                //Add base functionality
+                UI_Component.hide = function () {
+                    this.elementPointer.classList.add("hidden");
+                };
+                UI_Component.setValue = function (value) { };
+                UI_Component.error = function (errorCode) {
+                    var error = {
+                        method: "loadUI_Elements",
+                        moduleName: this.elementPointer.parentElement.id,
+                        componentType: this.elementPointer.dataset.type,
+                        code: errorCode
+                    };
+                    console.log(error);
+                };
+
+                //Based off different types, load their functions into memory, and overrides base functionalities
+                switch (item.dataset.type) {
+                    case "title":
+                        UI_Component.setValue = function (value) {
+                            this.elementPointer.innerHTML = value;
+                        };
+                        break;
+                    case "input":
+                        UI_Component.getValue = function () {
+                            return this.elementPointer.value;
+                        };
+                        break;
+                    case "extra":
+                        UI_Component.setValue = function (value, code) {
+                            this.elementPointer.innerHTML = value;
+                            this.elementPointer.classList.remove("hidden");
+                            this.elementPointer.setAttribute("onlick", code);
+                        };
+                        break;
+                    case "note":
+                        UI_Component.getValue = function () {
+                            return this.elementPointer.value;
+                        };
+                        break;
+                    case "duplicate":
+                        //Expects an array of HTML nodes in format {HTML: x, code: x}
+                        UI_Component.duplicate = function (arrayOfItems) {
+                            this.elementPointer.innerHTML = "";
+                            arrayOfItems.forEach((item) => {
+                                item.HTML.setAttribute("onclick", item.code);
+                                this.elementPointer.appendChild(item.HTML);
+                            });
+                        };
+
+                        UI_Component.basicButtonDuplicate = function (arrayNames) {
+                            var duplicate_parameters = [];
+                            arrayNames.forEach((name) => {
+                                var HTML = document.createElement("button");
+                                HTML.classList.add("basicInterfaceButton");
+                                HTML.innerHTML = name;
+                                //HTML.classList.remove("hidden");
+                                duplicate_parameters.push({
+                                    HTML: HTML,
+                                    code: "loadNextUI_DataSet(this.innerHTML)"
+                                });
+                            });
+                            this.duplicate(duplicate_parameters);
+                        };
+                        break;
+                }
+
+                //Add the current component and clear
+                UI_Element.components.push(UI_Component);
+                UI_Component = {};
+            }
+            UI_Elements.push(UI_Element); // Push one last time
+        }
+
+    </script>
+</body>
+</html>

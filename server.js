@@ -12,6 +12,7 @@ var app = express();
 const bodyParser = require('body-parser');
 const oneDayToSeconds = 24 * 60 * 60 * 1000;
 const twentyMinutesToSeconds = 20 * 60 * 1000;
+var homeServer_Status = { droppedAttempts: 0, getCalls: 0, addedAttempts: 0}
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -49,9 +50,6 @@ function isLogged(req) {
         return false;
     else
         return true;
-}
-async function getWeather() {
-
 }
 
 app.all('*', function (req, res, next) {
@@ -144,8 +142,14 @@ app.get('/weather', async function (req, res) {
         res.json({ error: 'Expiration not up yet' });
     }
 });
+app.get('/home-server', function (req, res) {
+    res.render('pages/HomeServer');
+});
 app.get('/projects/game', function (req, res) {
     res.render('pages/SeniorGame');
+});
+app.get('/projects/methodConvert', function (req, res) {
+    res.render('pages/methodConverter4d');
 });
 app.get('/projects/distort', function (req, res) {
     res.render('pages/ImageDistort');
@@ -350,6 +354,46 @@ app.post('/finance/addExpense', jsonParser, async function (req, res) {
     }
 });
 
+app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
+    try {
+        await queries.addHomeServerData(JSON.stringify(req.body));
+        res.statusCode=200
+        res.json({success: true})
+    } catch (e) {
+        res.statusCode = 400
+        res.json({ success: false, error: e })
+    }
+});
+
+app.get('/home-server/getTransactions', async function (req, res) {
+    try {
+        var results = await queries.getHomeServerData()
+
+        var allParsed = { dataToSend: [] }
+        for (var i = 0; i < results.length; i++)
+            allParsed.dataToSend.push(JSON.parse(results[i].json_data))
+
+        res.statusCode = 200
+        res.json(allParsed)
+    } catch (e) {
+        res.statusCode = 400
+        res.json({ success: false })
+    }
+});
+app.post('/home-server/dropTransactions', jsonParser, async function (req, res) {
+    if (req.body.password === process.env.EMBEDDED_DB_PASSWORD) {
+        console.log("Attempted dropping of database")
+        try {
+            await queries.deleteHomeServerData()
+            res.statusCode = 200
+            res.json({ success: true })
+        } catch (e) {
+            res.statusCode = 400
+            res.json({ success: false })
+        }
+    }
+});
+
 //Get files
 app.get('/resume', function (req, res) {
     fsExtend.readExtend('Files/Resume.pdf', 'text/pdf', res);
@@ -366,9 +410,8 @@ app.get('/allDepots', function (req, res) {
 
 
 process.on('SIGTERM', () => {
-    server.close(() => {
-        console.log('Process terminated');
-    })
+    console.log('Error called -- Trying to stay alive');
+    process.exit(1);
 });
 
 process.on('uncaughtException', err => {

@@ -33,18 +33,17 @@ exports.execute = async (transactions) => {
         }
     });
 
-        await client.connect();
-        try {
-            for (i = 0; i < transactions.length; i++) {
-                await client.query('BEGIN');
-                await client.query(transactions[i]);
-            }
+    await client.connect();
+    try {
+        await client.query('BEGIN');
+        for (i = 0; i < transactions.length; i++)
+            await client.query(transactions[i]);
 
-            await client.query('COMMIT');
-        } catch (e) {
-            client.query('ROLLBACK');
-            throw e;
-        } finally {
-            client.end();
-        }
+        await client.query('COMMIT');
+    } catch (e) {
+        client.query('ROLLBACK');
+        throw e;
+    } finally {
+        client.end();
+    }
 } 
