@@ -12,12 +12,11 @@ exports.query = (query) => {
         client.connect();
 
         client.query(query, (err, res) => {
-            if (err) {
-                client.end();
-                reject(err);
-            }
-            resolve(res.rows);
             client.end();
+            if (err)
+                reject(err);
+            else
+                resolve(res.rows);
         });
     });
 }
