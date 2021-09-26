@@ -94,6 +94,16 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
+        #fullScreen {
+            width: 3vw;
+            height: 3vw;
+            position: relative;
+            float: right;
+            background-color: aqua;
+            border: none;
+            font-size: 1.5vw
+        }
+
             .titleBtn:hover,
             .titleBtn:active {
                 background-color: #24a0ed;
@@ -117,9 +127,14 @@
          <div id="btnHeader">
              <button class="titleBtn" onclick="preBuiltDataSets('finance')">Finance</button>
              <button class="titleBtn" onclick="preBuiltDataSets('note')">Notes</button>
+
+             
+             <button id="fullScreen" onclick="initFullScreen()"><i class="fa fa-expand"></i></button>
          </div>
          <br />
          <div id="interactionInterface"></div>
+
+         
 
          <div id="numberDisplay" class="center hidden" data-type="module">
              <h1 data-type="title">Enter costs</h1>
@@ -141,6 +156,7 @@
     <script>
         var sharedJsonObject;
         var currentStateIndex = 0;
+        var fullScreen=false
 
         $(document).ready(function () {
             if (false) {
@@ -150,6 +166,30 @@
             }
             loadUI_Elements();
         });
+
+        function initFullScreen() {
+            var elem = document.documentElement
+
+            if (fullScreen == false) {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) { /* Safari */
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE11 */
+                    elem.msRequestFullscreen();
+                }
+                fullScreen = true;
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                }
+                fullScreen=false
+            }
+        }
 
         function clearArray(arr) {
             arr.splice(0, arr.length);
