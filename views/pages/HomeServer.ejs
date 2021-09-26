@@ -95,8 +95,8 @@
         }
 
         #fullScreen {
-            width: 3vw;
-            height: 3vw;
+            width: 4vw;
+            height: 4vw;
             position: relative;
             float: right;
             background-color: aqua;
@@ -115,6 +115,16 @@
             width: 100%;
         }
 
+        #CancelTrans {
+            background-color: red;
+            color: black;
+            float: left;
+            width: 2vw;
+            height: 2vw;
+            text-align: center;
+            cursor: pointer;
+        }
+
         h1 {
             font-size: 3vw;
             font-weight: bolder;
@@ -127,11 +137,12 @@
          <div id="btnHeader">
              <button class="titleBtn" onclick="preBuiltDataSets('finance')">Finance</button>
              <button class="titleBtn" onclick="preBuiltDataSets('note')">Notes</button>
-             <button class="titleBtn" onclick="preBuiltDataSets('note')">Groceries</button>
+             <button class="titleBtn" onclick="alert('Functionality WIP')">Groceries</button>
              
              <button id="fullScreen" onclick="initFullScreen()"><i class="fa fa-expand"></i></button>
          </div>
          <br />
+         <div id="CancelTrans" onclick="clearTransactions()">X</div>
          <div id="interactionInterface"></div>
 
          
@@ -165,6 +176,7 @@
                 sharedJsonObject = { dataToSend: [] };
             }
             loadUI_Elements();
+            toggleHidden("interactionInterface")
         });
 
         function initFullScreen() {
@@ -215,7 +227,7 @@
 
         function preBuiltDataSets(setType) {
             if (current_DataSet == undefined) {
-                $("#interactionInterface").removeClass("hidden");
+                toggleHidden("interactionInterface")
                 switch (setType) {
                     case "finance":
                         current_DataSet = new UI_DataSet("finance", [
@@ -376,16 +388,20 @@
                 type: 'POST'
             })
                 .done(function () {
-                    clearObject(current_DataSet);
-                    current_DataSet = undefined;
-                    toggleHidden("interactionInterface");
-                    currentStateIndex++;
+                    clearTransactions()
                     console.log("Completed!")
                 })
                 .fail(function (e) {
                     console.log(e)
                     alert("Error: Check log");
                 });
+        }
+
+        function clearTransactions() {
+            clearObject(current_DataSet);
+            current_DataSet = undefined;
+            toggleHidden("interactionInterface");
+            currentStateIndex++;
         }
 
         /*
@@ -462,6 +478,7 @@
 
         function toggleHidden(objectName) {
             $("#" + objectName).toggleClass("hidden");
+            $("#CancelTrans").toggleClass("hidden");
         }
 
         function loadUI_Elements() {
