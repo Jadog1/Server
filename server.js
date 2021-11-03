@@ -12,7 +12,6 @@ var app = express();
 const bodyParser = require('body-parser');
 const oneDayToSeconds = 24 * 60 * 60 * 1000;
 const twentyMinutesToSeconds = 20 * 60 * 1000;
-var homeServer_Status = { droppedAttempts: 0, getCalls: 0, addedAttempts: 0}
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
