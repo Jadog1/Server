@@ -243,6 +243,7 @@
                                 "Church",
                                 "Donation"
                             ]),
+                            new objectBuilder("dupeOnlyButton", ["Sub-budget category"]),
                             new objectBuilder("numberDisplay", ["Enter costs", "add $10", ""])
                         ]);
                         break;
@@ -315,7 +316,7 @@
             var fields;
             switch (table) {
                 case "finance":
-                    fields = ["username", "budgetCategory", "cost"];
+                    fields = ["username", "budgetCategory", "subBudgetCategory", "cost"];
                     break;
                 case "note":
                     fields = ["email", "note"];
@@ -353,15 +354,51 @@
                     interface.appendChild(dupeModule(this.UI[this.index].UI));
                 }
             };
+            this.modifyNextArrayDupeModule = function (newArray) {
+                if (!this.errorPresent && this.index < this.UI.length) {
+                    this.UI[this.index+1].UI.values[1].dupes=newArray
+                }
+            }
             this.getCurrentField = function () {
                 return this.UI[this.index].field;
             };
             this.loadNextUI(); //Initializes on creation
         }
 
+        //Hard-coding for now..
+        function setupCustomArrays(fieldAt, dataToCheck) {
+            var flexibleCustomArray = [];
+            if (fieldAt == 'budgetCategory') {
+                switch (dataToCheck) {
+                    case 'Groceries':
+                        flexibleCustomArray.push("Food", "Necessities");
+                        break;
+                    case 'Personal':
+                        flexibleCustomArray.push("Food", "Date", "Entertainment", "Decor", "Misc");
+                        break;
+                    case 'Bills':
+                        flexibleCustomArray.push("Rent", "Utilities", "Wifi", "Subscription", "Loans");
+                        break;
+                    case 'Misc':
+                        flexibleCustomArray.push("Car", "Gifts", "Work", "Other");
+                        break;
+                }
+
+                if (flexibleCustomArray.length == 0) {
+                    current_DataSet.loadNextUI();
+                    addOrModify(current_DataSet.getCurrentField(), "");
+                }
+                else {
+                    current_DataSet.modifyNextArrayDupeModule(flexibleCustomArray)
+                }
+            }
+        }
+
         function loadNextUI_DataSet(data, isNextButton) {
             if (isNextButton === undefined) {
-                addOrModify(current_DataSet.getCurrentField(), data);
+                let currentField = current_DataSet.getCurrentField();
+                addOrModify(currentField, data);
+                setupCustomArrays(currentField, data)
                 current_DataSet.loadNextUI();
             } else {
                 var input = document.querySelector(
