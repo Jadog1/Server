@@ -15,12 +15,16 @@
         #log {
             display:none
         }
+
+        .logError {
+            color: red
+        }
     </style>
 </head>
 <body>
     <%- include('../partials/navbar') %>
      <div class="w3-row-padding w3-padding-64 w3-container">
-         <h1>4D ordering list</h1>
+         <h1>4D ordering list (Added local variable type checking logs!)</h1>
          <textarea id="input" placeholder="input" rows="15" cols="70"></textarea>
          <button onclick="convert()">Order list</button>
          <textarea id="output" placeholder="output" rows="15" cols="70" readonly="readonly"></textarea>
@@ -55,6 +59,10 @@
                  <td>Place array inits under code initalization</td>
                  <td></td>
              </tr>
+             <tr>
+                 <td>Advanced variable type checking for local variables</td>
+                 <td></td>
+             </tr>
          </table>
      </div>
 
@@ -67,16 +75,17 @@
 
         function varTypes() {
             this.text = { name: "C_TEXT", arr: [], output: "", initial: "t" };
+            this.variant = {name: "C_VARIANT", arr: [], output: "", initial: "v"}
             this.number = { name: "C_LONGINT", arr: [], output: "", initial: "l" };
             this.date = { name: "C_DATE", arr: [], output: "", initial: "d" };
-            this.time = { name: "C_TIME", arr: [], output: "", initial: "t" };
+            this.time = { name: "C_TIME", arr: [], output: "", initial: "h" };
             this.bool = { name: "C_BOOLEAN", arr: [], output: "", initial: "b" };
-            this.pict = { name: "C_PICTURE", arr: [], output: "", initial: "-" };
+            this.pict = { name: "C_PICTURE", arr: [], output: "", initial: "pct" };
             this.pict = { name: "C_POINTER", arr: [], output: "", initial: "p" };
-            this.real = { name: "C_REAL", arr: [], output: "" };
-            this.blob = { name: "C_BLOB", arr: [], output: "" };
-            this.obj = { name: "C_OBJECT", arr: [], output: "" };
-            this.collection = { name: "C_COLLECTION", arr: [], output: "" };
+            this.real = { name: "C_REAL", arr: [], output: "", initial: "r" };
+            this.blob = { name: "C_BLOB", arr: [], output: "", initial: "x" };
+            this.obj = { name: "C_OBJECT", arr: [], output: "", initial: "o" };
+            this.collection = { name: "C_COLLECTION", arr: [], output: "", initial: "c" };
         }
         var interprocess = new varTypes();
         var process = new varTypes();
@@ -95,6 +104,29 @@
         }
         loadVarTypesAllNames();
 
+        //Finds unused, potentially undeclared, and incorrectly named variables
+        function variableAnalysis(textWithoutComments) {
+            var allVariablesUsed = []; 
+            for (var variable in local) {
+                variable = local[variable];
+                for (var i = 0; i < variable.arr.length; i++) {
+                    if (textWithoutComments.split(variable.arr[i]).length - 1 == 1)
+                        outputConsole.log("VARIABLE ERROR: " + variable.arr[i] + " is not used anywhere");
+                    if (variable.arr[i].charAt(0) !== variable.initial)
+                        outputConsole.log("VARIABLE ERROR: " + variable.arr[i] + " is not using proper naming");
+
+                    allVariablesUsed.push(variable.arr[i])
+                }
+            }
+
+            var allTypedLocalVars = textWithoutComments.match(/(\$\w+)/g)
+            for (var i = 0; i < allTypedLocalVars.length; i++) {
+                variable = allTypedLocalVars[i]
+                if (allVariablesUsed.indexOf(variable) < 0)
+                    outputConsole.log("VARIABLE ERROR: " + variable + " is not declared");
+            }
+        }
+
         function loopThroughGivenVarType(type, typeVariableText) {
             var output = "";
             var hasArrs = false,
@@ -107,7 +139,7 @@
                 if (variable.arr.length != 0) {
                     hasArrs = true;
                     variable.arr.sort();
-                    variable.output += variable.name + "(";
+                    variable.output += variable.name + "(\\\n";
 
                     for (var i = 0; i < variable.arr.length; i++) {
                         //Check to see if a variable has a comment. If so, store the comment to be added
@@ -125,6 +157,8 @@
                             variableArr_VarOutput = variable.arr[i];
                             variableArr_VarComment = "";
                         }
+
+                        
 
                         variable.output += variableArr_VarOutput;
                         if (i + 1 != variable.arr.length)
@@ -194,14 +228,15 @@
                 }
             }
             if (!foundVarName) {
-                outputConsole.log("Threw line into otherCode " + splitInput);
+                //outputConsole.log("Threw line into otherCode " + splitInput);
                 otherCode.push(splitInput);
             }
         }
 
         function convert() {
             document.getElementById("output").value = "";
-            outputConsole.detailedLog = ""
+            outputConsole.detailedLog = "";
+            var textWithoutComments = "";
             var foundASplit = false,
                 varAt,
                 state = "",
@@ -232,7 +267,8 @@
                     commentIndex == -1 ? splitInput[i].length : commentIndex,
                     splitInput[i].length
                 );
-                splitInput[i]=splitInput[i].substring(0, (commentIndex==-1 ? splitInput[i].length : commentIndex))
+                splitInput[i] = splitInput[i].substring(0, (commentIndex == -1 ? splitInput[i].length : commentIndex))
+                textWithoutComments += splitInput[i] + "\n"
 
                 //Test if loading an array line
                 regex = new RegExp("(array (.+\\(.+\\)))");
@@ -330,7 +366,7 @@
                         } else if (varAt[0].match(/[a-z]/i)) {
                             extractLineToVar(process, varAt, state, splitInput[i], commentOnLine);
                         } else {
-                            outputConsole.log("Threw line into otherCode " + splitInput[i]);
+                            //outputConsole.log("Threw line into otherCode " + splitInput[i]);
                             otherCode.push(splitInput[i]);
                         }
 
@@ -339,6 +375,7 @@
                 }
             }
 
+            variableAnalysis(textWithoutComments);
             loopThroughVarTypes();
         }
 
