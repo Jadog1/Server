@@ -355,6 +355,7 @@ app.post('/finance/addExpense', jsonParser, async function (req, res) {
 
 app.post('/home-server/addTransaction', jsonParser, async function (req, res) {
     try {
+        req.body.UserID = '1699DFAA-DD84-4A95-A709-F719AA139CE1'; //Default UUID for myself. May expand at another time
         await queries.addHomeServerData(JSON.stringify(req.body));
         res.statusCode=200
         res.json({success: true})

@@ -230,7 +230,7 @@
                 toggleHidden("interactionInterface")
                 switch (setType) {
                     case "finance":
-                        current_DataSet = new UI_DataSet("finance", [
+                        current_DataSet = new UI_DataSet("FinanceExpense", [
                             new objectBuilder("dupeOnlyButton", ["User", "Family", "Jadon", "Natalie"]),
                             new objectBuilder("dupeOnlyButton", [
                                 "Payment category",
@@ -315,8 +315,8 @@
             //Assign table fields here, and then assign the UI object
             var fields;
             switch (table) {
-                case "finance":
-                    fields = ["username", "budgetCategory", "subBudgetCategory", "cost"];
+                case "FinanceExpense":
+                    fields = ["BuyerCategory", "BudgetCategory", "SubBudgetCategory", "Total"];
                     break;
                 case "note":
                     fields = ["email", "note"];
@@ -368,7 +368,7 @@
         //Hard-coding for now..
         function setupCustomArrays(fieldAt, dataToCheck) {
             var flexibleCustomArray = [];
-            if (fieldAt == 'budgetCategory') {
+            if (fieldAt == 'BudgetCategory') {
                 switch (dataToCheck) {
                     case 'Groceries':
                         flexibleCustomArray.push("Food", "Necessities");
@@ -411,7 +411,7 @@
 
         function gotoMobileHome() {
             //alert("Finished");
-            addOrModify("date", new Date(Date.now()).toLocaleDateString());
+            addOrModify("CreatedAt", new Date(Date.now()).toLocaleDateString());
             console.log(sharedJsonObject.dataToSend[currentStateIndex]);
             $.ajax("/home-server/addTransaction", {
                 data: JSON.stringify(sharedJsonObject.dataToSend[currentStateIndex]),
