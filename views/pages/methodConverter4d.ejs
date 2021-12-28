@@ -12,7 +12,7 @@
             border: 1px black groove;
         }
 
-        #log {
+        #log, #variableLog {
             display:none
         }
 
@@ -29,8 +29,9 @@
          <button onclick="convert()">Order list</button>
          <textarea id="output" placeholder="output" rows="15" cols="70" readonly="readonly"></textarea>
          <br />
-         <button onclick="$('#log').toggle(); $('#log').text(outputConsole.detailedLog)">Toggle current log</button>
+         <button onclick="$('#log').toggle(); $('#variableLog').toggle(); $('#log').text(outputConsole.detailedLog)">Toggle current log</button>
          <textarea id="log" placeholder="log" rows="5" cols="100" readonly="readonly"></textarea>
+         <textarea id="variableLog" placeholder="variable errors" cols="75" readonly="readonly"></textarea>
 
          <h3>Update notes (v1):</h3>
          Not quite ready for full copy and pasting methods... Check below "to add"
@@ -68,10 +69,13 @@
 
 
     <script>
-        var outputConsole = { detailedLog: "" };
+        var outputConsole = { detailedLog: "", variableErrors: "" };
         outputConsole.log = function (val) {
             this.detailedLog += (new Date().toLocaleTimeString()) + " - " + val + "\n"
         };
+        outputConsole.variableLog = function(val) {
+            this.variableErrors += (new Date().toLocaleTimeString()) + " - " + val + "\n"
+        }
 
         function varTypes() {
             this.text = { name: "C_TEXT", arr: [], output: "", initial: "t" };
@@ -104,27 +108,58 @@
         }
         loadVarTypesAllNames();
 
+        function variableIsParam(string) {
+            let bExists = false
+            for (var i = 0; i < parameters.length; i++) {
+                if (parameters[i].line.includes(string)) {
+                    bExists = true
+                    break
+                }
+            }
+            return bExists
+        }
+        function variableIsArray(string) {
+            let bExists = false
+            for (var i = 0; i < gatheredArrays.length; i++) {
+                if (gatheredArrays[i].includes(string)) {
+                    bExists = true
+                    break
+                }
+            }
+            return bExists
+        }
+
         //Finds unused, potentially undeclared, and incorrectly named variables
         function variableAnalysis(textWithoutComments) {
+
             var allVariablesUsed = []; 
             for (var variable in local) {
                 variable = local[variable];
                 for (var i = 0; i < variable.arr.length; i++) {
+                    //Find unused variables (Checks listed variables, parameters, and arrays)
                     if (textWithoutComments.split(variable.arr[i]).length - 1 == 1)
-                        outputConsole.log("VARIABLE ERROR: " + variable.arr[i] + " is not used anywhere");
-                    if (variable.arr[i].charAt(0) !== variable.initial)
-                        outputConsole.log("VARIABLE ERROR: " + variable.arr[i] + " is not using proper naming");
+                        outputConsole.variableLog(variable.arr[i] + " is not used anywhere");
+                    //Find improperly named variables
+                    if (variable.arr[i].charAt(1) !== variable.initial)
+                        outputConsole.variableLog(variable.arr[i] + " is not using proper naming");
 
                     allVariablesUsed.push(variable.arr[i])
                 }
             }
 
+            //Find undeclared variables
             var allTypedLocalVars = textWithoutComments.match(/(\$\w+)/g)
+            let varExists = false, varParam = false, varArray = false;
             for (var i = 0; i < allTypedLocalVars.length; i++) {
                 variable = allTypedLocalVars[i]
-                if (allVariablesUsed.indexOf(variable) < 0)
-                    outputConsole.log("VARIABLE ERROR: " + variable + " is not declared");
+                varExists = (allVariablesUsed.indexOf(variable) >= 0)
+                varParam = variableIsParam(variable)
+                varArray = variableIsArray(variable)
+                if (!(varExists || varParam || varArray))
+                    outputConsole.variableLog(variable + " is not declared");
             }
+
+            $('#variableLog').text(outputConsole. variableErrors)
         }
 
         function loopThroughGivenVarType(type, typeVariableText) {
@@ -236,6 +271,7 @@
         function convert() {
             document.getElementById("output").value = "";
             outputConsole.detailedLog = "";
+            outputConsole.variableErrors = "";
             var textWithoutComments = "";
             var foundASplit = false,
                 varAt,
