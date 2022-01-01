@@ -65,6 +65,9 @@
     <Content Include="public\img\SeniorGame.jpg" />
     <Content Include="public\img\smallimage.png" />
     <Content Include="public\js\budgets.js" />
+    <Content Include="public\js\MethodConverter4D.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\budgets.js">
       <SubType>Code</SubType>
     </Content>
