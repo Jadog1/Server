@@ -148,7 +148,7 @@
             }
 
             //Find undeclared variables
-            var allTypedLocalVars = textWithoutComments.match(/(\$\w+)/g)
+            var allTypedLocalVars = textWithoutComments.match(/(\$[a-zA-Z0-9]+)/g)
             let varExists = false, varParam = false, varArray = false;
             for (var i = 0; i < allTypedLocalVars.length; i++) {
                 variable = allTypedLocalVars[i]
