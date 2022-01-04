@@ -206,7 +206,7 @@ function extractLineToVar(
         }
     }
     if (!foundVarName) {
-        outputConsole.log("Threw line into otherCode " + splitInput);
+        //outputConsole.log("Threw line into otherCode " + splitInput);
         otherCode.push(splitInput);
     }
 }
@@ -225,17 +225,18 @@ function convert() {
     var splitInput = input.split("\n");
     for (var i = 0; i < splitInput.length; i++) {
         splitInput[i] = splitInput[i].trim();
+        try {
         //Load the header comments
         if (hasHeaderComments) {
             if (splitInput[i].trim().startsWith("//")) {
-                outputConsole.log("Adding header to headerComments " + splitInput[i]);
+                //outputConsole.log("Adding header to headerComments " + splitInput[i]);
                 headerComments.push(splitInput[i]);
                 continue;
             } else hasHeaderComments = false;
         }
         //Throw other commented code into otherCode
         if (splitInput[i].trim().startsWith("//")) {
-            outputConsole.log("Threw commented line into otherCode " + splitInput[i]);
+            //outputConsole.log("Threw commented line into otherCode " + splitInput[i]);
             otherCode.push(splitInput[i]);
             continue;
         }
@@ -338,28 +339,32 @@ function convert() {
 
         //Check if varAt is multiple variables
         var splitVarAt = varAt.split(";");
-        for (var j = 0; j < splitVarAt.length; j++) {
-            varAt = splitVarAt[j].trim();
-            if (varAt != undefined) {
-                if (varAt[0] === "<") {
-                    extractLineToVar(
-                        interprocess,
-                        varAt,
-                        state,
-                        splitInput[i],
-                        commentOnLine
-                    );
-                } else if (varAt[0] == "$") {
-                    extractLineToVar(local, varAt, state, splitInput[i], commentOnLine);
-                } else if (varAt[0].match(/[a-z]/i)) {
-                    extractLineToVar(process, varAt, state, splitInput[i], commentOnLine);
-                } else {
-                    outputConsole.log("Threw line into otherCode " + splitInput[i]);
-                    otherCode.push(splitInput[i]);
-                }
+            for (var j = 0; j < splitVarAt.length; j++) {
+                varAt = splitVarAt[j].trim();
+                if (varAt != undefined) {
+                    if (varAt[0] === "<") {
+                        extractLineToVar(
+                            interprocess,
+                            varAt,
+                            state,
+                            splitInput[i],
+                            commentOnLine
+                        );
+                    } else if (varAt[0] == "$") {
+                        extractLineToVar(local, varAt, state, splitInput[i], commentOnLine);
+                    } else if (varAt[0].match(/[a-z]/i)) {
+                        extractLineToVar(process, varAt, state, splitInput[i], commentOnLine);
+                    } else {
+                        //outputConsole.log("Threw line into otherCode " + splitInput[i]);
+                        otherCode.push(splitInput[i]);
+                    }
 
-                if (foundASplit == false && state != "") state = "";
-            }
+                    if (foundASplit == false && state != "") state = "";
+                }
+            } 
+        } catch (e) {
+            otherCode.push(splitInput[i])
+            outputConsole.log("Line errored out " + splitInput[i] + " ("+e+")");
         }
     }
 
