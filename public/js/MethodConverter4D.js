@@ -8,18 +8,18 @@ outputConsole.variableLog = function (val, severity = 1) {
 };
 
 function varTypes() {
-    this.text = { name: "C_TEXT", arr: [], output: "", initial: "t" };
-    this.variant = { name: "C_VARIANT", arr: [], output: "", initial: "v" };
-    this.number = { name: "C_LONGINT", arr: [], output: "", initial: "l" };
-    this.date = { name: "C_DATE", arr: [], output: "", initial: "d" };
-    this.time = { name: "C_TIME", arr: [], output: "", initial: "h" };
+    this.blob = { name: "C_BLOB", arr: [], output: "", initial: "x" };
     this.bool = { name: "C_BOOLEAN", arr: [], output: "", initial: "b" };
+    this.collection = { name: "C_COLLECTION", arr: [], output: "", initial: "c" };
+    this.date = { name: "C_DATE", arr: [], output: "", initial: "d" };
+    this.number = { name: "C_LONGINT", arr: [], output: "", initial: "l" };
+    this.obj = { name: "C_OBJECT", arr: [], output: "", initial: "o" };
     this.pict = { name: "C_PICTURE", arr: [], output: "", initial: "pct" };
     this.pict = { name: "C_POINTER", arr: [], output: "", initial: "p" };
     this.real = { name: "C_REAL", arr: [], output: "", initial: "r" };
-    this.blob = { name: "C_BLOB", arr: [], output: "", initial: "x" };
-    this.obj = { name: "C_OBJECT", arr: [], output: "", initial: "o" };
-    this.collection = { name: "C_COLLECTION", arr: [], output: "", initial: "c" };
+    this.text = { name: "C_TEXT", arr: [], output: "", initial: "t" };
+    this.time = { name: "C_TIME", arr: [], output: "", initial: "h" };
+    this.variant = { name: "C_VARIANT", arr: [], output: "", initial: "v" };
 }
 var interprocess = new varTypes();
 var process = new varTypes();
