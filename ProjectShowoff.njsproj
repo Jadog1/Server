@@ -68,6 +68,9 @@
     <Content Include="public\js\MethodConverter4D.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\js\SimpleShootEmUp.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\budgets.js">
       <SubType>Code</SubType>
     </Content>
